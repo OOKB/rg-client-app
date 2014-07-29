@@ -1,5 +1,5 @@
 (function() {
-  var browserSync, gulp, jade, less, path;
+  var browserSync, browserify, gulp, jade, less, path, react, reactify, watchify;
 
   path = require('path');
 
@@ -7,9 +7,17 @@
 
   browserSync = require('browser-sync');
 
+  browserify = require('browserify');
+
+  watchify = require('watchify');
+
+  reactify = require('reactify');
+
   jade = require('gulp-jade');
 
   less = require('gulp-less');
+
+  react = require('gulp-react');
 
   gulp.task("browser-sync", function() {
     browserSync.init("public/**", {
@@ -42,9 +50,28 @@
     })).pipe(gulp.dest("./public"));
   });
 
-  gulp.task("default", ['styles', 'templates', 'browser-sync'], function() {
+  gulp.task('copy', function() {
+    return gulp.src('js/**').pipe(gulp.dest('public'));
+  });
+
+  gulp.task('compile', function() {
+    var bundle, w;
+    w = watchify(browserify('./app/index.js', watchify.args));
+    bundle = function() {
+      return w.bundle({
+        debug: true
+      });
+    };
+  });
+
+  gulp.task("default", ['styles', 'templates', 'browser-sync', 'copy'], function() {
     gulp.watch("templates/*.jade", ["templates"]);
     gulp.watch("styles/*.less", ["styles"]);
+    gulp.watch('js/**', ['copy']);
+  });
+
+  gulp.task('jsx', function() {
+    return gulp.src('templates/*.jsx').pipe(react()).pipe(gulp.dest('dist'));
   });
 
 }).call(this);

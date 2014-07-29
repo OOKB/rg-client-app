@@ -4,8 +4,13 @@ gulp = require 'gulp'
 
 browserSync = require 'browser-sync'
 
+browserify = require 'browserify'
+watchify = require 'watchify'
+reactify = require 'reactify'
+
 jade = require 'gulp-jade'
 less = require 'gulp-less'
+react = require 'gulp-react'
 
 gulp.task "browser-sync", ->
   browserSync.init "public/**",
@@ -35,8 +40,23 @@ gulp.task 'styles', ->
     .pipe gulp.dest("./public")
   return
 
+gulp.task 'copy', ->
+  gulp.src('js/**').pipe(gulp.dest('public'));
 
-gulp.task "default", ['styles', 'templates', 'browser-sync'], ->
+gulp.task 'compile', ->
+  w = watchify(browserify('./app/index.js', watchify.args))
+  bundle = () ->
+    w
+      .bundle {debug: true}
+  return
+
+gulp.task "default", ['styles', 'templates', 'browser-sync', 'copy'], ->
   gulp.watch "templates/*.jade", ["templates"]
   gulp.watch "styles/*.less", ["styles"]
+  gulp.watch 'js/**', ['copy']
   return
+
+gulp.task 'jsx', ->
+  gulp.src('templates/*.jsx')
+    .pipe(react())
+    .pipe(gulp.dest('dist'))
