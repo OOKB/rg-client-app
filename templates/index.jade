@@ -1,17 +1,127 @@
+doctype html
+
 html
+
   head
+    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
     link(rel='stylesheet', href='/style.css')
+    
   body
-    h1= title
-    h2 Happy Dancing
-    h3 another thing!
+    
+    div.container
 
-    p.box Why nothing show up?
+      h1 New Pricelist Demo
 
-    p Another paragraph 1
+      nav.text-center
+        button Textiles
+        button Passementerie
+        button Leather
 
-    p Another paragraph 2
+      div#textiles
+        h2 Textiles
+        p basically this will be what we currently have... but just formatted slightly differently.
+        p This sorts by the Name of the pattern first, then by item-number within that pattern.
+        p Content that is the same across a pattern - Name, Price, Content, Repeat, and Approx. Width only show for the first row of that pattern.
+        table
+          thead
+            tr
+              td
+                h3 Name
+              td
+                h3 Item#
+              td
+                h3 Color
+              td
+                h3 Price
+              td
+                h3 Content
+              td
+                h3 Repeat
+              td
+                h3 Approx Width
+          tbody
+            tr
+              td
+                p Name
+              td
+                p Item#
+              td
+                p Color
+              td
+                p Price
+              td
+                p Content
+              td
+                p Repeat
+              td
+                p Approx Width
 
-    p Another paragraph 3
+      div#passementerie
+        h2 Passementerie
+        p this list will default to order by item#.
+        p Trims don't have a name...
+        table
+          thead
+            tr
+              td
+                h3 Item#
+              td
+                h3 Color
+              td
+                h3 Content
+              td
+                h3 Repeat
+              td
+                h3 Approx Width
+              td
+                h3 Price
+          tbody
+            tr
+              td
+                p Item#
+              td
+                p Color
+              td
+                p Content
+              td
+                p Repeat
+              td
+                p Approx Width
+              td
+                p Price
+      
+      div#leather
+        h2 Leather
+        p Leather does not have a repeat column...
+        table
+          thead
+            tr
+              td
+                h3 Name
+              td
+                h3 Item#
+              td
+                h3 Color
+              td
+                h3 Content
+              td
+                h3 Approx Size
+              td
+                h3 Price
+          tbody
+            tr
+              td
+                p Name
+              td
+                p Item#
+              td
+                p Color
+              td
+                p Content
+              td
+                p Approx Size
+              td
+                p Price
 
-    p Another paragraph 4
+    script(type='text/javascript', src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
+
