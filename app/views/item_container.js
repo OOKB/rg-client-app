@@ -24,10 +24,12 @@
     },
     render: function() {
       return div({}, SearchBar({
+        onUserInput: this.handleUserInput,
         filterText: this.state.filterText,
         collection: this.state.collection,
         summerSale: this.state.summerSale,
-        onUserInput: this.handleUserInput
+        pageSize: this.state.pageSize,
+        pageIndex: this.state.pageIndex
       }), ProductTable({
         items: this.props.items,
         filterText: this.state.filterText,

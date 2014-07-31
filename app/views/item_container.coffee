@@ -18,10 +18,12 @@ module.exports = React.createClass
   render: ->
     div {},
       SearchBar
+        onUserInput: @handleUserInput
         filterText: @state.filterText
         collection: @state.collection
         summerSale: @state.summerSale
-        onUserInput: @handleUserInput
+        pageSize: @state.pageSize
+        pageIndex: @state.pageIndex
       ProductTable
         items: @props.items
         filterText: @state.filterText

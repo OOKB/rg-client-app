@@ -1,18 +1,18 @@
 React = require 'react'
-{form, input, p, div, button} = require 'reactionary'
-
-_ = require 'lodash'
+{form, input, p, div, button, select, option} = require 'reactionary'
 
 # props
 ## onUserInput() - defined in item_container.
 
 module.exports = React.createClass
-  handleChange: ->
+  handleChange: (event) ->
     @props.onUserInput
       filterText: @refs.filterTextInput.getDOMNode().value
       summerSale: @refs.summerSale.getDOMNode().checked
+      pageSize: @refs.setPageSize.getDOMNode().value
 
-  handleCollectionClick: (collection_id, e) ->
+  handleCollectionClick: (e) ->
+    collection_id = e.target.value
     if e.preventDefault
       e.preventDefault()
     @props.onUserInput collection: collection_id
@@ -25,20 +25,34 @@ module.exports = React.createClass
         value: @props.filterText,
         ref:'filterTextInput',
         onChange: @handleChange
+      select
+        ref: 'setPageSize'
+        value: @props.pageSize
+        onChange: @handleChange
+        type: 'select',
+          option
+            value: '50'
+            '50'
+          option
+            value: '100'
+            '100'
+          option
+            value: '10000'
+            'All'
       div {},
         button
           className: if (@props.collection == 'textile') then 'active'
-          onClick: _.partial @handleCollectionClick, 'textile'
+          onClick: @handleCollectionClick
           value: 'textile',
           'Textiles'
         button
           className: if (@props.collection == 'passementerie') then 'active'
-          onClick: _.partial @handleCollectionClick, 'passementerie'
+          onClick: @handleCollectionClick
           value: 'passementerie',
           'Passementerie'
         button
           className: if (@props.collection == 'leather') then 'active'
-          onClick: _.partial @handleCollectionClick, 'leather'
+          onClick: @handleCollectionClick
           value: 'leather',
           'Leather'
       p {},
