@@ -1,5 +1,5 @@
 (function() {
-  var browserSync, browserify, gulp, jade, less, path, react, reactify, watchify;
+  var browserSync, browserify, gulp, jade, less, path, react, reactify, source, watchify;
 
   path = require('path');
 
@@ -12,6 +12,8 @@
   watchify = require('watchify');
 
   reactify = require('reactify');
+
+  source = require('vinyl-source-stream');
 
   jade = require('gulp-jade');
 
@@ -58,13 +60,13 @@
     var bundle, w;
     w = watchify(browserify('./app/index.js', watchify.args));
     bundle = function() {
-      return w.bundle({
-        debug: true
-      });
+      return w.bundle().pipe(source('script.js')).pipe(gulp.dest('./public/'));
     };
+    w.on('update', bundle);
+    bundle();
   });
 
-  gulp.task("default", ['styles', 'templates', 'browser-sync', 'copy'], function() {
+  gulp.task("default", ['compile', 'styles', 'templates', 'browser-sync'], function() {
     gulp.watch("templates/*.jade", ["templates"]);
     gulp.watch("styles/*.less", ["styles"]);
     gulp.watch('js/**', ['copy']);

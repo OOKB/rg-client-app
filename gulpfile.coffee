@@ -8,6 +8,8 @@ browserify = require 'browserify'
 watchify = require 'watchify'
 reactify = require 'reactify'
 
+source = require('vinyl-source-stream')
+
 jade = require 'gulp-jade'
 less = require 'gulp-less'
 react = require 'gulp-react'
@@ -46,11 +48,14 @@ gulp.task 'copy', ->
 gulp.task 'compile', ->
   w = watchify(browserify('./app/index.js', watchify.args))
   bundle = () ->
-    w
-      .bundle {debug: true}
+    w.bundle()
+      .pipe(source('script.js'))
+      .pipe(gulp.dest('./public/'))
+  w.on('update', bundle)
+  bundle()
   return
 
-gulp.task "default", ['styles', 'templates', 'browser-sync', 'copy'], ->
+gulp.task "default", ['compile', 'styles', 'templates', 'browser-sync'], ->
   gulp.watch "templates/*.jade", ["templates"]
   gulp.watch "styles/*.less", ["styles"]
   gulp.watch 'js/**', ['copy']
