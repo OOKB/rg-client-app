@@ -10,12 +10,6 @@ items = [
   {name:'Benderlock', patternNumber:'890001', color_id:'02', color:'Buckpool', price:'92', size:'58"', collection:'textile'}
 ]
 
-el =
-  div {},
-    h1 'hello whale'
-    ul {},
-      li 'one'
-      li 'two'
-
-
+# This is the main app entry point. For now we call FilterableProductTable
+## and pass it some items data.
 React.renderComponent FilterableProductTable(items: items), document.getElementById('content')

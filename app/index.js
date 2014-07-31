@@ -1,5 +1,5 @@
 (function() {
-  var FilterableProductTable, React, div, el, h1, items, li, p, table, tbody, th, thead, tr, ul, _ref;
+  var FilterableProductTable, React, div, h1, items, li, p, table, tbody, th, thead, tr, ul, _ref;
 
   React = require('react');
 
@@ -42,8 +42,6 @@
       collection: 'textile'
     }
   ];
-
-  el = div({}, h1('hello whale'), ul({}, li('one'), li('two')));
 
   React.renderComponent(FilterableProductTable({
     items: items
