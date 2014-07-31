@@ -37,7 +37,7 @@
           return lastPattern = item.patternNumber;
         };
       })(this));
-      return table({}, thead({}, tr({}, th('Name'), th('Number'), th('Net Price'), th('Size'))), tbody({}, rows));
+      return table({}, thead({}, tr({}, th('Name'), th('Number'), th('Color'), th('Net Price'), th('Size'))), tbody({}, rows));
     }
   });
 

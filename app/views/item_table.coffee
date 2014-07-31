@@ -27,6 +27,7 @@ module.exports = React.createClass
         tr {},
           th 'Name'
           th 'Number'
+          th 'Color'
           th 'Net Price'
           th 'Size'
       tbody {}, rows
