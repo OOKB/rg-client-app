@@ -6,6 +6,7 @@ ItemColorRow = require './item_row_sub'
 
 module.exports = React.createClass
   render: ->
+    # The processing of rows should probably move up to the container.
     rows = []
     lastPattern = null
     @props.items.forEach (item) =>
@@ -14,7 +15,7 @@ module.exports = React.createClass
         return
 
       id = item.patternNumber+'-'+item.color_id
-      search_string = (id + item.name + item.color).toLowerCase()
+      search_string = (id + item.name + ' ' + item.color).toLowerCase()
       search_not_found = search_string.indexOf(@props.filterText.toLowerCase()) == -1
 
       # Skip over items with no string match.

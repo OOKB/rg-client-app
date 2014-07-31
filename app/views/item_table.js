@@ -21,7 +21,7 @@
             return;
           }
           id = item.patternNumber + '-' + item.color_id;
-          search_string = (id + item.name + item.color).toLowerCase();
+          search_string = (id + item.name + ' ' + item.color).toLowerCase();
           search_not_found = search_string.indexOf(_this.props.filterText.toLowerCase()) === -1;
           if (search_not_found) {
             return;
