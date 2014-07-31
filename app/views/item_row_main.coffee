@@ -8,4 +8,4 @@ module.exports = React.createClass
       th @props.item.patternNumber+'-'+@props.item.color_id
       th @props.item.color
       th @props.item.price
-      th @props.item.size
+      th @props.item.approx_width
