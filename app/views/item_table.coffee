@@ -9,7 +9,11 @@ module.exports = React.createClass
     rows = []
     lastPattern = null
     @props.items.forEach (item) =>
-      id = item.patternNumber+item.color_id
+      # Skip over items that do not match collection.
+      if item.collection != @props.collection
+        return
+
+      id = item.patternNumber+'-'+item.color_id
       search_string = (id + item.name + item.color).toLowerCase()
       search_not_found = search_string.indexOf(@props.filterText.toLowerCase()) == -1
 
@@ -21,6 +25,9 @@ module.exports = React.createClass
       else
         rows.push ItemColorRow(item: item, key: id)
       lastPattern = item.patternNumber
+
+    # Cut the rows array down to size for "pager"
+    rows = rows.slice @props.pageIndex, @props.pageSize
 
     table {},
       thead {},

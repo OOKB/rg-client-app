@@ -17,7 +17,10 @@
       this.props.items.forEach((function(_this) {
         return function(item) {
           var id, search_not_found, search_string;
-          id = item.patternNumber + item.color_id;
+          if (item.collection !== _this.props.collection) {
+            return;
+          }
+          id = item.patternNumber + '-' + item.color_id;
           search_string = (id + item.name + item.color).toLowerCase();
           search_not_found = search_string.indexOf(_this.props.filterText.toLowerCase()) === -1;
           if (search_not_found) {
@@ -37,6 +40,7 @@
           return lastPattern = item.patternNumber;
         };
       })(this));
+      rows = rows.slice(this.props.pageIndex, this.props.pageSize);
       return table({}, thead({}, tr({}, th('Name'), th('Number'), th('Color'), th('Net Price'), th('Size'))), tbody({}, rows));
     }
   });

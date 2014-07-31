@@ -13,24 +13,28 @@
     getInitialState: function() {
       return {
         filterText: '',
-        collection: 'textile'
+        collection: 'textile',
+        summerSale: false,
+        pageSize: 50,
+        pageIndex: 0
       };
     },
-    handleUserInput: function(filterText, collection) {
-      return this.setState({
-        filterText: filterText,
-        collection: collection
-      });
+    handleUserInput: function(new_state_obj) {
+      return this.setState(new_state_obj);
     },
     render: function() {
       return div({}, SearchBar({
         filterText: this.state.filterText,
         collection: this.state.collection,
+        summerSale: this.state.summerSale,
         onUserInput: this.handleUserInput
       }), ProductTable({
         items: this.props.items,
         filterText: this.state.filterText,
-        collection: this.state.collection
+        collection: this.state.collection,
+        summerSale: this.state.summerSale,
+        pageSize: this.state.pageSize,
+        pageIndex: this.state.pageIndex
       }));
     }
   });

@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "react": "^0.11.1",
-    "reactionary": "^0.9.0"
+    "reactionary": "^0.9.0",
+    "lodash": "^2.4.1"
   }
 }
