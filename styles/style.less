@@ -1,4 +1,10 @@
 @base: #f93834;
+@rg-background:          #fcfbf8;
+@rg-dark-gold:           #725a38;
+@rg-gold:                #9a8669;
+@rg-gray:                #848484;
+@rg-medium-gray:         #4D4D4D;
+@rg-black:               #262019;
 
 .box-shadow(@style, @c) when (iscolor(@c)) {
   -webkit-box-shadow: @style @c;
@@ -13,7 +19,36 @@
   div { .box-shadow(0 0 5px, 30%) }
 }
 
-table {
-  width: 100%;
+body {
+  background: @rg-background;
+  text-align: center;
+  font-family: 'adobe caslon', georgia, serif;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 0;
+  text-align: left;
+}
+
+table tr th, 
+table tr td {
+  padding: 4px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-collapse: collapse;
+  border: 0;
+}
+
+table thead {
+  text-transform: lowercase;
+  color: @rg-gray;
+  letter-spacing: 2px;
+  font-size: 1em;
+  font-variant: small-caps;
+}
+table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+}
