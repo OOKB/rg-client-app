@@ -1,9 +1,9 @@
 (function() {
-  var React, form, input, p, _ref;
+  var React, button, div, form, input, p, _ref;
 
   React = require('react');
 
-  _ref = require('reactionary'), form = _ref.form, input = _ref.input, p = _ref.p;
+  _ref = require('reactionary'), form = _ref.form, input = _ref.input, p = _ref.p, div = _ref.div, button = _ref.button;
 
   module.exports = React.createClass({
     handleChange: function() {
@@ -16,7 +16,13 @@
         value: this.props.filterText,
         ref: 'filterTextInput',
         onChange: this.handleChange
-      }), p({}, input({
+      }), div({}, button({
+        value: 'textile'
+      }, 'Textiles'), button({
+        value: 'passementerie'
+      }, 'Passementerie'), button({
+        value: 'leather'
+      }, 'Leather')), p({}, input({
         type: 'checkbox',
         value: this.props.summerSale,
         ref: 'summerSale',

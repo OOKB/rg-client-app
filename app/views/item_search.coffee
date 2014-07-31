@@ -1,5 +1,5 @@
 React = require 'react'
-{form, input, p} = require 'reactionary'
+{form, input, p, div, button} = require 'reactionary'
 
 module.exports = React.createClass
   handleChange: ->
@@ -17,16 +17,16 @@ module.exports = React.createClass
         value: @props.filterText,
         ref:'filterTextInput',
         onChange: @handleChange
-      div
+      div {},
         button
-          p
-            value: 'Textiles'
+          value: 'textile',
+          'Textiles'
         button
-          p
-            value: 'Passementerie'
+          value: 'passementerie',
+          'Passementerie'
         button
-          p
-            value: 'Leather'
+          value: 'leather',
+          'Leather'
       p {},
         input
           type: 'checkbox',
