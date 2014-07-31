@@ -17,6 +17,16 @@ module.exports = React.createClass
         value: @props.filterText,
         ref:'filterTextInput',
         onChange: @handleChange
+      div
+        button
+          p
+            value: 'Textiles'
+        button
+          p
+            value: 'Passementerie'
+        button
+          p
+            value: 'Leather'
       p {},
         input
           type: 'checkbox',
