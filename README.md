@@ -1,5 +1,9 @@
-client-dev-demo
+rg-client-app
 ===============
+
+pricelist and a few other new features for rogersandgoffigon.com using fb react.
+
++++++++++++++++
 
 This is showing off a few things.
 
