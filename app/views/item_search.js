@@ -20,7 +20,7 @@
         e.preventDefault();
       }
       return this.props.onUserInput({
-        collection: collection_id
+        category: collection_id
       });
     },
     render: function() {

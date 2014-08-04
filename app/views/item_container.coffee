@@ -23,11 +23,47 @@ module.exports = React.createClass
       # Make sure the user input search text is lowercase.
       new_state_obj.searchTxt = new_state_obj.searchTxt.toLowerCase()
       # Make sure the text string is valid... Regex check.
+      new_state_obj.pageIndex = @getInitialState().pageIndex
+
+    if new_state_obj.pageSize
+      new_state_obj.pageSize = parseInt(new_state_obj.pageSize)
+
+    if new_state_obj.pageIndex
+      new_state_obj.pageIndex = parseInt(new_state_obj.pageIndex)
+
+    # Refilter the collection.
+    @filterCollection(new_state_obj)
     # Set the new state.
     @setState new_state_obj
 
-  render: ->
+  filterCollection: (new_state) ->
+    reset_collection = false
+    if new_state
+      # console.log new_state
+      # Define when the collection should be reset.
+      if new_state.category and new_state.category != @state.category
+        reset_collection = true
+    else
+      new_state = @state
 
+    pageSize = new_state.pageSize or @state.pageSize
+    pageIndex = new_state.pageIndex or @state.pageIndex
+
+    config = {}
+    if new_state.category
+      config.where =
+        category: new_state.category
+    if new_state.pageSize or reset_collection
+      config.limit = pageSize
+    if new_state.pageIndex or reset_collection
+      config.offset = pageIndex * pageSize
+    @props.collection.configure(config, reset_collection)
+
+  render: ->
+    # Filter the items on initial render.
+    unless @isMounted()
+      @filterCollection()
+      console.log 'not mounted'
     div {},
       SearchBar
         # The search bar accepts input so we need to pass a func that has this.

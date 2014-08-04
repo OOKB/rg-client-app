@@ -15,7 +15,7 @@ module.exports = React.createClass
     collection_id = e.target.value
     if e.preventDefault
       e.preventDefault()
-    @props.onUserInput collection: collection_id
+    @props.onUserInput category: collection_id
 
   render: ->
     v = @props.filter # see item_container.coffee for example object.
