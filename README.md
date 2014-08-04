@@ -1,7 +1,7 @@
 rg-client-app
 ===============
 
-pricelist and a few other new features for rogersandgoffigon.com using fb react.
+pricelist, summer sale, collection completion and a few other new features for rogersandgoffigon.com.
 
 +++++++++++++++
 
