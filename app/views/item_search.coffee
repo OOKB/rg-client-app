@@ -7,7 +7,7 @@ React = require 'react'
 module.exports = React.createClass
   handleChange: (event) ->
     @props.onUserInput
-      filterText: @refs.filterTextInput.getDOMNode().value
+      searchTxt: @refs.filterTextInput.getDOMNode().value
       summerSale: @refs.summerSale.getDOMNode().checked
       pageSize: @refs.setPageSize.getDOMNode().value
 

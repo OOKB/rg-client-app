@@ -32,7 +32,7 @@
       searchStr: {
         deps: ['id', 'color', 'name'],
         fn: function() {
-          return (id + ' ' + this.name + ' ' + this.color).toLowerCase();
+          return (this.id + ' ' + this.name + ' ' + this.color).toLowerCase();
         }
       }
     }

@@ -8,7 +8,7 @@
   module.exports = React.createClass({
     handleChange: function(event) {
       return this.props.onUserInput({
-        filterText: this.refs.filterTextInput.getDOMNode().value,
+        searchTxt: this.refs.filterTextInput.getDOMNode().value,
         summerSale: this.refs.summerSale.getDOMNode().checked,
         pageSize: this.refs.setPageSize.getDOMNode().value
       });
