@@ -23,7 +23,7 @@
       }
       tds.push(td({
         className: 'c-number'
-      }, item.id));
+      }, item.color_id));
       tds.push(td({
         className: 'c-color'
       }, item.color));
