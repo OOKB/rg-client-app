@@ -19,11 +19,20 @@
 /**********************************************************/
 /**********************************************************/
 
+* {
+  font-family: 'adobe caslon', adobe-caslon-pro, cambria, 'times new roman', times, georgia, serif;
+  font-size: 12px;
+  color: @rg-black;
+}
+
 body {
   background: @rg-background;
   text-align: center;
-  font-family: 'adobe caslon', adobe-caslon-pro, cambria, 'times new roman', times, georgia, serif;
-  transition: all 300ms;
+}
+
+button {
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 /* Extra small devices (phones, less than 768px) */
@@ -57,6 +66,7 @@ table {
   border-collapse: collapse;
   border: 0;
   text-align: left;
+  min-width: 750px;
 }
 
 table tr th, 
@@ -75,7 +85,24 @@ table thead {
   font-size: 1em;
   font-variant: small-caps;
 }
+
 table thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #ddd;
+}
+
+/** Individual column widths to try and match PDF */
+.color,
+.color th,
+.color td {
+  height: 26px;
+  overflow: visible;
+}
+
+.c-price,
+.c-size {
+  text-align: right;
+}
+.c-price {
+  width: 70px;
 }
