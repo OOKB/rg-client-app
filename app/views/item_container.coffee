@@ -24,7 +24,12 @@ module.exports = React.createClass
       new_state_obj.searchTxt = new_state_obj.searchTxt.toLowerCase()
       # Make sure the text string is valid... Regex check.
       new_state_obj.pageIndex = @getInitialState().pageIndex
-    # Define when the collection should be reset.
+
+    if new_state_obj.pageSize
+      new_state_obj.pageSize = parseInt(new_state_obj.pageSize)
+
+    if new_state_obj.pageIndex
+      new_state_obj.pageIndex = parseInt(new_state_obj.pageIndex)
 
     # Refilter the collection.
     @filterCollection(new_state_obj)
@@ -34,6 +39,8 @@ module.exports = React.createClass
   filterCollection: (new_state) ->
     reset_collection = false
     if new_state
+      # console.log new_state
+      # Define when the collection should be reset.
       if new_state.category and new_state.category != @state.category
         reset_collection = true
     else

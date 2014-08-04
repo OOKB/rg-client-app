@@ -27,6 +27,12 @@
         new_state_obj.searchTxt = new_state_obj.searchTxt.toLowerCase();
         new_state_obj.pageIndex = this.getInitialState().pageIndex;
       }
+      if (new_state_obj.pageSize) {
+        new_state_obj.pageSize = parseInt(new_state_obj.pageSize);
+      }
+      if (new_state_obj.pageIndex) {
+        new_state_obj.pageIndex = parseInt(new_state_obj.pageIndex);
+      }
       this.filterCollection(new_state_obj);
       return this.setState(new_state_obj);
     },
