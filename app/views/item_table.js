@@ -11,37 +11,49 @@
 
   module.exports = React.createClass({
     render: function() {
-      var lastPattern, rows;
+      var lastName, lastPattern, rows, ths;
       rows = [];
       lastPattern = null;
-      this.props.items.forEach((function(_this) {
+      lastName = null;
+      this.props.collection.forEach((function(_this) {
         return function(item) {
-          var id, search_not_found, search_string;
-          if (item.collection !== _this.props.collection) {
-            return;
-          }
-          id = item.patternNumber + '-' + item.color_id;
-          search_string = (id + item.name + ' ' + item.color).toLowerCase();
-          search_not_found = search_string.indexOf(_this.props.filterText.toLowerCase()) === -1;
-          if (search_not_found) {
-            return;
-          }
+          var row_props;
           if (item.patternNumber !== lastPattern) {
             rows.push(ItemPatternRow({
               item: item,
-              key: id
+              key: item.id,
+              filter: _this.props.filter
             }));
           } else {
-            rows.push(ItemColorRow({
+            row_props = {
               item: item,
-              key: id
-            }));
+              key: item.id,
+              showName: lastName !== item.name,
+              filter: _this.props.filter
+            };
+            rows.push(ItemColorRow(row_props));
           }
-          return lastPattern = item.patternNumber;
+          lastPattern = item.patternNumber;
+          return lastName = item.name;
         };
       })(this));
-      rows = rows.slice(this.props.pageIndex, this.props.pageSize);
-      return table({}, thead({}, tr({}, th('Name'), th('Number'), th('Color'), th('Net Price'), th('Size'))), tbody({}, rows));
+      ths = [];
+      if (this.props.filter.category !== 'passementerie') {
+        ths.push(th('Name'));
+      }
+      ths.push(th('Item#'));
+      ths.push(th('Color'));
+      ths.push(th('Net Price'));
+      ths.push(th('Content'));
+      if (this.props.filter.category !== 'leather') {
+        ths.push(th('Repeat'));
+      }
+      if (this.props.filter.category === 'leather') {
+        ths.push(th('Approx. Size'));
+      } else {
+        ths.push(th('Approx. Width'));
+      }
+      return table({}, thead({}, tr({}, ths)), tbody({}, rows));
     }
   });
 

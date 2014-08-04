@@ -7,9 +7,38 @@
 
   module.exports = React.createClass({
     render: function() {
+      var item, td, tds;
+      td = th;
+      tds = [];
+      item = this.props.item;
+      if (this.props.filter.category !== 'passementerie') {
+        tds.push(td({
+          className: 'c-name'
+        }, item.name));
+      }
+      tds.push(td({
+        className: 'c-number'
+      }, item.id));
+      tds.push(td({
+        className: 'c-color'
+      }, item.color));
+      tds.push(td({
+        className: 'c-price'
+      }, item.price));
+      tds.push(td({
+        className: 'c-content'
+      }, item.contents));
+      if (this.props.filter.category !== 'leather') {
+        tds.push(td({
+          className: 'c-repeat'
+        }, item.repeat));
+      }
+      tds.push(td({
+        className: 'c-size'
+      }, item.approx_width));
       return tr({
-        className: 'pattern'
-      }, th(this.props.item.name), th(this.props.item.patternNumber + '-' + this.props.item.color_id), th(this.props.item.color), th(this.props.item.price), th(this.props.item.approx_width));
+        className: 'color'
+      }, tds);
     }
   });
 

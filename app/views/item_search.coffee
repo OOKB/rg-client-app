@@ -18,16 +18,17 @@ module.exports = React.createClass
     @props.onUserInput collection: collection_id
 
   render: ->
+    v = @props.filter # see item_container.coffee for example object.
     form {},
       input
         type:'text',
         placeholder:'Search...',
-        value: @props.filterText,
+        value: v.searchTxt,
         ref:'filterTextInput',
         onChange: @handleChange
       select
         ref: 'setPageSize'
-        value: @props.pageSize
+        value: v.pageSize
         onChange: @handleChange
         type: 'select',
           option
@@ -41,24 +42,24 @@ module.exports = React.createClass
             'All'
       div {},
         button
-          className: if (@props.collection == 'textile') then 'active'
+          className: if (v.category == 'textile') then 'active'
           onClick: @handleCollectionClick
           value: 'textile',
           'Textiles'
         button
-          className: if (@props.collection == 'passementerie') then 'active'
+          className: if (v.category == 'passementerie') then 'active'
           onClick: @handleCollectionClick
           value: 'passementerie',
           'Passementerie'
         button
-          className: if (@props.collection == 'leather') then 'active'
+          className: if (v.category == 'leather') then 'active'
           onClick: @handleCollectionClick
           value: 'leather',
           'Leather'
       p {},
         input
           type: 'checkbox',
-          value: @props.summerSale,
+          value: v.summerSale,
           ref: 'summerSale',
           onChange: @handleChange
         'Only show summer sale products.'

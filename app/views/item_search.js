@@ -24,15 +24,17 @@
       });
     },
     render: function() {
+      var v;
+      v = this.props.filter;
       return form({}, input({
         type: 'text',
         placeholder: 'Search...',
-        value: this.props.filterText,
+        value: v.searchTxt,
         ref: 'filterTextInput',
         onChange: this.handleChange
       }), select({
         ref: 'setPageSize',
-        value: this.props.pageSize,
+        value: v.pageSize,
         onChange: this.handleChange,
         type: 'select'
       }, option({
@@ -42,20 +44,20 @@
       }, '100'), option({
         value: '10000'
       }, 'All')), div({}, button({
-        className: this.props.collection === 'textile' ? 'active' : void 0,
+        className: v.category === 'textile' ? 'active' : void 0,
         onClick: this.handleCollectionClick,
         value: 'textile'
       }, 'Textiles'), button({
-        className: this.props.collection === 'passementerie' ? 'active' : void 0,
+        className: v.category === 'passementerie' ? 'active' : void 0,
         onClick: this.handleCollectionClick,
         value: 'passementerie'
       }, 'Passementerie'), button({
-        className: this.props.collection === 'leather' ? 'active' : void 0,
+        className: v.category === 'leather' ? 'active' : void 0,
         onClick: this.handleCollectionClick,
         value: 'leather'
       }, 'Leather')), p({}, input({
         type: 'checkbox',
-        value: this.props.summerSale,
+        value: v.summerSale,
         ref: 'summerSale',
         onChange: this.handleChange
       }), 'Only show summer sale products.'));

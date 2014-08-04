@@ -1,17 +1,26 @@
 React = require 'react'
-{div, h1, p, ul, li, table, thead, tr, th, tbody} = require 'reactionary'
+SubCollection = require 'ampersand-subcollection'
 
+ItemsCollection = require './models/items'
 FilterableProductTable = require './views/item_container'
 
-items = require './data.json'
+items_data = require './models/data.json'
 
-# items = [
-#   {name:'Bechamel', patternNumber:'938001', color_id:'20', color:'Mantis', price:'109', size:'54"', collection:'textile'}
-#   {name:'Bechamel', patternNumber:'938001', color_id:'23', color:'Adams', price:'109', size:'54"', collection:'textile'}
-#   {name:'Benderlock', patternNumber:'890001', color_id:'01', color:'Brucefield', price:'92', size:'58"', collection:'textile'}
-#   {name:'Benderlock', patternNumber:'890001', color_id:'02', color:'Buckpool', price:'92', size:'58"', collection:'textile'}
-# ]
+module.exports =
+  blastoff: ->
+    self = window.app = @
+    # Create our items model collection.
+    items = new ItemsCollection(items_data)
+    #@items.add items_data
+    @items = new SubCollection items
+    # This is the main app entry point. For now we call FilterableProductTable
+    ## and pass it some items data.
+    props =
+      collection: @items
 
-# This is the main app entry point. For now we call FilterableProductTable
-## and pass it some items data.
-React.renderComponent FilterableProductTable(items: items), document.getElementById('content')
+    @container = FilterableProductTable(props)
+    el = document.getElementById('content')
+    React.renderComponent @container, el
+
+# run it
+module.exports.blastoff()

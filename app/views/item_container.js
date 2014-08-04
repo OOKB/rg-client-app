@@ -1,5 +1,5 @@
 (function() {
-  var ProductTable, React, SearchBar, div;
+  var ItemTable, React, SearchBar, div;
 
   React = require('react');
 
@@ -7,36 +7,34 @@
 
   SearchBar = require('./item_search');
 
-  ProductTable = require('./item_table');
+  ItemTable = require('./item_table');
 
   module.exports = React.createClass({
     getInitialState: function() {
       return {
-        filterText: '',
-        collection: 'textile',
+        searchTxt: '',
+        category: 'textile',
         summerSale: false,
         pageSize: 50,
-        pageIndex: 0
+        pageIndex: 0,
+        patternNumber: null,
+        color_id: null,
+        display: 'pricelist'
       };
     },
     handleUserInput: function(new_state_obj) {
+      if (new_state_obj.searchTxt && new_state_obj.searchTxt.length > 1) {
+        new_state_obj.searchTxt = new_state_obj.searchTxt.toLowerCase();
+      }
       return this.setState(new_state_obj);
     },
     render: function() {
       return div({}, SearchBar({
         onUserInput: this.handleUserInput,
-        filterText: this.state.filterText,
-        collection: this.state.collection,
-        summerSale: this.state.summerSale,
-        pageSize: this.state.pageSize,
-        pageIndex: this.state.pageIndex
-      }), ProductTable({
-        items: this.props.items,
-        filterText: this.state.filterText,
-        collection: this.state.collection,
-        summerSale: this.state.summerSale,
-        pageSize: this.state.pageSize,
-        pageIndex: this.state.pageIndex
+        filter: this.state
+      }), ItemTable({
+        collection: this.props.collection,
+        filter: this.state
       }));
     }
   });

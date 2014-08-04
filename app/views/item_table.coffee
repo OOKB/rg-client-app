@@ -9,33 +9,41 @@ module.exports = React.createClass
     # The processing of rows should probably move up to the container.
     rows = []
     lastPattern = null
-    @props.items.forEach (item) =>
-      # Skip over items that do not match collection.
-      if item.collection != @props.collection
-        return
-
-      id = item.patternNumber+'-'+item.color_id
-      search_string = (id + item.name + ' ' + item.color).toLowerCase()
-      search_not_found = search_string.indexOf(@props.filterText.toLowerCase()) == -1
-
-      # Skip over items with no string match.
-      if search_not_found
-        return
+    lastName = null
+    # Decide what row view to use.
+    @props.collection.forEach (item) =>
       if item.patternNumber != lastPattern
-        rows.push ItemPatternRow(item: item, key: id)
+        rows.push ItemPatternRow(item: item, key: item.id, filter: @props.filter)
       else
-        rows.push ItemColorRow(item: item, key: id)
+        row_props =
+          item: item
+          key: item.id
+          showName: lastName != item.name
+          filter: @props.filter
+        rows.push ItemColorRow(row_props)
       lastPattern = item.patternNumber
+      lastName = item.name
 
-    # Cut the rows array down to size for "pager"
-    rows = rows.slice @props.pageIndex, @props.pageSize
+    ths = []
+    # Hide name for trims.
+    unless @props.filter.category == 'passementerie'
+      ths.push th('Name')
+    # Show for all.
+    ths.push th('Item#')
+    ths.push th('Color')
+    ths.push th('Net Price')
+    ths.push th('Content')
+    # Hide repeat for leather.
+    unless @props.filter.category == 'leather'
+      ths.push th('Repeat')
+    # Leather is size.
+    if @props.filter.category == 'leather'
+      ths.push th('Approx. Size')
+    # Others are width.
+    else
+      ths.push th('Approx. Width')
 
     table {},
       thead {},
-        tr {},
-          th 'Name'
-          th 'Number'
-          th 'Color'
-          th 'Net Price'
-          th 'Size'
+        tr {}, ths
       tbody {}, rows
