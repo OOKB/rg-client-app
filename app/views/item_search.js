@@ -1,9 +1,9 @@
 (function() {
-  var React, button, div, form, input, option, p, select, _ref;
+  var React, a, button, div, form, input, li, option, p, select, ul, _ref;
 
   React = require('react');
 
-  _ref = require('reactionary'), form = _ref.form, input = _ref.input, p = _ref.p, div = _ref.div, button = _ref.button, select = _ref.select, option = _ref.option;
+  _ref = require('reactionary'), form = _ref.form, input = _ref.input, p = _ref.p, div = _ref.div, button = _ref.button, select = _ref.select, option = _ref.option, ul = _ref.ul, li = _ref.li, a = _ref.a;
 
   module.exports = React.createClass({
     handleChange: function(event) {
@@ -26,7 +26,7 @@
     render: function() {
       var v;
       v = this.props.filter;
-      return form({}, input({
+      return div({}, form({}, input({
         type: 'text',
         placeholder: 'Search...',
         value: v.searchTxt,
@@ -60,7 +60,23 @@
         value: v.summerSale,
         ref: 'summerSale',
         onChange: this.handleChange
-      }), 'Only show summer sale products.'));
+      }), 'Only show summer sale products.')), div({
+        className: 'pricelist-header'
+      }, ul({
+        className: 'pager'
+      }, li({
+        className: 'previous disabled'
+      }, a({
+        className: 'left'
+      }, '&#60;')), li({
+        className: 'pageselect'
+      }, 'dropdown'), li({
+        className: 'pagecount'
+      }, '1/ 10101010'), li({
+        className: 'next'
+      }, a({
+        className: 'right'
+      }, '&#62;')))));
     }
   });
 
