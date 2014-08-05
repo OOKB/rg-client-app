@@ -1,5 +1,5 @@
 
-/** = Variables **/
+/** = Variables and other mixins **/
 /**********************************************************/
 /**********************************************************/
 
@@ -14,6 +14,16 @@
 @screen-sm-min:           768px;
 @screen-md-min:           992px;
 @screen-lg-min:          1200px;
+
+.dropshadow {
+  -webkit-box-shadow: 0 0 9px 0 rgba(132,132,132,0.5);
+  -moz-box-shadow: 0 0 9px 0 rgba(132,132,132,0.5);
+  box-shadow: 0 0 9px 0 rgba(132,132,132,0.5);
+}
+
+.pointer {
+  cursor: pointer;
+}
 
 /** = basic stuff **/
 /**********************************************************/
@@ -83,6 +93,7 @@ ul.pager > li > a.right {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
+  .pointer;
 }
 /* left arrow */
 ul.pager > li.previous {
