@@ -23,8 +23,10 @@
       };
     },
     handleUserInput: function(new_state_obj) {
-      if (new_state_obj.searchTxt && new_state_obj.searchTxt.length > 1) {
-        new_state_obj.searchTxt = new_state_obj.searchTxt.toLowerCase();
+      if (new_state_obj.searchTxt && new_state_obj.searchTxt !== this.state.searchTxt) {
+        if (new_state_obj.searchTxt.length > 1) {
+          new_state_obj.searchTxt = new_state_obj.searchTxt.toLowerCase();
+        }
         new_state_obj.pageIndex = this.getInitialState().pageIndex;
       }
       if (new_state_obj.category && new_state_obj.category !== this.state.category) {
@@ -49,14 +51,22 @@
       config.where = {
         category: new_state.category || this.state.category
       };
-      text_to_search_for = new_state.searchTxt || this.state.searchTxt;
-      if (text_to_search_for !== '') {
+      if (new_state.searchTxt !== '') {
+        text_to_search_for = new_state.searchTxt || this.state.searchTxt;
+      } else {
+        text_to_search_for = false;
+      }
+      if (text_to_search_for) {
         config.filter = function(model) {
           return model.searchStr.indexOf(text_to_search_for) > -1;
         };
       }
       pageSize = new_state.pageSize || this.state.pageSize;
-      pageIndex = new_state.pageIndex || this.state.pageIndex;
+      if (new_state.pageIndex !== 0) {
+        pageIndex = new_state.pageIndex || this.state.pageIndex;
+      } else {
+        pageIndex = 0;
+      }
       config.limit = pageSize;
       config.offset = pageIndex * pageSize;
       return this.props.collection.configure(config, reset_collection);
@@ -68,7 +78,8 @@
       }
       return div({}, SearchBar({
         onUserInput: this.handleUserInput,
-        filter: this.state
+        filter: this.state,
+        total_pages: Math.ceil(this.props.collection.filtered_length / this.state.pageSize)
       }), ItemTable({
         collection: this.props.collection,
         filter: this.state

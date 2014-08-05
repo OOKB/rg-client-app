@@ -23,9 +23,33 @@
         category: collection_id
       });
     },
+    pageNext: function(e) {
+      if (this.props.filter.pageIndex !== this.props.total_pages - 1) {
+        return this.props.onUserInput({
+          pageIndex: this.props.filter.pageIndex + 1
+        });
+      }
+    },
+    pagePrevious: function(e) {
+      if (this.props.filter.pageIndex !== 0) {
+        return this.props.onUserInput({
+          pageIndex: this.props.filter.pageIndex - 1
+        });
+      }
+    },
     render: function() {
-      var v;
+      var current_page, pager_next_class, pager_previous_class, total_pages, v;
       v = this.props.filter;
+      total_pages = this.props.total_pages;
+      pager_previous_class = 'previous';
+      if (v.pageIndex === 0) {
+        pager_previous_class += ' disabled';
+      }
+      pager_next_class = 'next';
+      current_page = v.pageIndex + 1;
+      if (current_page === total_pages) {
+        pager_next_class += ' disabled';
+      }
       return div({}, form({}, input({
         type: 'text',
         placeholder: 'Search...',
@@ -65,21 +89,23 @@
       }, ul({
         className: 'pager'
       }, li({
-        className: 'previous disabled'
+        className: pager_previous_class
       }, a({
         className: 'left',
         role: 'button',
-        ref: 'pager-previous'
+        ref: 'pager-previous',
+        onClick: this.pagePrevious
       }, '&#60;')), li({
         className: 'pageselect'
       }, 'dropdown'), li({
         className: 'pagecount'
-      }, '1/ 10101010'), li({
+      }, current_page + ' / ' + total_pages), li({
         className: 'next'
       }, a({
         className: 'right',
         role: 'button',
-        ref: 'pager-next'
+        ref: 'pager-next',
+        onClick: this.pageNext
       }, '&#62;')))));
     }
   });

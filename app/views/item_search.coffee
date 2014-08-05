@@ -17,8 +17,28 @@ module.exports = React.createClass
       e.preventDefault()
     @props.onUserInput category: collection_id
 
+  pageNext: (e) ->
+    if @props.filter.pageIndex != @props.total_pages-1
+      @props.onUserInput pageIndex: @props.filter.pageIndex + 1
+
+  pagePrevious: (e) ->
+    if @props.filter.pageIndex != 0
+      @props.onUserInput pageIndex: @props.filter.pageIndex - 1
+
   render: ->
     v = @props.filter # see item_container.coffee for example object.
+
+    # Pager stuff.
+    total_pages = @props.total_pages
+    pager_previous_class = 'previous'
+    if v.pageIndex == 0
+      pager_previous_class += ' disabled'
+    pager_next_class = 'next'
+
+    current_page = v.pageIndex + 1
+    if current_page == total_pages
+      pager_next_class += ' disabled'
+
     div {},
       form {},
         input
@@ -66,17 +86,19 @@ module.exports = React.createClass
           'Only show summer sale products.'
       div className: 'pricelist-header',
         ul className: 'pager',
-          li className: 'previous disabled',
+          li className: pager_previous_class,
             a
               className: 'left'
               role: 'button'
-              ref: 'pager-previous',
+              ref: 'pager-previous'
+              onClick: @pagePrevious,
                 '&#60;'
           li className: 'pageselect', 'dropdown'
-          li className: 'pagecount', '1/ 10101010'
+          li className: 'pagecount', current_page+ ' / ' + total_pages
           li className: 'next',
             a
               className: 'right'
               role: 'button'
-              ref: 'pager-next',
+              ref: 'pager-next'
+              onClick: @pageNext,
                 '&#62;'
