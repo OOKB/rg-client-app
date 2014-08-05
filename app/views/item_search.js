@@ -9,7 +9,6 @@
     handleChange: function(event) {
       return this.props.onUserInput({
         searchTxt: this.refs.filterTextInput.getDOMNode().value,
-        summerSale: this.refs.summerSale.getDOMNode().checked,
         pageSize: this.refs.setPageSize.getDOMNode().value
       });
     },

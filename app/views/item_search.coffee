@@ -8,7 +8,7 @@ module.exports = React.createClass
   handleChange: (event) ->
     @props.onUserInput
       searchTxt: @refs.filterTextInput.getDOMNode().value
-      summerSale: @refs.summerSale.getDOMNode().checked
+      #summerSale: @refs.summerSale.getDOMNode().checked
       pageSize: @refs.setPageSize.getDOMNode().value
 
   handleCollectionClick: (e) ->
