@@ -41,9 +41,30 @@ body {
   color: @rg-black;
 }
 
+button, a, map, map area, object, embed {
+  /** non-accessibility friendly, but desired by client aesthetically **/
+  outline: 0;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
 button {
   text-transform: uppercase;
   letter-spacing: 2px;
+  background: none;
+  background-color: transparent;
+  border: none;
+  border-color: none;
+  padding: 0;
+  margin: 0;
+}
+
+button.active {
+  color: @rg-dark-gold;
+  font-weight: bold;
 }
 
 /* Extra small devices (phones, less than 768px) */
@@ -129,6 +150,9 @@ ul.pager > li > a.right {
 /** = pricelist stuff **/
 /**********************************************************/
 /**********************************************************/
+#content form button {
+  width: 32.9%;
+}
 
 table {
   width: 100%;
