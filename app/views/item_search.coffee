@@ -39,51 +39,36 @@ module.exports = React.createClass
     if current_page == total_pages
       pager_next_class += ' disabled'
 
-    div {},
-      form {},
-        input
-          type:'text',
-          placeholder:'Search...',
-          value: v.searchTxt,
-          ref:'filterTextInput',
-          onChange: @handleChange
-        select
-          ref: 'setPageSize'
-          value: v.pageSize
-          onChange: @handleChange
-          type: 'select',
-            option
-              value: '50'
-              '50'
-            option
-              value: '100'
-              '100'
-            option
-              value: '10000'
-              'All'
-        div {},
-          button
-            className: if (v.category == 'textile') then 'active'
-            onClick: @handleCollectionClick
-            value: 'textile',
-            'Textiles'
-          button
-            className: if (v.category == 'passementerie') then 'active'
-            onClick: @handleCollectionClick
-            value: 'passementerie',
-            'Passementerie'
-          button
-            className: if (v.category == 'leather') then 'active'
-            onClick: @handleCollectionClick
-            value: 'leather',
-            'Leather'
-        p {},
-          input
-            type: 'checkbox',
-            value: v.summerSale,
-            ref: 'summerSale',
-            onChange: @handleChange
-          'Only show summer sale products.'
+    form {},
+      input
+        type:'text',
+        placeholder:'Search...',
+        value: v.searchTxt,
+        ref:'filterTextInput',
+        onChange: @handleChange
+      div {},
+        button
+          className: if (v.category == 'textile') then 'active'
+          onClick: @handleCollectionClick
+          value: 'textile',
+          'Textiles'
+        button
+          className: if (v.category == 'passementerie') then 'active'
+          onClick: @handleCollectionClick
+          value: 'passementerie',
+          'Passementerie'
+        button
+          className: if (v.category == 'leather') then 'active'
+          onClick: @handleCollectionClick
+          value: 'leather',
+          'Leather'
+      # p {},
+      #   input
+      #     type: 'checkbox',
+      #     value: v.summerSale,
+      #     ref: 'summerSale',
+      #     onChange: @handleChange
+      #   'Only show summer sale products.'
       div className: 'pricelist-header',
         ul className: 'pager',
           li className: pager_previous_class,
@@ -93,7 +78,22 @@ module.exports = React.createClass
               ref: 'pager-previous'
               onClick: @pagePrevious,
                 '&#60;'
-          li className: 'pageselect', 'dropdown'
+          li
+            className: 'pageselect',
+              select
+                ref: 'setPageSize'
+                value: v.pageSize
+                onChange: @handleChange
+                type: 'select',
+                  option
+                    value: '50'
+                    '50'
+                  option
+                    value: '100'
+                    '100'
+                  option
+                    value: '10000'
+                    'All'
           li className: 'pagecount', current_page+ ' / ' + total_pages
           li className: 'next',
             a

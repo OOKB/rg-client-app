@@ -50,24 +50,13 @@
       if (current_page === total_pages) {
         pager_next_class += ' disabled';
       }
-      return div({}, form({}, input({
+      return form({}, input({
         type: 'text',
         placeholder: 'Search...',
         value: v.searchTxt,
         ref: 'filterTextInput',
         onChange: this.handleChange
-      }), select({
-        ref: 'setPageSize',
-        value: v.pageSize,
-        onChange: this.handleChange,
-        type: 'select'
-      }, option({
-        value: '50'
-      }, '50'), option({
-        value: '100'
-      }, '100'), option({
-        value: '10000'
-      }, 'All')), div({}, button({
+      }), div({}, button({
         className: v.category === 'textile' ? 'active' : void 0,
         onClick: this.handleCollectionClick,
         value: 'textile'
@@ -79,12 +68,7 @@
         className: v.category === 'leather' ? 'active' : void 0,
         onClick: this.handleCollectionClick,
         value: 'leather'
-      }, 'Leather')), p({}, input({
-        type: 'checkbox',
-        value: v.summerSale,
-        ref: 'summerSale',
-        onChange: this.handleChange
-      }), 'Only show summer sale products.')), div({
+      }, 'Leather')), div({
         className: 'pricelist-header'
       }, ul({
         className: 'pager'
@@ -97,7 +81,18 @@
         onClick: this.pagePrevious
       }, '&#60;')), li({
         className: 'pageselect'
-      }, 'dropdown'), li({
+      }, select({
+        ref: 'setPageSize',
+        value: v.pageSize,
+        onChange: this.handleChange,
+        type: 'select'
+      }, option({
+        value: '50'
+      }, '50'), option({
+        value: '100'
+      }, '100'), option({
+        value: '10000'
+      }, 'All'))), li({
         className: 'pagecount'
       }, current_page + ' / ' + total_pages), li({
         className: 'next'
