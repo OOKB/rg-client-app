@@ -42,9 +42,6 @@ gulp.task 'styles', ->
     .pipe gulp.dest("./public")
   return
 
-gulp.task 'copy', ->
-  gulp.src('js/**').pipe(gulp.dest('public'));
-
 gulp.task 'compile', ->
   w = watchify(browserify('./app/index.js', watchify.args))
   bundle = () ->
@@ -60,8 +57,3 @@ gulp.task "default", ['compile', 'styles', 'templates', 'browser-sync'], ->
   gulp.watch "styles/*.less", ["styles"]
   gulp.watch 'js/**', ['copy']
   return
-
-gulp.task 'jsx', ->
-  gulp.src('templates/*.jsx')
-    .pipe(react())
-    .pipe(gulp.dest('dist'))
