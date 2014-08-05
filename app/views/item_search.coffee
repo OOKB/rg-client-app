@@ -67,8 +67,16 @@ module.exports = React.createClass
       div className: 'pricelist-header',
         ul className: 'pager',
           li className: 'previous disabled',
-            a className: 'left', '&#60;'
+            a
+              className: 'left'
+              role: 'button'
+              ref: 'pager-previous',
+                '&#60;'
           li className: 'pageselect', 'dropdown'
           li className: 'pagecount', '1/ 10101010'
           li className: 'next',
-            a className: 'right', '&#62;'
+            a
+              className: 'right'
+              role: 'button'
+              ref: 'pager-next',
+                '&#62;'

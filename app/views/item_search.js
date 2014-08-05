@@ -67,7 +67,9 @@
       }, li({
         className: 'previous disabled'
       }, a({
-        className: 'left'
+        className: 'left',
+        role: 'button',
+        ref: 'pager-previous'
       }, '&#60;')), li({
         className: 'pageselect'
       }, 'dropdown'), li({
@@ -75,7 +77,9 @@
       }, '1/ 10101010'), li({
         className: 'next'
       }, a({
-        className: 'right'
+        className: 'right',
+        role: 'button',
+        ref: 'pager-next'
       }, '&#62;')))));
     }
   });
