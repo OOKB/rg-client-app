@@ -1,5 +1,5 @@
 (function() {
-  var browserSync, browserify, gulp, jade, less, path, r, source, watchify, zopfli;
+  var browserSync, browserify, clean, gulp, jade, less, path, r, rename, runSequence, source, watchify, zopfli;
 
   path = require('path');
 
@@ -19,7 +19,13 @@
 
   less = require('gulp-less');
 
+  clean = require('gulp-clean');
+
   zopfli = require('gulp-zopfli');
+
+  rename = require('gulp-rename');
+
+  runSequence = require('run-sequence');
 
   gulp.task("browser-sync", function() {
     browserSync.init("public/**", {
@@ -40,7 +46,7 @@
     var data;
     data = {
       title: 'Fancy Title!',
-      sha: 'script'
+      sha: 'app'
     };
     gulp.src("templates/*.jade").pipe(jade({
       locals: data
@@ -57,7 +63,7 @@
     var bundle, w;
     w = watchify(browserify('./app/index.js', watchify.args));
     bundle = function() {
-      return w.bundle().pipe(source('script.js')).pipe(gulp.dest('./public/'));
+      return w.bundle().pipe(source('app.js')).pipe(gulp.dest('./public/'));
     };
     w.on('update', bundle);
     bundle();
@@ -87,8 +93,15 @@
     });
   });
 
-  gulp.task('prod_compile', ['set_sha'], function(cb) {
-    var bundler, data;
+  gulp.task('prod_clean', function() {
+    return gulp.src('./prod', {
+      read: false
+    }).pipe(clean());
+  });
+
+  gulp.task('prod_compile', function(cb) {
+    var bundler;
+    console.log;
     bundler = browserify({
       debug: true
     });
@@ -100,19 +113,29 @@
     bundler.bundle({
       debug: true
     }).pipe(source(global.sha + '.js')).pipe(gulp.dest('./prod/')).on('end', cb);
+  });
+
+  gulp.task('prod_template', function() {
+    var data;
     data = {
       title: 'Fancy Title!',
       sha: global.sha
     };
-    gulp.src("templates/*.jade").pipe(jade({
+    return gulp.src("templates/*.jade").pipe(jade({
       locals: data
     })).pipe(gulp.dest("./prod/"));
   });
 
-  gulp.task('compress', ['prod_compile'], function() {
-    return gulp.src("./prod/" + global.sha + ".js").pipe(zopfli()).pipe(gulp.dest("./prod"));
+  gulp.task('copy_css', ['styles'], function() {
+    return gulp.src('./public/app.css').pipe(rename(global.sha + '.css')).pipe(gulp.dest('./prod'));
   });
 
-  gulp.task('prod', ['compress'], function() {});
+  gulp.task('compress', function() {
+    return gulp.src("./prod/**").pipe(zopfli()).pipe(gulp.dest("./prod"));
+  });
+
+  gulp.task('prod', function(cb) {
+    runSequence(['prod_clean', 'set_sha'], ['prod_template', 'copy_css', 'prod_compile'], 'compress', cb);
+  });
 
 }).call(this);
