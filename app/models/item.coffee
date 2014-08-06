@@ -17,6 +17,7 @@ module.exports = AmpersandModel.extend
     use: "array"
     patternNumber: ['string', true]
     price: 'number'
+    repeat: 'string'
 
   # parse: (item) ->
   #   item

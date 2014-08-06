@@ -23,7 +23,8 @@
         pageIndex: q.pageIndex,
         patternNumber: null,
         color_id: null,
-        display: 'pricelist'
+        display: 'pricelist',
+        printing: false
       };
     },
     getQuery: function() {
@@ -83,6 +84,9 @@
     },
     handleUserInput: function(new_state_obj) {
       var search_string;
+      if (!new_state_obj.printing) {
+        new_state_obj.printing = false;
+      }
       if (search_string = this.searchTxt(new_state_obj.searchTxt)) {
         new_state_obj.searchTxt = search_string;
         if (search_string !== this.state.searchTxt) {
@@ -101,8 +105,16 @@
       if (new_state_obj.pageIndex) {
         new_state_obj.pageIndex = parseInt(new_state_obj.pageIndex);
       }
+      if (new_state_obj.printing) {
+        new_state_obj.pageIndex = 0;
+        new_state_obj.pageSize = 10000;
+      }
       this.filterCollection(new_state_obj);
-      this.setState(new_state_obj);
+      if (new_state_obj.printing) {
+        this.setState(new_state_obj, window.print);
+      } else {
+        this.setState(new_state_obj);
+      }
       return this.setQuery(new_state_obj);
     },
     filterCollection: function(new_state) {
