@@ -1,0 +1,29 @@
+* {
+  color: black;
+  border-color: black;
+}
+
+body {
+  font-family: 'adobe caslon', adobe-caslon-pro, cambria, 'times new roman', times, georgia, serif;
+  font-size: 12px;
+  line-height: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+/** tell a few things to go away **/
+header, footer, .pricelist-header { display: none; }
+
+/*********************/
+/**  Margins, etc.  **/
+/*********************/
+
+@page {
+  margin: 0.5in;
+}
+
+@page {
+   @top-left { content: 'Pricelist'; /* document name */ }
+   @top-right { content: 'Date?'; /* document date */ }
+   @bottom-center { content: counter(pages); /* page number */}
+}
