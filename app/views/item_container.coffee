@@ -17,6 +17,7 @@ module.exports = React.createClass
     patternNumber: null
     color_id: null
     display: 'pricelist'
+    printing: false
 
   getQuery: ->
     q = {}
@@ -60,6 +61,10 @@ module.exports = React.createClass
 
   # Updates to the model.
   handleUserInput: (new_state_obj) ->
+    # Any state change that isn't a print will turn off printing.
+    unless new_state_obj.printing
+      new_state_obj.printing = false
+
     # Process the input search string.
     if search_string = @searchTxt new_state_obj.searchTxt
       new_state_obj.searchTxt = search_string
@@ -78,10 +83,17 @@ module.exports = React.createClass
     if new_state_obj.pageIndex
       new_state_obj.pageIndex = parseInt(new_state_obj.pageIndex)
 
+    if new_state_obj.printing
+      new_state_obj.pageIndex = 0
+      new_state_obj.pageSize = 10000
+
     # Refilter the collection.
     @filterCollection(new_state_obj)
     # Set the new state.
-    @setState new_state_obj
+    if new_state_obj.printing
+      @setState new_state_obj, window.print
+    else
+      @setState new_state_obj
     @setQuery new_state_obj
 
   filterCollection: (new_state) ->

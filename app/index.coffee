@@ -2,7 +2,7 @@ React = require 'react'
 SubCollection = require 'ampersand-subcollection'
 
 ItemsCollection = require './models/items'
-FilterableProductTable = require './views/item_container'
+Router = require './router'
 
 items_data = require './models/data'
 
@@ -13,14 +13,15 @@ module.exports =
     items = new ItemsCollection(items_data)
     #@items.add items_data
     @items = new SubCollection items
-    # This is the main app entry point. For now we call FilterableProductTable
-    ## and pass it some items data.
-    props =
-      collection: @items
 
-    @container = FilterableProductTable(props)
+    # Init URL handler and history tracker.
+    @router = new Router()
+
     el = document.getElementById('content')
-    React.renderComponent @container, el
+    @router.on 'newPage', (container) ->
+      @container = container
+      React.renderComponent @container, el
+    @router.history.start()
 
 # run it
 module.exports.blastoff()

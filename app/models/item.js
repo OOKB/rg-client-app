@@ -20,7 +20,8 @@
       name: 'string',
       use: "array",
       patternNumber: ['string', true],
-      price: 'number'
+      price: 'number',
+      repeat: 'string'
     },
     derived: {
       id: {
