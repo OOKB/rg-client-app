@@ -12,7 +12,9 @@ module.exports = AmpersandModel.extend
     contents: "string"
     design: "string"
     design_descriptions: "array"
+    far: 'boolean'
     _file: "object" # Pattern name.
+    label: 'string'
     name: 'string'
     use: "array"
     patternNumber: ['string', true]
