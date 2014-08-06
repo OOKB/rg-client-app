@@ -30,4 +30,4 @@ module.exports = AmpersandModel.extend
     searchStr:
       deps: ['id', 'color', 'name']
       fn: ->
-        (@id + ' ' + @name + ' ' + @color).toLowerCase()
+        (@id + ' ' + @name + ' ' + @color + ' ' + @content).toLowerCase()
