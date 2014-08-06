@@ -27,21 +27,43 @@ module.exports = React.createClass
     ths = []
     # Hide name for trims.
     unless @props.filter.category == 'passementerie'
-      ths.push th(className: 'c-name', 'Name')
+      ths.push th
+        key: 'name'
+        className: 'c-name',
+          'Name'
     # Show for all.
-    ths.push th(className: 'c-number', 'Item#')
-    ths.push th(className: 'c-color', 'Color')
-    ths.push th(className: 'c-price', 'Net Price')
-    ths.push th(className: 'c-content', 'Content')
+    ths.push th
+      key: 'number'
+      className: 'c-number',
+        'Item#'
+    ths.push th
+      key: 'color'
+      className: 'c-color',
+        'Color'
+    ths.push th
+      key: 'price'
+      className: 'c-price',
+        'Net Price'
+    ths.push th
+      key: 'content'
+      className: 'c-content', 'Content'
     # Hide repeat for leather.
     unless @props.filter.category == 'leather'
-      ths.push th(className: 'c-repeat', 'Repeat')
+      ths.push th
+        key: 'repeat'
+        className: 'c-repeat', 'Repeat'
     # Leather is size.
     if @props.filter.category == 'leather'
-      ths.push th(className: 'c-size', 'Approx. Size')
+      ths.push th
+        key: 'size'
+        className: 'c-size',
+          'Approx. Size'
     # Others are width.
     else
-      ths.push th(className: 'c-size', 'Approx. Width')
+      ths.push th
+        key: 'size'
+        className: 'c-size',
+          'Approx. Width'
 
     table {},
       thead {},

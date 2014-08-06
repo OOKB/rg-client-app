@@ -40,32 +40,40 @@
       ths = [];
       if (this.props.filter.category !== 'passementerie') {
         ths.push(th({
+          key: 'name',
           className: 'c-name'
         }, 'Name'));
       }
       ths.push(th({
+        key: 'number',
         className: 'c-number'
       }, 'Item#'));
       ths.push(th({
+        key: 'color',
         className: 'c-color'
       }, 'Color'));
       ths.push(th({
+        key: 'price',
         className: 'c-price'
       }, 'Net Price'));
       ths.push(th({
+        key: 'content',
         className: 'c-content'
       }, 'Content'));
       if (this.props.filter.category !== 'leather') {
         ths.push(th({
+          key: 'repeat',
           className: 'c-repeat'
         }, 'Repeat'));
       }
       if (this.props.filter.category === 'leather') {
         ths.push(th({
+          key: 'size',
           className: 'c-size'
         }, 'Approx. Size'));
       } else {
         ths.push(th({
+          key: 'size',
           className: 'c-size'
         }, 'Approx. Width'));
       }

@@ -9,10 +9,7 @@
     render: function() {
       var item;
       item = this.props.model;
-      console.log(item.toJSON());
-      return div({
-        className: 'item-detail'
-      }, table({
+      return table({
         className: 'itemoverlay-header ' + item.category
       }, tbody({}, tr({}, td({
         className: 'fav',
@@ -37,11 +34,7 @@
         className: 'close',
         type: 'button',
         'area-hidden': 'true'
-      }, 'X'))))), div({
-        className: 'toggle-colors hidden-xs'
-      }, button({
-        className: 'uppercase'
-      }, 'Colors')));
+      }, 'X')))));
     }
   });
 

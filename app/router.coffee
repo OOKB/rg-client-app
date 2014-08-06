@@ -1,7 +1,7 @@
 Router = require 'ampersand-router'
 
-FilterableProductTable = require './views/item_container'
-ItemDetail = require './views/item_detail'
+FilterableProductTable = require './views/pricelist/item_container'
+ItemDetail = require './views/detail/container'
 
 module.exports = Router.extend
   routes:

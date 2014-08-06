@@ -3,9 +3,9 @@
 
   Router = require('ampersand-router');
 
-  FilterableProductTable = require('./views/item_container');
+  FilterableProductTable = require('./views/pricelist/item_container');
 
-  ItemDetail = require('./views/item_detail');
+  ItemDetail = require('./views/detail/container');
 
   module.exports = Router.extend({
     routes: {
