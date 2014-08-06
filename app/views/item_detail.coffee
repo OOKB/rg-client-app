@@ -37,3 +37,5 @@ module.exports = React.createClass
                 type: 'button'
                 'area-hidden': 'true',
                 'X'
+      div className: 'toggle-colors hidden-xs',
+        button className: 'uppercase', 'Colors'

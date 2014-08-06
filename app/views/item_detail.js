@@ -15,10 +15,10 @@
       }, table({
         className: 'itemoverlay-header ' + item.category
       }, tbody({}, tr({}, td({
-        className: 'fav text-left',
+        className: 'fav',
         width: '29'
       }, button({
-        className: 'plain fav'
+        className: 'fav'
       }, '+')), td({
         className: 'name'
       }, h3({}, item.label || item.category), p({}, span({
@@ -32,12 +32,16 @@
       }, h3('Repeat'), p(item.repeat)), td({
         className: 'width'
       }, h3('Approx Width'), p(item.approx_width)), td({
-        className: 'close text-left'
+        className: 'close'
       }, button({
-        className: 'close plain',
+        className: 'close',
         type: 'button',
         'area-hidden': 'true'
-      }, 'X'))))));
+      }, 'X'))))), div({
+        className: 'toggle-colors hidden-xs'
+      }, button({
+        className: 'uppercase'
+      }, 'Colors')));
     }
   });
 
