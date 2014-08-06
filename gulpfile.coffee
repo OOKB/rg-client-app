@@ -12,7 +12,10 @@ source = require('vinyl-source-stream')
 
 jade = require 'gulp-jade'
 less = require 'gulp-less'
+clean = require 'gulp-clean'
 zopfli = require 'gulp-zopfli'
+rename = require 'gulp-rename'
+runSequence = require 'run-sequence'
 
 gulp.task "browser-sync", ->
   browserSync.init "public/**",
@@ -29,7 +32,7 @@ gulp.task "browser-sync", ->
 gulp.task "templates", ->
   data =
     title: 'Fancy Title!'
-    sha: 'script'
+    sha: 'app'
   gulp.src("templates/*.jade")
     .pipe jade(locals: data)
     .pipe gulp.dest("./public/")
@@ -45,7 +48,7 @@ gulp.task 'compile', ->
   w = watchify(browserify('./app/index.js', watchify.args))
   bundle = () ->
     w.bundle()
-      .pipe(source('script.js'))
+      .pipe(source('app.js'))
       .pipe(gulp.dest('./public/'))
   w.on('update', bundle)
   bundle()
@@ -71,7 +74,13 @@ gulp.task 'set_sha', (cb) ->
     cb()
   return
 
-gulp.task 'prod_compile', ['set_sha'], (cb) ->
+# Remove contents from prod directory.
+gulp.task 'prod_clean', ->
+  gulp.src('./prod', read: false)
+    .pipe(clean())
+
+gulp.task 'prod_compile', (cb) ->
+  console.log
   # Javascript bundle
   bundler = browserify debug: true
   bundler.add('./app/index.js')
@@ -82,7 +91,9 @@ gulp.task 'prod_compile', ['set_sha'], (cb) ->
     .pipe(source(global.sha+'.js'))
     .pipe(gulp.dest('./prod/'))
     .on('end', cb)
+  return
 
+gulp.task 'prod_template', ->
   # Templates
   data =
     title: 'Fancy Title!'
@@ -90,12 +101,20 @@ gulp.task 'prod_compile', ['set_sha'], (cb) ->
   gulp.src("templates/*.jade")
     .pipe jade(locals: data)
     .pipe gulp.dest("./prod/")
-  return
 
-gulp.task 'compress', ['prod_compile'], ->
-  gulp.src("./prod/"+global.sha+".js")
+gulp.task 'copy_css', ['styles'], ->
+  gulp.src('./public/app.css')
+    .pipe(rename(global.sha+'.css'))
+    .pipe(gulp.dest('./prod'))
+
+gulp.task 'compress', ->
+  gulp.src("./prod/**")
     .pipe(zopfli())
     .pipe(gulp.dest("./prod"))
 
-gulp.task 'prod', ['compress'], ->
+gulp.task 'prod', (cb) ->
+  runSequence ['prod_clean', 'set_sha'],
+    ['prod_template', 'copy_css', 'prod_compile'],
+    'compress',
+    cb
   return
