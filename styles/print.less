@@ -18,12 +18,20 @@ body {
 header, footer, .pricelist-header, form input, form div button { display: none; }
 form div button.active {display: block; color: black;}
 
+h1, h2, h3, h4, h5, h6 {
+  page-break-after: avoid; // Prevent headings from being printed at the bottom of the page
+}
+
+img {
+  page-break-inside: avoid; // Prevent images from being split up
+}
+
 /*********************/
 /**  Margins, etc.  **/
 /*********************/
 
 @page {
-  margin: 0.5in;
+  margin: 1in 0.5in;
 }
 
 @page {
@@ -36,6 +44,12 @@ form div button.active {display: block; color: black;}
   }
 }
 
-tr.pattern {
-  page-break-before: auto;
-}
+/** better column widths **/
+/* column widths — there might need to be classes on the <table> to go with specific states to change these up... just in case */
+.c-name    { width: 15%; }
+.c-number  { width: 12%; }
+.c-color   { width: 11%; }
+.c-price   { width: 10%; }
+.c-content { width: 28%; }
+.c-repeat  { width: 12%; }
+.c-size    { width: 12%; }
