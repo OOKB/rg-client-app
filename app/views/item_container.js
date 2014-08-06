@@ -78,7 +78,7 @@
         return search_string;
       } else {
         search_string = search_string.toLowerCase();
-        search_string = search_string.replace(/[^a-z0-9-]/, '');
+        search_string = search_string.replace(/[^a-z0-9-\s]/, '');
         return search_string;
       }
     },

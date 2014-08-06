@@ -56,7 +56,7 @@ module.exports = React.createClass
       # Make sure the user input search text is lowercase.
       search_string = search_string.toLowerCase()
       # Make sure the text string is valid... Regex check.
-      search_string = search_string.replace(/[^a-z0-9-]/, '')
+      search_string = search_string.replace(/[^a-z0-9-\s]/, '')
       return search_string
 
   # Updates to the model.
