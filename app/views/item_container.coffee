@@ -73,6 +73,8 @@ module.exports = React.createClass
     # Turn these into numbers.
     if new_state_obj.pageSize
       new_state_obj.pageSize = parseInt(new_state_obj.pageSize)
+      if new_state_obj.pageSize != @state.pageSize
+        new_state_obj.pageIndex = 0
     if new_state_obj.pageIndex
       new_state_obj.pageIndex = parseInt(new_state_obj.pageIndex)
 

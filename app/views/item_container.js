@@ -94,6 +94,9 @@
       }
       if (new_state_obj.pageSize) {
         new_state_obj.pageSize = parseInt(new_state_obj.pageSize);
+        if (new_state_obj.pageSize !== this.state.pageSize) {
+          new_state_obj.pageIndex = 0;
+        }
       }
       if (new_state_obj.pageIndex) {
         new_state_obj.pageIndex = parseInt(new_state_obj.pageIndex);
