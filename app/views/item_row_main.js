@@ -37,7 +37,7 @@
         className: 'c-size'
       }, item.approx_width));
       return tr({
-        className: 'color'
+        className: 'pattern'
       }, tds);
     }
   });

@@ -20,4 +20,4 @@ module.exports = React.createClass
       tds.push td(className: 'c-repeat', item.repeat)
     tds.push td(className: 'c-size', item.approx_width) # Size
 
-    tr className: 'color', tds
+    tr className: 'pattern', tds
