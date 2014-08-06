@@ -11,9 +11,9 @@ module.exports = React.createClass
         tbody {},
           tr {},
             td
-              className: 'fav text-left'
+              className: 'fav'
               width: '29',
-                button className: 'plain fav', '+'
+                button className: 'fav', '+'
             td className: 'name',
               h3 {}, item.label or item.category
               p {},
@@ -31,9 +31,9 @@ module.exports = React.createClass
             td className: 'width',
               h3 'Approx Width'
               p item.approx_width
-            td className: 'close text-left',
+            td className: 'close',
               button
-                className: 'close plain'
+                className: 'close'
                 type: 'button'
                 'area-hidden': 'true',
                 'X'
