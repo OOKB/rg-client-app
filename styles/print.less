@@ -1,18 +1,22 @@
 * {
   color: black;
   border-color: black;
+  background: transparent;
+  text-decoration: none;
 }
 
 body {
+  background: white;
   font-family: 'adobe caslon', adobe-caslon-pro, cambria, 'times new roman', times, georgia, serif;
-  font-size: 12px;
-  line-height: 14px;
+  font-size: 12pt;
+  line-height: 14pt;
   margin: 0;
   padding: 0;
 }
 
 /** tell a few things to go away **/
-header, footer, .pricelist-header { display: none; }
+header, footer, .pricelist-header, form input, form div button { display: none; }
+form div button.active {display: block; color: black;}
 
 /*********************/
 /**  Margins, etc.  **/
@@ -23,7 +27,15 @@ header, footer, .pricelist-header { display: none; }
 }
 
 @page {
-   @top-left { content: 'Pricelist'; /* document name */ }
-   @top-right { content: 'Date?'; /* document date */ }
-   @bottom-center { content: counter(pages); /* page number */}
+  @top-left { content: 'Pricelist'; /* document name */ }
+  @top-right { content: 'Date?'; /* document date */ }
+  counter-increment: page;
+  @bottom-center { 
+       content: counter(page);
+       content: counter(page) " / " counter(pages); 
+  }
+}
+
+tr.pattern {
+  page-break-before: auto;
 }
