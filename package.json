@@ -1,6 +1,6 @@
 {
   "name": "jade-less",
-  "version": "0.0.0",
+  "version": "0.0.6",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -19,8 +19,9 @@
     "reactify": "^0.14.0",
     "browserify": "^5.9.1",
     "vinyl-source-stream": "^0.1.1",
-    "nodegit": "^0.1.4",
-    "request": "^2.39.0"
+    "request": "^2.39.0",
+    "minifyify": "^4.0.3",
+    "gulp-zopfli": "^0.1.1"
   },
   "dependencies": {
     "react": "^0.11.1",
@@ -28,6 +29,7 @@
     "lodash": "^2.4.1",
     "ampersand-collection": "^1.3.10",
     "ampersand-model": "^3.0.4",
-    "ampersand-subcollection": "https://github.com/webmasterkai/ampersand-subcollection/archive/patch-1.tar.gz"
+    "ampersand-subcollection": "https://github.com/webmasterkai/ampersand-subcollection/archive/patch-1.tar.gz",
+    "query-param-getter": "0.0.1"
   }
 }
