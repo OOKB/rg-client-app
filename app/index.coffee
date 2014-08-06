@@ -4,7 +4,7 @@ SubCollection = require 'ampersand-subcollection'
 ItemsCollection = require './models/items'
 FilterableProductTable = require './views/item_container'
 
-items_data = require './models/data.json'
+items_data = require './models/data'
 
 module.exports =
   blastoff: ->
