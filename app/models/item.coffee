@@ -1,6 +1,8 @@
 AmpersandModel = require("ampersand-model")
 _ = require 'lodash'
 
+cdn = '//img.rg.cape.io/'
+
 module.exports = AmpersandModel.extend
   props:
     approx_width: "string"
@@ -12,7 +14,7 @@ module.exports = AmpersandModel.extend
     contents: "string"
     design: "string"
     design_descriptions: "array"
-    far: 'boolean'
+    far: ['boolean', true, false]
     _file: "object" # Pattern name.
     label: 'string'
     name: 'string'
@@ -22,15 +24,34 @@ module.exports = AmpersandModel.extend
     repeat: 'string'
     ruler: ['string', true]
 
-  # parse: (item) ->
-  #   item
+  parse: (item) ->
+    item.id = item.patternNumber+'-'+item.color_id
+    if item._file
+      prefix = cdn + 'items/'+item.id
+      if item._file.small
+        item._file.small.path = prefix + '/640.jpg'
+        if item.far
+          item._file.small.path_far = prefix + '/far/640.jpg'
+
+      if item._file.large
+        item._file.large.path = prefix + '/1536.jpg'
+        if item.far
+          item._file.large.path_far = prefix + '/far/1536.jpg'
+
+      if item._file.xlarge
+        item._file.xlarge.path = prefix + '/2560.jpg'
+        if item.far
+          item._file.xlarge.path_far = prefix + '/far/2560.jpg'
+
+    return item
 
   derived:
-    id: # If this doesn't work here move to parse func.
-      deps: ['patternNumber', 'color_id']
-      fn: ->
-        @patternNumber+'-'+@color_id
     searchStr:
       deps: ['id', 'color', 'name']
       fn: ->
         (@id + ' ' + @name + ' ' + @color + ' ' + @content).toLowerCase()
+
+    detail:
+      deps: ['patternNumber', 'color_id']
+      fn: ->
+        '#detail/'+@patternNumber+'/'+@color_id
