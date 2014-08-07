@@ -1,104 +1,76 @@
-
-/** = Variables and other mixins **/
-/**********************************************************/
-/**********************************************************/
-
-/** Colors **/
-@rg-background:          #fcfbf8;
-@rg-dark-gold:           #725a38;
-@rg-gold:                #9a8669;
-@rg-gray:                #848484;
-@rg-medium-gray:         #4D4D4D;
-@rg-black:               #262019;
-
-@rg-shadow:              0 0 9px 0 rgba(132,132,132,0.5);
-
-@screen-sm-min:           768px;
-@screen-md-min:           992px;
-@screen-lg-min:          1200px;
-
-@left-arrow: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2tpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo5ODlDNkYwQzBCMjA2ODExOEY2MkNFN0I0Njc3OTBCRSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBOTRCQTFGQTA0OTIxMUU0QkZCRkZCRjM4MzE5QjdGNCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBOTRCQTFGOTA0OTIxMUU0QkZCRkZCRjM4MzE5QjdGNCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDphMmIzZTcxYy1hM2Q3LTQzMDAtODA0OC03OGFkMDNiN2NiNzMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OTg5QzZGMEMwQjIwNjgxMThGNjJDRTdCNDY3NzkwQkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7aMQRRAAAAyklEQVR42mL8//8/g7qiFAMRwAWI99y8/wxFkIkIjYJAvBuKXdAlWQhoVoJqBNGdIBeQYgDItlVQdhgQr8amCJcX0qA2vwdiV1yacbmgA4jLgfgsVPN7fH5kwhJYIM2zgNiEkGZkFyAHVgU0wIgCMBe8R7JNkIEEgGwALLDKoaEvSIoBMEPCoM4PRfIS0QbAQAXUIGMgPoMt9RGTDlZDvcQAdUkaqQYwQJOtCTQ9zISmD5IMAIF7UJfsgQZuKKmZCTmGXLBlJoAAAwCQ3SwESQ8CkAAAAABJRU5ErkJggg==';
-@right-arrow: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2tpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo5ODlDNkYwQzBCMjA2ODExOEY2MkNFN0I0Njc3OTBCRSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBOTRCQTFGRTA0OTIxMUU0QkZCRkZCRjM4MzE5QjdGNCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBOTRCQTFGRDA0OTIxMUU0QkZCRkZCRjM4MzE5QjdGNCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDphMmIzZTcxYy1hM2Q3LTQzMDAtODA0OC03OGFkMDNiN2NiNzMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OTg5QzZGMEMwQjIwNjgxMThGNjJDRTdCNDY3NzkwQkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4J2radAAAA1klEQVR42pSTwQ2CQBBFR0MDe/UmFwvAEtgSlhKwBC0BS5AStAS2BC3AC968UsI6Yz7JxiDL/OQFQuDt7OywCiFQnN12I5eS8ZTI8/Wm9cRzx3TApCRTghtzRhUiybUCyYk5MAVzh0wlkLSMxX2HrakEhEbumQdzZRqtQNKjEunNESKjEUgGpkJzXXxCSwWxiPDxV5ApPr4wNfpSjbIlFRgcZY0t2KiSZAUFmpZjLtrfF+YEDmUTVvWaOWiw8oA58JpJLHHe4xD1c3vM/kyfXfI7Sz4CDAASiCqcrU1kNwAAAABJRU5ErkJggg==';
-@fav-btn: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAMAAABhTZc9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABtQTFRF/Pv43t3aAAAAubi26unm2trXQ0NCVFRTMjIy+HyikAAAADFJREFUeNpiYGHEDVgYGBlwA8ahL8vKhk+WmWmQyXIwIQD7EHEzEeE8LNIV3nwEEGAAj44A6vcpQWEAAAAASUVORK5CYII=';
-@close-btn: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAMAAACeyVWkAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBQTFRF/Pv4NDQ02dnW1NTR1dXS19fU09PQMzMz2NjV1tbTtra02trXWVlYW1tZNTU1CwsL6nUlGAAAAHdJREFUeNps0EkOwCAIBVAGFae2979tHdJUQTeapxH4UAvoVS4ISBoxgGHqCMBCG/I8MEaLK8cfO/uxe3RrCTfY325vp7N6OTlbBMhPtpja22Q/SO3iUMw2Jod+vyE6s8VlZJa4ZiaDg6h85RD6jL2SGYiuV4ABAOXVAhI1i1c8AAAAAElFTkSuQmCC';
-
-.dropshadow {
-  background: @rg-background;
-  -webkit-box-shadow: @rg-shadow;
-  -moz-box-shadow: @rg-shadow;
-  -ms-box-shadow: @rg-shadow;
-  -o-box-shadow: @rg-shadow;
-  box-shadow: @rg-shadow;
-}
-
-.pointer {
-  cursor: pointer;
-}
-
-.uppercase {
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.text-center {
-  text-align: center;
-}
+@import url(variables.less);
 
 /** some simple hiding and showing classes **/
 @media (max-width: 767px) {
   .hidden-xs {
     display: none !important;
+    visibility: hidden !important;
   }
   .visible-sm {
     display: none !important;
+    visibility: visible !important;
   }
   .visible-md {
     display: none !important;
+    visibility: visible !important;
   }
   .visible-lg {
     display: none !important;
+    visibility: visible !important;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .hidden-sm {
     display: none !important;
+    visibility: hidden !important;
   }
   .visible-xs {
     display: none !important;
+    visibility: visible !important;
   }
   .visible-md {
     display: none !important;
+    visibility: visible !important;
   }
   .visible-lg {
     display: none !important;
+    visibility: visible !important;
   }
 }
 @media (min-width: 991px) and (max-width: 1199px) {
   .hidden-md {
     display: none !important;
+    visibility: hidden !important;
   }
   .visible-xs {
     display: none !important;
+    visibility: visible !important;
   }
   .visible-sm {
     display: none !important;
+    visibility: visible !important;
   }
   .visible-lg {
     display: none !important;
+    visibility: visible !important;
   }
 }
 @media (min-width: 1200px) {
   .hidden-lg {
     display: none !important;
+    visibility: hidden !important;
   }
   .visible-xs {
     display: none !important;
+    visibility: visible !important;
   }
   .visible-sm {
     display: none !important;
+    visibility: visible !important;
   }
   .visible-md {
     display: none !important;
+    visibility: visible !important;
   }
 }
 
@@ -275,188 +247,9 @@ ul.pager > li > a.right {
 /* close [x] */
 
 
-/** = pricelist stuff **/
-/**********************************************************/
-/**********************************************************/
-#content form button {
-  width: 100%;
-  display: block;
-}
-
-#content form input {
-  width: 300px;
-  margin-bottom: 14px;
-}
-
-/* Small devices (tablets, 768px and up) */
-@media (min-width: @screen-sm-min) {
-  #content form button {
-    width: 32.9%;
-    display: inline-block;
-  }
-}
+/* -------------------------------------*/
+/* ---------->>> INCLUDES <<<-----------*/
+/* -------------------------------------*/
 
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border: 0;
-  text-align: left;
-  min-width: 750px;
-}
 
-table tr th, 
-table tr td {
-  padding: 3px 7px;
-  line-height: 14px;
-  vertical-align: top;
-  border-collapse: collapse;
-  border: 0;
-  height: 14px;
-}
-
-table thead {
-  text-transform: lowercase;
-  color: @rg-gray;
-  letter-spacing: 2px;
-  font-size: 1em;
-  font-variant: small-caps;
-}
-
-table thead th {
-  vertical-align: bottom;
-  border-bottom: 2px solid #ddd;
-}
-
-/** Individual column widths to try and match PDF */
-table .pattern th {
-  padding-top: 16px;
-}
-
-.color,
-.color th,
-.color td {
-  overflow: visible;
-}
-
-.c-number,
-.c-price,
-.c-size {
-  text-align: right;
-}
-
-/* column widths — there might need to be classes on the <table> to go with specific states to change these up... just in case */
-.c-name    { width: 17%; }
-.c-number  { width: 10%; }
-.c-color   { width: 11%; }
-.c-price   { width: 10%; }
-.c-content { width: 28%; }
-.c-repeat  { width: 13%; }
-.c-size    { width: 11%; }
-
-/** Item Detail **/
-.item-detail {
-  background: @rg-background;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-  z-index: 99;
-}
-
-.itemoverlay-header {
-  border: 10px solid @rg-background;
-  border-left-width: 20px;
-  border-right-width: 20px;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  width: 100%;
-  text-align: center;
-  vertical-align: middle;
-  .dropshadow;
-}
-
-.itemoverlay-header td.fav,
-.itemoverlay-header td.close {
-  padding: 2px 0 6px 0;
-  width: 29px;
-}
-
-.itemoverlay-header .fav button,
-.itemoverlay-header .close button {
-  border: none;
-  display: block;
-  height: 29px;
-  width: 29px;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.itemoverlay-header .fav button {
-  background: transparent url(@fav-btn) center center no-repeat;
-}
-
-.itemoverlay-header .close button {
-  background: transparent url(@close-btn) center center no-repeat;
-}
-
-.itemoverlay-header h3,
-.itemoverlay-header p {
-  margin: 0;
-  line-height: 16px;
-}
-.itemoverlay-header h3 {
-  font-size: 12px;
-  font-weight: bold;
-  .uppercase;
-}
-
-.toggle-colors {
-  position: fixed;
-  top: 90px;
-  left: 50%;
-  width: 100px;
-  margin-left: -50px;
-  padding: 6px 0 5px;
-  .dropshadow;
-}
-
-.ruler-wrap {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 99;
-  .dropshadow;
-}
-
-.ruler-wrap ul {
-  list-style: none;
-  margin: 0;
-  padding: 10px 10px 10px 25px;
-  position: relative;
-  width: 150px;
-}
-
-.ruler-wrap .rulers {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-}
-
-.rulers img {
-  display: block;
-  position: relative;
-  margin-left: 190px;
-}

@@ -1,0 +1,83 @@
+@import url(variables.less);
+
+/* --------------------------------------*/
+/* ---------->>> PRICELIST <<<-----------*/
+/* --------------------------------------*/
+
+#content form button {
+  width: 100%;
+  display: block;
+}
+
+#content form input {
+  width: 300px;
+  margin-bottom: 14px;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) {
+  #content form button {
+    width: 32.9%;
+    display: inline-block;
+  }
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 0;
+  text-align: left;
+  min-width: 750px;
+}
+
+table tr th, 
+table tr td {
+  padding: 3px 7px;
+  line-height: 14px;
+  vertical-align: top;
+  border-collapse: collapse;
+  border: 0;
+  height: 14px;
+}
+
+table thead {
+  text-transform: lowercase;
+  color: @rg-gray;
+  letter-spacing: 2px;
+  font-size: 1em;
+  font-variant: small-caps;
+}
+
+table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+}
+
+/** Individual column widths to try and match PDF */
+table .pattern th {
+  padding-top: 16px;
+}
+
+.color,
+.color th,
+.color td {
+  overflow: visible;
+}
+
+.c-number,
+.c-price,
+.c-size {
+  text-align: right;
+}
+
+/* column widths — there might need to be classes on the <table> to go with specific states to change these up... just in case */
+.c-name    { width: 17%; }
+.c-number  { width: 10%; }
+.c-color   { width: 11%; }
+.c-price   { width: 10%; }
+.c-content { width: 28%; }
+.c-repeat  { width: 13%; }
+.c-size    { width: 11%; }
+
+/* ============================ /Pricelist ============================ */
