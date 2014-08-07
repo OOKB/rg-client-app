@@ -12,7 +12,7 @@ module.exports = React.createClass
       div className: 'controls',
         ul
           li
-            className: 'fav'
+            className: 'fav',
               button className: 'fav', '+'
           li className: 'close',
             button
