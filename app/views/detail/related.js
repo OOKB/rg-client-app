@@ -15,6 +15,17 @@
     propTypes: {
       collection: React.PropTypes.object.isRequired
     },
+    handleColorClick: function(e) {
+      var color_id;
+      color_id = e.target.value;
+      if (e.preventDefault) {
+        e.preventDefault();
+      }
+      console.log(color_id);
+      return this.props.handleUserInput({
+        color_id: color_id
+      });
+    },
     handleUnitClick: function(e) {
       var unit;
       unit = e.target.value;
@@ -23,6 +34,14 @@
       }
       return this.setState({
         unit: unit
+      });
+    },
+    handleXclick: function(e) {
+      if (e.preventDefault) {
+        e.preventDefault();
+      }
+      return this.props.setParentState({
+        colorBoxView: false
       });
     },
     loadMetricRuler: function() {
@@ -48,6 +67,7 @@
       closeButton = button({
         key: 'close',
         className: 'close plain',
+        onClick: this.handleXclick,
         type: 'button'
       }, 'X');
       header = div({
@@ -61,10 +81,13 @@
         return relatedColorItems.push(li({
           key: item.id,
           className: 'related-item'
-        }, a({}, img({
+        }, img({
+          onClick: this.handleColorClick,
+          type: 'button',
+          value: item.color_id,
           src: item._file.small.path,
           alt: item.color
-        }))));
+        })));
       });
       relatedColorsList = ul({
         className: 'list-inline list'

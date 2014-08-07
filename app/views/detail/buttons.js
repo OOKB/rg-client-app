@@ -34,6 +34,9 @@
         colorBoxView: !this.state.colorBoxView
       });
     },
+    handleUserInput: function(newSt) {
+      return this.setState(newSt);
+    },
     render: function() {
       var color_toggle_class, divs, imgClass, imgDiv, imgPath, imgSize, item, ww;
       item = this.props.model;
@@ -83,7 +86,9 @@
       if (this.state.colorBoxView) {
         divs.push(Colors({
           key: 'related-colors',
-          collection: this.props.collection
+          collection: this.props.collection,
+          handleUserInput: this.props.handleUserInput,
+          setParentState: this.handleUserInput
         }));
       }
       divs.push(div({

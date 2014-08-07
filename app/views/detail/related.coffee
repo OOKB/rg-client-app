@@ -9,12 +9,23 @@ module.exports = React.createClass
   propTypes:
     collection: React.PropTypes.object.isRequired
 
+  handleColorClick: (e) ->
+    color_id = e.target.value
+    if e.preventDefault
+      e.preventDefault()
+    console.log color_id
+    @props.handleUserInput color_id: color_id
 
   handleUnitClick: (e) ->
     unit = e.target.value
     if e.preventDefault
       e.preventDefault()
     @setState unit: unit
+
+  handleXclick: (e) ->
+    if e.preventDefault
+      e.preventDefault()
+    @props.setParentState colorBoxView: false
 
   loadMetricRuler: ->
     unless @state.loadedMetric
@@ -34,6 +45,7 @@ module.exports = React.createClass
     closeButton = button
       key: 'close'
       className: 'close plain'
+      onClick: @handleXclick
       type: 'button',
         'X'
 
@@ -48,10 +60,12 @@ module.exports = React.createClass
       relatedColorItems.push li
         key: item.id
         className: 'related-item',
-          a {},
-            img
-              src: item._file.small.path
-              alt: item.color
+          img
+            onClick: @handleColorClick
+            type: 'button'
+            value: item.color_id
+            src: item._file.small.path
+            alt: item.color
 
     relatedColorsList = ul
       className: 'list-inline list'
