@@ -23,7 +23,8 @@ module.exports = React.createClass
     lastName = null
     # Decide what row view to use.
     @props.collection.forEach (item) =>
-      if item._file
+      # Link to detail page.
+      if item._file and item.category != 'passementerie'
         a_ops =
           onMouseDown: @prefetchImg
           id: item.id
