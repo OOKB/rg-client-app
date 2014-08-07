@@ -24,7 +24,8 @@ module.exports = React.createClass
       imgClass = inchesClass
       inchesClass += ' active'
 
-    imgPath = @props.cdn+'media/ruler/'+unit+'/'+item.ruler+'-'+@props.imgSize
+    imgPath = @props.cdn+'media/ruler/'+unit+'/'+item.ruler+'-'
+    imgPath += @props.imgSize+'.png'
 
     els = [] #elements
     # Ruler toggle.
@@ -43,7 +44,7 @@ module.exports = React.createClass
     els.push div
       key: 'rulers'
       className: 'rulers',
-        img:
+        img
           className: imgClass
           src: imgPath
           alt: imgClass

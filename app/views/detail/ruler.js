@@ -31,7 +31,8 @@
         imgClass = inchesClass;
         inchesClass += ' active';
       }
-      imgPath = this.props.cdn + 'media/ruler/' + unit + '/' + item.ruler + '-' + this.props.imgSize;
+      imgPath = this.props.cdn + 'media/ruler/' + unit + '/' + item.ruler + '-';
+      imgPath += this.props.imgSize + '.png';
       els = [];
       els.push(ul({
         key: 'ruler-toggle',
@@ -48,13 +49,11 @@
       els.push(div({
         key: 'rulers',
         className: 'rulers'
-      }, {
-        img: {
-          className: imgClass,
-          src: imgPath,
-          alt: imgClass
-        }
-      }));
+      }, img({
+        className: imgClass,
+        src: imgPath,
+        alt: imgClass
+      })));
       return div({
         className: 'ruler-wrap hidden-xs'
       }, els);

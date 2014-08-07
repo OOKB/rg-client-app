@@ -24,7 +24,7 @@
       patternNumber: ['string', true],
       price: 'number',
       repeat: 'string',
-      ruler: 'string'
+      ruler: ['string', true]
     },
     derived: {
       id: {
