@@ -28,7 +28,7 @@
       this.props.collection.forEach((function(_this) {
         return function(item) {
           var a_ops, colorIdValue, colorValue, idValue, row_props;
-          if (item._file) {
+          if (item._file && item.category !== 'passementerie') {
             a_ops = {
               onMouseDown: _this.prefetchImg,
               id: item.id,
