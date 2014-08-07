@@ -10,7 +10,7 @@ module.exports = React.createClass
     item = @props.model
     nav className: 'item-detail-header',
       div className: 'controls',
-        ul
+        ul {},
           li className: 'fav',
             button className: 'fav', '+'
           li className: 'close',
@@ -26,7 +26,7 @@ module.exports = React.createClass
           type: 'button',
             'mobile'
       div className: 'item-detail-content',
-        ul
+        ul {},
           li className: 'name',
             h3 {}, item.label or item.category
             p {},
