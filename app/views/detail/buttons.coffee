@@ -75,7 +75,7 @@ module.exports = React.createClass
       divs.push Colors
         key: 'related-colors'
         collection: @props.collection
-        handleUserInput: @props.handleUserInput
+        setContainerState: @props.onUserInput
         setParentState: @handleUserInput
 
     # big-ol-image
