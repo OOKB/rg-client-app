@@ -29,8 +29,12 @@ module.exports = React.createClass
           id: item.id
           href: item.detail
         colorValue = a a_ops, item.color
+        idValue = a a_ops, item.id
+        colorIdValue = a a_ops, item.color_id
       else
         colorValue = item.color
+        idValue = item.id
+        colorIdValue = item.color_id
 
       if item.patternNumber != lastPattern
         rows.push ItemPatternRow
@@ -38,6 +42,7 @@ module.exports = React.createClass
           key: item.id
           filter: @props.filter
           colorValue: colorValue
+          idValue: idValue
       else
         row_props =
           item: item
@@ -45,6 +50,7 @@ module.exports = React.createClass
           showName: lastName != item.name
           filter: @props.filter
           colorValue: colorValue
+          idValue: colorIdValue
         rows.push ItemColorRow(row_props)
       lastPattern = item.patternNumber
       lastName = item.name

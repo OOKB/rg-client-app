@@ -27,7 +27,7 @@
       lastName = null;
       this.props.collection.forEach((function(_this) {
         return function(item) {
-          var a_ops, colorValue, row_props;
+          var a_ops, colorIdValue, colorValue, idValue, row_props;
           if (item._file) {
             a_ops = {
               onMouseDown: _this.prefetchImg,
@@ -35,15 +35,20 @@
               href: item.detail
             };
             colorValue = a(a_ops, item.color);
+            idValue = a(a_ops, item.id);
+            colorIdValue = a(a_ops, item.color_id);
           } else {
             colorValue = item.color;
+            idValue = item.id;
+            colorIdValue = item.color_id;
           }
           if (item.patternNumber !== lastPattern) {
             rows.push(ItemPatternRow({
               item: item,
               key: item.id,
               filter: _this.props.filter,
-              colorValue: colorValue
+              colorValue: colorValue,
+              idValue: idValue
             }));
           } else {
             row_props = {
@@ -51,7 +56,8 @@
               key: item.id,
               showName: lastName !== item.name,
               filter: _this.props.filter,
-              colorValue: colorValue
+              colorValue: colorValue,
+              idValue: colorIdValue
             };
             rows.push(ItemColorRow(row_props));
           }
