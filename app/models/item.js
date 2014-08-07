@@ -23,7 +23,8 @@
       use: "array",
       patternNumber: ['string', true],
       price: 'number',
-      repeat: 'string'
+      repeat: 'string',
+      ruler: 'string'
     },
     derived: {
       id: {
