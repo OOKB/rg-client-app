@@ -1,5 +1,5 @@
 React = require 'react'
-{div, table, tbody, tr, td, button, h3, p, span} = require 'reactionary'
+{div, button, h3, p, span, ul, li} = require 'reactionary'
 
 module.exports = React.createClass
 
@@ -8,34 +8,32 @@ module.exports = React.createClass
 
   render: ->
     item = @props.model
-    table className: 'itemoverlay-header',
-      tbody {},
-        tr {},
-          td
-            className: 'fav'
-            width: '29',
-              button className: 'fav', '+'
-          td className: 'name',
-            h3 {}, item.label or item.category
-            p {},
-              span className: 'roman', item.name
-              item.id
-          td className: 'color',
-            h3 'Color'
-            p item.color
-          td className: 'content',
-            h3 'Content'
-            p item.contents
-          td className: 'repeat',
-            h3 'Repeat'
-            p item.repeat
-          td className: 'width',
-            h3 'Approx Width'
-            p item.approx_width
-          td className: 'close',
-            button
-              className: 'close'
-              type: 'button'
-              onClick: @handleXclick
-              'area-hidden': 'true',
-                'X'
+    ul className: 'itemoverlay-header',
+      li
+        className: 'fav'
+        width: '29',
+          button className: 'fav', '+'
+      li className: 'name',
+        h3 {}, item.label or item.category
+        p {},
+          span className: 'roman', item.name
+          item.id
+      li className: 'color',
+        h3 'Color'
+        p item.color
+      li className: 'content',
+        h3 'Content'
+        p item.contents
+      li className: 'repeat',
+        h3 'Repeat'
+        p item.repeat
+      li className: 'width',
+        h3 'Approx Width'
+        p item.approx_width
+      li className: 'close',
+        button
+          className: 'close'
+          type: 'button'
+          onClick: @handleXclick
+          'area-hidden': 'true',
+            'X'
