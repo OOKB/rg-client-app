@@ -11,20 +11,24 @@
 @rg-medium-gray:         #4D4D4D;
 @rg-black:               #262019;
 
+@rg-shadow:              0 0 9px 0 rgba(132,132,132,0.5);
+
 @screen-sm-min:           768px;
 @screen-md-min:           992px;
 @screen-lg-min:          1200px;
 
 @left-arrow: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2tpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo5ODlDNkYwQzBCMjA2ODExOEY2MkNFN0I0Njc3OTBCRSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBOTRCQTFGQTA0OTIxMUU0QkZCRkZCRjM4MzE5QjdGNCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBOTRCQTFGOTA0OTIxMUU0QkZCRkZCRjM4MzE5QjdGNCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDphMmIzZTcxYy1hM2Q3LTQzMDAtODA0OC03OGFkMDNiN2NiNzMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OTg5QzZGMEMwQjIwNjgxMThGNjJDRTdCNDY3NzkwQkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7aMQRRAAAAyklEQVR42mL8//8/g7qiFAMRwAWI99y8/wxFkIkIjYJAvBuKXdAlWQhoVoJqBNGdIBeQYgDItlVQdhgQr8amCJcX0qA2vwdiV1yacbmgA4jLgfgsVPN7fH5kwhJYIM2zgNiEkGZkFyAHVgU0wIgCMBe8R7JNkIEEgGwALLDKoaEvSIoBMEPCoM4PRfIS0QbAQAXUIGMgPoMt9RGTDlZDvcQAdUkaqQYwQJOtCTQ9zISmD5IMAIF7UJfsgQZuKKmZCTmGXLBlJoAAAwCQ3SwESQ8CkAAAAABJRU5ErkJggg==';
 @right-arrow: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2tpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo5ODlDNkYwQzBCMjA2ODExOEY2MkNFN0I0Njc3OTBCRSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBOTRCQTFGRTA0OTIxMUU0QkZCRkZCRjM4MzE5QjdGNCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBOTRCQTFGRDA0OTIxMUU0QkZCRkZCRjM4MzE5QjdGNCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDphMmIzZTcxYy1hM2Q3LTQzMDAtODA0OC03OGFkMDNiN2NiNzMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OTg5QzZGMEMwQjIwNjgxMThGNjJDRTdCNDY3NzkwQkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4J2radAAAA1klEQVR42pSTwQ2CQBBFR0MDe/UmFwvAEtgSlhKwBC0BS5AStAS2BC3AC968UsI6Yz7JxiDL/OQFQuDt7OywCiFQnN12I5eS8ZTI8/Wm9cRzx3TApCRTghtzRhUiybUCyYk5MAVzh0wlkLSMxX2HrakEhEbumQdzZRqtQNKjEunNESKjEUgGpkJzXXxCSwWxiPDxV5ApPr4wNfpSjbIlFRgcZY0t2KiSZAUFmpZjLtrfF+YEDmUTVvWaOWiw8oA58JpJLHHe4xD1c3vM/kyfXfI7Sz4CDAASiCqcrU1kNwAAAABJRU5ErkJggg==';
-
 @fav-btn: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAMAAABhTZc9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABtQTFRF/Pv43t3aAAAAubi26unm2trXQ0NCVFRTMjIy+HyikAAAADFJREFUeNpiYGHEDVgYGBlwA8ahL8vKhk+WmWmQyXIwIQD7EHEzEeE8LNIV3nwEEGAAj44A6vcpQWEAAAAASUVORK5CYII=';
 @close-btn: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAMAAACeyVWkAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBQTFRF/Pv4NDQ02dnW1NTR1dXS19fU09PQMzMz2NjV1tbTtra02trXWVlYW1tZNTU1CwsL6nUlGAAAAHdJREFUeNps0EkOwCAIBVAGFae2979tHdJUQTeapxH4UAvoVS4ISBoxgGHqCMBCG/I8MEaLK8cfO/uxe3RrCTfY325vp7N6OTlbBMhPtpja22Q/SO3iUMw2Jod+vyE6s8VlZJa4ZiaDg6h85RD6jL2SGYiuV4ABAOXVAhI1i1c8AAAAAElFTkSuQmCC';
 
 .dropshadow {
-  -webkit-box-shadow: 0 0 9px 0 rgba(132,132,132,0.5);
-  -moz-box-shadow: 0 0 9px 0 rgba(132,132,132,0.5);
-  box-shadow: 0 0 9px 0 rgba(132,132,132,0.5);
+  background: @rg-background;
+  -webkit-box-shadow: @rg-shadow;
+  -moz-box-shadow: @rg-shadow;
+  -ms-box-shadow: @rg-shadow;
+  -o-box-shadow: @rg-shadow;
+  box-shadow: @rg-shadow;
 }
 
 .pointer {
@@ -38,6 +42,64 @@
 
 .text-center {
   text-align: center;
+}
+
+/** some simple hiding and showing classes **/
+@media (max-width: 767px) {
+  .hidden-xs {
+    display: none !important;
+  }
+  .visible-sm {
+    display: none !important;
+  }
+  .visible-md {
+    display: none !important;
+  }
+  .visible-lg {
+    display: none !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .hidden-sm {
+    display: none !important;
+  }
+  .visible-xs {
+    display: none !important;
+  }
+  .visible-md {
+    display: none !important;
+  }
+  .visible-lg {
+    display: none !important;
+  }
+}
+@media (min-width: 991px) and (max-width: 1199px) {
+  .hidden-md {
+    display: none !important;
+  }
+  .visible-xs {
+    display: none !important;
+  }
+  .visible-sm {
+    display: none !important;
+  }
+  .visible-lg {
+    display: none !important;
+  }
+}
+@media (min-width: 1200px) {
+  .hidden-lg {
+    display: none !important;
+  }
+  .visible-xs {
+    display: none !important;
+  }
+  .visible-sm {
+    display: none !important;
+  }
+  .visible-md {
+    display: none !important;
+  }
 }
 
 /** = basic stuff **/
@@ -356,3 +418,45 @@ table .pattern th {
   .uppercase;
 }
 
+.toggle-colors {
+  position: fixed;
+  top: 90px;
+  left: 50%;
+  width: 100px;
+  margin-left: -50px;
+  padding: 6px 0 5px;
+  .dropshadow;
+}
+
+.ruler-wrap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  .dropshadow;
+}
+
+.ruler-wrap ul {
+  list-style: none;
+  margin: 0;
+  padding: 10px 10px 10px 25px;
+  position: relative;
+  width: 150px;
+}
+
+.ruler-wrap .rulers {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.rulers img {
+  display: block;
+  position: relative;
+  margin-left: 190px;
+}
