@@ -26,7 +26,7 @@
       tds.push(td({
         key: 'number',
         className: 'c-number'
-      }, item.color_id));
+      }, this.props.idValue));
       tds.push(td({
         key: 'color',
         className: 'c-color'

@@ -20,7 +20,7 @@ module.exports = React.createClass
     # Show for all.
     tds.push td
       key: 'number'
-      className: 'c-number', item.color_id
+      className: 'c-number', @props.idValue
     tds.push td
       key: 'color'
       className: 'c-color', @props.colorValue
