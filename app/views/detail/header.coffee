@@ -1,5 +1,5 @@
 React = require 'react'
-{div, button, h3, p, span, ul, li} = require 'reactionary'
+{nav, div, button, h3, p, span, ul, li} = require 'reactionary'
 
 module.exports = React.createClass
 
@@ -8,32 +8,39 @@ module.exports = React.createClass
 
   render: ->
     item = @props.model
-    ul className: 'itemoverlay-header',
-      li
-        className: 'fav'
-        width: '29',
-          button className: 'fav', '+'
-      li className: 'name',
-        h3 {}, item.label or item.category
-        p {},
-          span className: 'roman', item.name
-          item.id
-      li className: 'color',
-        h3 'Color'
-        p item.color
-      li className: 'content',
-        h3 'Content'
-        p item.contents
-      li className: 'repeat',
-        h3 'Repeat'
-        p item.repeat
-      li className: 'width',
-        h3 'Approx Width'
-        p item.approx_width
-      li className: 'close',
+    nav className: 'item-detail-header',
+      div className: 'controls',
+        ul
+          li
+            className: 'fav'
+              button className: 'fav', '+'
+          li className: 'close',
+            button
+              className: 'close'
+              type: 'button'
+              onClick: @handleXclick
+              'area-hidden': 'true',
+                'X'
+        h3 'Details'
         button
-          className: 'close'
+          className: 'toggle'
           type: 'button'
-          onClick: @handleXclick
-          'area-hidden': 'true',
-            'X'
+      div className: 'item-detail-content',
+        ul
+          li className: 'name',
+            h3 {}, item.label or item.category
+            p {},
+              span className: 'roman', item.name
+              item.id
+          li className: 'color',
+            h3 'Color'
+            p item.color
+          li className: 'content',
+            h3 'Content'
+            p item.contents
+          li className: 'repeat',
+            h3 'Repeat'
+            p item.repeat
+          li className: 'width',
+            h3 'Approx Width'
+            p item.approx_width
