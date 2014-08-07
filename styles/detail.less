@@ -84,31 +84,35 @@
   right: 0;
   bottom: 0;
   z-index: 99;
+  padding-bottom: 1em;
   .dropshadow;
 }
 
-.ruler-wrap ul {
+.ruler-wrap .ruler-toggle {
   list-style: none;
   margin: 0;
   padding: 10px 10px 10px 25px;
   position: relative;
   width: 150px;
+  z-index: 100;
 }
 
 .ruler-wrap .rulers {
-  //position: absolute; causing issue with js app - kb to look into
+  position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   height: 100%;
   width: 100%;
   overflow: hidden;
+  padding-left: 190px;
+  box-sizing: border-box;
+  z-index: 99;
 }
 
 .rulers img {
   display: block;
   position: relative;
-  margin-left: 190px;
 }
 
 /* ============================ /DETAIL ============================ */
