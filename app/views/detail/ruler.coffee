@@ -9,7 +9,6 @@ module.exports = React.createClass
   propTypes:
     model: React.PropTypes.object.isRequired
     imgSize: React.PropTypes.string.isRequired
-    cdn: React.PropTypes.string.isRequired
 
   render: ->
     item = @props.model
@@ -24,8 +23,7 @@ module.exports = React.createClass
       imgClass = inchesClass
       inchesClass += ' active'
 
-    imgPath = @props.cdn+'media/ruler/'+unit+'/'+item.ruler+'-'
-    imgPath += @props.imgSize+'.png'
+    imgPath = item.rulerPath[unit][@props.imgSize]
 
     els = [] #elements
     # Ruler toggle.

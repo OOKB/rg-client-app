@@ -14,8 +14,7 @@
     },
     propTypes: {
       model: React.PropTypes.object.isRequired,
-      imgSize: React.PropTypes.string.isRequired,
-      cdn: React.PropTypes.string.isRequired
+      imgSize: React.PropTypes.string.isRequired
     },
     render: function() {
       var cmClass, els, imgClass, imgPath, inchesClass, item, unit;
@@ -31,8 +30,7 @@
         imgClass = inchesClass;
         inchesClass += ' active';
       }
-      imgPath = this.props.cdn + 'media/ruler/' + unit + '/' + item.ruler + '-';
-      imgPath += this.props.imgSize + '.png';
+      imgPath = item.rulerPath[unit][this.props.imgSize];
       els = [];
       els.push(ul({
         key: 'ruler-toggle',

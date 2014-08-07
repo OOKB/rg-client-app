@@ -23,30 +23,27 @@ module.exports = React.createClass
 
   render: ->
     item = @props.model
-    cdn = '//img.rg.cape.io/'
     # Data for the main image.
     ww = @state.windowWidth
     if ww < 700
-      imgSize = '640'
+      imgSize = 'small'
     else if ww < 1800
-      imgSize = '1536'
+      imgSize = 'large'
     else
-      imgSize = '2560'
+      imgSize = 'xlarge'
 
-    imgPath = cdn+'items/'+item.id+'/'
     if @state.farView
-      imgPath += 'far/'+imgSize+'.jpg'
+      imgPath = item._file[imgSize].path_far
       imgClass = 'img-container pattern'
       imgDiv = ''
     else
-      imgPath += imgSize+'.jpg'
+      imgPath = item._file[imgSize].path
       imgClass = 'img-container large'
       imgDiv = img
         className: 'img-large'
         alt: item.name
         src: imgPath
 
-    #console.log item.toJSON()
     divs = []
 
     color_toggle_class = 'toggle-colors hidden-xs'
@@ -83,7 +80,6 @@ module.exports = React.createClass
       divs.push Rulers
         key: 'rulers'
         model: item
-        cdn: cdn
         imgSize: imgSize
 
     div className: 'switcher',

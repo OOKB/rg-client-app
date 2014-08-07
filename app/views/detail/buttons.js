@@ -30,24 +30,22 @@
       return window.removeEventListener('resize', this.handleResize);
     },
     render: function() {
-      var cdn, color_toggle_class, divs, imgClass, imgDiv, imgPath, imgSize, item, pages, ww;
+      var color_toggle_class, divs, imgClass, imgDiv, imgPath, imgSize, item, pages, ww;
       item = this.props.model;
-      cdn = '//img.rg.cape.io/';
       ww = this.state.windowWidth;
       if (ww < 700) {
-        imgSize = '640';
+        imgSize = 'small';
       } else if (ww < 1800) {
-        imgSize = '1536';
+        imgSize = 'large';
       } else {
-        imgSize = '2560';
+        imgSize = 'xlarge';
       }
-      imgPath = cdn + 'items/' + item.id + '/';
       if (this.state.farView) {
-        imgPath += 'far/' + imgSize + '.jpg';
+        imgPath = item._file[imgSize].path_far;
         imgClass = 'img-container pattern';
         imgDiv = '';
       } else {
-        imgPath += imgSize + '.jpg';
+        imgPath = item._file[imgSize].path;
         imgClass = 'img-container large';
         imgDiv = img({
           className: 'img-large',
@@ -92,7 +90,6 @@
         divs.push(Rulers({
           key: 'rulers',
           model: item,
-          cdn: cdn,
           imgSize: imgSize
         }));
       }
