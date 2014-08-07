@@ -253,3 +253,161 @@ ul.pager > li > a.right {
 
 
 
+<<<<<<< HEAD
+=======
+table tr th,
+table tr td {
+  padding: 3px 7px;
+  line-height: 14px;
+  vertical-align: top;
+  border-collapse: collapse;
+  border: 0;
+  height: 14px;
+}
+
+table thead {
+  text-transform: lowercase;
+  color: @rg-gray;
+  letter-spacing: 2px;
+  font-size: 1em;
+  font-variant: small-caps;
+}
+
+table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+}
+
+/** Individual column widths to try and match PDF */
+table .pattern th {
+  padding-top: 16px;
+}
+
+.color,
+.color th,
+.color td {
+  overflow: visible;
+}
+
+.c-number,
+.c-price,
+.c-size {
+  text-align: right;
+}
+
+/* column widths — there might need to be classes on the <table> to go with specific states to change these up... just in case */
+.c-name    { width: 17%; }
+.c-number  { width: 10%; }
+.c-color   { width: 11%; }
+.c-price   { width: 10%; }
+.c-content { width: 28%; }
+.c-repeat  { width: 13%; }
+.c-size    { width: 11%; }
+
+/** Item Detail **/
+.item-detail {
+  background: @rg-background;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: 99;
+}
+
+.itemoverlay-header {
+  border: 10px solid @rg-background;
+  border-left-width: 20px;
+  border-right-width: 20px;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  .dropshadow;
+}
+
+.itemoverlay-header td.fav,
+.itemoverlay-header td.close {
+  padding: 2px 0 6px 0;
+  width: 29px;
+}
+
+.itemoverlay-header .fav button,
+.itemoverlay-header .close button {
+  border: none;
+  display: block;
+  height: 29px;
+  width: 29px;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.itemoverlay-header .fav button {
+  background: transparent url(@fav-btn) center center no-repeat;
+}
+
+.itemoverlay-header .close button {
+  background: transparent url(@close-btn) center center no-repeat;
+}
+
+.itemoverlay-header h3,
+.itemoverlay-header p {
+  margin: 0;
+  line-height: 16px;
+}
+.itemoverlay-header h3 {
+  font-size: 12px;
+  font-weight: bold;
+  .uppercase;
+}
+
+.toggle-colors {
+  position: fixed;
+  top: 90px;
+  left: 50%;
+  width: 100px;
+  margin-left: -50px;
+  padding: 6px 0 5px;
+  .dropshadow;
+}
+
+.ruler-wrap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  .dropshadow;
+}
+
+.ruler-wrap ul {
+  list-style: none;
+  margin: 0;
+  padding: 10px 10px 10px 25px;
+  position: relative;
+  width: 150px;
+}
+
+.ruler-wrap .rulers {
+  // position: absolute; causing issue with js app.
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.rulers img {
+  display: block;
+  position: relative;
+  margin-left: 190px;
+}
+>>>>>>> 1fc169c2c25be86058e3aa7f2118165b377d4d54

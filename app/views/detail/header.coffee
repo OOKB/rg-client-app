@@ -3,6 +3,9 @@ React = require 'react'
 
 module.exports = React.createClass
 
+  handleXclick: ->
+    window.history.back()
+
   render: ->
     item = @props.model
     table className: 'itemoverlay-header',
@@ -33,5 +36,6 @@ module.exports = React.createClass
             button
               className: 'close'
               type: 'button'
+              onClick: @handleXclick
               'area-hidden': 'true',
-              'X'
+                'X'

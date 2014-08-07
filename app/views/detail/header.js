@@ -6,6 +6,9 @@
   _ref = require('reactionary'), div = _ref.div, table = _ref.table, tbody = _ref.tbody, tr = _ref.tr, td = _ref.td, button = _ref.button, h3 = _ref.h3, p = _ref.p, span = _ref.span;
 
   module.exports = React.createClass({
+    handleXclick: function() {
+      return window.history.back();
+    },
     render: function() {
       var item;
       item = this.props.model;
@@ -33,6 +36,7 @@
       }, button({
         className: 'close',
         type: 'button',
+        onClick: this.handleXclick,
         'area-hidden': 'true'
       }, 'X')))));
     }
