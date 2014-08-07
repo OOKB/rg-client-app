@@ -32,7 +32,7 @@ module.exports = React.createClass
     ww = @state.windowWidth
     if ww < 700
       imgSize = 'small'
-    else if ww < 1800
+    else if ww < 1536
       imgSize = 'large'
     else
       imgSize = 'xlarge'
