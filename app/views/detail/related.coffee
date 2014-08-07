@@ -1,5 +1,5 @@
 React = require 'react'
-{div, button, ul} = require 'reactionary'
+{div, button, ul, li, a, img} = require 'reactionary'
 
 module.exports = React.createClass
   getInitialState: ->
@@ -40,8 +40,18 @@ module.exports = React.createClass
     header = div
       className: 'colors-header',
         pager_txt, closeButton
-
+    offset = @state.pg * @state.pgSize
+    limit = (@state.pg + 1) * @state.pgSize
+    pageItems = @props.collection.models.slice(offset, limit)
     relatedColorItems = []
+    pageItems.forEach (item) ->
+      relatedColorItems.push li
+        key: item.id
+        className: 'related-item',
+          a {},
+            img
+              src: item._file.small.path
+              alt: item.color
 
     relatedColorsList = ul
       className: 'list-inline list'
@@ -49,4 +59,4 @@ module.exports = React.createClass
     return div
       id: 'related-colors'
       className: 'hidden-xs',
-        header
+        header, relatedColorItems

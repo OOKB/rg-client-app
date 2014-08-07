@@ -1,9 +1,9 @@
 (function() {
-  var React, button, div, ul, _ref;
+  var React, a, button, div, img, li, ul, _ref;
 
   React = require('react');
 
-  _ref = require('reactionary'), div = _ref.div, button = _ref.button, ul = _ref.ul;
+  _ref = require('reactionary'), div = _ref.div, button = _ref.button, ul = _ref.ul, li = _ref.li, a = _ref.a, img = _ref.img;
 
   module.exports = React.createClass({
     getInitialState: function() {
@@ -38,7 +38,7 @@
       }
     },
     render: function() {
-      var closeButton, header, pager_txt, pages, relatedColorItems, relatedColorsList;
+      var closeButton, header, limit, offset, pageItems, pager_txt, pages, relatedColorItems, relatedColorsList;
       pages = Math.ceil(this.props.collection.length / 5);
       if (pages > 1) {
         pager_txt = (this.state.pg + 1) + ' / ' + pages;
@@ -53,14 +53,26 @@
       header = div({
         className: 'colors-header'
       }, pager_txt, closeButton);
+      offset = this.state.pg * this.state.pgSize;
+      limit = (this.state.pg + 1) * this.state.pgSize;
+      pageItems = this.props.collection.models.slice(offset, limit);
       relatedColorItems = [];
+      pageItems.forEach(function(item) {
+        return relatedColorItems.push(li({
+          key: item.id,
+          className: 'related-item'
+        }, a({}, img({
+          src: item._file.small.path,
+          alt: item.color
+        }))));
+      });
       relatedColorsList = ul({
         className: 'list-inline list'
       });
       return div({
         id: 'related-colors',
         className: 'hidden-xs'
-      }, header);
+      }, header, relatedColorItems);
     }
   });
 
