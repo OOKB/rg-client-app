@@ -26,11 +26,22 @@ module.exports = React.createClass
     tds.push td
       key: 'color'
       className: 'c-color', @props.colorValue
-    tds.push td(className: 'c-price', item.price) # Price
-    tds.push td(className: 'c-content', item.contents) # Content
+
+    tds.push td
+      key: 'price'
+      className: 'c-price', item.price
+
+    tds.push td
+      key: 'content'
+      className: 'c-content', item.contents
     # Hide repeat for leather.
     unless @props.filter.category == 'leather'
-      tds.push td(className: 'c-repeat', item.repeat)
-    tds.push td(className: 'c-size', item.approx_width) # Size
+      tds.push td
+        key: 'repeat'
+        className: 'c-repeat', item.repeat
+
+    tds.push td
+      key: 'size'
+      className: 'c-size', item.approx_width
 
     tr className: 'pattern', tds
