@@ -54,7 +54,7 @@
   });
 
   gulp.task('styles', function() {
-    gulp.src("styles/*.less").pipe(less({
+    gulp.src(["styles/app.less", 'styles/print.less']).pipe(less({
       paths: [path.join(__dirname, "less", "includes")]
     })).pipe(gulp.dest("./public"));
   });
