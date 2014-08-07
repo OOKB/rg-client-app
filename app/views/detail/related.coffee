@@ -10,11 +10,9 @@ module.exports = React.createClass
     collection: React.PropTypes.object.isRequired
 
   handleColorClick: (e) ->
-    color_id = e.target.value
-    console.log 'color click ' + color_id
-    if e.preventDefault
-      e.preventDefault()
-    @props.handleUserInput color_id: color_id
+    color_id = e.target.id
+    # console.log color_id
+    @props.setContainerState color_id: color_id
 
   handleUnitClick: (e) ->
     unit = e.target.value
@@ -56,18 +54,17 @@ module.exports = React.createClass
     limit = (@state.pg + 1) * @state.pgSize
     pageItems = @props.collection.models.slice(offset, limit)
     relatedColorItems = []
-    pageItems.forEach (item) ->
+    pageItems.forEach (item) =>
       relatedColorItems.push li
         key: item.id
         className: 'related-item',
-          a
-            href: item.detail
-            onClick: @handleColorClick
+          img
+            className: 'clickable'
             type: 'button'
-            value: item.color_id,
-              img
-                src: item._file.small.path
-                alt: item.color
+            onClick: @handleColorClick
+            id: item.color_id
+            src: item._file.small.path
+            alt: item.color
 
     relatedColorsList = ul
       className: 'list-inline list',
