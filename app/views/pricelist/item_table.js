@@ -11,7 +11,14 @@
 
   module.exports = React.createClass({
     prefetchImg: function(e) {
-      return console.log(e.target.id);
+      var id, img, item;
+      id = e.target.id;
+      item = this.props.collection.get(id);
+      if (item._file && item._file.large && item._file.large.path) {
+        img = new Image();
+        img.src = item._file.large.path;
+        return console.log('Preload ' + img.src);
+      }
     },
     render: function() {
       var lastName, lastPattern, rows, ths;
@@ -20,13 +27,14 @@
       lastName = null;
       this.props.collection.forEach((function(_this) {
         return function(item) {
-          var colorValue, row_props;
+          var a_ops, colorValue, row_props;
           if (item._file) {
-            colorValue = a({
-              onMouseOver: _this.prefetchImg,
+            a_ops = {
+              onMouseDown: _this.prefetchImg,
               id: item.id,
               href: item.detail
-            }, item.color);
+            };
+            colorValue = a(a_ops, item.color);
           } else {
             colorValue = item.color;
           }

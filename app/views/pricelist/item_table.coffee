@@ -6,9 +6,15 @@ ItemColorRow = require './item_row_sub'
 
 module.exports = React.createClass
   prefetchImg: (e) ->
-    console.log e.target.id
-    # img = new Image()
-    # img.src =
+    id = e.target.id
+    item = @props.collection.get(id)
+    if item._file and item._file.large and item._file.large.path
+      img = new Image()
+      img.src = item._file.large.path
+      console.log 'Preload ' + img.src
+    # else
+    #   console.log 'no file attr'
+    #   console.log item._file
 
   render: ->
     # The processing of rows should probably move up to the container.
@@ -18,11 +24,11 @@ module.exports = React.createClass
     # Decide what row view to use.
     @props.collection.forEach (item) =>
       if item._file
-        colorValue = a
-          onMouseOver: @prefetchImg
+        a_ops =
+          onMouseDown: @prefetchImg
           id: item.id
-          href: item.detail,
-            item.color
+          href: item.detail
+        colorValue = a a_ops, item.color
       else
         colorValue = item.color
 
