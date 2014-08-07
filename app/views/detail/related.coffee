@@ -11,7 +11,11 @@ module.exports = React.createClass
 
   handleColorClick: (e) ->
     color_id = e.target.id
-    # console.log color_id
+    href = e.target.parentElement.hash.substr(1)
+    if e.preventDefault
+      e.preventDefault()
+    #console.log href
+    app.router.navigate(href, {replace: true})
     @props.setContainerState color_id: color_id
 
   handleUnitClick: (e) ->
@@ -58,13 +62,13 @@ module.exports = React.createClass
       relatedColorItems.push li
         key: item.id
         className: 'related-item',
-          img
-            className: 'clickable'
-            type: 'button'
+          a
             onClick: @handleColorClick
-            id: item.color_id
-            src: item._file.small.path
-            alt: item.color
+            href: item.detail,
+              img
+                id: item.color_id
+                src: item._file.small.path
+                alt: item.color
 
     relatedColorsList = ul
       className: 'list-inline list',
