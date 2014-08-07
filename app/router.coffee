@@ -7,14 +7,20 @@ module.exports = Router.extend
   routes:
     '': 'pricelist'
     'pricelist': 'pricelist'
-    'detail/:id': 'itemView'
+    'detail/:pattern/:id': 'itemView'
 
   pricelist: ->
     props = # Pass it some items data.
       collection: app.items
     @trigger 'newPage', FilterableProductTable props
 
-  itemView: (id) ->
+  itemView: (patternNumber, color_id) ->
+    config =
+      where:
+        patternNumber: patternNumber
+    app.items.configure config, true
     props =
-      model: app.items.get id
+      initColor: color_id
+      collection: app.items
+      patternNumber: patternNumber
     @trigger 'newPage', ItemDetail props

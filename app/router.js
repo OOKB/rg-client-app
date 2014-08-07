@@ -11,7 +11,7 @@
     routes: {
       '': 'pricelist',
       'pricelist': 'pricelist',
-      'detail/:id': 'itemView'
+      'detail/:pattern/:id': 'itemView'
     },
     pricelist: function() {
       var props;
@@ -20,10 +20,18 @@
       };
       return this.trigger('newPage', FilterableProductTable(props));
     },
-    itemView: function(id) {
-      var props;
+    itemView: function(patternNumber, color_id) {
+      var config, props;
+      config = {
+        where: {
+          patternNumber: patternNumber
+        }
+      };
+      app.items.configure(config, true);
       props = {
-        model: app.items.get(id)
+        initColor: color_id,
+        collection: app.items,
+        patternNumber: patternNumber
       };
       return this.trigger('newPage', ItemDetail(props));
     }
