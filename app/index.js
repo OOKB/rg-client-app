@@ -15,7 +15,9 @@
     blastoff: function() {
       var el, items, self;
       self = window.app = this;
-      items = new ItemsCollection(items_data);
+      items = new ItemsCollection(items_data, {
+        parse: true
+      });
       this.items = new SubCollection(items);
       this.router = new Router();
       el = document.getElementById('content');

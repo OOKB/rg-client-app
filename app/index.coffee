@@ -10,7 +10,7 @@ module.exports =
   blastoff: ->
     self = window.app = @
     # Create our items model collection.
-    items = new ItemsCollection(items_data)
+    items = new ItemsCollection items_data, parse: true
     #@items.add items_data
     @items = new SubCollection items
 

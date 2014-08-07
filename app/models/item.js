@@ -20,6 +20,7 @@
       design_descriptions: "array",
       far: ['boolean', true, false],
       _file: "object",
+      id: ['string', true],
       label: 'string',
       name: 'string',
       use: "array",
