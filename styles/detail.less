@@ -18,7 +18,7 @@
 }
 
 // item-details header
-.itemoverlay-header {
+.item-detail-header {
   margin: 0;
   padding: 0;
   position: fixed;
@@ -32,19 +32,19 @@
 }
 
 @media (min-width: @screen-md-min) {
-  .itemoverlay-header li {
+  .item-detail-header li {
     display: inline-block;
   }
 }
 
-.itemoverlay-header li.fav,
-.itemoverlay-header li.close {
+.item-detail-header li.fav,
+.item-detail-header li.close {
   padding: 2px 0 6px 0;
   width: 29px;
 }
 
-.itemoverlay-header .fav button,
-.itemoverlay-header .close button {
+.item-detail-header .fav button,
+.item-detail-header .close button {
   border: none;
   display: block;
   height: 29px;
@@ -52,22 +52,26 @@
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
+  position: absolute;
+  top:14px;
 }
 
-.itemoverlay-header .fav button {
+.item-detail-header .fav button {
   background: transparent url(@add-fav) center center no-repeat;
+  left: 20px;
 }
 
-.itemoverlay-header .close button {
+.item-detail-header .close button {
   background: transparent url(@close-btn-lg) center center no-repeat;
+  right: 20px;
 }
 
-.itemoverlay-header h3,
-.itemoverlay-header p {
+.item-detail-header h3,
+.item-detail-header p {
   margin: 0;
   line-height: 16px;
 }
-.itemoverlay-header h3 {
+.item-detail-header h3 {
   font-size: 12px;
   font-weight: bold;
   .uppercase;

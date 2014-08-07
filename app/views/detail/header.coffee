@@ -11,9 +11,8 @@ module.exports = React.createClass
     nav className: 'item-detail-header',
       div className: 'controls',
         ul
-          li
-            className: 'fav',
-              button className: 'fav', '+'
+          li className: 'fav',
+            button className: 'fav', '+'
           li className: 'close',
             button
               className: 'close'
@@ -21,10 +20,11 @@ module.exports = React.createClass
               onClick: @handleXclick
               'area-hidden': 'true',
                 'X'
-        h3 'Details'
+        h3 className: 'hidden-md hidden-lg', 'Details'
         button
-          className: 'toggle'
-          type: 'button'
+          className: 'toggle hidden-md hidden-lg'
+          type: 'button',
+            'mobile'
       div className: 'item-detail-content',
         ul
           li className: 'name',
