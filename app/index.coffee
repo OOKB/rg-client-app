@@ -19,6 +19,7 @@ module.exports =
 
     el = document.getElementById('content')
     @router.on 'newPage', (container) ->
+      #console.log 'newPage'
       @container = container
       React.renderComponent @container, el
     @router.history.start()

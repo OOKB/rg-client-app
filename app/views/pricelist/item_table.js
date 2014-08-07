@@ -10,6 +10,9 @@
   ItemColorRow = require('./item_row_sub');
 
   module.exports = React.createClass({
+    prefetchImg: function(e) {
+      return console.log(e.target.id);
+    },
     render: function() {
       var lastName, lastPattern, rows, ths;
       rows = [];
@@ -20,6 +23,8 @@
           var colorValue, row_props;
           if (item._file) {
             colorValue = a({
+              onMouseOver: _this.prefetchImg,
+              id: item.id,
               href: '#detail/' + item.patternNumber + '/' + item.color_id
             }, item.color);
           } else {

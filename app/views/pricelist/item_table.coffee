@@ -5,6 +5,11 @@ ItemPatternRow = require './item_row_main'
 ItemColorRow = require './item_row_sub'
 
 module.exports = React.createClass
+  prefetchImg: (e) ->
+    console.log e.target.id
+    # img = new Image()
+    # img.src =
+
   render: ->
     # The processing of rows should probably move up to the container.
     rows = []
@@ -13,8 +18,11 @@ module.exports = React.createClass
     # Decide what row view to use.
     @props.collection.forEach (item) =>
       if item._file
-        colorValue = a href: '#detail/'+item.patternNumber+'/'+item.color_id,
-          item.color
+        colorValue = a
+          onMouseOver: @prefetchImg
+          id: item.id
+          href: '#detail/'+item.patternNumber+'/'+item.color_id,
+            item.color
       else
         colorValue = item.color
 

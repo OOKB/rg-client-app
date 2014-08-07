@@ -9,9 +9,14 @@ module.exports = React.createClass
     # Hide name for trims.
     unless @props.filter.category == 'passementerie'
       if @props.showName
-        tds.push td(className: 'c-name', item.name)
+        tds.push td
+          key: 'name'
+          className: 'c-name',
+            item.name
       else
-        tds.push td(className: 'c-name', '')
+        tds.push td
+          key: 'name'
+          className: 'c-name'
     # Show for all.
     tds.push td
       key: 'number'
@@ -19,11 +24,19 @@ module.exports = React.createClass
     tds.push td
       key: 'color'
       className: 'c-color', @props.colorValue
-    tds.push td(className: 'c-price', '') # Price
-    tds.push td(className: 'c-content', '') # Content
+    tds.push td
+      key: 'price'
+      className: 'c-price'
+    tds.push td
+      key: 'content'
+      className: 'c-content'
     # Hide repeat for leather.
     unless @props.filter.category == 'leather'
-      tds.push td(className: 'c-repeat', '')
-    tds.push td(className: 'c-size', '') # Size
+      tds.push td
+        key: 'repeat'
+        className: 'c-repeat'
+    tds.push td
+      key: 'size'
+      className: 'c-size'
 
     tr className: 'color', tds
