@@ -28,15 +28,15 @@
       });
     },
     loadMetricRuler: function() {
-      var item;
+      var item, ruler_img;
       if (!this.state.loadedMetric) {
         item = this.props.model;
-        img = new Image();
-        img.src = item.rulerPath.cm[this.props.imgSize];
-        this.setState({
+        ruler_img = new Image();
+        ruler_img.src = item.rulerPath.cm[this.props.imgSize];
+        console.log('prefetch metric ruler ' + ruler_img.src);
+        return this.setState({
           loadedMetric: true
         });
-        return console.log('prefetch metric ruler');
       }
     },
     render: function() {
@@ -70,7 +70,7 @@
         type: 'button',
         value: 'cm',
         onClick: this.handleUnitClick,
-        onHover: this.loadMetricRuler,
+        onMouseOver: this.loadMetricRuler,
         className: 'uppercase'
       }, 'Centimeters'))));
       els.push(div({

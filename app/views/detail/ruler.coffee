@@ -20,10 +20,10 @@ module.exports = React.createClass
   loadMetricRuler: ->
     unless @state.loadedMetric
       item = @props.model
-      img = new Image()
-      img.src = item.rulerPath.cm[@props.imgSize]
+      ruler_img = new Image()
+      ruler_img.src = item.rulerPath.cm[@props.imgSize]
+      console.log 'prefetch metric ruler ' + ruler_img.src
       @setState loadedMetric: true
-      console.log 'prefetch metric ruler'
 
   render: ->
     item = @props.model
@@ -58,7 +58,7 @@ module.exports = React.createClass
               type: 'button'
               value: 'cm'
               onClick: @handleUnitClick
-              onHover: @loadMetricRuler
+              onMouseOver: @loadMetricRuler
               className: 'uppercase',
               'Centimeters'
     # Ruler image.
