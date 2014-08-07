@@ -56,3 +56,13 @@ module.exports = AmpersandModel.extend
       deps: ['patternNumber', 'color_id']
       fn: ->
         '#detail/'+@patternNumber+'/'+@color_id
+
+    rulerPath:
+      deps: ['ruler']
+      fn: ->
+        inch:
+          large: cdn+'media/ruler/inch/'+@ruler+'-1536.png'
+          xlarge: cdn+'media/ruler/inch/'+@ruler+'-2560.png'
+        cm:
+          large: cdn+'media/ruler/cm/'+@ruler+'-1536.png'
+          xlarge: cdn+'media/ruler/cm/'+@ruler+'-2560.png'

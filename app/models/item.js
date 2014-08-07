@@ -67,6 +67,21 @@
         fn: function() {
           return '#detail/' + this.patternNumber + '/' + this.color_id;
         }
+      },
+      rulerPath: {
+        deps: ['ruler'],
+        fn: function() {
+          return {
+            inch: {
+              large: cdn + 'media/ruler/inch/' + this.ruler + '-1536.png',
+              xlarge: cdn + 'media/ruler/inch/' + this.ruler + '-2560.png'
+            },
+            cm: {
+              large: cdn + 'media/ruler/cm/' + this.ruler + '-1536.png',
+              xlarge: cdn + 'media/ruler/cm/' + this.ruler + '-2560.png'
+            }
+          };
+        }
       }
     }
   });
