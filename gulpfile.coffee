@@ -7,6 +7,7 @@ browserSync = require 'browser-sync'
 
 browserify = require 'browserify'
 watchify = require 'watchify'
+coffeeify = require 'coffeeify'
 
 source = require('vinyl-source-stream')
 
@@ -45,7 +46,10 @@ gulp.task 'styles', ->
   return
 
 gulp.task 'compile', ->
-  w = watchify(browserify('./app/index.js', watchify.args))
+  opts = watchify.args
+  opts.extensions = ['.coffee', '.json']
+  w = watchify(browserify('./app/index.coffee', opts))
+  w.transform coffeeify
   bundle = () ->
     w.bundle()
       .pipe(source('app.js'))

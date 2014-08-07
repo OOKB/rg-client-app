@@ -1,5 +1,5 @@
 (function() {
-  var browserSync, browserify, clean, gulp, jade, less, path, r, rename, runSequence, source, watchify, zopfli;
+  var browserSync, browserify, clean, coffeeify, gulp, jade, less, path, r, rename, runSequence, source, watchify, zopfli;
 
   path = require('path');
 
@@ -12,6 +12,8 @@
   browserify = require('browserify');
 
   watchify = require('watchify');
+
+  coffeeify = require('coffeeify');
 
   source = require('vinyl-source-stream');
 
@@ -60,8 +62,11 @@
   });
 
   gulp.task('compile', function() {
-    var bundle, w;
-    w = watchify(browserify('./app/index.js', watchify.args));
+    var bundle, opts, w;
+    opts = watchify.args;
+    opts.extensions = ['.coffee', '.json'];
+    w = watchify(browserify('./app/index.coffee', opts));
+    w.transform(coffeeify);
     bundle = function() {
       return w.bundle().pipe(source('app.js')).pipe(gulp.dest('./public/'));
     };
