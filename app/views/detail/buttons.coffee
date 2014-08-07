@@ -81,6 +81,7 @@ module.exports = React.createClass
     # Ruler
     if @state.showRuler and not @state.farView
       divs.push Rulers
+        key: 'rulers'
         model: item
         cdn: cdn
         imgSize: imgSize

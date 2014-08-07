@@ -90,6 +90,7 @@
       }, imgDiv));
       if (this.state.showRuler && !this.state.farView) {
         divs.push(Rulers({
+          key: 'rulers',
           model: item,
           cdn: cdn,
           imgSize: imgSize
