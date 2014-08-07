@@ -10,7 +10,7 @@
       var item;
       item = this.props.model;
       return table({
-        className: 'itemoverlay-header ' + item.category
+        className: 'itemoverlay-header'
       }, tbody({}, tr({}, td({
         className: 'fav',
         width: '29'

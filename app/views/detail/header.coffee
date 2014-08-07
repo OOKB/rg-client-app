@@ -5,7 +5,7 @@ module.exports = React.createClass
 
   render: ->
     item = @props.model
-    table className: 'itemoverlay-header '+item.category,
+    table className: 'itemoverlay-header',
       tbody {},
         tr {},
           td

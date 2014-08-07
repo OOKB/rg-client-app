@@ -10,20 +10,32 @@
   Switcher = require('./buttons');
 
   module.exports = React.createClass({
+    getInitialState: function() {
+      return {
+        color_id: this.props.initColor,
+        patternNumber: this.props.patternNumber,
+        pageIndex: 0
+      };
+    },
+    handleUserInput: function(newSt) {
+      return this.setState(newSt);
+    },
     render: function() {
-      var color_toggle_class, item;
-      item = this.props.model;
+      var color_toggle_class, item, props;
+      item = this.props.collection.get(this.state.patternNumber + '-' + this.state.color_id);
       color_toggle_class = 'toggle-colors hidden-xs';
       if (item.far) {
         color_toggle_class += ' with-far';
       }
+      props = {
+        model: item,
+        collection: this.props.collection,
+        pageIndex: this.state.pageIndex,
+        onUserInput: this.handleUserInput
+      };
       return div({
-        className: 'item-detail'
-      }, HeaderBar({
-        model: item
-      }), Switcher({
-        model: item
-      }));
+        className: 'item-detail ' + item.category
+      }, HeaderBar(props), Switcher(props));
     }
   });
 
