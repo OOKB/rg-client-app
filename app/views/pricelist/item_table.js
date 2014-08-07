@@ -1,9 +1,9 @@
 (function() {
-  var ItemColorRow, ItemPatternRow, React, table, tbody, th, thead, tr, _ref;
+  var ItemColorRow, ItemPatternRow, React, a, table, tbody, th, thead, tr, _ref;
 
   React = require('react');
 
-  _ref = require('reactionary'), table = _ref.table, thead = _ref.thead, tbody = _ref.tbody, tr = _ref.tr, th = _ref.th;
+  _ref = require('reactionary'), table = _ref.table, thead = _ref.thead, tbody = _ref.tbody, tr = _ref.tr, th = _ref.th, a = _ref.a;
 
   ItemPatternRow = require('./item_row_main');
 
@@ -17,19 +17,28 @@
       lastName = null;
       this.props.collection.forEach((function(_this) {
         return function(item) {
-          var row_props;
+          var colorValue, row_props;
+          if (item._file) {
+            colorValue = a({
+              href: '#detail/' + item.patternNumber + '/' + item.color_id
+            }, item.color);
+          } else {
+            colorValue = item.color;
+          }
           if (item.patternNumber !== lastPattern) {
             rows.push(ItemPatternRow({
               item: item,
               key: item.id,
-              filter: _this.props.filter
+              filter: _this.props.filter,
+              colorValue: colorValue
             }));
           } else {
             row_props = {
               item: item,
               key: item.id,
               showName: lastName !== item.name,
-              filter: _this.props.filter
+              filter: _this.props.filter,
+              colorValue: colorValue
             };
             rows.push(ItemColorRow(row_props));
           }

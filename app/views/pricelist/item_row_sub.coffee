@@ -13,8 +13,12 @@ module.exports = React.createClass
       else
         tds.push td(className: 'c-name', '')
     # Show for all.
-    tds.push td(className: 'c-number', item.color_id)
-    tds.push td(className: 'c-color', item.color)
+    tds.push td
+      key: 'number'
+      className: 'c-number', item.color_id
+    tds.push td
+      key: 'color'
+      className: 'c-color', @props.colorValue
     tds.push td(className: 'c-price', '') # Price
     tds.push td(className: 'c-content', '') # Content
     # Hide repeat for leather.

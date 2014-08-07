@@ -1,5 +1,5 @@
 React = require 'react'
-{table, thead, tbody, tr, th} = require 'reactionary'
+{table, thead, tbody, tr, th, a} = require 'reactionary'
 
 ItemPatternRow = require './item_row_main'
 ItemColorRow = require './item_row_sub'
@@ -12,14 +12,25 @@ module.exports = React.createClass
     lastName = null
     # Decide what row view to use.
     @props.collection.forEach (item) =>
+      if item._file
+        colorValue = a href: '#detail/'+item.patternNumber+'/'+item.color_id,
+          item.color
+      else
+        colorValue = item.color
+
       if item.patternNumber != lastPattern
-        rows.push ItemPatternRow(item: item, key: item.id, filter: @props.filter)
+        rows.push ItemPatternRow
+          item: item
+          key: item.id
+          filter: @props.filter
+          colorValue: colorValue
       else
         row_props =
           item: item
           key: item.id
           showName: lastName != item.name
           filter: @props.filter
+          colorValue: colorValue
         rows.push ItemColorRow(row_props)
       lastPattern = item.patternNumber
       lastName = item.name

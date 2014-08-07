@@ -1,11 +1,16 @@
 (function() {
-  var React, th, tr, _ref;
+  var React, a, th, tr, _ref;
 
   React = require('react');
 
-  _ref = require('reactionary'), tr = _ref.tr, th = _ref.th;
+  _ref = require('reactionary'), tr = _ref.tr, th = _ref.th, a = _ref.a;
 
   module.exports = React.createClass({
+    propTypes: {
+      item: React.PropTypes.object.isRequired,
+      filter: React.PropTypes.object.isRequired,
+      colorValue: React.PropTypes.any.isRequired
+    },
     render: function() {
       var item, td, tds;
       td = th;
@@ -13,15 +18,18 @@
       item = this.props.item;
       if (this.props.filter.category !== 'passementerie') {
         tds.push(td({
+          key: 'name',
           className: 'c-name'
         }, item.name));
       }
       tds.push(td({
+        key: 'number',
         className: 'c-number'
       }, item.id));
       tds.push(td({
+        key: 'color',
         className: 'c-color'
-      }, item.color));
+      }, this.props.colorValue));
       tds.push(td({
         className: 'c-price'
       }, item.price));
