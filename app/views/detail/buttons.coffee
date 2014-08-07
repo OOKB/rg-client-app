@@ -1,14 +1,13 @@
 React = require 'react'
 {div, button, span, p, img, ul, li} = require 'reactionary'
 
+Colors = require './related'
 Rulers = require './ruler'
 
 module.exports = React.createClass
   getInitialState: ->
     colorBoxView: false
-    colorBoxPg: 0
     farView: false
-    pageSize: 5
     windowWidth: window.innerWidth
     showRuler: true
 
@@ -20,6 +19,9 @@ module.exports = React.createClass
 
   componentWillUnmount: ->
     window.removeEventListener 'resize', @handleResize
+
+  toggleColorBoxView: ->
+    @setState colorBoxView: !@state.colorBoxView
 
   render: ->
     item = @props.model
@@ -52,7 +54,10 @@ module.exports = React.createClass
     divs.push div
       key: 'color-button'
       className: color_toggle_class,
-        button className: 'uppercase', 'Colors'
+        button
+          onClick: @toggleColorBoxView
+          className: 'uppercase',
+            'Colors'
 
     if item.far
       divs.push div
@@ -63,11 +68,9 @@ module.exports = React.createClass
               'View Pattern'
 
     if @state.colorBoxView
-      pages = Math.ceil(@props.collection.length / 5)
-      divs.push div
+      divs.push Colors
         key: 'related-colors'
-        id: 'related-colors'
-        className: 'hidden-xs'
+        collection: @props.collection
 
     # big-ol-image
     divs.push div
