@@ -23,6 +23,9 @@ module.exports = React.createClass
   toggleColorBoxView: ->
     @setState colorBoxView: !@state.colorBoxView
 
+  handleUserInput: (newSt) ->
+    @setState newSt
+
   render: ->
     item = @props.model
     # Data for the main image.
@@ -67,10 +70,13 @@ module.exports = React.createClass
             span className: 'pattern',
               'View Pattern'
 
+    # Related colors.
     if @state.colorBoxView
       divs.push Colors
         key: 'related-colors'
         collection: @props.collection
+        handleUserInput: @props.handleUserInput
+        setParentState: @handleUserInput
 
     # big-ol-image
     divs.push div
