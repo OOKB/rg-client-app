@@ -18,10 +18,10 @@
     handleColorClick: function(e) {
       var color_id;
       color_id = e.target.value;
+      console.log('color click ' + color_id);
       if (e.preventDefault) {
         e.preventDefault();
       }
-      console.log(color_id);
       return this.props.handleUserInput({
         color_id: color_id
       });
@@ -81,21 +81,23 @@
         return relatedColorItems.push(li({
           key: item.id,
           className: 'related-item'
-        }, img({
+        }, a({
+          href: item.detail,
           onClick: this.handleColorClick,
           type: 'button',
-          value: item.color_id,
+          value: item.color_id
+        }, img({
           src: item._file.small.path,
           alt: item.color
-        })));
+        }))));
       });
       relatedColorsList = ul({
         className: 'list-inline list'
-      });
+      }, relatedColorItems);
       return div({
         id: 'related-colors',
         className: 'hidden-xs'
-      }, header, relatedColorItems);
+      }, header, relatedColorsList);
     }
   });
 

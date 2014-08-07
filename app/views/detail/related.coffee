@@ -11,9 +11,9 @@ module.exports = React.createClass
 
   handleColorClick: (e) ->
     color_id = e.target.value
+    console.log 'color click ' + color_id
     if e.preventDefault
       e.preventDefault()
-    console.log color_id
     @props.handleUserInput color_id: color_id
 
   handleUnitClick: (e) ->
@@ -60,17 +60,20 @@ module.exports = React.createClass
       relatedColorItems.push li
         key: item.id
         className: 'related-item',
-          img
+          a
+            href: item.detail
             onClick: @handleColorClick
             type: 'button'
-            value: item.color_id
-            src: item._file.small.path
-            alt: item.color
+            value: item.color_id,
+              img
+                src: item._file.small.path
+                alt: item.color
 
     relatedColorsList = ul
-      className: 'list-inline list'
+      className: 'list-inline list',
+        relatedColorItems
 
     return div
       id: 'related-colors'
       className: 'hidden-xs',
-        header, relatedColorItems
+        header, relatedColorsList
