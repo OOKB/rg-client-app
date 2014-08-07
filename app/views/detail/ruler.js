@@ -9,24 +9,46 @@
     getInitialState: function() {
       return {
         showRuler: true,
-        metric: false
+        unit: 'inch',
+        loadedMetric: false
       };
     },
     propTypes: {
       model: React.PropTypes.object.isRequired,
       imgSize: React.PropTypes.string.isRequired
     },
+    handleUnitClick: function(e) {
+      var unit;
+      unit = e.target.value;
+      if (e.preventDefault) {
+        e.preventDefault();
+      }
+      return this.setState({
+        unit: unit
+      });
+    },
+    loadMetricRuler: function() {
+      var item;
+      if (!this.state.loadedMetric) {
+        item = this.props.model;
+        img = new Image();
+        img.src = item.rulerPath.cm[this.props.imgSize];
+        this.setState({
+          loadedMetric: true
+        });
+        return console.log('prefetch metric ruler');
+      }
+    },
     render: function() {
       var cmClass, els, imgClass, imgPath, inchesClass, item, unit;
       item = this.props.model;
+      unit = this.state.unit;
       inchesClass = 'ruler-inches';
       cmClass = 'ruler-cm';
-      if (this.state.metric) {
-        unit = 'cm';
+      if (unit === 'cm') {
         imgClass = cmClass;
         cmClass += ' active';
       } else {
-        unit = 'inch';
         imgClass = inchesClass;
         inchesClass += ' active';
       }
@@ -38,10 +60,17 @@
       }, li({
         className: inchesClass
       }, button({
+        type: 'button',
+        value: 'inch',
+        onClick: this.handleUnitClick,
         className: 'uppercase'
       }, 'Inches')), li({
         className: cmClass
       }, button({
+        type: 'button',
+        value: 'cm',
+        onClick: this.handleUnitClick,
+        onHover: this.loadMetricRuler,
         className: 'uppercase'
       }, 'Centimeters'))));
       els.push(div({

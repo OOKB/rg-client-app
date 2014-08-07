@@ -4,22 +4,36 @@ React = require 'react'
 module.exports = React.createClass
   getInitialState: ->
     showRuler: true
-    metric: false
+    unit: 'inch'
+    loadedMetric: false
 
   propTypes:
     model: React.PropTypes.object.isRequired
     imgSize: React.PropTypes.string.isRequired
 
+  handleUnitClick: (e) ->
+    unit = e.target.value
+    if e.preventDefault
+      e.preventDefault()
+    @setState unit: unit
+
+  loadMetricRuler: ->
+    unless @state.loadedMetric
+      item = @props.model
+      img = new Image()
+      img.src = item.rulerPath.cm[@props.imgSize]
+      @setState loadedMetric: true
+      console.log 'prefetch metric ruler'
+
   render: ->
     item = @props.model
+    unit = @state.unit
     inchesClass = 'ruler-inches'
     cmClass = 'ruler-cm'
-    if @state.metric
-      unit = 'cm'
+    if unit == 'cm'
       imgClass = cmClass
       cmClass += ' active'
     else
-      unit = 'inch'
       imgClass = inchesClass
       inchesClass += ' active'
 
@@ -32,11 +46,20 @@ module.exports = React.createClass
       className: 'ruler-toggle',
         li
           className: inchesClass,
-            button className: 'uppercase',
-              'Inches'
+            button
+              type: 'button'
+              value: 'inch'
+              onClick: @handleUnitClick
+              className: 'uppercase',
+                'Inches'
         li
           className: cmClass,
-            button className: 'uppercase',
+            button
+              type: 'button'
+              value: 'cm'
+              onClick: @handleUnitClick
+              onHover: @loadMetricRuler
+              className: 'uppercase',
               'Centimeters'
     # Ruler image.
     els.push div
