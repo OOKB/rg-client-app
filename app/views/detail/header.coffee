@@ -24,7 +24,7 @@ module.exports = React.createClass
         button
           className: 'toggle hidden-md hidden-lg'
           type: 'button',
-            'mobile'
+            'Reveal Menu'
       div className: 'item-detail-content',
         ul {},
           li className: 'name',
