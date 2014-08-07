@@ -21,7 +21,7 @@ module.exports = React.createClass
         colorValue = a
           onMouseOver: @prefetchImg
           id: item.id
-          href: '#detail/'+item.patternNumber+'/'+item.color_id,
+          href: item.detail,
             item.color
       else
         colorValue = item.color
