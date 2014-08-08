@@ -34,7 +34,7 @@ module.exports = React.createClass
     tds.push td
       key: 'price'
       className: 'c-price',
-        item.price
+        item.priceDisplay
 
     tds.push td
       key: 'content'

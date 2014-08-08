@@ -57,6 +57,11 @@ module.exports = AmpersandModel.extend
       fn: ->
         '#detail/'+@patternNumber+'/'+@color_id
 
+    priceDisplay:
+      deps: ['price']
+      fn: ->
+        '$'+@price
+
     rulerPath:
       deps: ['ruler']
       fn: ->
