@@ -18,6 +18,9 @@ module.exports = Router.extend
     config =
       where:
         patternNumber: patternNumber
+      filter: (model) ->
+        model._file
+
     app.items.configure config, true
     props =
       initColor: color_id
