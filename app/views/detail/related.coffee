@@ -38,7 +38,8 @@ module.exports = React.createClass
       @setState loadedMetric: true
 
   render: ->
-    pages = Math.ceil(@props.collection.length / 5)
+    itemCount = @props.collection.length
+    pages = Math.ceil(itemCount / 5)
     if pages > 1
       pager = true
       pager_txt = (@state.pg+1) + ' / ' + pages
@@ -78,8 +79,7 @@ module.exports = React.createClass
 
     # Colors row.
     if pager
-      relatedColorsRow = div
-        className: 'colors-pager',
+      relatedColorsRow = div {},
           button
             className: 'left plain controls rel-previous',
               i className: 'fa fa-angle-left fa-2x'
@@ -88,11 +88,15 @@ module.exports = React.createClass
             className: 'right plain controls rel-next',
               i className: 'fa fa-angle-right fa-2x'
     else
-      relatedColorsRow = div
-        className: 'colors-no-pager',
-          relatedColorsList
+      relatedColorsRow = relatedColorsList
 
+    if itemCount < 5
+      colorsClass = 'hidden-xs size-'+itemCount
+    else
+      colorsClass = 'hidden-xs size-5'
+    if pager
+      colorsClass += ' pager'
     return div
       id: 'related-colors'
-      className: 'hidden-xs',
+      className: colorsClass,
         header, relatedColorsRow
