@@ -105,8 +105,9 @@ module.exports = React.createClass
     config.where =
       category: new_state.category or @state.category
     if new_state.searchTxt
-      config.filter = (model) ->
-        model.searchStr.indexOf(new_state.searchTxt) > -1
+      config.filters = new_state.searchTxt.split(' ').map (searchTxt) ->
+        (model) ->
+          model.searchStr.indexOf(searchTxt) > -1
 
     pageSize = new_state.pageSize or @state.pageSize
     if typeof new_state.pageIndex == 'number'
