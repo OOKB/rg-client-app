@@ -114,6 +114,8 @@ gulp.task 'copy_css', ['styles'], ->
   gulp.src('./public/app.css')
     .pipe(rename(global.sha+'.css'))
     .pipe(gulp.dest('./prod'))
+  gulp.src('./public/print.css')
+    .pipe(gulp.dest('./prod'))
 
 gulp.task 'compress', ->
   gulp.src("./prod/**")
