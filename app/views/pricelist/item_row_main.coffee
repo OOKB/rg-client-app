@@ -17,20 +17,24 @@ module.exports = React.createClass
     unless @props.filter.category == 'passementerie'
       tds.push td
         key: 'name'
-        className: 'c-name', item.name
+        className: 'c-name',
+          item.name
 
     # Show for all.
     tds.push td
       key: 'number'
-      className: 'c-number', @props.idValue
+      className: 'c-number',
+        @props.idValue
 
     tds.push td
       key: 'color'
-      className: 'c-color', @props.colorValue
+      className: 'c-color',
+        @props.colorValue
 
     tds.push td
       key: 'price'
-      className: 'c-price', item.price
+      className: 'c-price',
+        item.price
 
     tds.push td
       key: 'content'
@@ -41,10 +45,13 @@ module.exports = React.createClass
     unless @props.filter.category == 'leather'
       tds.push td
         key: 'repeat'
-        className: 'c-repeat', item.repeat
+        className: 'c-repeat',
+          item.repeat
 
     tds.push td
       key: 'size'
-      className: 'c-size', item.approx_width
+      className: 'c-size',
+        item.approx_width
 
-    tr className: 'pattern', tds
+    tr className: 'pattern',
+      tds
