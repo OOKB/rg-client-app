@@ -56,7 +56,7 @@ module.exports = React.createClass
       color_toggle_class += ' with-far'
 
     # Colors button.
-    colorButtonClass = 'uppercase'
+    colorButtonClass = ''
     if @state.colorBoxView
       colorButtonClass += ' active'
     divs.push div
