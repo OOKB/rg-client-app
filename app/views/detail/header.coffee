@@ -13,7 +13,7 @@ module.exports = React.createClass
 
     # Name and number.
     h_lis.push li
-      key: 'color'
+      key: 'name'
       className: 'name',
         h3 {}, item.label or item.category
         p {},
