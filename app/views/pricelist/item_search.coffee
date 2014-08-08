@@ -30,16 +30,65 @@ module.exports = React.createClass
 
     # Pager stuff.
     total_pages = @props.total_pages
-    pager_previous_class = 'previous'
-    if v.pageIndex == 0
-      pager_previous_class += ' disabled'
-    pager_next_class = 'next'
-
     current_page = v.pageIndex + 1
-    if current_page == total_pages
-      pager_next_class += ' disabled'
 
-    form {},
+    sizeSelect = li
+      className: 'pageselect',
+        select
+          ref: 'setPageSize'
+          value: v.pageSize
+          onChange: @handleChange
+          type: 'select',
+            option
+              value: '50',
+                '50'
+            option
+              value: '100',
+                '100'
+            option
+              value: '10000',
+                'All'
+
+    pgCount = li
+      className: 'pagecount',
+        current_page+ ' / ' + total_pages
+
+    if total_pages > 1
+      pager_previous_class = 'previous'
+      if v.pageIndex == 0
+        pager_previous_class += ' disabled'
+      pager_next_class = 'next'
+
+      if current_page == total_pages
+        pager_next_class += ' disabled'
+
+      pgLeft = li
+        className: pager_previous_class,
+          a
+            className: 'left'
+            role: 'button'
+            ref: 'pager-previous'
+            onClick: @pagePrevious,
+              '&#60;'
+
+      pgRight = li
+        className: 'next',
+          a
+            className: 'right'
+            role: 'button'
+            ref: 'pager-next'
+            onClick: @pageNext,
+              '&#62;'
+
+      pagerListItems = ul
+        className: 'pager',
+          pgLeft, sizeSelect, pgCount, pgRight
+    else
+      pagerListItems = ul
+        className: 'pager',
+          sizeSelect, pgCount
+
+    return form {},
       input
         type:'text',
         placeholder:'Search...',
@@ -69,36 +118,6 @@ module.exports = React.createClass
       #     ref: 'summerSale',
       #     onChange: @handleChange
       #   'Only show summer sale products.'
-      div className: 'pricelist-header',
-        ul className: 'pager',
-          li className: pager_previous_class,
-            a
-              className: 'left'
-              role: 'button'
-              ref: 'pager-previous'
-              onClick: @pagePrevious,
-                '&#60;'
-          li
-            className: 'pageselect',
-              select
-                ref: 'setPageSize'
-                value: v.pageSize
-                onChange: @handleChange
-                type: 'select',
-                  option
-                    value: '50'
-                    '50'
-                  option
-                    value: '100'
-                    '100'
-                  option
-                    value: '10000'
-                    'All'
-          li className: 'pagecount', current_page+ ' / ' + total_pages
-          li className: 'next',
-            a
-              className: 'right'
-              role: 'button'
-              ref: 'pager-next'
-              onClick: @pageNext,
-                '&#62;'
+      div
+        className: 'pricelist-header',
+          pagerListItems
