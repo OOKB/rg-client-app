@@ -30,7 +30,7 @@ module.exports = React.createClass
     item = @props.model
     # Data for the main image.
     ww = @state.windowWidth
-    if ww < 700
+    if ww < 640
       imgSize = 'small'
     else if ww < 1536
       imgSize = 'large'
