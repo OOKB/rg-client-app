@@ -89,13 +89,13 @@ module.exports = React.createClass
       relatedColorsRow = div {},
           button
             onClick: @handlePrevClick
-            className: 'left plain controls rel-previous',
-              i className: 'fa fa-angle-left fa-2x'
+            className: 'left rel-previous',
+              '<'
           relatedColorsList
           button
             onClick: @handleNextClick
-            className: 'right plain controls rel-next',
-              i className: 'fa fa-angle-right fa-2x'
+            className: 'right rel-next',
+              '>'
     else
       relatedColorsRow = relatedColorsList
 
