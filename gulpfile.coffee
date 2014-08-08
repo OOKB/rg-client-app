@@ -39,6 +39,10 @@ gulp.task "templates", ->
     .pipe gulp.dest("./public/")
   return
 
+gulp.task 'copy', ->
+  gulp.src('./images/**')
+    .pipe gulp.dest('./public/images/')
+
 gulp.task 'styles', ->
   gulp.src(["styles/app.less", 'styles/print.less'])
     .pipe less(paths: [path.join(__dirname, "less", "includes")])
@@ -58,10 +62,10 @@ gulp.task 'compile', ->
   bundle()
   return
 
-gulp.task "default", ['compile', 'styles', 'templates', 'browser-sync'], ->
+gulp.task "default", ['compile', 'styles', 'templates', 'browser-sync', 'copy'], ->
   gulp.watch "templates/*.jade", ["templates"]
   gulp.watch "styles/*.less", ["styles"]
-  gulp.watch 'js/**', ['copy']
+  gulp.watch 'images/**', ['copy']
   return
 
 # - - - - prod - - - -
@@ -116,6 +120,8 @@ gulp.task 'copy_css', ['styles'], ->
     .pipe(gulp.dest('./prod'))
   gulp.src('./public/print.css')
     .pipe(gulp.dest('./prod'))
+  gulp.src('./images/**')
+    .pipe gulp.dest('./prod/images/')
 
 gulp.task 'compress', ->
   gulp.src("./prod/**")
