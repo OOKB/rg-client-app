@@ -11,6 +11,46 @@ module.exports = React.createClass
 
     h_lis = []
 
+    # Name and number.
+    h_lis.push li
+      key: 'color'
+      className: 'name',
+        h3 {}, item.label or item.category
+        p {},
+          span {}, item.name
+          span {}, item.id
+
+    # Color.
+    h_lis.push li
+      key: 'color'
+      className: 'color',
+        h3 'Color'
+        p item.color
+
+    # Content.
+    if item.content
+      h_lis.push li
+        key: 'content'
+        className: 'content',
+          h3 'Content'
+          p item.contents
+
+    # Repeat.
+    if item.repeat
+      h_lis.push li
+        key: 'repeat'
+        className: 'repeat',
+          h3 'Repeat'
+          p item.repeat
+
+    # Approx width.
+    if item.approx_width
+      h_lis.push li
+        key: 'width'
+        className: 'width',
+          h3 'Approx Width'
+          p item.approx_width
+
     nav className: 'item-detail-header',
       div className: 'controls',
         ul {},
@@ -29,21 +69,4 @@ module.exports = React.createClass
           type: 'button',
             'Reveal Menu'
       div className: 'item-detail-content',
-        ul {},
-          li className: 'name',
-            h3 {}, item.label or item.category
-            p {},
-              span {}, item.name
-              span {}, item.id
-          li className: 'color',
-            h3 'Color'
-            p item.color
-          li className: 'content',
-            h3 'Content'
-            p item.contents
-          li className: 'repeat',
-            h3 'Repeat'
-            p item.repeat
-          li className: 'width',
-            h3 'Approx Width'
-            p item.approx_width
+        ul h_lis
