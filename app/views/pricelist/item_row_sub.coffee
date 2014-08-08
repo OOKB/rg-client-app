@@ -27,9 +27,12 @@ module.exports = React.createClass
     tds.push td
       key: 'price'
       className: 'c-price'
-    tds.push td
-      key: 'content'
-      className: 'c-content'
+
+    # Rowspan of hr item consumes this column.
+    # tds.push td
+    #   key: 'content'
+    #   className: 'c-content'
+
     # Hide repeat for leather.
     unless @props.filter.category == 'leather'
       tds.push td

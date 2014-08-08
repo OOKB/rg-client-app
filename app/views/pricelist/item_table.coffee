@@ -21,8 +21,9 @@ module.exports = React.createClass
     rows = []
     lastPattern = null
     lastName = null
-    # Decide what row view to use.
-    @props.collection.forEach (item) =>
+    patternItems = []
+
+    processItem = (item, rowSpan) =>
       # Link to detail page.
       if item._file and item.category != 'passementerie'
         a_ops =
@@ -36,25 +37,40 @@ module.exports = React.createClass
         colorValue = item.color
         idValue = item.id
         colorIdValue = item.color_id
-
-      if item.patternNumber != lastPattern
+      if rowSpan
         rows.push ItemPatternRow
           item: item
           key: item.id
           filter: @props.filter
           colorValue: colorValue
           idValue: idValue
+          rowSpan: rowSpan
       else
-        row_props =
+        rows.push ItemColorRow
           item: item
           key: item.id
           showName: lastName != item.name
           filter: @props.filter
           colorValue: colorValue
           idValue: colorIdValue
-        rows.push ItemColorRow(row_props)
-      lastPattern = item.patternNumber
       lastName = item.name
+      return
+
+    renderPatternItems = (pis) ->
+      processItem pis.shift(), pis.length
+      pis.forEach (pi) ->
+        processItem pi, false
+
+    # Decide what row view to use.
+    @props.collection.forEach (item, i) =>
+      # Items of a pattern need to be grouped first.
+      renderPitems = item.patternNumber != lastPattern and patternItems.length
+      if renderPitems or @props.collection.length+1 == i
+        renderPatternItems patternItems
+        patternItems = []
+      else
+        patternItems.push item
+      lastPattern = item.patternNumber
 
     ths = []
     # Hide name for trims.
