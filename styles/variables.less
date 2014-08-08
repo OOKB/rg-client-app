@@ -6,6 +6,7 @@
 @rg-background:          #fcfbf8;
 @rg-dark-gold:           #725a38;
 @rg-gold:                #9a8669;
+@rg-light-gray:          #d9d9d9;
 @rg-gray:                #848484;
 @rg-medium-gray:         #4D4D4D;
 @rg-black:               #262019;
@@ -67,6 +68,19 @@
   }
 }
 
+.link3 {
+  color: @rg-black;
+  text-decoration: none;
+  border-bottom: 1px solid @rg-light-gray;
+
+  &:hover {
+    color: @rg-gray;
+    text-decoration: none;
+    border-color: @rg-gray;
+  }
+}
+
+
 /** standard dropshadow styling for all popups, overlays, etc. **/
 .dropshadow {
   background: @rg-background;
@@ -96,4 +110,10 @@
 
 .text-right {
   text-align: right;
+}
+
+.hide-text {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
 }

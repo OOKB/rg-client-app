@@ -46,7 +46,7 @@ module.exports = React.createClass
 
     closeButton = button
       key: 'close'
-      className: 'close plain'
+      className: 'close'
       onClick: @handleXclick
       type: 'button',
         'X'
