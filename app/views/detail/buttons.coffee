@@ -54,12 +54,17 @@ module.exports = React.createClass
     color_toggle_class = 'toggle-colors hidden-xs'
     if item.far
       color_toggle_class += ' with-far'
+
+    # Colors button.
+    colorButtonClass = 'uppercase'
+    if @state.colorBoxView
+      colorButtonClass += ' active'
     divs.push div
       key: 'color-button'
       className: color_toggle_class,
         button
           onClick: @toggleColorBoxView
-          className: 'uppercase',
+          className: colorButtonClass,
             'Colors'
 
     if item.far
