@@ -123,12 +123,13 @@ module.exports = React.createClass
     # Filter the items on initial render.
     unless @isMounted()
       @filterCollection()
-    div {},
-      SearchBar
-        # The search bar accepts input so we need to pass a func that has this.
-        onUserInput: @handleUserInput
-        filter: @state
-        total_pages: Math.ceil(@props.collection.filtered_length / @state.pageSize)
-      ItemTable
-        collection: @props.collection
-        filter: @state
+    div
+      className: @state.category,
+        SearchBar
+          # The search bar accepts input so we need to pass a func that has this.
+          onUserInput: @handleUserInput
+          filter: @state
+          total_pages: Math.ceil(@props.collection.filtered_length / @state.pageSize)
+        ItemTable
+          collection: @props.collection
+          filter: @state
