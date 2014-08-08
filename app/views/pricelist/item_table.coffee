@@ -57,9 +57,11 @@ module.exports = React.createClass
       return
 
     renderPatternItems = (pis) ->
-      processItem pis.shift(), pis.length
-      pis.forEach (pi) ->
-        processItem pi, false
+      rowSpan = pis.length
+      processItem pis.shift(), rowSpan
+      if pis.length
+        pis.forEach (pi) ->
+          processItem pi, false
 
     # Decide what row view to use.
     @props.collection.forEach (item, i) =>
