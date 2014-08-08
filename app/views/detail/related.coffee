@@ -36,13 +36,13 @@ module.exports = React.createClass
     if e.preventDefault
       e.preventDefault()
     if @state.pg < @state.pages
-      @setState pg: pg+1
+      @setState pg: @state.pg+1
 
   handlePrevClick: (e) ->
     if e.preventDefault
       e.preventDefault()
     if @state.pg > 0
-      @setState pg: pg-1
+      @setState pg: @state.pg-1
 
   render: ->
     itemCount = @props.collection.length
