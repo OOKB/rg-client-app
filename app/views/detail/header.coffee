@@ -33,8 +33,8 @@ module.exports = React.createClass
           li className: 'name',
             h3 {}, item.label or item.category
             p {},
-              span className: 'roman', item.name
-              item.id
+              span {}, item.name
+              span {}, item.id
           li className: 'color',
             h3 'Color'
             p item.color
