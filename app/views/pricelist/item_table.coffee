@@ -8,7 +8,7 @@ module.exports = React.createClass
   prefetchImg: (e) ->
     id = e.target.id
     item = @props.collection.get(id)
-    if item._file and item._file.large and item._file.large.path
+    if item and item._file and item._file.large and item._file.large.path
       img = new Image()
       img.src = item._file.large.path
       console.log 'Preload ' + img.src
@@ -67,7 +67,11 @@ module.exports = React.createClass
     @props.collection.forEach (item, i) =>
       # Items of a pattern need to be grouped first.
       renderPitems = item.patternNumber != lastPattern and patternItems.length
-      if renderPitems or (@props.collection.length-1 == i)
+      if renderPitems
+        renderPatternItems patternItems
+        patternItems = []
+      if @props.collection.length-1 == i
+        patternItems.push item
         renderPatternItems patternItems
         patternItems = []
       else
