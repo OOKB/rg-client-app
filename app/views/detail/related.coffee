@@ -35,7 +35,7 @@ module.exports = React.createClass
   handleNextClick: (e) ->
     if e.preventDefault
       e.preventDefault()
-    if @state.pg < @state.pages
+    if (@state.pg+1) < @state.pages
       @setState pg: @state.pg+1
 
   handlePrevClick: (e) ->
