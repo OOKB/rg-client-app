@@ -135,7 +135,7 @@
   });
 
   gulp.task('copy_css', ['styles'], function() {
-    return gulp.src('./public/app.css').pipe(rename(global.sha + '.css')).pipe(gulp.dest('./prod'));
+    return gulp.src('./public/*.css').pipe(rename(global.sha + '.css')).pipe(gulp.dest('./prod'));
   });
 
   gulp.task('compress', function() {

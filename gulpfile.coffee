@@ -111,7 +111,7 @@ gulp.task 'prod_template', ->
     .pipe gulp.dest("./prod/")
 
 gulp.task 'copy_css', ['styles'], ->
-  gulp.src('./public/app.css')
+  gulp.src('./public/*.css')
     .pipe(rename(global.sha+'.css'))
     .pipe(gulp.dest('./prod'))
 
