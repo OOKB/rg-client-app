@@ -7,6 +7,7 @@ module.exports = React.createClass
     item: React.PropTypes.object.isRequired
     filter: React.PropTypes.object.isRequired
     colorValue: React.PropTypes.any.isRequired
+    rowSpan: React.PropTypes.number.isRequired
 
   render: ->
     td = th
@@ -33,7 +34,9 @@ module.exports = React.createClass
 
     tds.push td
       key: 'content'
-      className: 'c-content', item.contents
+      className: 'c-content'
+      rowSpan: @props.rowSpan,
+        item.contents
     # Hide repeat for leather.
     unless @props.filter.category == 'leather'
       tds.push td
