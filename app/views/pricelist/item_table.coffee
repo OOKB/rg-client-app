@@ -67,7 +67,7 @@ module.exports = React.createClass
     @props.collection.forEach (item, i) =>
       # Items of a pattern need to be grouped first.
       renderPitems = item.patternNumber != lastPattern and patternItems.length
-      if renderPitems or @props.collection.length+1 == i
+      if renderPitems or (@props.collection.length-1 == i)
         renderPatternItems patternItems
         patternItems = []
       else
