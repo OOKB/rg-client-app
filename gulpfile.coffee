@@ -86,8 +86,12 @@ gulp.task 'prod_clean', ->
 gulp.task 'prod_compile', (cb) ->
   console.log
   # Javascript bundle
-  bundler = browserify debug: true
-  bundler.add('./app/index.js')
+  opts =
+    debug: true
+    extensions: ['.coffee', '.json']
+  bundler = browserify opts
+  bundler.transform coffeeify
+  bundler.add('./app/index.coffee')
   bundler.plugin 'minifyify',
     map: 'script.map.json'
     output: './prod/script.map.json'
