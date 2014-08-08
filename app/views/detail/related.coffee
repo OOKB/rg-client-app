@@ -5,6 +5,9 @@ module.exports = React.createClass
   getInitialState: ->
     pg: 0
     pgSize: 5
+    pages: Math.ceil(@props.collection.length / 5)
+    prevActive: false
+    nextActive: true
 
   propTypes:
     collection: React.PropTypes.object.isRequired
@@ -27,19 +30,23 @@ module.exports = React.createClass
   handleXclick: (e) ->
     if e.preventDefault
       e.preventDefault()
-    @props.setParentState colorBoxView: false
+    @setState colorBoxView: false
 
-  loadMetricRuler: ->
-    unless @state.loadedMetric
-      item = @props.model
-      ruler_img = new Image()
-      ruler_img.src = item.rulerPath.cm[@props.imgSize]
-      console.log 'prefetch metric ruler ' + ruler_img.src
-      @setState loadedMetric: true
+  handleNextClick: (e) ->
+    if e.preventDefault
+      e.preventDefault()
+    if @state.pg < @state.pages
+      @setState pg: pg+1
+
+  handlePrevClick: (e) ->
+    if e.preventDefault
+      e.preventDefault()
+    if @state.pg > 0
+      @setState pg: pg-1
 
   render: ->
     itemCount = @props.collection.length
-    pages = Math.ceil(itemCount / 5)
+    pages = @state.pages
     if pages > 1
       pager = true
       pager_txt = (@state.pg+1) + ' / ' + pages
@@ -81,10 +88,12 @@ module.exports = React.createClass
     if pager
       relatedColorsRow = div {},
           button
+            onClick: @handlePrevClick
             className: 'left plain controls rel-previous',
               i className: 'fa fa-angle-left fa-2x'
           relatedColorsList
           button
+            onClick: @handleNextClick
             className: 'right plain controls rel-next',
               i className: 'fa fa-angle-right fa-2x'
     else
