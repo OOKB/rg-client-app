@@ -8,6 +8,9 @@ module.exports = React.createClass
 
   render: ->
     item = @props.model
+
+    h_lis = []
+
     nav className: 'item-detail-header',
       div className: 'controls',
         ul {},
