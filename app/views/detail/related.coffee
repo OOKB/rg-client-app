@@ -1,5 +1,5 @@
 React = require 'react'
-{div, button, ul, li, a, img} = require 'reactionary'
+{div, button, ul, li, a, img, i} = require 'reactionary'
 
 module.exports = React.createClass
   getInitialState: ->
@@ -40,6 +40,7 @@ module.exports = React.createClass
   render: ->
     pages = Math.ceil(@props.collection.length / 5)
     if pages > 1
+      pager = true
       pager_txt = (@state.pg+1) + ' / ' + pages
     else
       pager_txt = ''
@@ -51,6 +52,7 @@ module.exports = React.createClass
       type: 'button',
         'X'
 
+    # Header
     header = div
       className: 'colors-header',
         pager_txt, closeButton
@@ -74,7 +76,23 @@ module.exports = React.createClass
       className: 'list-inline list',
         relatedColorItems
 
+    # Colors row.
+    if pager
+      relatedColorsRow = div
+        className: 'colors-pager',
+          button
+            className: 'left plain controls rel-previous',
+              i className: 'fa fa-angle-left fa-2x'
+          relatedColorsList
+          button
+            className: 'right plain controls rel-next',
+              i className: 'fa fa-angle-right fa-2x'
+    else
+      relatedColorsRow = div
+        className: 'colors-no-pager',
+          relatedColorsList
+
     return div
       id: 'related-colors'
       className: 'hidden-xs',
-        header, relatedColorsList
+        header, relatedColorsRow
