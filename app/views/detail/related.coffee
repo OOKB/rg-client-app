@@ -19,7 +19,20 @@ module.exports = React.createClass
       e.preventDefault()
     #console.log href
     app.router.navigate(href, {replace: true})
+    @props.setParentState isRelated: true
     @props.setContainerState color_id: color_id
+
+  handleColorDown: (e) ->
+    @props.setParentState
+      loadedLarge: false
+      showRuler: false
+    id = @props.patternNumber + '-' + e.target.id
+    console.log id
+    item = @props.collection.get(id)
+    itemImg = new Image()
+    itemImg.onload = @loadedLarge
+    itemImg.src = item._file.large.path
+    return
 
   handleUnitClick: (e) ->
     unit = e.target.value
@@ -44,6 +57,12 @@ module.exports = React.createClass
     if @state.pg > 0
       @setState pg: @state.pg-1
 
+  loadedLarge: ->
+    console.log 'finished loading image!'
+    @props.setParentState
+      loadedLarge: true
+      showRuler: true
+
   render: ->
     itemCount = @props.collection.length
     pages = @state.pages
@@ -67,6 +86,8 @@ module.exports = React.createClass
     offset = @state.pg * @state.pgSize
     limit = (@state.pg + 1) * @state.pgSize
     pageItems = @props.collection.models.slice(offset, limit)
+
+    # Color icons.
     relatedColorItems = []
     pageItems.forEach (item) =>
       relatedColorItems.push li
@@ -74,6 +95,7 @@ module.exports = React.createClass
         className: 'related-item',
           a
             onClick: @handleColorClick
+            onMouseDown: @handleColorDown
             href: item.detail,
               img
                 id: item.color_id

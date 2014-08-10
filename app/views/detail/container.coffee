@@ -9,9 +9,21 @@ module.exports = React.createClass
     color_id: @props.initColor
     patternNumber: @props.patternNumber
     pageIndex: 0
+    isRelated: false
 
   handleUserInput: (newSt) ->
+    if newSt.color_id
+      newSt.isRelated = true
     @setState newSt
+
+  loadRelatedImgs: ->
+    @props.collection.each (item) ->
+      itemImg = new Image()
+      itemImg.src = item._file.small.path
+
+  componentWillMount: ->
+    # Begin downloading all related images in small 640px.
+    @loadRelatedImgs()
 
   render: ->
     item = @props.collection.get @state.patternNumber+'-'+@state.color_id
@@ -24,6 +36,8 @@ module.exports = React.createClass
       collection: @props.collection
       pageIndex: @state.pageIndex
       onUserInput: @handleUserInput
+      isRelated: @state.isRelated
+      patternNumber: @state.patternNumber
     div className: 'item-detail '+item.category,
       HeaderBar props
       Switcher props

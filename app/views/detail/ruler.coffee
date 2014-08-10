@@ -3,7 +3,6 @@ React = require 'react'
 
 module.exports = React.createClass
   getInitialState: ->
-    showRuler: true
     unit: 'inch'
     loadedMetric: false
 

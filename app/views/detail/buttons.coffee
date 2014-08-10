@@ -10,6 +10,9 @@ module.exports = React.createClass
     farView: false
     windowWidth: window.innerWidth
     showRuler: true
+    isRelated: false
+    loadedLarge: false
+    loadedXlarge: false
 
   handleResize: (e) ->
     @setState windowWidth: window.innerWidth
@@ -42,7 +45,11 @@ module.exports = React.createClass
       imgClass = 'img-container pattern'
       imgDiv = ''
     else
-      imgPath = item._file[imgSize].path
+      if @state.isRelated and !@state.loadedLarge and !@state.loadedXlarge
+        mainImgSize = 'small'
+      else
+        mainImgSize = imgSize
+      imgPath = item._file[mainImgSize].path
       imgClass = 'img-container large'
       imgDiv = img
         className: 'img-large'
@@ -82,11 +89,12 @@ module.exports = React.createClass
         collection: @props.collection
         setContainerState: @props.onUserInput
         setParentState: @handleUserInput
+        patternNumber: @props.patternNumber
 
     # big-ol-image
     divs.push div
       key: 'main-image'
-      className: imgPath,
+      className: imgSize,
         imgDiv
 
     # Ruler
