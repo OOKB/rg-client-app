@@ -30,7 +30,7 @@ module.exports = React.createClass
   handleXclick: (e) ->
     if e.preventDefault
       e.preventDefault()
-    @setState colorBoxView: false
+    @.props.setParentState colorBoxView: false
 
   handleNextClick: (e) ->
     if e.preventDefault
