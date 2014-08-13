@@ -27,7 +27,7 @@ module.exports = React.createClass
 
   render: ->
     v = @props.filter # see item_container.coffee for example object.
-
+    #console.log 'search bar '+ v.pageIndex
     # Pager stuff.
     total_pages = @props.total_pages
     current_page = v.pageIndex + 1

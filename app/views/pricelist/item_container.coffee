@@ -4,48 +4,40 @@ queryParam = require 'query-param-getter'
 
 SearchBar = require './item_search'
 ItemTable = require './item_table'
+filterCollection = require '../../models/itemsFilter'
 
 module.exports = React.createClass
   # The model prototype.
   getInitialState: ->
-    q = @getQuery()
-    searchTxt: q.searchTxt
-    category: q.category
+    searchTxt: @props.initState.searchTxt
+    category: @props.initState.category
     summerSale: false
     pageSize: 50
-    pageIndex: q.pageIndex
+    pageIndex: @props.initState.pageIndex
     patternNumber: null
     color_id: null
     display: 'pricelist'
     printing: false
 
-  getQuery: ->
-    q = {}
-    q.category = switch queryParam('c')
-      when 't' then 'textile'
-      when 'textile' then 'textile'
-      when 'p' then 'passementerie'
-      when 'passementerie' then 'passementerie'
-      when 'l' then 'leather'
-      when 'leather' then 'leather'
-      else 'textile'
-    q.searchTxt = queryParam('q') || ''
-    if q.searchTxt != ''
-      q.searchTxt = @searchTxt q.searchTxt
-    q.pageIndex = parseInt(queryParam('pg')) or 0
-    q
+  setQuery: (newState) ->
+    ops =
+      trigger: false
+      replace: true
+    destination = 'pricelist/'
+    if newState.category
+      # Change the browser history.
+      ops.replace = false
+      destination += newState.category + '/'
+    else
+      destination += @state.category + '/'
 
-  setQuery: (new_state) ->
-    q = @getQuery()
-    if new_state.category
-      q.category = new_state.category
-    pathname = location.pathname
-    new_q = '?c=' + q.category
-    if new_state.searchTxt
-      new_q += '&q=' + new_state.searchTxt
-    if typeof new_state.pageIndex == 'number'
-      new_q += '&pg=' + new_state.pageIndex
-    window.history.replaceState({}, '', pathname + new_q)
+    if newState.searchTxt or typeof(newState.pageIndex) == 'number'
+      q = newState.searchTxt or @state.searchTxt
+      if q
+        destination += q+'/'
+      destination += 'p'+newState.pageIndex or '0'
+
+    app.router.navigate destination, ops
 
   searchTxt: (search_string) ->
     if typeof search_string == 'undefined'
@@ -61,6 +53,7 @@ module.exports = React.createClass
 
   # Updates to the model.
   handleUserInput: (new_state_obj) ->
+    # console.log new_state_obj
     # Any state change that isn't a print will turn off printing.
     unless new_state_obj.printing
       new_state_obj.printing = false
@@ -88,7 +81,7 @@ module.exports = React.createClass
       new_state_obj.pageSize = 10000
 
     # Refilter the collection.
-    @filterCollection(new_state_obj)
+    filterCollection(@props.collection, new_state_obj, @state)
     # Set the new state.
     if new_state_obj.printing
       @setState new_state_obj, window.print
@@ -96,34 +89,7 @@ module.exports = React.createClass
       @setState new_state_obj
     @setQuery new_state_obj
 
-  filterCollection: (new_state) ->
-    reset_collection = true
-    unless new_state
-      new_state = @state
-
-    config = {}
-    config.where =
-      category: new_state.category or @state.category
-    if new_state.searchTxt
-      config.filters = new_state.searchTxt.split(' ').map (searchTxt) ->
-        (model) ->
-          model.searchStr.indexOf(searchTxt) > -1
-
-    pageSize = new_state.pageSize or @state.pageSize
-    if typeof new_state.pageIndex == 'number'
-      pageIndex = new_state.pageIndex
-    else
-      pageIndex = @state.pageIndex
-
-    config.limit = pageSize
-    config.offset = pageIndex * pageSize
-    #console.log config
-    @props.collection.configure(config, reset_collection)
-
   render: ->
-    # Filter the items on initial render.
-    unless @isMounted()
-      @filterCollection()
     div
       className: @state.category,
         SearchBar

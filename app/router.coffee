@@ -2,17 +2,57 @@ Router = require 'ampersand-router'
 
 FilterableProductTable = require './views/pricelist/item_container'
 ItemDetail = require './views/detail/container'
+itemsFilter = require './models/itemsFilter'
+#Collection = require './views/collection/collection_container'
+
+defaultCategory = 'textile'
 
 module.exports = Router.extend
   routes:
-    '': 'pricelist'
-    'pricelist': 'pricelist'
+    '': -> @redirectTo('pricelist')
+    'collection': -> @redirectTo('collection/'+defaultCategory)
+    'collection/:category': ''
+    'pricelist': -> @redirectTo('pricelist/'+defaultCategory)
+    'pricelist/:category': 'pricelist'
+    'pricelist/:category(/:query)/p:page': 'pricelist'
     'detail/:pattern/:id': 'itemView'
 
-  pricelist: ->
-    props = # Pass it some items data.
+  collection: (category) ->
+    @trigger 'newPage', Collection props
+
+  pricelist: (category, searchTxt, pageIndex) ->
+    if pageIndex
+      pageIndex = parseInt pageIndex
+    else
+      pageIndex = 0
+
+    unless searchTxt
+      searchTxt = ''
+
+    # Filter the items on initial render.
+    newState =
+      category: category
+      searchTxt: searchTxt
+      pageIndex: pageIndex
+      pageSize: 50 # Should this be in the url?
+
+    itemsFilter app.items, newState
+
+    totalPages = Math.ceil(app.items.filtered_length / 50)-1
+    if pageIndex and pageIndex > totalPages
+      #console.log 'too big'
+      destination = 'pricelist/'+category+'/'
+      if searchTxt
+        destination += searchTxt +'/'
+      #console.log destination+'p'+totalPages
+      @redirectTo destination+'p'+(totalPages-1)
+      return
+
+    component = FilterableProductTable
       collection: app.items
-    @trigger 'newPage', FilterableProductTable props
+      initState: newState
+
+    @trigger 'newPage', component
 
   itemView: (patternNumber, color_id) ->
     config =

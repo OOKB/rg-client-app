@@ -8,9 +8,9 @@ module.exports = React.createClass
   prefetchImg: (e) ->
     id = e.target.id
     item = @props.collection.get(id)
-    if item and item._file and item._file.large and item._file.large.path
+    if item and item._file and item._file.small and item._file.small.path
       img = new Image()
-      img.src = item._file.large.path
+      img.src = item._file.small.path
       console.log 'Preload ' + img.src
     # else
     #   console.log 'no file attr'
