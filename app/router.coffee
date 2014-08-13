@@ -3,7 +3,7 @@ Router = require 'ampersand-router'
 FilterableProductTable = require './views/pricelist/item_container'
 ItemDetail = require './views/detail/container'
 itemsFilter = require './models/itemsFilter'
-#Collection = require './views/collection/collection_container'
+Threeup = require './views/collection/3up'
 
 defaultCategory = 'textile'
 
@@ -11,14 +11,16 @@ module.exports = Router.extend
   routes:
     '': -> @redirectTo('pricelist')
     'collection': -> @redirectTo('collection/'+defaultCategory)
-    'collection/:category': ''
+    'collection/:category': 'collection'
     'pricelist': -> @redirectTo('pricelist/'+defaultCategory)
     'pricelist/:category': 'pricelist'
     'pricelist/:category(/:query)/p:page': 'pricelist'
     'detail/:pattern/:id': 'itemView'
 
   collection: (category) ->
-    @trigger 'newPage', Collection props
+    @trigger 'newPage',
+      Threeup
+        collection: app.items
 
   pricelist: (category, searchTxt, pageIndex) ->
     if pageIndex

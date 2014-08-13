@@ -1,6 +1,5 @@
 React = require 'react'
 {div} = require 'reactionary'
-queryParam = require 'query-param-getter'
 
 SearchBar = require './item_search'
 ItemTable = require './item_table'
