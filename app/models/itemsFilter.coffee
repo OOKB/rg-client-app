@@ -1,8 +1,20 @@
 module.exports = (items, filters, defaults) ->
   resetCollection = true
+
+  unless filters.category
+    filters.category = defaults.category
+  filters.category = switch filters.category
+    when 't' then 'textile'
+    when 'textile' then 'textile'
+    when 'p' then 'passementerie'
+    when 'passementerie' then 'passementerie'
+    when 'l' then 'leather'
+    when 'leather' then 'leather'
+    else 'textile'
+
   config =
     where:
-      category: filters.category or defaults.category
+      category: filters.category
 
   if filters.searchTxt
     config.filters = filters.searchTxt.split(' ').map (searchTxt) ->
