@@ -24,6 +24,7 @@ module.exports = Router.extend
     '': -> @redirectTo('pricelist')
     'collection': -> @redirectTo('collection/'+defaultCategory+'/3')
     'collection/:category': 'collection'
+    'collection/:category/:pg': 'collection'
     'collection/:category/:pg(/:query)/p:page': 'collection'
     'pricelist': -> @redirectTo('pricelist/'+defaultCategory)
     'pricelist/:category': 'pricelist'
