@@ -3,39 +3,54 @@ Router = require 'ampersand-router'
 FilterableProductTable = require './views/pricelist/item_container'
 ItemDetail = require './views/detail/container'
 itemsFilter = require './models/itemsFilter'
-Threeup = require './views/collection/3up'
+Collection = require './views/collection/items'
 
 defaultCategory = 'textile'
+
+closest = (goal, arr) ->
+  nearest = num = arr[0]
+  diff = Math.abs(num - goal)
+  if diff == 0
+    nearest = num
+  else
+    for num in arr
+      newDiff = Math.abs(num - goal)
+      if newDiff < diff
+        nearest = num
+  return nearest
 
 module.exports = Router.extend
   routes:
     '': -> @redirectTo('pricelist')
-    'collection': -> @redirectTo('collection/'+defaultCategory)
+    'collection': -> @redirectTo('collection/'+defaultCategory+'/3')
     'collection/:category': 'collection'
-    'collection/:category(/:query)/p:page': 'collection'
+    'collection/:category/:pg(/:query)/p:page': 'collection'
     'pricelist': -> @redirectTo('pricelist/'+defaultCategory)
     'pricelist/:category': 'pricelist'
     'pricelist/:category(/:query)/p:page': 'pricelist'
     'detail/:pattern/:id': 'itemView'
 
-  collection: (category, searchTxt, pageIndex) ->
+  collection: (category, pgSize, searchTxt, pageIndex) ->
     if pageIndex
       pageIndex = parseInt pageIndex
     else
       pageIndex = 0
+    if pgSize
+      pgSize = closest parseInt(pgSize), [3, 21, 42, 84]
+    else
+      pgSize = 3
+
     newState =
       category: category
       searchTxt: searchTxt
       pageIndex: pageIndex
-      pageSize: 3 # Should this be in the url?
+      pageSize: pgSize
+      hasImage: true
 
     itemsFilter app.items, newState
 
-    # if 'passementerie' == newState.category
-    #   component = Trim
-    #     collection: app.items
-    # else
-    component = Threeup
+    #console.log newState
+    component = Collection
       collection: app.items
 
     @trigger 'newPage', component

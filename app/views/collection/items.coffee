@@ -4,8 +4,7 @@ React = require 'react'
 module.exports = React.createClass
   render: ->
     list = []
-    for index in [0..2]
-      item = @props.collection.at(index)
+    @props.collection.forEach (item, index) ->
       list.push li
         key: item.id,
           img
@@ -21,7 +20,8 @@ module.exports = React.createClass
               button
                 className: 'item-details',
                   i
-                    className: 'fa fa-align-justify'
+                    className: 'fa fa-align-justify',
+                      'i'
 
     div
       className: 'threeup'

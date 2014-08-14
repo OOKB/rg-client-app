@@ -8,6 +8,7 @@ module.exports = (items, filters, defaults) ->
     when 'textile' then 'textile'
     when 'p' then 'passementerie'
     when 'passementerie' then 'passementerie'
+    when 'trim' then 'passementerie'
     when 'l' then 'leather'
     when 'leather' then 'leather'
     else 'textile'
@@ -15,6 +16,14 @@ module.exports = (items, filters, defaults) ->
   config =
     where:
       category: filters.category
+
+  # Require that the item has a detail page.
+  if filters.hasDetail
+    config.where.hasDetail = true
+
+  # Require that item has an image.
+  if filters.hasImage
+    config.where.hasImage = true
 
   if filters.searchTxt
     config.filters = filters.searchTxt.split(' ').map (searchTxt) ->

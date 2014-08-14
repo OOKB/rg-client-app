@@ -16,9 +16,12 @@ module.exports = AmpersandModel.extend
     design_descriptions: "array"
     far: ['boolean', true, false]
     _file: "object" # Pattern name.
+    hasDetail: ['boolean', true, false]
+    hasImage: ['boolean', true, false]
     id: ['string', true]
     label: 'string'
     name: 'string'
+    order: ['number', true, 99999]
     use: "array"
     patternNumber: ['string', true]
     price: 'number'
@@ -28,6 +31,9 @@ module.exports = AmpersandModel.extend
   parse: (item) ->
     item.id = item.patternNumber+'-'+item.color_id
     if item._file
+      item.hasImage = true
+      if item.category != 'passementerie'
+        item.hasDetail = true
       prefix = cdn + 'items/'+item.id
       if item._file.small
         item._file.small.path = prefix + '/640.jpg'
