@@ -12,15 +12,33 @@ module.exports = Router.extend
     '': -> @redirectTo('pricelist')
     'collection': -> @redirectTo('collection/'+defaultCategory)
     'collection/:category': 'collection'
+    'collection/:category(/:query)/p:page': 'collection'
     'pricelist': -> @redirectTo('pricelist/'+defaultCategory)
     'pricelist/:category': 'pricelist'
     'pricelist/:category(/:query)/p:page': 'pricelist'
     'detail/:pattern/:id': 'itemView'
 
-  collection: (category) ->
-    @trigger 'newPage',
-      Threeup
-        collection: app.items
+  collection: (category, searchTxt, pageIndex) ->
+    if pageIndex
+      pageIndex = parseInt pageIndex
+    else
+      pageIndex = 0
+    newState =
+      category: category
+      searchTxt: searchTxt
+      pageIndex: pageIndex
+      pageSize: 3 # Should this be in the url?
+
+    itemsFilter app.items, newState
+
+    # if 'passementerie' == newState.category
+    #   component = Trim
+    #     collection: app.items
+    # else
+    component = Threeup
+      collection: app.items
+
+    @trigger 'newPage', component
 
   pricelist: (category, searchTxt, pageIndex) ->
     if pageIndex
