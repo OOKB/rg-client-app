@@ -1,5 +1,5 @@
 React = require 'react'
-{div, ul, li, button} = require 'reactionary'
+{p, div, ul, li, button} = require 'reactionary'
 
 Row = require './row'
 
@@ -12,6 +12,9 @@ module.exports = React.createClass
     pageIndex: @props.initState.pageIndex
 
   render: ->
+    p
+      className: 'text-area',
+        'Browse the collection by category below.'
     div
       className: 'collection',
         Row

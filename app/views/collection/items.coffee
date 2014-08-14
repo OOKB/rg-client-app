@@ -20,7 +20,7 @@ module.exports = React.createClass
       if @state.buttonsFor == item.id
         # Action buttons
         buttons = div
-          className: 'item-icons',
+          className: 'item-icons hidden-xs',
             button
               className: 'item-colors',
                 'Colors'
@@ -29,9 +29,7 @@ module.exports = React.createClass
                 '+'
             button
               className: 'item-details',
-                i
-                  className: 'fa fa-align-justify',
-                    'i'
+                '='
       else
         buttons = ''
 
