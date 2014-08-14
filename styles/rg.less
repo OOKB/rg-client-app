@@ -219,6 +219,22 @@ ul.pager {
 ul.pager > li {
   display: inline-block;
 }
+
+ul.pager > li.previous:hover,
+ul.pager > li.next:hover {
+  opacity: .5;
+}
+
+ul.pager > li.disabled,
+ul.pager > li.disabled:hover {
+  opacity: .22;
+}
+
+ul.pager > li.disabled a,
+ul.pager > li.disabled:hover a {
+  cursor: default;
+}
+
 ul.pager > li.previous > a,
 ul.pager > li > a.left,
 ul.pager > li.next > a,
