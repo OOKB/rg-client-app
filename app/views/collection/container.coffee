@@ -1,7 +1,7 @@
 React = require 'react'
 {div, ul, li, button} = require 'reactionary'
 
-Items = require './items'
+Row = require './row'
 
 module.exports = React.createClass
   getInitialState: ->
@@ -14,31 +14,18 @@ module.exports = React.createClass
   render: ->
     div
       className: 'collection',
-        div
-          className: 'row'
-          id: 'collection-row-textile',
-            ul
-              className: 'collection-controls',
-                li
-                  className: 'hug-center on-top',
-                    button
-                      className: 'uppercase'
-                      value: 'textile',
-                        'Textile'
-            Items
-              collection: @props.collection
-              initState: @props.initState
-        div
-          className: 'row'
-          id: 'collection-row-passementerie',
-            button
-              className: 'uppercase'
-              value: 'passementerie',
-                'Passementerie'
-        div
-          className: 'row'
-          id: 'collection-row-leather',
-            button
-              className: 'uppercase'
-              value: 'leather',
-                'Leather'
+        Row
+          active: 'textile' == @state.category
+          category: 'textile'
+          collection: @props.collection
+          initState: @props.initState
+        Row
+          active: 'passementerie' == @state.category
+          category: 'passementerie'
+          collection: @props.collection
+          initState: @props.initState
+        Row
+          active: 'leather' == @state.category
+          category: 'leather'
+          collection: @props.collection
+          initState: @props.initState
