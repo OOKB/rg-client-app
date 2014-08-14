@@ -7,29 +7,29 @@ module.exports = React.createClass
   getInitialState: ->
     buttonsFor: @props.buttonsForInit
     searchTxt: @props.initState.searchTxt
-    category: @props.initState.category
     pageSize: @props.initState.pageSize
     pageIndex: @props.initState.pageIndex
 
   render: ->
+    category = @props.initState.category
     p
       className: 'text-area',
         'Browse the collection by category below.'
     div
       className: 'collection',
         Row
-          active: 'textile' == @state.category
+          active: 'textile' == category
           category: 'textile'
           label: 'Textiles'
           collection: @props.collection
           initState: @props.initState
         Row
-          active: 'passementerie' == @state.category
+          active: 'passementerie' == category
           category: 'passementerie'
           collection: @props.collection
           initState: @props.initState
         Row
-          active: 'leather' == @state.category
+          active: 'leather' == category
           category: 'leather'
           collection: @props.collection
           initState: @props.initState

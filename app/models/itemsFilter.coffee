@@ -3,15 +3,6 @@ module.exports = (items, filters, defaults) ->
 
   unless filters.category
     filters.category = defaults.category
-  filters.category = switch filters.category
-    when 't' then 'textile'
-    when 'textile' then 'textile'
-    when 'p' then 'passementerie'
-    when 'passementerie' then 'passementerie'
-    when 'trim' then 'passementerie'
-    when 'l' then 'leather'
-    when 'leather' then 'leather'
-    else 'textile'
 
   config =
     where:
@@ -33,13 +24,13 @@ module.exports = (items, filters, defaults) ->
       (model) ->
         model.searchStr.indexOf(searchTxt) > -1
 
-  pageSize = filters.pageSize or defaults.pageSize
+  pgSize = filters.pgSize or defaults.pgSize
   if typeof filters.pageIndex == 'number'
     pageIndex = filters.pageIndex
   else
     pageIndex = defaults.pageIndex
 
-  config.limit = pageSize
-  config.offset = pageIndex * pageSize
+  config.limit = pgSize
+  config.offset = pageIndex * pgSize
   items.configure config, resetCollection
   return

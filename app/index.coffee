@@ -2,7 +2,7 @@ React = require 'react'
 SubCollection = require 'ampersand-subcollection'
 
 ItemsCollection = require './models/items'
-Router = require './router'
+Router = require './react-router'
 
 items_data = require './models/data'
 
@@ -11,18 +11,13 @@ module.exports =
     self = window.app = @
     # Create our items model collection.
     items = new ItemsCollection items_data, parse: true
-    #@items.add items_data
+    # Use the subcollection module.
     @items = new SubCollection items
 
-    # Init URL handler and history tracker.
-    @router = new Router()
-
+    # Init the React application router.
     el = document.getElementById('content')
-    @router.on 'newPage', (container) ->
-      #console.log 'newPage'
-      @container = container
-      React.renderComponent @container, el
-    @router.history.start()
+    routerComponent = Router {}
+    @container = React.renderComponent routerComponent, el
 
 # run it
 module.exports.blastoff()
