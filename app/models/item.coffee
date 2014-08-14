@@ -5,24 +5,25 @@ cdn = '//img.rg.cape.io/'
 
 module.exports = AmpersandModel.extend
   props:
-    approx_width: "string"
-    color_id: ["string", true] # 02
-    color: "string" # Color name.
+    approx_size: 'string' # Leather
+    approx_width: 'string'
+    color_id: ['string', true] # 02
+    color: 'string' # Color name.
     colors: 'array'
-    category: ["string", true] # textile, leather...
-    content: "string"
-    contents: "string"
-    design: "string"
-    design_descriptions: "array"
+    category: ['string', true] # textile, leather, passementerie
+    content: 'string'
+    contents: 'string'
+    design: 'string'
+    design_descriptions: 'array'
     far: ['boolean', true, false]
-    _file: "object" # Pattern name.
+    _file: 'object'
     hasDetail: ['boolean', true, false]
     hasImage: ['boolean', true, false]
     id: ['string', true]
     label: 'string'
-    name: 'string'
+    name: 'string' # Pattern name.
     order: ['number', true, 99999]
-    use: "array"
+    use: 'array'
     patternNumber: ['string', true]
     price: 'number'
     repeat: 'string'
