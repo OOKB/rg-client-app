@@ -53,6 +53,7 @@ module.exports = Router.extend
     #console.log newState
     component = Collection
       collection: app.items
+      initState: newState
 
     @trigger 'newPage', component
 

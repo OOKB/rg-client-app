@@ -3,15 +3,22 @@ React = require 'react'
 
 module.exports = React.createClass
   getInitialState: ->
-    buttonsFor: ''
+    buttonsFor: @props.buttonsForInit
+    searchTxt: @props.initState.searchTxt
+    category: @props.initState.category
+    pageSize: @props.initState.pageSize
+    pageIndex: @props.initState.pageIndex
 
   setButtonsFor: (e) ->
     @setState buttonsFor: e.target.id
 
   render: ->
     list = []
+
+    # List
     @props.collection.forEach (item, index) =>
       if @state.buttonsFor == item.id
+        # Action buttons
         buttons = div
           className: 'item-icons',
             button
@@ -30,16 +37,19 @@ module.exports = React.createClass
 
       list.push li
         key: item.id,
+          # Image
           img
             id: item.id
+            width: item._file.small.width
+            height: item._file.small.height
             src: item._file.small.path,
             onMouseOver: @setButtonsFor
           buttons
 
 
-    div
-      className: 'threeup'
-      id: 'products',
+    return div
+      className: 'pg-size-'+@state.pageSize
+      id: 'collection-'+@state.category,
         ul
-          className: 'list slider',
+          className: 'list',
             list
