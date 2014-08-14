@@ -3,7 +3,7 @@ Router = require 'ampersand-router'
 FilterableProductTable = require './views/pricelist/item_container'
 ItemDetail = require './views/detail/container'
 itemsFilter = require './models/itemsFilter'
-Collection = require './views/collection/items'
+Collection = require './views/collection/container'
 
 defaultCategory = 'textile'
 
