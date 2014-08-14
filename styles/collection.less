@@ -1,0 +1,94 @@
+@import url(variables.less);
+
+/* --------------------------------------------*/
+/* ---------->>> Collection View <<<-----------*/
+/* --------------------------------------------*/
+
+.collection > .row {
+  border-top: 1px solid @rg-black;
+  padding: 10px 0;
+}
+
+.collection > .row > ul.collection-controls {
+  padding-bottom: 10px;
+}
+
+.collection ul.list li img {
+  max-width: 100%;
+  height: auto;
+}
+
+/** 3-up styles **/
+.pg-size-3 {
+  margin: 0;
+  padding: 0;
+  /**/
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+}
+
+.pg-size-3 ul.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%
+}
+
+.pg-size-3 ul.list li {
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0 2.5px;
+  height: 225px;
+  max-height: 225px;
+  min-height: 225px;
+  box-sizing: border-box;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) {
+  .pg-size-3 ul.list li {
+    width: 33%;
+    height: 275px;
+    max-height: 275px;
+    min-height: 275px;
+  }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) {
+  .pg-size-3 ul.list li {
+    height: 350px;
+    max-height: 350px;
+    min-height: 350px;
+  }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) {
+  .pg-size-3 ul.list li {
+    height: 400px;
+    max-height: 400px;
+    min-height: 400px;
+  }
+}
+
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-height: 1000px) {
+  .pg-size-3 ul.list li {
+    height: 450px;
+    max-height: 450px;
+    min-height: 450px;
+  }
+}
+
+
+/** 3-column grid **/
+
+/** 4-column grid
+
+/** Passementerie Styles **/
