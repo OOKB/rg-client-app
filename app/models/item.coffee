@@ -33,7 +33,12 @@ module.exports = AmpersandModel.extend
         item._file.small.path = prefix + '/640.jpg'
         if item.far
           item._file.small.path_far = prefix + '/far/640.jpg'
-
+      else if item._file.wide
+        item._file.small =
+          path: prefix + '/1170.jpg'
+          width: 1170
+          height: item._file.wide.height
+        delete item._file.wide
       if item._file.large
         item._file.large.path = prefix + '/1536.jpg'
         if item.far
