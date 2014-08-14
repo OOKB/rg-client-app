@@ -17,6 +17,7 @@ module.exports = React.createClass
         Row
           active: 'textile' == @state.category
           category: 'textile'
+          label: 'Textiles'
           collection: @props.collection
           initState: @props.initState
         Row
