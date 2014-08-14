@@ -25,6 +25,10 @@ module.exports = (items, filters, defaults) ->
   if filters.hasImage
     config.where.hasImage = true
 
+  if filters.colorSorted
+    config.comparator = (model) ->
+      return model.order
+
   if filters.searchTxt
     config.filters = filters.searchTxt.split(' ').map (searchTxt) ->
       (model) ->
