@@ -25,6 +25,7 @@ module.exports = React.createClass
 
     processItem = (item, rowSpan) =>
       # Link to detail page.
+      # This should be moved to the model!
       if item._file and item.category != 'passementerie'
         a_ops =
           onMouseDown: @prefetchImg
@@ -79,7 +80,7 @@ module.exports = React.createClass
       lastPattern = item.patternNumber
 
     ths = []
-    # Hide name for trims.
+    # Hide name for trims. Move to model?!?
     unless @props.filter.category == 'passementerie'
       ths.push th
         key: 'name'
