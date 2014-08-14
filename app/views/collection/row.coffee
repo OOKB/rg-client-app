@@ -23,5 +23,5 @@ module.exports = React.createClass
                 button
                   className: 'uppercase'
                   value: @props.category,
-                    @props.category
+                    @props.label or @props.category
         itemList
