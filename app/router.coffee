@@ -54,6 +54,8 @@ module.exports = Router.extend
 
     if 'collection' == section
       pgSizes = [3, 21, 42, 84]
+      if 'passementerie' == newState.category
+        pgSizes.shift()
     else if 'pricelist' == section
       pgSizes = [50, 100, 10000]
     else
