@@ -42,4 +42,9 @@ module.exports = React.createClass
       key: 'size'
       className: 'c-size'
 
-    tr className: 'color', tds
+    className = 'color'
+    if @props.isLast
+      className += ' last'
+    return tr
+      className: className,
+        tds
