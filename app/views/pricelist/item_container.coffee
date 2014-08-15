@@ -71,7 +71,6 @@ module.exports = React.createClass
           # The search bar accepts input so we need to pass a func that has this.
           onUserInput: @handleUserInput
           filter: @props.initState
-          total_pages: Math.ceil(@props.collection.filtered_length / @state.pageSize)
         ItemTable
           collection: @props.collection
           filter: @props.initState

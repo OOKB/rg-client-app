@@ -19,7 +19,7 @@ module.exports = React.createClass
       category: collection_id
 
   pageNext: (e) ->
-    if @props.filter.pageIndex != @props.total_pages-1
+    if @props.filter.pageIndex != @props.filter.totalPages-1
       @props.onUserInput
         pageIndex: @props.filter.pageIndex + 1
 
@@ -32,7 +32,7 @@ module.exports = React.createClass
     v = @props.filter # see item_container.coffee for example object.
     #console.log 'search bar '+ v.pageIndex
     # Pager stuff.
-    total_pages = @props.total_pages
+    totalPages = @props.filter.totalPages
     current_page = v.pageIndex + 1
 
     sizeSelect = li
@@ -54,15 +54,15 @@ module.exports = React.createClass
 
     pgCount = li
       className: 'pagecount',
-        current_page+ ' / ' + total_pages
+        current_page+ ' / ' + totalPages
 
-    if total_pages > 1
+    if totalPages > 1
       pager_previous_class = 'previous'
       if v.pageIndex == 0
         pager_previous_class += ' disabled'
       pager_next_class = 'next'
 
-      if current_page == total_pages
+      if current_page == totalPages
         pager_next_class += ' disabled'
 
       pgLeft = li
