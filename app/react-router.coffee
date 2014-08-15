@@ -1,6 +1,8 @@
 React = require 'react'
-Router = require './router'
 {div, p} = require 'reactionary'
+_ = require 'underscore'
+
+Router = require './router'
 
 FilterableProductTable = require './views/pricelist/item_container'
 ItemDetail = require './views/detail/container'
@@ -8,17 +10,22 @@ Collection = require './views/collection/container'
 
 module.exports = React.createClass
 
+  router: new Router()
+
   componentDidMount: ->
-    app.router = new Router()
-    app.router.setReactState = (newState) =>
+    @router.setReactState = (newState) =>
       if newState
         @setState (newState)
-
-    app.router.history.start()
+    @router.history.start()
 
   setRouterState: (newState) ->
     if newState
-      @setState newState
+      s = _.defaults newState, @state
+      redirected = @router.updateURL @state, s
+      if redirected
+        @router.itemsFilter app.items, s
+      #console.log s
+      @setState s
 
   render: ->
     section = null
@@ -27,6 +34,7 @@ module.exports = React.createClass
     props =
       collection: app.items
       initState: @state
+      setRouterState: @setRouterState
 
     component = switch section
       when 'pricelist' then FilterableProductTable(props)

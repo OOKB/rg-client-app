@@ -6,6 +6,7 @@ cdn = '//img.rg.cape.io/'
 module.exports = AmpersandModel.extend
   props:
     approx_size: 'string' # Leather
+    approx_thick: 'string' # Leather
     approx_width: 'string'
     color_id: ['string', true] # 02
     color: 'string' # Color name.
@@ -60,9 +61,13 @@ module.exports = AmpersandModel.extend
 
   derived:
     searchStr:
-      deps: ['id', 'color', 'name']
+      deps: ['id', 'color', 'name', 'content']
       fn: ->
-        (@id + ' ' + @name + ' ' + @color + ' ' + @content).toLowerCase()
+        if 'leather' == @category
+          content = @contents
+        else
+          content = @content
+        (@id + ' ' + @name + ' ' + @color + ' ' + content).toLowerCase()
 
     detail:
       deps: ['patternNumber', 'color_id']

@@ -1,8 +1,5 @@
-module.exports = (items, filters, defaults) ->
+module.exports = (items, filters) ->
   resetCollection = true
-
-  unless filters.category
-    filters.category = defaults.category
 
   config =
     where:
@@ -24,11 +21,8 @@ module.exports = (items, filters, defaults) ->
       (model) ->
         model.searchStr.indexOf(searchTxt) > -1
 
-  pgSize = filters.pgSize or defaults.pgSize
-  if typeof filters.pageIndex == 'number'
-    pageIndex = filters.pageIndex
-  else
-    pageIndex = defaults.pageIndex
+  pgSize = filters.pgSize
+  pageIndex = filters.pageIndex
 
   config.limit = pgSize
   config.offset = pageIndex * pgSize

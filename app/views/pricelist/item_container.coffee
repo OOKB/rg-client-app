@@ -8,35 +8,10 @@ filterCollection = require '../../models/itemsFilter'
 module.exports = React.createClass
   # The model prototype.
   getInitialState: ->
-    searchTxt: @props.initState.searchTxt
-    category: @props.initState.category
     summerSale: false
-    pageSize: 50
-    pageIndex: @props.initState.pageIndex
-    patternNumber: null
     color_id: null
     display: 'pricelist'
     printing: false
-
-  setQuery: (newState) ->
-    ops =
-      trigger: false
-      replace: true
-    destination = 'pricelist/'
-    if newState.category
-      # Change the browser history.
-      ops.replace = false
-      destination += newState.category + '/'
-    else
-      destination += @state.category + '/'
-
-    if newState.searchTxt or typeof(newState.pageIndex) == 'number'
-      q = newState.searchTxt or @state.searchTxt
-      if q
-        destination += q+'/'
-      destination += 'p'+newState.pageIndex or '0'
-
-    app.router.navigate destination, ops
 
   searchTxt: (search_string) ->
     if typeof search_string == 'undefined'
@@ -60,17 +35,17 @@ module.exports = React.createClass
     # Process the input search string.
     if search_string = @searchTxt new_state_obj.searchTxt
       new_state_obj.searchTxt = search_string
-      if search_string != @state.searchTxt
+      if search_string != @props.initState.searchTxt
         # Reset pageIndex.
         new_state_obj.pageIndex = 0
 
-    if new_state_obj.category and new_state_obj.category != @state.category
+    if new_state_obj.category and new_state_obj.category != @props.initState.category
       new_state_obj.pageIndex = 0
 
     # Turn these into numbers.
     if new_state_obj.pageSize
       new_state_obj.pageSize = parseInt(new_state_obj.pageSize)
-      if new_state_obj.pageSize != @state.pageSize
+      if new_state_obj.pageSize != @props.initState.pageSize
         new_state_obj.pageIndex = 0
     if new_state_obj.pageIndex
       new_state_obj.pageIndex = parseInt(new_state_obj.pageIndex)
@@ -83,10 +58,9 @@ module.exports = React.createClass
     filterCollection(@props.collection, new_state_obj, @state)
     # Set the new state.
     if new_state_obj.printing
-      @setState new_state_obj, window.print
+      @props.setRouterState new_state_obj, window.print
     else
-      @setState new_state_obj
-    @setQuery new_state_obj
+      @props.setRouterState new_state_obj
 
   render: ->
     div
@@ -94,8 +68,8 @@ module.exports = React.createClass
         SearchBar
           # The search bar accepts input so we need to pass a func that has this.
           onUserInput: @handleUserInput
-          filter: @state
+          filter: @props.initState
           total_pages: Math.ceil(@props.collection.filtered_length / @state.pageSize)
         ItemTable
           collection: @props.collection
-          filter: @state
+          filter: @props.initState

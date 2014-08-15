@@ -35,6 +35,7 @@
     "ampersand-model": "^3.0.4",
     "ampersand-subcollection": "https://github.com/webmasterkai/ampersand-subcollection/archive/patch-1.tar.gz",
     "query-param-getter": "0.0.1",
-    "ampersand-router": "^1.0.2"
+    "ampersand-router": "^1.0.2",
+    "underscore": "^1.6.0"
   }
 }

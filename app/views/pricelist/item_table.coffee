@@ -102,22 +102,28 @@ module.exports = React.createClass
     ths.push th
       key: 'content'
       className: 'c-content', 'Content'
-    # Hide repeat for leather.
-    unless @props.filter.category == 'leather'
-      ths.push th
-        key: 'repeat'
-        className: 'c-repeat', 'Repeat'
+
     # Leather is size.
     if @props.filter.category == 'leather'
       ths.push th
         key: 'size'
         className: 'c-size',
-          'Approx. Size'
-    # Others are width.
+          'Approx. Hide Size'
+      ths.push th
+        key: 'thickness'
+        className: 'c-thick',
+          'Approx. Thickness'
+    # Hide repeat for leather.
     else
       ths.push th
-        key: 'size'
-        className: 'c-size',
+        key: 'repeat'
+        className: 'c-repeat',
+          'Approx. Repeat'
+
+      # Others have width.
+      ths.push th
+        key: 'width'
+        className: 'c-width',
           'Approx. Width'
 
     table {},

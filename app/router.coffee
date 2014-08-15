@@ -5,6 +5,7 @@ defaultCategory = 'textile'
 
 module.exports = Router.extend
   pop: 'ka'
+  itemsFilter: itemsFilter
   routes:
     '': -> @redirectTo('pricelist')
     'collection': -> @redirectTo('collection/'+defaultCategory+'/3')
@@ -23,12 +24,6 @@ module.exports = Router.extend
   pricelist: (category, pgSize, searchTxt, pageIndex) ->
     S = @prepNewState 'pricelist', category, pgSize, searchTxt, pageIndex
     @setReactState S
-
-  urlCreate: (s) ->
-    url = s.section+'/'+s.category+'/'+s.pgSize
-    if s.searchTxt
-      url += '/'+searchTxt
-    return url+'/p'+s.pageIndex
 
   prepNewState: (section, category, pgSize, searchTxt, pageIndex) ->
     newState =
@@ -54,6 +49,11 @@ module.exports = Router.extend
 
     if 'collection' == section
       pgSizes = [3, 21, 42, 84]
+      if 'passementerie' == newState.category
+        favsOnly = false
+        pgSizes.shift()
+      else
+        favsOnly = true
     else if 'pricelist' == section
       pgSizes = [50, 100, 10000]
     else
@@ -61,20 +61,41 @@ module.exports = Router.extend
 
     newState.pgSize = @closest pgSize, pgSizes
 
-    newStateURL = @urlCreate newState
-    oldURL = @urlCreate
+    oldState =
       section: section
       category: category
       pgSize: pgSize
       searchTxt: searchTxt
       pageIndex: pageIndex
-    if newStateURL != oldURL
-      @redirectTo newStateURL
+
+    redirected = @updateURL oldState, newState
+    if redirected
       return false
     else
       # filter the items
       itemsFilter app.items, newState
+      newState.totalPages =
+        Math.abs(Math.ceil(app.items.filtered_length / newState.pgSize) - 1)
+      if newState.pageIndex > newState.totalPages
+        newState.pageIndex = newState.totalPages
+        @updateURL oldState, newState
+      #console.log newState
       return newState
+
+  urlCreate: (s) ->
+    url = s.section+'/'+s.category+'/'+s.pgSize
+    if s.searchTxt
+      url += '/' + s.searchTxt
+    return url+'/p' + s.pageIndex
+
+  updateURL: (oldSt, newSt) ->
+    newStateURL = @urlCreate newSt
+    oldURL = @urlCreate oldSt
+    if newStateURL != oldURL
+      @redirectTo newStateURL
+      return true
+    else
+      return false
 
   closest: (goal, arr) ->
     if 'all' == goal or 'max' == goal
