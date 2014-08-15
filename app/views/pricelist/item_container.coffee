@@ -8,12 +8,7 @@ filterCollection = require '../../models/itemsFilter'
 module.exports = React.createClass
   # The model prototype.
   getInitialState: ->
-    searchTxt: @props.initState.searchTxt
-    category: @props.initState.category
     summerSale: false
-    pageSize: 50
-    pageIndex: @props.initState.pageIndex
-    patternNumber: null
     color_id: null
     display: 'pricelist'
     printing: false
