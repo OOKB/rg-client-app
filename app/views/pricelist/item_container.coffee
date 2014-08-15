@@ -66,7 +66,7 @@ module.exports = React.createClass
     div
       id: 'container-pricelist'
       # This doesn't seem to be printing out anymore?
-      className: @state.category,
+      className: @props.initState.category,
         SearchBar
           # The search bar accepts input so we need to pass a func that has this.
           onUserInput: @handleUserInput
