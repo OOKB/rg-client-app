@@ -44,7 +44,7 @@ module.exports = React.createClass
 
 
     return div
-      className: 'pg-size-' + @props.initState.pageSize
+      className: 'pg-size-' + @props.initState.pgSize
       id: 'collection-' + @props.initState.category,
         ul
           className: 'list',
