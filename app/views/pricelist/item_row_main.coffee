@@ -42,16 +42,24 @@ module.exports = React.createClass
       rowSpan: @props.rowSpan,
         item.contents
     # Hide repeat for leather.
-    unless @props.filter.category == 'leather'
+    if @props.filter.category == 'leather'
+      tds.push td
+        key: 'size'
+        className: 'c-size',
+          item.approx_size
+      tds.push td
+        key: 'thick'
+        className: 'c-thick',
+          item.approx_thick
+    else
       tds.push td
         key: 'repeat'
         className: 'c-repeat',
           item.repeat
-
-    tds.push td
-      key: 'size'
-      className: 'c-size',
-        item.approx_width
+      tds.push td
+        key: 'width'
+        className: 'c-wdith',
+          item.approx_width
 
     tr className: 'pattern',
       tds
