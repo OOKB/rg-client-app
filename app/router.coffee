@@ -127,13 +127,6 @@ module.exports = Router.extend
 #   unless searchTxt
 #     searchTxt = ''
 #
-#   # Filter the items on initial render.
-#   newState =
-#     category: category
-#     searchTxt: searchTxt
-#     pageIndex: pageIndex
-#     pageSize: 50 # Should this be in the url?
-#
 #   itemsFilter app.items, newState
 #
 #   totalPages = Math.ceil(app.items.filtered_length / 50)-1

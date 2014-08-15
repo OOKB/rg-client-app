@@ -43,16 +43,16 @@ module.exports = React.createClass
       new_state_obj.pageIndex = 0
 
     # Turn these into numbers.
-    if new_state_obj.pageSize
-      new_state_obj.pageSize = parseInt(new_state_obj.pageSize)
-      if new_state_obj.pageSize != @props.initState.pageSize
+    if new_state_obj.pgSize
+      new_state_obj.pgSize = parseInt(new_state_obj.pgSize)
+      if new_state_obj.pgSize != @props.initState.pgSize
         new_state_obj.pageIndex = 0
     if new_state_obj.pageIndex
       new_state_obj.pageIndex = parseInt(new_state_obj.pageIndex)
 
     if new_state_obj.printing
       new_state_obj.pageIndex = 0
-      new_state_obj.pageSize = 10000
+      new_state_obj.pgSize = 10000
 
     # Refilter the collection.
     filterCollection(@props.collection, new_state_obj, @state)

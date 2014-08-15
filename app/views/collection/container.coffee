@@ -4,11 +4,6 @@ React = require 'react'
 Row = require './row'
 
 module.exports = React.createClass
-  getInitialState: ->
-    buttonsFor: @props.buttonsForInit
-    searchTxt: @props.initState.searchTxt
-    pageSize: @props.initState.pageSize
-    pageIndex: @props.initState.pageIndex
 
   render: ->
     category = @props.initState.category
