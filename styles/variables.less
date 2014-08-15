@@ -13,6 +13,7 @@
 
 /** drop shadow color **/
 @rg-shadow:              0 0 9px 0 rgba(132,132,132,0.5);
+@rg-shadow-light:        0 0 9px 0 rgba(132,132,132,0.25);
 
 /** break points for now **/
 @screen-xs-max:           767px;
@@ -93,6 +94,14 @@
   -ms-box-shadow: @rg-shadow;
   -o-box-shadow: @rg-shadow;
   box-shadow: @rg-shadow;
+}
+
+.dropshadow-light {
+  -webkit-box-shadow: @rg-shadow-light;
+  -moz-box-shadow: @rg-shadow-light;
+  -ms-box-shadow: @rg-shadow-light;
+  -o-box-shadow: @rg-shadow-light;
+  box-shadow: @rg-shadow-light;
 }
 
 .pointer {

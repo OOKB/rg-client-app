@@ -91,7 +91,7 @@ body {
   font-size: 1em;
   margin: 0;
   padding: 0;
-  padding-top: 200px;
+  padding-top: 300px;
   padding-bottom: 60px;
   text-align: center;
 }
@@ -145,7 +145,6 @@ header {
 }
 
 header h1 {
-  .dropshadow;
   background: url('images/rglogo.png') center center no-repeat;
   background-size: contain;
   text-indent: 100%;
@@ -153,7 +152,8 @@ header h1 {
   overflow: hidden;
   width: 350px;
   height: 60px;
-  margin: 20px auto;
+  margin: 20px auto 30px;
+  .dropshadow-light;
 }
 
 header nav {
@@ -170,11 +170,16 @@ header nav > ul {
   .text-center;
 }
 
-header nav > ul li {
+header nav > ul > li {
   border-top: solid 1px #262019;
   display: list-item;
   list-style: none;
-  padding: 4px 0 3px 0;
+  padding: 0;
+}
+
+header nav > ul > li > a {
+  display: block;
+  padding: 7px 0;
   font-size: .875em;
   font-weight: bold;
   .uppercase;
@@ -183,8 +188,9 @@ header nav > ul li {
 #content {
   width: auto;
   margin: 0 auto;
-  border-bottom: 1px solid @rg-black;
 }
+
+#content > div { border-bottom: 1px solid @rg-black; }
 
 #content .loading {
   height: 50px;
