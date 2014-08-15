@@ -46,10 +46,12 @@ module.exports = React.createClass
       tds.push td
         key: 'size'
         className: 'c-size',
+        rowSpan: @props.rowSpan,
           item.approx_size
       tds.push td
         key: 'thick'
         className: 'c-thick',
+        rowSpan: @props.rowSpan,
           item.approx_thick
     else
       tds.push td

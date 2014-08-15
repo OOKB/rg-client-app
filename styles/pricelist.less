@@ -8,6 +8,7 @@
   width: auto;
   margin: 0 auto;
 }
+
 /* Small devices (tablets, 768px and up) */
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: @screen-md-min) {
@@ -63,7 +64,7 @@ table {
 }
 
 #container-pricelist table {
-  min-width: 750px;
+  min-width: 590px;
 }
 
 table tr th,
@@ -93,7 +94,6 @@ table thead th {
 /* add some more padding to the tops of "pattern" headers **/
 table .pattern th {
   border-top: 1px solid #ddd;
-  margin-top: 8px;
   padding-top: 8px;
 }
 
@@ -104,8 +104,18 @@ table .pattern th {
   overflow: visible;
 }
 
+.c-color {
+  min-width: 120px;
+}
+
 .c-number {
   text-align: right;
+  min-width: 100px;
+}
+
+.c-repeat,
+.c-size {
+  min-width: 140px;
 }
 
 /* column widths — there might need to be classes on the <table> to go with specific states to change these up... just in case */
@@ -139,5 +149,31 @@ tr.pattern a,
 tr.color a {
   .link3;
 }
+
+
+/** Some ipad/mobile styles for making pricelist viewing easier without removing columns/content **/
+@media (max-width: @screen-sm-max) {
+  #container-pricelist {
+    overflow: auto;
+    max-width: 100%;
+    position: relative;
+  }
+  .c-repeat,
+  .c-size {
+    min-width: 100px;
+  }
+}
+
+@media (max-width: @screen-xs-max) {
+  #container-pricelist {
+    margin: 0 20px;
+    -webkit-box-shadow: inset -6px -3px 8px 0 rgba(132,132,132,0.5);
+    -moz-box-shadow: inset -6px -3px 8px 0 rgba(132,132,132,0.5);
+    -ms-box-shadow: inset -6px -3px 8px 0 rgba(132,132,132,0.5);
+    -o-box-shadow: inset -6px -3px 8px 0 rgba(132,132,132,0.5);
+    box-shadow: inset -6px -3px 8px 0 rgba(132,132,132,0.5);
+  }
+}
+
 
 /* ============================ /Pricelist ============================ */
