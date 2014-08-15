@@ -47,12 +47,13 @@ table {
 
 table tr th,
 table tr td {
-  padding: 3px 7px;
+  padding: 3px 12px;
   line-height: 14px;
   vertical-align: top;
   border-collapse: collapse;
   border: 0;
   height: 14px;
+  font-weight: normal;
 }
 
 table thead {
@@ -70,7 +71,9 @@ table thead th {
 
 /* add some more padding to the tops of "pattern" headers **/
 table .pattern th {
-  padding-top: 16px;
+  border-top: 1px solid #ddd;
+  margin-top: 8px;
+  padding-top: 8px;
 }
 
 /** Individual column widths to try and match PDF */
@@ -80,9 +83,7 @@ table .pattern th {
   overflow: visible;
 }
 
-.c-number,
-.c-price,
-.c-size {
+.c-number {
   text-align: right;
 }
 
