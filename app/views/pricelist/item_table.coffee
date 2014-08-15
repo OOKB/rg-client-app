@@ -23,7 +23,7 @@ module.exports = React.createClass
     lastName = null
     patternItems = []
 
-    processItem = (item, rowSpan) =>
+    processItem = (item, rowSpan, isLast) =>
       # Link to detail page.
       # This should be moved to the model!
       if item._file and item.category != 'passementerie'
@@ -46,6 +46,7 @@ module.exports = React.createClass
           colorValue: colorValue
           idValue: idValue
           rowSpan: rowSpan
+          isLast: isLast
       else
         rows.push ItemColorRow
           item: item
@@ -54,6 +55,7 @@ module.exports = React.createClass
           filter: @props.filter
           colorValue: colorValue
           idValue: colorIdValue
+          isLast: isLast
       lastName = item.name
       return
 
@@ -61,8 +63,9 @@ module.exports = React.createClass
       rowSpan = pis.length
       processItem pis.shift(), rowSpan
       if pis.length
-        pis.forEach (pi) ->
-          processItem pi, false
+        pis.forEach (pi, index) ->
+          last = index+1 == pis.length
+          processItem pi, false, last
 
     # Decide what row view to use.
     @props.collection.forEach (item, i) =>
