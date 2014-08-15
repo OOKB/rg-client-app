@@ -70,9 +70,15 @@ module.exports = AmpersandModel.extend
         (@id + ' ' + @name + ' ' + @color + ' ' + content).toLowerCase()
 
     detail:
-      deps: ['patternNumber', 'color_id']
+      deps: ['patternNumber', 'color_id', 'id']
       fn: ->
-        '#detail/'+@patternNumber+'/'+@color_id
+        if @hasImage
+          if 'passementerie' == @category
+            return '#collection/passementerie/21/'+@id+'/p0'
+          else
+            return '#detail/'+@patternNumber+'/'+@color_id
+        else
+          return null
 
     priceDisplay:
       deps: ['price']

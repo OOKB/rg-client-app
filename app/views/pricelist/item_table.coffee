@@ -25,8 +25,7 @@ module.exports = React.createClass
 
     processItem = (item, rowSpan, isLast) =>
       # Link to detail page.
-      # This should be moved to the model!
-      if item._file and item.category != 'passementerie'
+      if item.detail
         a_ops =
           onMouseDown: @prefetchImg
           id: item.id
