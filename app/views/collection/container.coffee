@@ -16,6 +16,7 @@ module.exports = React.createClass
       className: 'text-area',
         'Browse the collection by category below.'
     div
+      id: 'container-collection'
       className: 'collection',
         Row
           active: 'textile' == category

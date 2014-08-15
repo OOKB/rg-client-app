@@ -64,6 +64,7 @@ module.exports = React.createClass
 
   render: ->
     div
+      id: 'container-pricelist'
       className: @state.category,
         SearchBar
           # The search bar accepts input so we need to pass a func that has this.

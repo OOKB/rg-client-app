@@ -38,6 +38,8 @@ module.exports = React.createClass
       onUserInput: @handleUserInput
       isRelated: @state.isRelated
       patternNumber: @state.patternNumber
-    div className: 'item-detail '+item.category,
-      HeaderBar props
-      Switcher props
+    div
+      id: 'container-detail'
+      className: 'item-detail '+item.category,
+        HeaderBar props
+        Switcher props
