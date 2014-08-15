@@ -24,6 +24,8 @@ module.exports = React.createClass
     patternItems = []
 
     processItem = (item, rowSpan, isLast) =>
+      if rowSpan and rowSpan == 1
+        isLast = true
       # Link to detail page.
       if item.detail
         a_ops =

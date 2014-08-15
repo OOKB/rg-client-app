@@ -63,5 +63,9 @@ module.exports = React.createClass
         className: 'c-wdith',
           item.approx_width
 
-    tr className: 'pattern',
-      tds
+    className = 'pattern'
+    if @props.isLast
+      className += ' last'
+    tr
+      className: className,
+        tds
