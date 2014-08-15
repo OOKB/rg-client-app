@@ -106,7 +106,8 @@ module.exports = React.createClass
     unless @props.filter.category == 'leather'
       ths.push th
         key: 'repeat'
-        className: 'c-repeat', 'Repeat'
+        className: 'c-repeat',
+          'Approx. Repeat'
     # Leather is size.
     if @props.filter.category == 'leather'
       ths.push th

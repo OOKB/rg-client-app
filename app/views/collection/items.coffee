@@ -5,8 +5,6 @@ module.exports = React.createClass
   getInitialState: ->
     buttonsFor: @props.buttonsForInit
     searchTxt: @props.initState.searchTxt
-    category: @props.initState.category
-    pageSize: @props.initState.pageSize
     pageIndex: @props.initState.pageIndex
 
   setButtonsFor: (e) ->
@@ -46,8 +44,8 @@ module.exports = React.createClass
 
 
     return div
-      className: 'pg-size-'+@state.pageSize
-      id: 'collection-'+@state.category,
+      className: 'pg-size-' + @props.initState.pageSize
+      id: 'collection-' + @props.initState.category,
         ul
           className: 'list',
             list

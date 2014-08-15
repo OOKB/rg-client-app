@@ -5,25 +5,28 @@ React = require 'react'
 ## onUserInput() - defined in item_container.
 
 module.exports = React.createClass
+
   handleChange: (event) ->
     @props.onUserInput
       searchTxt: @refs.filterTextInput.getDOMNode().value
-      #summerSale: @refs.summerSale.getDOMNode().checked
-      pageSize: @refs.setPageSize.getDOMNode().value
+      pgSize: @refs.setpgSize.getDOMNode().value
 
   handleCollectionClick: (e) ->
     collection_id = e.target.value
     if e.preventDefault
       e.preventDefault()
-    @props.onUserInput category: collection_id
+    @props.onUserInput
+      category: collection_id
 
   pageNext: (e) ->
     if @props.filter.pageIndex != @props.total_pages-1
-      @props.onUserInput pageIndex: @props.filter.pageIndex + 1
+      @props.onUserInput
+        pageIndex: @props.filter.pageIndex + 1
 
   pagePrevious: (e) ->
     if @props.filter.pageIndex != 0
-      @props.onUserInput pageIndex: @props.filter.pageIndex - 1
+      @props.onUserInput
+        pageIndex: @props.filter.pageIndex - 1
 
   render: ->
     v = @props.filter # see item_container.coffee for example object.
@@ -35,8 +38,8 @@ module.exports = React.createClass
     sizeSelect = li
       className: 'pageselect',
         select
-          ref: 'setPageSize'
-          value: v.pageSize
+          ref: 'setpgSize'
+          value: v.pgSize
           onChange: @handleChange
           type: 'select',
             option
