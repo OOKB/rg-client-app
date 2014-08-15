@@ -77,4 +77,4 @@ module.exports = React.createClass
           total_pages: Math.ceil(@props.collection.filtered_length / @state.pageSize)
         ItemTable
           collection: @props.collection
-          filter: @state
+          filter: @props.initState

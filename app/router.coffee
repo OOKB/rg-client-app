@@ -28,8 +28,8 @@ module.exports = Router.extend
   urlCreate: (s) ->
     url = s.section+'/'+s.category+'/'+s.pgSize
     if s.searchTxt
-      url += '/'+searchTxt
-    return url+'/p'+s.pageIndex
+      url += '/' + s.searchTxt
+    return url+'/p' + s.pageIndex
 
   prepNewState: (section, category, pgSize, searchTxt, pageIndex) ->
     newState =
@@ -85,6 +85,7 @@ module.exports = Router.extend
       if newState.pageIndex > newState.totalPages
         newState.pageIndex = newState.totalPages
         @updateURL oldState, newState
+      #console.log newState
       return newState
 
   updateURL: (oldSt, newSt) ->

@@ -15,9 +15,7 @@ module.exports = React.createClass
   componentDidMount: ->
     @router.setReactState = (newState) =>
       if newState
-
         @setState (newState)
-
     @router.history.start()
 
   setRouterState: (newState) ->
@@ -26,7 +24,7 @@ module.exports = React.createClass
       redirected = @router.updateURL @state, s
       if redirected
         @router.itemsFilter app.items, s
-      console.log s
+      #console.log s
       @setState s
 
   render: ->
