@@ -12,12 +12,12 @@ module.exports = React.createClass
 
   render: ->
     category = @props.initState.category
-    p
-      className: 'text-area',
-        'Browse the collection by category below.'
     div
       id: 'container-collection'
       className: 'collection',
+        p
+          className: 'text-area',
+            'Browse the collection by category below.'
         Row
           active: 'textile' == category
           category: 'textile'
