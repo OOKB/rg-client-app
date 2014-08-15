@@ -80,6 +80,11 @@ module.exports = Router.extend
     else
       # filter the items
       itemsFilter app.items, newState
+      newState.totalPages =
+        Math.ceil(app.items.filtered_length / newState.pgSize) - 1
+      if newState.pageIndex > newState.totalPages
+        newState.pageIndex = newState.totalPages
+        @updateURL oldState, newState
       return newState
 
   updateURL: (oldSt, newSt) ->
