@@ -25,12 +25,6 @@ module.exports = Router.extend
     S = @prepNewState 'pricelist', category, pgSize, searchTxt, pageIndex
     @setReactState S
 
-  urlCreate: (s) ->
-    url = s.section+'/'+s.category+'/'+s.pgSize
-    if s.searchTxt
-      url += '/' + s.searchTxt
-    return url+'/p' + s.pageIndex
-
   prepNewState: (section, category, pgSize, searchTxt, pageIndex) ->
     newState =
       section: section
@@ -81,12 +75,18 @@ module.exports = Router.extend
       # filter the items
       itemsFilter app.items, newState
       newState.totalPages =
-        Math.ceil(app.items.filtered_length / newState.pgSize) - 1
+        Math.abs(Math.ceil(app.items.filtered_length / newState.pgSize) - 1)
       if newState.pageIndex > newState.totalPages
         newState.pageIndex = newState.totalPages
         @updateURL oldState, newState
       #console.log newState
       return newState
+
+  urlCreate: (s) ->
+    url = s.section+'/'+s.category+'/'+s.pgSize
+    if s.searchTxt
+      url += '/' + s.searchTxt
+    return url+'/p' + s.pageIndex
 
   updateURL: (oldSt, newSt) ->
     newStateURL = @urlCreate newSt
