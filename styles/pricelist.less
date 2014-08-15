@@ -4,9 +4,27 @@
 /* ---------->>> PRICELIST <<<-----------*/
 /* --------------------------------------*/
 
-#content {
-  border-bottom: 1px solid @rg-black;
+#container-pricelist {
+  width: auto;
+  margin: 0 auto;
 }
+/* Small devices (tablets, 768px and up) */
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) {
+  #container-pricelist {
+    width: 970px;
+    margin: 0 auto;
+  }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) {
+  #container-pricelist {
+    width: 970px;
+    margin: 0 auto;
+  }
+}
+
 
 #content form input {
   width: 300px;
@@ -41,8 +59,11 @@ table {
   border-collapse: collapse;
   border: 0;
   text-align: left;
-  min-width: 750px;
   margin-bottom: 20px;
+}
+
+#container-pricelist table {
+  min-width: 750px;
 }
 
 table tr th,
