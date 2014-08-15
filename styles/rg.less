@@ -80,19 +80,23 @@
 
 * {
   font-family: 'adobe caslon', adobe-caslon-pro, cambria, 'times new roman', times, georgia, serif;
-  font-size: 14px;
   box-sizing: border-box;
 }
+
+html { font-size: 14px; }
 
 body {
   background: @rg-background;
   color: @rg-black;
+  font-size: 1em;
   margin: 0;
   padding: 0;
   padding-top: 200px;
   padding-bottom: 60px;
   text-align: center;
 }
+
+table { font-size: 1em; }
 
 button, a, map, map area, object, embed {
   /** non-accessibility friendly, but desired by client aesthetically **/
@@ -107,6 +111,7 @@ button, a, map, map area, object, embed {
 button {
   text-transform: uppercase;
   letter-spacing: 2px;
+  font-size: .93em;
   background: none;
   background-color: transparent;
   border: none;
@@ -140,15 +145,15 @@ header {
 }
 
 header h1 {
+  .dropshadow;
   background: url('images/rglogo.png') center center no-repeat;
-  background-size: cover;
+  background-size: contain;
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
   width: 350px;
   height: 60px;
   margin: 20px auto;
-  .dropshadow;
 }
 
 header nav {
@@ -170,6 +175,7 @@ header nav > ul li {
   display: list-item;
   list-style: none;
   padding: 4px 0 3px 0;
+  font-size: .875em;
   font-weight: bold;
   .uppercase;
 }
@@ -183,11 +189,6 @@ header nav > ul li {
 #content .loading {
   height: 50px;
   width: 50px;
-/*
-  position: fixed;
-  top:50%;
-  margin-top: -25px;
-*/
 }
 
 footer {
