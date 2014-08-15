@@ -47,6 +47,7 @@ module.exports = Router.extend
     else
       newState.pageIndex = 0
 
+    newState.omit00 = false # Default to showing color_id 00.
     if 'collection' == section
       pgSizes = [3, 21, 42, 84]
       if 'passementerie' == newState.category
@@ -55,6 +56,7 @@ module.exports = Router.extend
       else
         favsOnly = true
     else if 'pricelist' == section
+      newState.omit00 = true # Hide color_id 00.
       pgSizes = [50, 100, 10000]
     else
       pgSizes = [1]
@@ -115,21 +117,7 @@ module.exports = Router.extend
     return nearest
 
 #
-# collection: (category, pgSize, searchTxt, pageIndex) ->
-#
-#   newState =
-#     searchTxt: searchTxt
-#     pageIndex: pageIndex
-#     pageSize: pgSize
-#     hasImage: true
-#
-#   itemsFilter app.items, newState
-#
-#   #console.log newState
-#   component = Collection
-#     collection: app.items
-#     initState: newState
-#
+
 # pricelist: (category, searchTxt, pageIndex) ->
 #   if pageIndex
 #     pageIndex = parseInt pageIndex
@@ -158,11 +146,6 @@ module.exports = Router.extend
 #     @redirectTo destination+'p'+(totalPages-1)
 #     return
 #
-#   component = FilterableProductTable
-#     collection: app.items
-#     initState: newState
-#
-#   @trigger 'newPage', component
 #
 # itemView: (patternNumber, color_id) ->
 #   config =

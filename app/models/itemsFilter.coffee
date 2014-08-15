@@ -16,10 +16,15 @@ module.exports = (items, filters) ->
   if filters.colorSorted
     config.comparator = 'order'
 
+  config.filters = []
   if filters.searchTxt
     config.filters = filters.searchTxt.split(' ').map (searchTxt) ->
       (model) ->
         model.searchStr.indexOf(searchTxt) > -1
+  if filters.omit00
+    config.filters.push (model) ->
+      model.color_id.substring(0, 2) != '00'
+
 
   pgSize = filters.pgSize
   pageIndex = filters.pageIndex
