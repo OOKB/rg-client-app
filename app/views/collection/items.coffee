@@ -1,5 +1,5 @@
 React = require 'react'
-{div, ul, li, button, img, i} = require 'reactionary'
+{div, p, ul, li, button, img, i} = require 'reactionary'
 
 module.exports = React.createClass
   getInitialState: ->
