@@ -6,6 +6,8 @@ Items = require './items'
 module.exports = React.createClass
   categoryClick: (e) ->
     @props.setRouterState
+      patternNumber: false
+      id: false
       category: e.target.value
 
   render: ->

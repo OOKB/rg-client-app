@@ -74,7 +74,7 @@ module.exports = AmpersandModel.extend
       fn: ->
         if @hasImage
           if 'passementerie' == @category
-            return '#collection/passementerie/21/'+@id+'/p0'
+            return '#collection/passementerie/21/p0?id='+@id
           else
             return '#detail/'+@patternNumber+'/'+@color_id
         else

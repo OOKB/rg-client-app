@@ -4,21 +4,18 @@ React = require 'react'
 module.exports = React.createClass
   getInitialState: ->
     buttonsFor: @props.buttonsForInit
-    colors: false
 
   setButtonsFor: (e) ->
     @setState buttonsFor: e.target.id
 
   colorsClick: (e) ->
     if 'passementerie' == @props.initState.category
-      if @state.colors
-        @setState colors: false
+      if @props.initState.patternNumber
         @props.setRouterState
-          searchTxt: ''
+          patternNumber: false
       else
-        @setState colors: true
         @props.setRouterState
-          searchTxt: e.target.value
+          patternNumber: e.target.value
 
   render: ->
     list = []

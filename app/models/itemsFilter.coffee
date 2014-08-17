@@ -43,5 +43,10 @@ module.exports = (items, filters) ->
     config.limit = pgSize
     config.offset = pageIndex * pgSize
 
+  if filters.id
+    config =
+      where:
+        id: filters.id
+
   items.configure config, resetCollection
   return
