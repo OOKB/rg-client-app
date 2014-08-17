@@ -4,6 +4,9 @@ React = require 'react'
 Items = require './items'
 
 module.exports = React.createClass
+  categoryClick: (e) ->
+    @props.setRouterState
+      category: e.target.value
 
   render: ->
     if @props.active
@@ -22,6 +25,7 @@ module.exports = React.createClass
               className: 'hug-center on-top',
                 button
                   className: 'uppercase'
+                  onClick: @categoryClick
                   value: @props.category,
                     @props.label or @props.category
         itemList

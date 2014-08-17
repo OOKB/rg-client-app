@@ -19,13 +19,16 @@ module.exports = React.createClass
           label: 'Textiles'
           collection: @props.collection
           initState: @props.initState
+          setRouterState: @props.setRouterState
         Row
           active: 'passementerie' == category
           category: 'passementerie'
           collection: @props.collection
           initState: @props.initState
+          setRouterState: @props.setRouterState
         Row
           active: 'leather' == category
           category: 'leather'
           collection: @props.collection
           initState: @props.initState
+          setRouterState: @props.setRouterState
