@@ -6,10 +6,8 @@ Switcher = require './buttons'
 
 module.exports = React.createClass
   getInitialState: ->
-    color_id: @props.initColor
-    patternNumber: @props.patternNumber
-    pageIndex: 0
     isRelated: false
+    color_id: @props.initState.initColor
 
   handleUserInput: (newSt) ->
     if newSt.color_id
@@ -26,8 +24,10 @@ module.exports = React.createClass
     @loadRelatedImgs()
 
   render: ->
-    item = @props.collection.get @state.patternNumber+'-'+@state.color_id
-    #console.log item.toJSON()
+    ops = @props.initState
+    id = ops.patternNumber+'-'+@state.color_id
+
+    item = @props.collection.get id
     color_toggle_class = 'toggle-colors hidden-xs'
     if item.far
       color_toggle_class += ' with-far'
@@ -37,7 +37,7 @@ module.exports = React.createClass
       pageIndex: @state.pageIndex
       onUserInput: @handleUserInput
       isRelated: @state.isRelated
-      patternNumber: @state.patternNumber
+      patternNumber: ops.patternNumber
     div
       id: 'container-detail'
       className: 'item-detail '+item.category,

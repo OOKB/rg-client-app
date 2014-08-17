@@ -2,8 +2,20 @@ module.exports = (items, filters) ->
   resetCollection = true
 
   config =
-    where:
-      category: filters.category
+    where: {}
+
+  # Only show items belonging to a specific pattern.
+  if filters.patternNumber
+    config.where.patternNumber = filters.patternNumber
+
+  # Only show items with a specific color id.
+  # if filters.color_id
+  #   config.where.color_id = filters.color_id
+  # else if filters.initColor
+  #   config.where.color_id = filters.initColor
+
+  if filters.category
+    config.where.category = filters.category
 
   # Require that the item has a detail page.
   if filters.hasDetail
@@ -25,11 +37,11 @@ module.exports = (items, filters) ->
     config.filters.push (model) ->
       model.color_id.substring(0, 2) != '00'
 
+  if filters.pgSize and filters.pageIndex
+    pgSize = filters.pgSize
+    pageIndex = filters.pageIndex - 1
+    config.limit = pgSize
+    config.offset = pageIndex * pgSize
 
-  pgSize = filters.pgSize
-  pageIndex = filters.pageIndex - 1
-
-  config.limit = pgSize
-  config.offset = pageIndex * pgSize
   items.configure config, resetCollection
   return

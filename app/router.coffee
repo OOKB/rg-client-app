@@ -18,7 +18,7 @@ module.exports = Router.extend
     'pricelist/:category': 'pricelist'
     'pricelist/:category/:pgSize': 'pricelist'
     'pricelist/:category/:pgSize(/:query)/p:page': 'pricelist'
-    'detail/:pattern/:id': 'itemView'
+    'detail/:pattern/:id': 'detail'
 
   collection: (category, pgSize, searchTxt, pageIndex) ->
     S = @prepNewState 'collection', category, pgSize, searchTxt, pageIndex
@@ -28,6 +28,15 @@ module.exports = Router.extend
     S = @prepNewState 'pricelist', category, pgSize, searchTxt, pageIndex
     @setReactState S
 
+  detail: (patternNumber, color_id) ->
+    newState =
+      section: 'detail'
+      patternNumber: patternNumber
+      initColor: color_id
+    itemsFilter app.items, newState
+    @setReactState newState
+
+  # Prep state object for collection and pricelist section views.
   prepNewState: (section, category, pgSize, searchTxt, pageIndex) ->
     newState =
       section: section
@@ -131,41 +140,3 @@ module.exports = Router.extend
         if newDiff < diff
           nearest = num
     return nearest
-
-#
-
-# pricelist: (category, searchTxt, pageIndex) ->
-#   if pageIndex
-#     pageIndex = parseInt pageIndex
-#   else
-#     pageIndex = 0
-#
-#   unless searchTxt
-#     searchTxt = ''
-#
-#   itemsFilter app.items, newState
-#
-#   totalPages = Math.ceil(app.items.filtered_length / 50)-1
-#   if pageIndex and pageIndex > totalPages
-#     #console.log 'too big'
-#     destination = 'pricelist/'+category+'/'
-#     if searchTxt
-#       destination += searchTxt +'/'
-#     #console.log destination+'p'+totalPages
-#     @redirectTo destination+'p'+(totalPages-1)
-#     return
-#
-#
-# itemView: (patternNumber, color_id) ->
-#   config =
-#     where:
-#       patternNumber: patternNumber
-#     filter: (model) ->
-#       model._file
-#
-#   app.items.configure config, true
-#   props =
-#     initColor: color_id
-#     collection: app.items
-#     patternNumber: patternNumber
-#   @trigger 'newPage', ItemDetail props

@@ -18,7 +18,7 @@ module.exports = React.createClass
     if e.preventDefault
       e.preventDefault()
     #console.log href
-    app.router.navigate(href, {replace: true})
+    app.container.router.navigate(href, {replace: true})
     @props.setParentState isRelated: true
     @props.setContainerState color_id: color_id
 
