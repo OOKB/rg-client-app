@@ -64,7 +64,8 @@ module.exports = Router.extend
     else
       newState.pageIndex = 1
 
-    newState.omit00 = false # Default to showing color_id 00.
+    # Default to HIDE color_id 00.
+    newState.omit00 = true
     if 'collection' == section
       newState.hasImage = true
       newState.colorSorted = true
@@ -75,7 +76,6 @@ module.exports = Router.extend
       else
         favsOnly = true
     else if 'pricelist' == section
-      newState.omit00 = true # Hide color_id 00.
       pgSizes = [50, 100, 10000]
     else
       pgSizes = [1]
