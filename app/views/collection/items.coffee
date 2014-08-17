@@ -19,24 +19,31 @@ module.exports = React.createClass
 
   render: ->
     list = []
-
+    extraButtons = 'passementerie' == @props.initState.category or 3 == @props.initState.pgSize
     # List
     @props.collection.forEach (item, index) =>
       if @state.buttonsFor == item.id
+        buttons = []
+        if extraButtons
+          buttons.push button
+            key: 'colors'
+            value: item.patternNumber
+            onClick: @colorsClick
+            className: 'item-colors',
+              'Colors'
+        buttons.push button
+          key: 'favs'
+          className: 'item-favorite',
+            '+'
+        if extraButtons
+          buttons.push button
+            key: 'details'
+            className: 'item-details',
+              '='
         # Action buttons
         buttons = div
           className: 'item-icons hidden-xs',
-            button
-              value: item.patternNumber
-              onClick: @colorsClick
-              className: 'item-colors',
-                'Colors'
-            button
-              className: 'item-favorite',
-                '+'
-            button
-              className: 'item-details',
-                '='
+            buttons
       else
         buttons = ''
 
