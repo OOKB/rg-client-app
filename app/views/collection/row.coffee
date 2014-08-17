@@ -13,6 +13,7 @@ module.exports = React.createClass
       itemList = Items
         collection: @props.collection
         initState: @props.initState
+        setRouterState: @props.setRouterState
     else
       itemList = div {}
 

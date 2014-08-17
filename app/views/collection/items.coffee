@@ -4,11 +4,21 @@ React = require 'react'
 module.exports = React.createClass
   getInitialState: ->
     buttonsFor: @props.buttonsForInit
-    searchTxt: @props.initState.searchTxt
-    pageIndex: @props.initState.pageIndex
+    colors: false
 
   setButtonsFor: (e) ->
     @setState buttonsFor: e.target.id
+
+  colorsClick: (e) ->
+    if 'passementerie' == @props.initState.category
+      if @state.colors
+        @setState colors: false
+        @props.setRouterState
+          searchTxt: ''
+      else
+        @setState colors: true
+        @props.setRouterState
+          searchTxt: e.target.value
 
   render: ->
     list = []
@@ -20,6 +30,8 @@ module.exports = React.createClass
         buttons = div
           className: 'item-icons hidden-xs',
             button
+              value: item.patternNumber
+              onClick: @colorsClick
               className: 'item-colors',
                 'Colors'
             button
