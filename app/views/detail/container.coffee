@@ -27,8 +27,9 @@ module.exports = React.createClass
   render: ->
     ops = @props.initState
     id = ops.patternNumber + '-' + ops.color_id
-
     item = @props.collection.get id
+    unless item
+      console.log @props.collection.models
     color_toggle_class = 'toggle-colors hidden-xs'
     if item.far
       color_toggle_class += ' with-far'

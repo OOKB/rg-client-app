@@ -25,13 +25,16 @@ module.exports = Router.extend
     @setReactState S
 
   pricelist: (category, pgSize, searchTxt, pageIndex) ->
+    #console.log 'pricelist'
     S = @prepNewState 'pricelist', category, pgSize, searchTxt, pageIndex
     @setReactState S
 
   detail: (patternNumber, color_id) ->
+    #console.log 'detail'
     newState =
       section: 'detail'
       patternNumber: patternNumber
+      hasDetail: true
       color_id: color_id
     itemsFilter app.items, newState
     @setReactState newState
