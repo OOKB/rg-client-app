@@ -21,10 +21,15 @@ module.exports = React.createClass
   setRouterState: (newState) ->
     if newState
       s = _.defaults newState, @state
-      redirected = @router.updateURL @state, s
-      if redirected
-        @router.itemsFilter app.items, s
       #console.log s
+      s = @router.prepNewState s.section, s.category, s.pgSize, s.searchTxt, s.pageIndex
+      redirected = @router.updateURL @state, s
+      # Handle in-app state change options.
+      if s.searchTxt
+        if s.searchTxt != @state.searchTxt
+          # Reset pageIndex.
+          s.pageIndex = 1
+
       @setState s
 
   render: ->

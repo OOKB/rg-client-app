@@ -19,7 +19,7 @@ module.exports = React.createClass
       category: collection_id
 
   pageNext: (e) ->
-    if @props.filter.pageIndex != @props.filter.totalPages-1
+    if @props.filter.pageIndex != @props.filter.totalPages
       @props.onUserInput
         pageIndex: @props.filter.pageIndex + 1
 
@@ -33,7 +33,7 @@ module.exports = React.createClass
     #console.log 'search bar '+ v.pageIndex
     # Pager stuff.
     totalPages = @props.filter.totalPages
-    current_page = v.pageIndex + 1
+    current_page = v.pageIndex
 
     sizeSelect = li
       className: 'pageselect',
@@ -58,7 +58,7 @@ module.exports = React.createClass
 
     if totalPages > 1
       pager_previous_class = 'previous'
-      if v.pageIndex == 0
+      if v.pageIndex == 1
         pager_previous_class += ' disabled'
       pager_next_class = 'next'
 

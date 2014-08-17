@@ -8,11 +8,14 @@ module.exports = Router.extend
   itemsFilter: itemsFilter
   routes:
     '': -> @redirectTo('pricelist')
+    'cl': -> @redirectTo('collection/'+defaultCategory+'/3')
     'collection': -> @redirectTo('collection/'+defaultCategory+'/3')
     'collection/:category': 'collection'
     'collection/:category/:pgSize': 'collection'
     'collection/:category/:pgSize(/:query)/p:page': 'collection'
+    'pl': -> @redirectTo('pricelist/'+defaultCategory+'/50')
     'pricelist': -> @redirectTo('pricelist/'+defaultCategory+'/50')
+    'pricelist/:category': 'pricelist'
     'pricelist/:category/:pgSize': 'pricelist'
     'pricelist/:category/:pgSize(/:query)/p:page': 'pricelist'
     'detail/:pattern/:id': 'itemView'
@@ -28,7 +31,7 @@ module.exports = Router.extend
   prepNewState: (section, category, pgSize, searchTxt, pageIndex) ->
     newState =
       section: section
-      searchTxt: searchTxt
+      searchTxt: @searchTxt searchTxt
 
     newState.category = switch category
       when 't' then 'textile'
@@ -44,11 +47,15 @@ module.exports = Router.extend
 
     if pageIndex
       newState.pageIndex = parseInt pageIndex
+      if !newState.pageIndex > 0
+        newState.pageIndex = 1
     else
-      newState.pageIndex = 0
+      newState.pageIndex = 1
 
     newState.omit00 = false # Default to showing color_id 00.
     if 'collection' == section
+      newState.hasImage = true
+      newState.colorSorted = true
       pgSizes = [3, 21, 42, 84]
       if 'passementerie' == newState.category
         favsOnly = false
@@ -71,18 +78,26 @@ module.exports = Router.extend
       pageIndex: pageIndex
 
     redirected = @updateURL oldState, newState
-    if redirected
-      return false
+
+    # filter the items
+    itemsFilter app.items, newState
+    newState.totalPages =
+      Math.ceil(app.items.filtered_length / newState.pgSize)
+    if newState.totalPages and newState.pageIndex > newState.totalPages
+      newState.pageIndex = newState.totalPages
+      @updateURL oldState, newState
+    #console.log newState
+    return newState
+
+  searchTxt: (search_string) ->
+    if typeof search_string == 'string'
+      # Make sure the user input search text is lowercase.
+      search_string = search_string.toLowerCase()
+      # Make sure the text string is valid... Regex check.
+      search_string = search_string.replace(/[^a-z0-9-\s]/, '')
+      return search_string
     else
-      # filter the items
-      itemsFilter app.items, newState
-      newState.totalPages =
-        Math.abs(Math.ceil(app.items.filtered_length / newState.pgSize) - 1)
-      if newState.pageIndex > newState.totalPages
-        newState.pageIndex = newState.totalPages
-        @updateURL oldState, newState
-      #console.log newState
-      return newState
+      return ''
 
   urlCreate: (s) ->
     url = s.section+'/'+s.category+'/'+s.pgSize
@@ -94,6 +109,7 @@ module.exports = Router.extend
     newStateURL = @urlCreate newSt
     oldURL = @urlCreate oldSt
     if newStateURL != oldURL
+      #console.log newStateURL + ' - ' + oldURL
       @redirectTo newStateURL
       return true
     else
