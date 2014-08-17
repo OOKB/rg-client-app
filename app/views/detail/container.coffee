@@ -7,11 +7,12 @@ Switcher = require './buttons'
 module.exports = React.createClass
   getInitialState: ->
     isRelated: false
-    color_id: @props.initState.initColor
 
   handleUserInput: (newSt) ->
     if newSt.color_id
       newSt.isRelated = true
+      @props.setRouterState
+        color_id: newSt.color_id
     @setState newSt
 
   loadRelatedImgs: ->
@@ -25,7 +26,7 @@ module.exports = React.createClass
 
   render: ->
     ops = @props.initState
-    id = ops.patternNumber+'-'+@state.color_id
+    id = ops.patternNumber + '-' + ops.color_id
 
     item = @props.collection.get id
     color_toggle_class = 'toggle-colors hidden-xs'

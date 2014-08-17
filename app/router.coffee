@@ -32,7 +32,7 @@ module.exports = Router.extend
     newState =
       section: 'detail'
       patternNumber: patternNumber
-      initColor: color_id
+      color_id: color_id
     itemsFilter app.items, newState
     @setReactState newState
 
