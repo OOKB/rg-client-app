@@ -20,8 +20,8 @@ module.exports = React.createClass
 
   setRouterState: (newState) ->
     if newState
-      if 'pricelist' == newState.section or 'collection' == newState.section
-        s = _.defaults newState, @state
+      s = _.defaults newState, @state
+      if 'pricelist' == s.section or 'collection' == s.section
         #console.log s
         s = @router.prepNewState s.section, s.category, s.pgSize, s.searchTxt, s.pageIndex
         redirected = @router.updateURL @state, s
