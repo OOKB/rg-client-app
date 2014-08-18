@@ -19,13 +19,31 @@ module.exports = React.createClass
         @props.setRouterState
           patternNumber: e.target.value
 
+  imgSize: ->
+    ww = @state.windowWidth
+    if ww < 1280 or @props.initState.category == 'passementerie'
+      imgSize = 'small'
+    else
+      imgSize = 'large'
+
+  handleResize: (e) ->
+    ww = window.innerWidth
+    if ww % 5 == 0
+      @setState windowWidth: ww
+
+  componentDidMount: ->
+    window.addEventListener 'resize', @handleResize
+
+  componentWillUnmount: ->
+    window.removeEventListener 'resize', @handleResize
+
   render: ->
     list = []
     if @props.threeUp
       buttonsFor = @props.collection.models[1].id
     else
       buttonsFor = @state.buttonsFor
-    imgSize = 'small'
+    imgSize = @imgSize()
     # List
     @props.collection.forEach (item, index) =>
       if buttonsFor == item.id

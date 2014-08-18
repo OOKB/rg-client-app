@@ -39,6 +39,7 @@ module.exports = AmpersandModel.extend
       prefix = cdn + 'items/'+item.id
       if item._file.small
         item._file.small.path = prefix + '/640.jpg'
+        item._file.small.width = 640
         if item.far
           item._file.small.path_far = prefix + '/far/640.jpg'
       else if item._file.wide
@@ -49,6 +50,7 @@ module.exports = AmpersandModel.extend
         delete item._file.wide
       if item._file.large
         item._file.large.path = prefix + '/1536.jpg'
+        item._file.large.width = 1536
         if item.far
           item._file.large.path_far = prefix + '/far/1536.jpg'
 
