@@ -60,7 +60,7 @@ module.exports = React.createClass
           item.repeat
       tds.push td
         key: 'width'
-        className: 'c-wdith',
+        className: 'c-width',
           item.approx_width
 
     className = 'pattern'
