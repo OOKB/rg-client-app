@@ -1,21 +1,28 @@
+_ = require 'underscore'
+
+filterCatProp =
+  color: 'colors'
+  content: 'content'
+  description: 'design_descriptions'
+  type: 'name'
+
 module.exports = (items, filters) ->
   resetCollection = true
 
   config =
     where: {}
 
+  if filters.category
+    config.where.category = filters.category
+    if filters.filterOptions
+      items.configure config, true
+      filters.filterOptions.forEach (cat) ->
+        if f = filterCatProp[cat]
+          filters.filterFields[cat] = _.compact _.uniq(_.flatten(items.pluck(f)))
+
   # Only show items belonging to a specific pattern.
   if filters.patternNumber
     config.where.patternNumber = filters.patternNumber
-
-  # Only show items with a specific color id.
-  # if filters.color_id
-  #   config.where.color_id = filters.color_id
-  # else if filters.initColor
-  #   config.where.color_id = filters.initColor
-
-  if filters.category
-    config.where.category = filters.category
 
   # Require that the item has a detail page.
   if filters.hasDetail

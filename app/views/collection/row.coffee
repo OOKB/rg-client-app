@@ -1,5 +1,5 @@
 React = require 'react'
-{div, ul, li, button, select, option} = require 'reactionary'
+{div, ul, li, button, select, option, fieldset, label, input} = require 'reactionary'
 
 Items = require './items'
 
@@ -46,9 +46,8 @@ module.exports = React.createClass
           type: 'select',
             options
 
-  filterOps: ->
+  filterCategories: (activeTab) ->
     ops = []
-    activeTab = @state.filterTab or @props.initState.filterOptions[0]
     @props.initState.filterOptions.forEach (op) =>
       liClass = 'tab'
       if activeTab == op
@@ -62,14 +61,37 @@ module.exports = React.createClass
               op
     ops
 
+  filterFields: (activeTab) ->
+    fields = []
+    fieldOps = @props.initState.filterFields[activeTab] or ['alpaca']
+
+    fieldOps.forEach (filterOp) ->
+      fields.push label
+        key: filterOp
+        className: 'checkbox-inline',
+          input
+            type: 'checkbox'
+            value: filterOp,
+              filterOp
+    div
+      className: 'filter-content',
+        fieldset
+          className: 'filter-attributes',
+            div # Is this really required?
+              className: 'moz-hack',
+                fields
+
   filters: ->
     containerClass = 'btn-group'
+    activeTab = @state.filterTab or @props.initState.filterOptions[0]
     if @state.showFilters
       filterList = ul
         className: 'filter-list'
         id: 'filter-list-'+@props.initState.category
         role: 'menu',
-          @filterOps()
+          @filterCategories activeTab
+          @filterFields activeTab
+
       containerClass += ' open'
     else
       filterList = ''

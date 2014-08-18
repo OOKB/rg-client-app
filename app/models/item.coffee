@@ -1,5 +1,5 @@
 AmpersandModel = require("ampersand-model")
-_ = require 'lodash'
+_ = require 'underscore'
 
 cdn = '//img.rg.cape.io/'
 
@@ -12,7 +12,7 @@ module.exports = AmpersandModel.extend
     color: 'string' # Color name.
     colors: 'array'
     category: ['string', true] # textile, leather, passementerie
-    content: 'string'
+    content: 'array'
     contents: 'string'
     design: 'string'
     design_descriptions: 'array'
@@ -58,7 +58,6 @@ module.exports = AmpersandModel.extend
         item._file.xlarge.path = prefix + '/2560.jpg'
         if item.far
           item._file.xlarge.path_far = prefix + '/far/2560.jpg'
-
     return item
 
   derived:
