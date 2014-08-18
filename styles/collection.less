@@ -27,8 +27,8 @@
 }
 
 .collection ul.list li img {
-  max-width: 100%;
-  height: auto;
+  min-height: 100%;
+  width: auto;
 }
 
 .item-icons {
@@ -79,8 +79,14 @@
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: @screen-sm-min) {
+  .pg-size-3 ul.list li:nth-child(1),
+  .pg-size-3 ul.list li:nth-child(3) {
+    width: 30%;
+  }
+  .pg-size-3 ul.list li:nth-child(2) {
+    width: 40%;
+  }
   .pg-size-3 ul.list li {
-    width: 33.33333333333%;
     height: 275px;
   }
 }
