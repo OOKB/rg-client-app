@@ -141,6 +141,9 @@ header {
   left: 0;
   right: 0;
   z-index: 10;
+}
+
+.landing header {
   .dropshadow;
 }
 
@@ -178,11 +181,22 @@ header nav > ul > li {
 }
 
 header nav > ul > li > a {
+  color: @rg-black;
   display: block;
   padding: 7px 0;
   font-size: .875em;
   font-weight: bold;
+  text-decoration: none;
   .uppercase;
+}
+
+header nav > ul > li > a:hover {
+  color: @rg-gray;
+}
+
+header nav > ul > li.active > a,
+header nav > ul > li > a.active {
+  color: @rg-gold;
 }
 
 #content {
