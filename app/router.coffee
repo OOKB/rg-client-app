@@ -126,13 +126,17 @@ module.exports = Router.extend
       pgSizes = [1]
 
     newState.pgSize = @closest s.pgSize, pgSizes
-
+    newState.pgSizes = pgSizes
     redirected = @updateURL s, newState
 
     # filter the items
     itemsFilter app.items, newState
-    newState.totalPages =
-      Math.ceil(app.items.filtered_length / newState.pgSize)
+
+    if 3 == newState.pgSize
+      newState.totalPages = app.items.filtered_length
+    else
+      newState.totalPages =
+        Math.ceil(app.items.filtered_length / newState.pgSize)
     if newState.totalPages and newState.pageIndex > newState.totalPages
       newState.pageIndex = newState.totalPages
       @updateURL oldState, newState
