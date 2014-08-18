@@ -4,6 +4,9 @@ React = require 'react'
 Items = require './items'
 
 module.exports = React.createClass
+  getInitialState: ->
+    showFilters: false
+
   categoryClick: (e) ->
     @props.setRouterState
       patternNumber: false
@@ -13,6 +16,10 @@ module.exports = React.createClass
   pgResize: ->
     @props.setRouterState
       pgSize: @refs.setpgSize.getDOMNode().value
+
+  toggleFilter: ->
+    @setState
+      showFilters: !@state.showFilters
 
   sizeSelect: ->
     options = []
@@ -33,6 +40,30 @@ module.exports = React.createClass
           type: 'select',
             options
 
+  filters: ->
+    containerClass = 'btn-group'
+    if @state.showFilters
+      filterList = ul
+        className: 'filter-list'
+        id: 'filter-list-'+@props.initState.category
+        role: 'menu',
+          li 'filters'
+      containerClass += ' open'
+    else
+      filterList = ''
+    li
+      key: 'filter'
+      className: 'filter text-left',
+        div
+          className: containerClass,
+            button
+              value: 'filter'
+              type: 'button'
+              onClick: @toggleFilter
+              className: 'on-top uppercase plain dropdown-toggle',
+                'filter'
+            filterList
+
   render: ->
     headerList = []
     titleEl = li
@@ -52,6 +83,7 @@ module.exports = React.createClass
         className: 'pagecount hidden-xs',
           @props.initState.pageIndex + ' / ' + @props.initState.totalPages
       headerList.push @sizeSelect()
+      headerList.push @filters()
       headerList.push titleEl
     else
       itemList = div {}
