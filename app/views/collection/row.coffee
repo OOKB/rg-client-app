@@ -12,16 +12,13 @@ module.exports = React.createClass
 
   render: ->
     if @props.active
-      itemList = Items
-        collection: @props.collection
-        initState: @props.initState
-        setRouterState: @props.setRouterState
+      itemList = Items @props
     else
       itemList = div {}
 
     return div
       className: 'row'
-      id: 'collection-row-'+@props.category,
+      id: 'collection-row-'+@props.key,
         ul
           className: 'collection-controls',
             li
@@ -29,6 +26,6 @@ module.exports = React.createClass
                 button
                   className: 'uppercase'
                   onClick: @categoryClick
-                  value: @props.category,
-                    @props.label or @props.category
+                  value: @props.key,
+                    @props.label
         itemList

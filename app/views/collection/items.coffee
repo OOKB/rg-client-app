@@ -1,12 +1,14 @@
 React = require 'react'
-{div, p, ul, li, button, img, i} = require 'reactionary'
+{div, p, ul, li, button, img, i, a} = require 'reactionary'
 
 module.exports = React.createClass
   getInitialState: ->
-    buttonsFor: @props.buttonsForInit
+    buttonsFor: ''
+    windowWidth: window.innerWidth
 
   setButtonsFor: (e) ->
-    @setState buttonsFor: e.target.id
+    unless @props.threeUp
+      @setState buttonsFor: e.target.id
 
   colorsClick: (e) ->
     if 'passementerie' == @props.initState.category
@@ -17,14 +19,36 @@ module.exports = React.createClass
         @props.setRouterState
           patternNumber: e.target.value
 
+  imgSize: ->
+    ww = @state.windowWidth
+    if ww < 1280 or @props.initState.category == 'passementerie'
+      imgSize = 'small'
+    else
+      imgSize = 'large'
+
+  handleResize: (e) ->
+    ww = window.innerWidth
+    if ww % 5 == 0
+      @setState windowWidth: ww
+
+  componentDidMount: ->
+    window.addEventListener 'resize', @handleResize
+
+  componentWillUnmount: ->
+    window.removeEventListener 'resize', @handleResize
+
   render: ->
     list = []
-    extraButtons = 'passementerie' == @props.initState.category or 3 == @props.initState.pgSize
+    if @props.threeUp
+      buttonsFor = @props.collection.models[1].id
+    else
+      buttonsFor = @state.buttonsFor
+    imgSize = @imgSize()
     # List
     @props.collection.forEach (item, index) =>
-      if @state.buttonsFor == item.id
+      if buttonsFor == item.id
         buttons = []
-        if extraButtons
+        if @props.extraButtons
           buttons.push button
             key: 'colors'
             value: item.patternNumber
@@ -35,7 +59,7 @@ module.exports = React.createClass
           key: 'favs'
           className: 'item-favorite',
             '+'
-        if extraButtons
+        if @props.extraButtons
           buttons.push button
             key: 'details'
             className: 'item-details',
@@ -47,15 +71,33 @@ module.exports = React.createClass
       else
         buttons = ''
 
+      # Item Image
+      itemImg = img
+        id: item.id
+        width: item._file[imgSize].width
+        height: item._file[imgSize].height
+        src: item._file[imgSize].path,
+        onMouseOver: @setButtonsFor
+
+      if @props.threeUp
+        if buttonsFor == item.id
+          detailLink = true
+      else if item.hasDetail
+        detailLink = true
+      else
+        detailLink = false
+
+      if detailLink
+        itemEl = a
+          href: item.detail,
+            itemImg
+      else
+        itemEl = itemImg
+
       list.push li
         key: item.id,
-          # Image
-          img
-            id: item.id
-            width: item._file.small.width
-            height: item._file.small.height
-            src: item._file.small.path,
-            onMouseOver: @setButtonsFor
+          # Item
+          itemEl
           buttons
 
 
