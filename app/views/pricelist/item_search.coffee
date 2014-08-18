@@ -37,6 +37,7 @@ module.exports = React.createClass
 
     sizeSelect = li
       className: 'pageselect',
+        'View ',
         select
           ref: 'setpgSize'
           value: v.pgSize

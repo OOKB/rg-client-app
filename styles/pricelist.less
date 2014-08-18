@@ -54,6 +54,12 @@
 .pricelist-header {
   margin: 20px 0;
 }
+.pricelist-header li.pageselect {
+  margin: 0 10% 0 0;
+}
+.pricelist-header li.pagecount {
+  margin: 0 0 0 10%;
+}
 
 table {
   width: 100%;
@@ -153,6 +159,13 @@ table tr td {
 }
 
 @media (min-width: @screen-sm-min) {
+  .pricelist-header li.pageselect {
+    margin: 0 22% 0 0;
+  }
+  .pricelist-header li.pagecount {
+    margin: 0 0 0 22%;
+  }
+
   table tr th,
   table tr td {
     padding: 3px 12px;
@@ -186,6 +199,12 @@ table tr td {
 }
 
 @media (min-width: @screen-md-min) {
+  .pricelist-header li.pageselect {
+    margin: 0 33% 0 0;
+  }
+  .pricelist-header li.pagecount {
+    margin: 0 0 0 33%;
+  }
   /* column widths — there might need to be classes on the <table> to go with specific states to change these up... just in case */
   /* textile table column widths */
   .textile > table .c-name    { width: 150px; }
@@ -243,6 +262,5 @@ tr.color a {
     box-shadow: inset -6px -3px 8px 0 rgba(132,132,132,0.5);
   }
 }
-
 
 /* ============================ /Pricelist ============================ */
