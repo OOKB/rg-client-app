@@ -1,5 +1,5 @@
 AmpersandModel = require("ampersand-model")
-_ = require 'underscore'
+_ = require 'lodash'
 
 cdn = '//img.rg.cape.io/'
 

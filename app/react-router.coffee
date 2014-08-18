@@ -1,6 +1,6 @@
 React = require 'react'
 {div, p} = require 'reactionary'
-_ = require 'underscore'
+_ = require 'lodash'
 
 Router = require './router'
 
