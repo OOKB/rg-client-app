@@ -1,5 +1,6 @@
+_ = require 'lodash'
 React = require 'react'
-{div, ul, li, button, select, option} = require 'reactionary'
+{div, ul, li, button, select, option, fieldset, label, input} = require 'reactionary'
 
 Items = require './items'
 
@@ -19,13 +20,34 @@ module.exports = React.createClass
       pgSize: @refs.setpgSize.getDOMNode().value
 
   toggleFilter: ->
-    @setState
-      filterTab: null
-      showFilters: !@state.showFilters
+    if @state.showFilters == false
+      @setState
+        filterTab: @props.initState.filterOptions[0]
+        showFilters: true
+    else
+      @setState
+        filterTab: null
+        showFilters: !@state.showFilters
 
   setFilterTab: (e) ->
     @setState
       filterTab: e.target.value
+
+  setFilters: (e) ->
+    filterFieldId = e.target.value
+    isSelected = @refs[filterFieldId].getDOMNode().checked
+    selected = _.clone @props.initState.selectedFilters
+    if isSelected
+      unless selected[@state.filterTab]
+        selected[@state.filterTab] = []
+      selected[@state.filterTab].push filterFieldId
+
+    else
+      selected[@state.filterTab] = _.without selected[@state.filterTab], filterFieldId
+
+    @props.setRouterState
+      selectedFilters: selected
+    #console.log @state.filterTab + ': ' + filterFieldId + ' is ' + isSelected
 
   sizeSelect: ->
     options = []
@@ -46,9 +68,8 @@ module.exports = React.createClass
           type: 'select',
             options
 
-  filterOps: ->
+  filterCategories: (activeTab) ->
     ops = []
-    activeTab = @state.filterTab or @props.initState.filterOptions[0]
     @props.initState.filterOptions.forEach (op) =>
       liClass = 'tab'
       if activeTab == op
@@ -62,14 +83,41 @@ module.exports = React.createClass
               op
     ops
 
+  filterFields: (activeTab) ->
+    fields = []
+    fieldOps = @props.initState.filterFields[activeTab] or ['alpaca']
+    activeFields = @props.initState.selectedFilters[activeTab]
+    #console.log activeFields
+    fieldOps.forEach (filterOp) =>
+      fields.push label
+        key: filterOp
+        className: 'checkbox-inline',
+          input
+            type: 'checkbox'
+            onChange: @setFilters
+            ref: filterOp
+            checked: _.contains activeFields, filterOp
+            value: filterOp,
+              filterOp
+    div
+      className: 'filter-content',
+        fieldset
+          className: 'filter-attributes',
+            div # Is this really required?
+              className: 'moz-hack',
+                fields
+
   filters: ->
     containerClass = 'btn-group'
+    activeTab = @state.filterTab
     if @state.showFilters
       filterList = ul
         className: 'filter-list'
         id: 'filter-list-'+@props.initState.category
         role: 'menu',
-          @filterOps()
+          @filterCategories activeTab
+          @filterFields activeTab
+
       containerClass += ' open'
     else
       filterList = ''
