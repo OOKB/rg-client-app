@@ -1,5 +1,5 @@
 React = require 'react'
-{div, ul, li, button} = require 'reactionary'
+{div, ul, li, button, select, option} = require 'reactionary'
 
 Items = require './items'
 
@@ -9,6 +9,29 @@ module.exports = React.createClass
       patternNumber: false
       id: false
       category: e.target.value
+
+  pgResize: ->
+    @props.setRouterState
+      pgSize: @refs.setpgSize.getDOMNode().value
+
+  sizeSelect: ->
+    options = []
+    pgSizes = @props.initState.pgSizes
+    pgSize = @props.initState.pgSize
+    pgSizes.forEach (size) ->
+      options.push option
+        key: size
+        value: size,
+          size
+    li
+      key: 'pageselect'
+      className: 'pageselect',
+        select
+          ref: 'setpgSize'
+          value: pgSize
+          onChange: @pgResize
+          type: 'select',
+            options
 
   render: ->
     headerList = []
@@ -23,9 +46,12 @@ module.exports = React.createClass
 
     if @props.active
       itemList = Items @props
+
       headerList.push li
+        key: 'pagecount'
         className: 'pagecount hidden-xs',
           @props.initState.pageIndex + ' / ' + @props.initState.totalPages
+      headerList.push @sizeSelect()
       headerList.push titleEl
     else
       itemList = div {}
