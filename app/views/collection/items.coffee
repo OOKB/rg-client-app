@@ -1,5 +1,5 @@
 React = require 'react'
-{div, p, ul, li, button, img, i} = require 'reactionary'
+{div, p, ul, li, button, img, i, a} = require 'reactionary'
 
 module.exports = React.createClass
   getInitialState: ->
@@ -71,15 +71,33 @@ module.exports = React.createClass
       else
         buttons = ''
 
+      # Item Image
+      itemImg = img
+        id: item.id
+        width: item._file[imgSize].width
+        height: item._file[imgSize].height
+        src: item._file[imgSize].path,
+        onMouseOver: @setButtonsFor
+
+      if @props.threeUp
+        if buttonsFor == item.id
+          detailLink = true
+      else if item.hasDetail
+        detailLink = true
+      else
+        detailLink = false
+
+      if detailLink
+        itemEl = a
+          href: item.detail,
+            itemImg
+      else
+        itemEl = itemImg
+
       list.push li
         key: item.id,
-          # Image
-          img
-            id: item.id
-            width: item._file[imgSize].width
-            height: item._file[imgSize].height
-            src: item._file[imgSize].path,
-            onMouseOver: @setButtonsFor
+          # Item
+          itemEl
           buttons
 
 
