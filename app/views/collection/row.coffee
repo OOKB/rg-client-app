@@ -1,3 +1,4 @@
+_ = require 'lodash'
 React = require 'react'
 {div, ul, li, button, select, option, fieldset, label, input} = require 'reactionary'
 
@@ -19,13 +20,34 @@ module.exports = React.createClass
       pgSize: @refs.setpgSize.getDOMNode().value
 
   toggleFilter: ->
-    @setState
-      filterTab: null
-      showFilters: !@state.showFilters
+    if @state.showFilters == false
+      @setState
+        filterTab: @props.initState.filterOptions[0]
+        showFilters: true
+    else
+      @setState
+        filterTab: null
+        showFilters: !@state.showFilters
 
   setFilterTab: (e) ->
     @setState
       filterTab: e.target.value
+
+  setFilters: (e) ->
+    filterFieldId = e.target.value
+    isSelected = @refs[filterFieldId].getDOMNode().checked
+    selected = _.clone @props.initState.selectedFilters
+    if isSelected
+      unless selected[@state.filterTab]
+        selected[@state.filterTab] = []
+      selected[@state.filterTab].push filterFieldId
+
+    else
+      selected[@state.filterTab] = _.without selected[@state.filterTab], filterFieldId
+
+    @props.setRouterState
+      selectedFilters: selected
+    #console.log @state.filterTab + ': ' + filterFieldId + ' is ' + isSelected
 
   sizeSelect: ->
     options = []
@@ -64,13 +86,17 @@ module.exports = React.createClass
   filterFields: (activeTab) ->
     fields = []
     fieldOps = @props.initState.filterFields[activeTab] or ['alpaca']
-
-    fieldOps.forEach (filterOp) ->
+    activeFields = @props.initState.selectedFilters[activeTab]
+    #console.log activeFields
+    fieldOps.forEach (filterOp) =>
       fields.push label
         key: filterOp
         className: 'checkbox-inline',
           input
             type: 'checkbox'
+            onChange: @setFilters
+            ref: filterOp
+            checked: _.contains activeFields, filterOp
             value: filterOp,
               filterOp
     div
@@ -83,7 +109,7 @@ module.exports = React.createClass
 
   filters: ->
     containerClass = 'btn-group'
-    activeTab = @state.filterTab or @props.initState.filterOptions[0]
+    activeTab = @state.filterTab
     if @state.showFilters
       filterList = ul
         className: 'filter-list'
