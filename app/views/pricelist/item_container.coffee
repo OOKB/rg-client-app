@@ -43,12 +43,13 @@ module.exports = React.createClass
   render: ->
     div
       id: 'container-pricelist'
-      # This doesn't seem to be printing out anymore?
       className: @props.initState.category,
         SearchBar
           # The search bar accepts input so we need to pass a func that has this.
           onUserInput: @handleUserInput
           filter: @props.initState
-        ItemTable
-          collection: @props.collection
-          filter: @props.initState
+        div
+          className: 'table-scroll',
+            ItemTable
+              collection: @props.collection
+              filter: @props.initState
