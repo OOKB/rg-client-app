@@ -6,6 +6,7 @@ Items = require './items'
 module.exports = React.createClass
   getInitialState: ->
     showFilters: false
+    filterTab: null
 
   categoryClick: (e) ->
     @props.setRouterState
@@ -19,7 +20,12 @@ module.exports = React.createClass
 
   toggleFilter: ->
     @setState
+      filterTab: null
       showFilters: !@state.showFilters
+
+  setFilterTab: (e) ->
+    @setState
+      filterTab: e.target.value
 
   sizeSelect: ->
     options = []
@@ -40,6 +46,22 @@ module.exports = React.createClass
           type: 'select',
             options
 
+  filterOps: ->
+    ops = []
+    activeTab = @state.filterTab or @props.initState.filterOptions[0]
+    @props.initState.filterOptions.forEach (op) =>
+      liClass = 'tab'
+      if activeTab == op
+        liClass += ' active'
+      ops.push li
+        key: op
+        className: liClass,
+          button
+            onClick: @setFilterTab
+            value: op,
+              op
+    ops
+
   filters: ->
     containerClass = 'btn-group'
     if @state.showFilters
@@ -47,7 +69,7 @@ module.exports = React.createClass
         className: 'filter-list'
         id: 'filter-list-'+@props.initState.category
         role: 'menu',
-          li 'filters'
+          @filterOps()
       containerClass += ' open'
     else
       filterList = ''

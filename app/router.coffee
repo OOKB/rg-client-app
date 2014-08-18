@@ -102,6 +102,11 @@ module.exports = Router.extend
       when 'hide' then 'leather'
       else 'textile'
 
+    newState.filterOptions = switch newState.category
+      when 'textile' then ['content', 'color', 'description']
+      when 'passementerie' then ['color', 'description']
+      when 'leather' then ['type', 'color']
+    
     if s.pageIndex
       newState.pageIndex = parseInt s.pageIndex
       if !newState.pageIndex > 0
