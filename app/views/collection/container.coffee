@@ -1,5 +1,6 @@
 React = require 'react'
 {p, div, ul, li, button} = require 'reactionary'
+_ = require 'underscore'
 
 Row = require './row'
 
@@ -7,28 +8,24 @@ module.exports = React.createClass
 
   render: ->
     category = @props.initState.category
+    props =
+      collection: @props.collection
+      initState: @props.initState
+      setRouterState: @props.setRouterState
+      threeUp: 3 == @props.initState.pgSize
+      extraButtons: 'passementerie' == category or 3 == @props.initState.pgSize
+    rows = []
+    rows.push p
+      key: 'intro'
+      className: 'text-area',
+        'Browse the collection by category below.'
+    # Add a row for each collection.
+    @props.categories.forEach (cat) ->
+      rows.push Row _.extend props,
+        key: cat.id
+        active: cat.id == category
+        label: cat.label
     div
       id: 'container-collection'
       className: 'collection',
-        p
-          className: 'text-area',
-            'Browse the collection by category below.'
-        Row
-          active: 'textile' == category
-          category: 'textile'
-          label: 'Textiles'
-          collection: @props.collection
-          initState: @props.initState
-          setRouterState: @props.setRouterState
-        Row
-          active: 'passementerie' == category
-          category: 'passementerie'
-          collection: @props.collection
-          initState: @props.initState
-          setRouterState: @props.setRouterState
-        Row
-          active: 'leather' == category
-          category: 'leather'
-          collection: @props.collection
-          initState: @props.initState
-          setRouterState: @props.setRouterState
+        rows

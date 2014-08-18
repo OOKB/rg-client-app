@@ -44,6 +44,14 @@ module.exports = React.createClass
       collection: app.items
       initState: @state
       setRouterState: @setRouterState
+      categories: [
+        id: 'textile'
+        label: 'Textiles',
+          id: 'passementerie'
+          label: 'Passementerie',
+            id: 'leather'
+            label: 'Leather'
+      ]
 
     component = switch section
       when 'pricelist' then FilterableProductTable(props)
