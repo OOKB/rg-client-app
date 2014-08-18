@@ -1,5 +1,5 @@
-url = require 'url'
-_ = require 'underscore'
+Qs = require 'qs'
+_ = require 'lodash'
 Router = require 'ampersand-router'
 itemsFilter = require './models/itemsFilter'
 
@@ -62,7 +62,7 @@ module.exports = Router.extend
     /^(P-|L-)?[0-9]{4,7}$/.test(possiblePattern)
 
   getQuery: ->
-    get = (url.parse @history.fragment, true).query
+    get = Qs.parse @history.fragment.split('?')[1]
     unless get
       return {}
     q = {}
@@ -71,6 +71,13 @@ module.exports = Router.extend
     else if get.pattern
       if @isPatternNumber(patternNumber = get.pattern.toUpperCase())
         q.patternNumber = patternNumber
+    if get.color or get.description or get.content or get.type
+      q.selectedFilters =
+        color: get.color
+        content: get.content
+        description: get.description
+        type: get.type
+        use: get.use
     q
 
   setQuery: (s) ->
@@ -78,9 +85,15 @@ module.exports = Router.extend
       q = id: s.id
     else if s.patternNumber
       q = pattern: s.patternNumber
+
+    if _.size s.selectedFilters
+      q = if q then _.merge q, s.selectedFilters else s.selectedFilters
+
+    if q
+      #console.log q
+      return '?' + Qs.stringify(q)
     else
       return ''
-    url.format query: q
 
   # Prep state object for collection and pricelist section views.
   prepNewState: (s) ->
@@ -89,7 +102,7 @@ module.exports = Router.extend
     newState.patternNumber = s.patternNumber
     newState.id = s.id
     newState.searchTxt = @searchTxtParse s.searchTxt
-
+    newState.selectedFilters = s.selectedFilters or {}
     newState.category = switch s.category
       when 't' then 'textile'
       when 'textile' then 'textile'
@@ -146,7 +159,7 @@ module.exports = Router.extend
     if newState.totalPages and newState.pageIndex > newState.totalPages
       newState.pageIndex = newState.totalPages
       @updateURL oldState, newState
-    #console.log newState
+    #console.log newState.selectedFilters
     return newState
 
   searchTxtParse: (searchTxt) ->
@@ -171,7 +184,7 @@ module.exports = Router.extend
     newStateURL = @urlCreate newSt
     oldURL = @urlCreate oldSt
     if newStateURL != oldURL
-      #console.log newStateURL + ' - ' + oldURL
+      console.log newStateURL + ' - ' + oldURL
       @redirectTo newStateURL
       return true
     else
