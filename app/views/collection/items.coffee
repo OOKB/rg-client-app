@@ -20,11 +20,13 @@ module.exports = React.createClass
           patternNumber: e.target.value
 
   imgSize: ->
+    if @props.threeUp == false or @props.initState.category == 'passementerie'
+      return 'small'
     ww = @state.windowWidth
-    if ww < 1280 or @props.initState.category == 'passementerie'
-      imgSize = 'small'
+    if ww < 1280
+      return 'small'
     else
-      imgSize = 'large'
+      return 'large'
 
   handleResize: (e) ->
     ww = window.innerWidth
