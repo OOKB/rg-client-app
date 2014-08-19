@@ -11,7 +11,7 @@ module.exports = Router.extend
   routes:
     '': -> @redirectTo('cl')
     'cl': -> @redirectTo('collection/'+defaultCategory+'/3')
-    'collection': -> 'collection'
+    'collection': 'collection'
     'collection/:category': 'collection'
     'collection/:category/:pgSize': 'collection'
     'collection/:category/:pgSize(/:query)/p:page': 'collection'
@@ -25,13 +25,14 @@ module.exports = Router.extend
     '*path': -> @redirectTo('cl')
 
   collection: (category, pgSize, searchTxt, pageIndex) ->
+    #console.log 'collection'
     S = _.extend @getQuery(),
       section: 'collection'
       category: category
       pgSize: pgSize
       searchTxt: searchTxt
       pageIndex: pageIndex
-
+    #console.log S
     S = @prepNewState S
 
     @setReactState S
@@ -90,9 +91,9 @@ module.exports = Router.extend
     if _.size s.selectedFilters
       q = if q then _.merge q, s.selectedFilters else s.selectedFilters
 
-    if q
+    if q and qString = Qs.stringify(q)
       #console.log q
-      return '?' + Qs.stringify(q)
+      return '?' + qString
     else
       return ''
 
@@ -157,8 +158,8 @@ module.exports = Router.extend
         Math.ceil(app.items.filtered_length / newState.pgSize)
     if newState.totalPages and newState.pageIndex > newState.totalPages
       newState.pageIndex = newState.totalPages
-      @updateURL oldState, newState
-    #console.log newState.selectedFilters
+      @updateURL s, newState
+    #console.log newState
     return newState
 
   searchTxtParse: (searchTxt) ->
