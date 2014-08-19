@@ -1,6 +1,6 @@
 _ = require 'lodash'
 React = require 'react'
-{div, ul, li, button, select, option, fieldset, label, input} = require 'reactionary'
+{div, ul, li, button, select, option, fieldset, label, input, span} = require 'reactionary'
 
 Items = require './items'
 
@@ -96,17 +96,16 @@ module.exports = React.createClass
       labelClass = 'checkbox-inline'
       if isChecked
         labelClass += ' checked'
-      if possibleItems
-        filterEl = input
-          type: 'checkbox'
-          onChange: @setFilters
-          ref: filterOp
-          checked: isChecked
-          value: filterOp,
-            filterOp
-      else
+      filterEl = input
+        type: 'checkbox'
+        onChange: @setFilters
+        ref: filterOp
+        checked: isChecked
+        value: filterOp,
+          filterOp
+      unless possibleItems
         labelClass += ' disabled'
-        filterEl = filterOp
+        #filterEl = span filterOp
       fields.push label
         key: filterOp
         className: labelClass,
