@@ -11,7 +11,7 @@ module.exports = Router.extend
   routes:
     '': -> @redirectTo('pricelist')
     'cl': -> @redirectTo('collection/'+defaultCategory+'/3')
-    'collection': -> @redirectTo('collection/'+defaultCategory+'/3')
+    'collection': -> 'collection'
     'collection/:category': 'collection'
     'collection/:category/:pgSize': 'collection'
     'collection/:category/:pgSize(/:query)/p:page': 'collection'
@@ -103,6 +103,7 @@ module.exports = Router.extend
     newState.id = s.id
     newState.searchTxt = @searchTxtParse s.searchTxt
     newState.category = switch s.category
+      when null then null
       when 't' then 'textile'
       when 'textile' then 'textile'
       when 'p' then 'passementerie'
@@ -135,10 +136,7 @@ module.exports = Router.extend
       newState.colorSorted = true
       pgSizes = [3, 21, 42, 84]
       if 'passementerie' == newState.category
-        favsOnly = false
         pgSizes.shift()
-      else
-        favsOnly = true
     else if 'pricelist' == s.section
       pgSizes = [50, 100, 10000]
     else
@@ -173,6 +171,8 @@ module.exports = Router.extend
       return ''
 
   urlCreate: (s) ->
+    if s.category == null
+      return s.section
     urlTxt = s.section+'/'+s.category+'/'+s.pgSize
     if s.searchTxt
       urlTxt += '/' + s.searchTxt
