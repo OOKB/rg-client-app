@@ -36,7 +36,7 @@ module.exports = React.createClass
   setFilters: (e) ->
     filterFieldId = e.target.value
     isSelected = @refs[filterFieldId].getDOMNode().checked
-    selected = _.clone @props.initState.selectedFilters
+    selected = _.cloneDeep @props.initState.selectedFilters
     if isSelected
       unless selected[@state.filterTab]
         selected[@state.filterTab] = []

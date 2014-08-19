@@ -102,7 +102,6 @@ module.exports = Router.extend
     newState.patternNumber = s.patternNumber
     newState.id = s.id
     newState.searchTxt = @searchTxtParse s.searchTxt
-    newState.selectedFilters = s.selectedFilters or {}
     newState.category = switch s.category
       when 't' then 'textile'
       when 'textile' then 'textile'
@@ -120,6 +119,7 @@ module.exports = Router.extend
       when 'passementerie' then ['color', 'description']
       when 'leather' then ['type', 'color']
     newState.filterFields = {}
+    newState.selectedFilters = s.selectedFilters or {}
 
     if s.pageIndex
       newState.pageIndex = parseInt s.pageIndex
