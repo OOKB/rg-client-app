@@ -288,7 +288,7 @@ li.tab button {
 .filter-list fieldset label {
   line-height: 14px;
   margin: 0 0 8px;
-  padding: 0 0 0 5px;
+  padding: 0 0 0 15px;
   text-align: left;
   text-transform: uppercase;
   display: list-item;
@@ -297,13 +297,6 @@ li.tab button {
   -o-column-break-inside:avoid;
   -ms-column-break-inside:avoid;
   column-break-inside:avoid;
-}
-
-.filter-list fieldset .checkbox-inline input {
-  float: none;
-  margin: 0;
-  position: relative;
-  left: -5px;
 }
 
 .filter-list fieldset label.disabled {
@@ -316,28 +309,24 @@ li.tab button {
 
 /* Hide the original radios and checkboxes [https://www.pivotaltracker.com/story/show/73771096] */
 .filter-list fieldset label > input[type='checkbox'] {
-  /* Hide the input, but have it still be clickable */
   opacity: 0;
-  float: left;
-  width: 11px;
+  float: none;
+  margin: 0 0 0 -10px;
+  position: relative;
 }
 
 .filter-list fieldset label {
-  clear: none;
-  /* Left padding makes room for image */
-  padding-left: 10px;
-  /* Make look clickable because they are */
   cursor: pointer;
   background: transparent url(@checkbox) left top no-repeat;
 }
 
 /* Change from unchecked to checked graphic */
 .filter-list fieldset label.checked {
-  background-position-y: -15px;
+  background-position: left -15px;
 }
 
 .filter-list fieldset label.disabled {
-  background-position-y: -30px;
+  background-position: left -30px;
 }
 
 @media (min-width: @screen-sm-min) {
@@ -362,7 +351,7 @@ li.tab button {
   .filter-list fieldset label {
     line-height: 14px;
     margin: 0 0 7px;
-    padding: 1px 0 0 10px;
+    padding: 1px 0 0 15px;
     text-align: left;
     text-transform: uppercase;
     /**/
