@@ -9,7 +9,7 @@ module.exports = Router.extend
   pop: 'ka'
   itemsFilter: itemsFilter
   routes:
-    '': -> @redirectTo('pricelist')
+    '': -> @redirectTo('cl')
     'cl': -> @redirectTo('collection/'+defaultCategory+'/3')
     'collection': -> 'collection'
     'collection/:category': 'collection'
@@ -22,6 +22,7 @@ module.exports = Router.extend
     'pricelist/:category/:pgSize': 'pricelist'
     'pricelist/:category/:pgSize(/:query)/p:page': 'pricelist'
     'detail/:pattern/:id': 'detail'
+    '*path': -> @redirectTo('cl')
 
   collection: (category, pgSize, searchTxt, pageIndex) ->
     S = _.extend @getQuery(),

@@ -57,5 +57,5 @@ module.exports = React.createClass
       when 'pricelist' then FilterableProductTable(props)
       when 'collection' then Collection(props)
       when 'detail' then ItemDetail(props)
-      else p 'hello'
+      else p 'Hello there! Unfortunately our application is broken...'
     return component
