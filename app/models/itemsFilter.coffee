@@ -21,14 +21,7 @@ module.exports = (items, filters) ->
 
   if filters.category
     config.where.category = filters.category
-    if filters.filterOptions
-      items.configure config, true
-      setFilterFields items, filters.filterOptions, filters.filterFields
 
-  # Only show items belonging to a specific pattern.
-  if filters.patternNumber
-    config.where.patternNumber = filters.patternNumber
-    setRemainingFilters = true
   # Require that the item has a detail page.
   if filters.hasDetail
     config.where.hasDetail = true
@@ -39,6 +32,15 @@ module.exports = (items, filters) ->
 
   if filters.colorSorted
     config.comparator = 'order'
+
+  if filters.filterOptions
+    items.configure config, true
+    setFilterFields items, filters.filterOptions, filters.filterFields
+
+  # Only show items belonging to a specific pattern.
+  if filters.patternNumber
+    config.where.patternNumber = filters.patternNumber
+    setRemainingFilters = true
 
   config.filters = []
   if filters.searchTxt
@@ -52,10 +54,12 @@ module.exports = (items, filters) ->
     _.forEach filters.selectedFilters, (selectedFilters, filterCat) ->
       if selectedFilters and _.isArray(selectedFilters) and selectedFilters.length
         setRemainingFilters = true
-        #console.log filterCat
-        config.filters.push (model) ->
-          fid = filterCatProp[filterCat]
-          _.difference(selectedFilters, model[fid]).length == 0
+        if 'type' == filterCat
+          config.where.name = selectedFilters[0]
+        else
+          config.filters.push (model) ->
+            fid = filterCatProp[filterCat]
+            _.difference(selectedFilters, model[fid]).length == 0
 
   if filters.pgSize and filters.pageIndex
     pgSize = filters.pgSize
