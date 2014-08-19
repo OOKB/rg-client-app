@@ -238,6 +238,21 @@ ul.collection-controls li.filter {
   left: 340px;
 }
 
+button.dropdown-toggle {
+  position: relative;
+  z-index: 21;
+}
+
+li.hug-center.on-top button {
+  position: relative;
+  z-index: 99;
+}
+
+li.tab button {
+  padding: 5px 20px;
+  font: 14px;
+}
+
 /** Filter dropdown menus **/
 /*actual ul that holds everything */
 .filter-list {
@@ -245,7 +260,7 @@ ul.collection-controls li.filter {
   left: -118px;
   top:-10px;
   margin: 0;
-  padding: 0;
+  padding: 45px 0 0 0;
   width: 280px;
   z-index: 20;
   text-align: left;
@@ -254,15 +269,15 @@ ul.collection-controls li.filter {
 }
 
 .filter-list fieldset {
-  border: none;
   color: @rg-gray;
+  border-top: 1px solid #ddd;
   font-size: 11px;
   letter-spacing: 1px;
-  padding: 50px 0 10px 0;
-  margin: 0;
+  padding: 15px 0 0 0;
+  margin: 15px 0 0 0;
 }
 
-.filter-list fieldset div {
+.filter-list fieldset .moz-hack {
   -webkit-column-count:2; -webkit-column-gap:10px;
   -moz-column-count:2; -moz-column-gap:10px;
   -o-column-count:2; -o-column-gap:10px;
@@ -284,7 +299,7 @@ ul.collection-controls li.filter {
   column-break-inside:avoid;
 }
 
-.filter-list fieldset div .checkbox-inline input {
+.filter-list fieldset .checkbox-inline input {
   float: none;
   margin: 0;
   position: relative;
@@ -332,15 +347,11 @@ ul.collection-controls li.filter {
     text-align: center;
   }
 
-  .filter-list div.tab-content {
-    padding: 0 20px;
-  }
-
   .filter-list fieldset {
-    padding: 55px 0 15px 0;
+    margin: 0 20px 15px;
   }
 
-  .filter-list fieldset div {
+  .filter-list fieldset .moz-hack {
     -webkit-column-count:3; -webkit-column-gap:10px;
     -moz-column-count:3; -moz-column-gap:10px;
     -o-column-count:3; -o-column-gap:10px;
@@ -375,7 +386,7 @@ ul.collection-controls li.filter {
     left: -125px;
   }
 
-  .filter-list fieldset div {
+  .filter-list fieldset .moz-hack {
     -webkit-column-count:4; -webkit-column-gap:10px;
     -moz-column-count:4; -moz-column-gap:10px;
     -o-column-count:4; -o-column-gap:10px;
@@ -387,9 +398,4 @@ ul.collection-controls li.filter {
   .filter-list {
     left: -70px;
   }
-}
-
-.checkbox-inline+.checkbox-inline {
-  margin-top: 0;
-  margin-left: 0 !important;
 }
