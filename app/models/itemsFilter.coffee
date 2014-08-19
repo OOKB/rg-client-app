@@ -9,7 +9,7 @@ filterCatProp =
 setFilterFields = (items, filterOps, filterFields) ->
   filterOps.forEach (cat) ->
     if f = filterCatProp[cat]
-      filterFields[cat] = _.compact _.uniq(_.flatten(items.pluck(f)))
+      filterFields[cat] = _.compact(_.uniq(_.flatten(items.pluck(f)))).sort()
   return
 
 module.exports = (items, filters) ->
