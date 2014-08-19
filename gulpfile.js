@@ -60,7 +60,7 @@
   });
 
   gulp.task('styles', function() {
-    gulp.src(["styles/app.less", 'styles/print.less']).pipe(less({
+    gulp.src(["styles/app.less", 'styles/print.less', 'styles/iefix.less']).pipe(less({
       paths: [path.join(__dirname, "less", "includes")]
     })).pipe(gulp.dest("./public"));
   });
@@ -140,7 +140,7 @@
 
   gulp.task('copy_css', ['styles'], function() {
     gulp.src('./public/app.css').pipe(rename(global.sha + '.css')).pipe(gulp.dest('./prod'));
-    gulp.src('./public/print.css').pipe(gulp.dest('./prod'));
+    gulp.src('./public/print.css', './public/iefix.css').pipe(gulp.dest('./prod'));
     return gulp.src('./images/**').pipe(gulp.dest('./prod/images/'));
   });
 
