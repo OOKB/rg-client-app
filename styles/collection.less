@@ -198,5 +198,27 @@
 /* ---------->>> collection controls — filters, pager, etc. <<<-----------*/
 /* -----------------------------------------------------------------------*/
 
+ul.collection-controls {
+  position: relative;
+}
+
+ul.collection-controls li.filter,
+ul.collection-controls li.pageselect,
+ul.collection-controls li.pagecount {
+  position: absolute;
+  z-index: 2;
+}
+ul.collection-controls li.pagecount {
+  left: 40px;
+  top: 5px;
+}
+
+ul.collection-controls li.pageselect {
+  left: 140px;
+}
+
+ul.collection-controls li.filter {
+  left: 340px;
+}
 
 
