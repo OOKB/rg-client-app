@@ -1,6 +1,6 @@
 React = require 'react'
 {div, p, ul, li, button, img, i, a} = require 'reactionary'
-
+Pager = require '../el/pager'
 module.exports = React.createClass
   getInitialState: ->
     buttonsFor: ''
@@ -18,6 +18,20 @@ module.exports = React.createClass
       else
         @props.setRouterState
           patternNumber: e.target.value
+
+  setPgPre: (e) ->
+    console.log 'pre'
+    if e.preventDefault
+      e.preventDefault()
+    if @props.initState.pageIndex != 1
+      @props.setRouterState pageIndex: @props.initState.pageIndex-1
+
+  setPgNext: (e) ->
+    console.log 'next'
+    if e.preventDefault
+      e.preventDefault()
+    if @props.initState.pageIndex != @props.initState.totalPages
+      @props.setRouterState pageIndex: @props.initState.pageIndex+1
 
   imgSize: ->
     if @props.threeUp == false or @props.initState.category == 'passementerie'
@@ -94,7 +108,14 @@ module.exports = React.createClass
           href: item.detail,
             itemImg
       else
-        itemEl = itemImg
+        if index == 0
+          onClick = @setPgPre
+        else if index == 2
+          onClick = @setPgNext
+        itemEl = a
+          onClick: onClick
+          role: 'button',
+            itemImg
 
       list.push li
         key: item.id,
