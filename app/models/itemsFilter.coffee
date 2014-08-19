@@ -14,6 +14,7 @@ setFilterFields = (items, filterOps, filterFields) ->
 
 module.exports = (items, filters) ->
   resetCollection = true
+  setRemainingFilters = false
 
   config =
     where: {}
@@ -27,7 +28,7 @@ module.exports = (items, filters) ->
   # Only show items belonging to a specific pattern.
   if filters.patternNumber
     config.where.patternNumber = filters.patternNumber
-
+    setRemainingFilters = true
   # Require that the item has a detail page.
   if filters.hasDetail
     config.where.hasDetail = true
@@ -47,7 +48,6 @@ module.exports = (items, filters) ->
   if filters.omit00
     config.filters.push (model) ->
       model.color_id.substring(0, 2) != '00'
-  setRemainingFilters = false
   if filters.selectedFilters
     _.forEach filters.selectedFilters, (selectedFilters, filterCat) ->
       if selectedFilters and _.isArray(selectedFilters) and selectedFilters.length
