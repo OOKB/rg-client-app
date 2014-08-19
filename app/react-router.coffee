@@ -22,7 +22,7 @@ module.exports = React.createClass
     if newState
       s = _.defaults newState, @state
       if 'pricelist' == s.section or 'collection' == s.section
-        #console.log s
+        #console.log @state
         s = @router.prepNewState s
         redirected = @router.updateURL @state, s
         # Handle in-app state change options.
@@ -52,10 +52,11 @@ module.exports = React.createClass
             id: 'leather'
             label: 'Leather'
       ]
-
+    if _.isObject props.initState
+      props.initState.setRouterState = @setRouterState
     component = switch section
       when 'pricelist' then FilterableProductTable(props)
       when 'collection' then Collection(props)
       when 'detail' then ItemDetail(props)
-      else p 'Hello there! Unfortunately our application is broken...'
+      else p 'Hello there! Unfortunately our application is broken... ' + section
     return component
