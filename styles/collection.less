@@ -21,7 +21,6 @@
   box-sizing: border-box;
   display: inline-block;
   overflow: hidden;
-  padding: 0 2.5px;
   position: relative;
   vertical-align: top;
 }
@@ -85,6 +84,13 @@
 .pg-size-3 ul.list li {
   width: 100%;
   height: 225px;
+}
+
+.pg-size-3 ul.list li > a {
+  display: block;
+  max-width: 100%;
+  margin: 0 5px;
+  overflow: hidden;
 }
 
 .pg-size-3 ul.list li img {
@@ -232,4 +238,158 @@ ul.collection-controls li.filter {
   left: 340px;
 }
 
+/** Filter dropdown menus **/
+/*actual ul that holds everything */
+.filter-list {
+  position: absolute;
+  left: -118px;
+  top:-10px;
+  margin: 0;
+  padding: 0;
+  width: 280px;
+  z-index: 20;
+  text-align: left;
+  .dropshadow;
+  background-color: white;
+}
 
+.filter-list fieldset {
+  border: none;
+  color: @rg-gray;
+  font-size: 11px;
+  letter-spacing: 1px;
+  padding: 50px 0 10px 0;
+  margin: 0;
+}
+
+.filter-list fieldset div {
+  -webkit-column-count:2; -webkit-column-gap:10px;
+  -moz-column-count:2; -moz-column-gap:10px;
+  -o-column-count:2; -o-column-gap:10px;
+  column-count:2; column-gap:10px;
+  margin: 0 14px;
+}
+
+.filter-list fieldset label {
+  line-height: 14px;
+  margin: 0 0 8px;
+  padding: 0 0 0 5px;
+  text-align: left;
+  text-transform: uppercase;
+  display: list-item;
+  -webkit-column-break-inside:avoid;
+  -moz-column-break-inside:avoid;
+  -o-column-break-inside:avoid;
+  -ms-column-break-inside:avoid;
+  column-break-inside:avoid;
+}
+
+.filter-list fieldset div .checkbox-inline input {
+  float: none;
+  margin: 0;
+  position: relative;
+  left: -5px;
+}
+
+.filter-list fieldset label.disabled {
+  color: #ccc;
+}
+
+.filter-list fieldset label.disabled input {
+  visibility: hidden;
+}
+
+/* Hide the original radios and checkboxes [https://www.pivotaltracker.com/story/show/73771096] */
+.filter-list fieldset label > input[type='checkbox'] {
+  /* Hide the input, but have it still be clickable */
+  opacity: 0;
+  float: left;
+  width: 11px;
+}
+
+.filter-list fieldset label {
+  clear: none;
+  /* Left padding makes room for image */
+  padding-left: 10px;
+  /* Make look clickable because they are */
+  cursor: pointer;
+  background: transparent url(@checkbox) left top no-repeat;
+}
+
+/* Change from unchecked to checked graphic */
+.filter-list fieldset label.checked {
+  background-position-y: -15px;
+}
+
+.filter-list fieldset label.disabled {
+  background-position-y: -30px;
+}
+
+@media (min-width: @screen-sm-min) {
+  .filter-list {
+    width: 500px;
+    left: -70px;
+    text-align: center;
+  }
+
+  .filter-list div.tab-content {
+    padding: 0 20px;
+  }
+
+  .filter-list fieldset {
+    padding: 55px 0 15px 0;
+  }
+
+  .filter-list fieldset div {
+    -webkit-column-count:3; -webkit-column-gap:10px;
+    -moz-column-count:3; -moz-column-gap:10px;
+    -o-column-count:3; -o-column-gap:10px;
+    column-count:3; column-gap:10px;
+    margin: 0;
+  }
+
+  .filter-list fieldset label {
+    line-height: 14px;
+    margin: 0 0 7px;
+    padding: 1px 0 0 10px;
+    text-align: left;
+    text-transform: uppercase;
+    /**/
+    -webkit-column-break-inside:avoid;
+    -moz-column-break-inside:avoid;
+    -o-column-break-inside:avoid;
+    -ms-column-break-inside:avoid;
+    column-break-inside:avoid;
+  }
+
+  .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"],
+  .filter-list fieldset label input {
+    float: none;
+    margin: 0;
+  }
+}
+
+@media (min-width: @screen-md-min) {
+  .filter-list {
+    width: 700px;
+    left: -125px;
+  }
+
+  .filter-list fieldset div {
+    -webkit-column-count:4; -webkit-column-gap:10px;
+    -moz-column-count:4; -moz-column-gap:10px;
+    -o-column-count:4; -o-column-gap:10px;
+    column-count:4; column-gap:10px;
+  }
+}
+
+@media (min-width: @screen-lg-min) {
+  .filter-list {
+    left: -70px;
+  }
+}
+
+.checkbox-inline+.checkbox-inline {
+  margin-top: 0;
+  margin-left: 0 !important;
+}
