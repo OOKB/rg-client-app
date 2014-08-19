@@ -12,6 +12,10 @@ module.exports = React.createClass
   categoryClick: (e) ->
     newCategory = e.target.value
     if newCategory == @props.initState.category
+      if @state.showFilters == true
+        @setState
+          showFilters: false
+        return
       newCategory = null
 
     @props.setRouterState
