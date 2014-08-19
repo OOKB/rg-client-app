@@ -184,7 +184,7 @@ module.exports = Router.extend
     newStateURL = @urlCreate newSt
     oldURL = @urlCreate oldSt
     if newStateURL != oldURL
-      console.log newStateURL + ' - ' + oldURL
+      #console.log newStateURL + ' - ' + oldURL
       @redirectTo newStateURL
       return true
     else
