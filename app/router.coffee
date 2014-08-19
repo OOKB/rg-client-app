@@ -120,7 +120,7 @@ module.exports = Router.extend
       when 'leather' then ['type', 'color']
     newState.filterFields = {}
     newState.selectedFilters = s.selectedFilters or {}
-
+    newState.possibleFilters = s.possibleFilters or {}
     if s.pageIndex
       newState.pageIndex = parseInt s.pageIndex
       if !newState.pageIndex > 0

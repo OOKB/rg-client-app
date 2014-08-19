@@ -88,11 +88,16 @@ module.exports = React.createClass
     fields = []
     fieldOps = @props.initState.filterFields[activeTab] or ['alpaca']
     activeFields = @props.initState.selectedFilters[activeTab]
+    possibleFilters = @props.initState.possibleFilters[activeTab]
     #console.log activeFields
     fieldOps.forEach (filterOp) =>
+      possibleItems = _.contains possibleFilters, filterOp
+      labelClass = 'checkbox-inline'
+      unless possibleItems
+        labelClass += ' disabled'
       fields.push label
         key: filterOp
-        className: 'checkbox-inline',
+        className: labelClass,
           input
             type: 'checkbox'
             onChange: @setFilters

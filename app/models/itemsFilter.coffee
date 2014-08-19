@@ -6,6 +6,12 @@ filterCatProp =
   description: 'design_descriptions'
   type: 'name'
 
+setFilterFields = (items, filterOps, filterFields) ->
+  filterOps.forEach (cat) ->
+    if f = filterCatProp[cat]
+      filterFields[cat] = _.compact _.uniq(_.flatten(items.pluck(f)))
+  return
+
 module.exports = (items, filters) ->
   resetCollection = true
 
@@ -16,9 +22,7 @@ module.exports = (items, filters) ->
     config.where.category = filters.category
     if filters.filterOptions
       items.configure config, true
-      filters.filterOptions.forEach (cat) ->
-        if f = filterCatProp[cat]
-          filters.filterFields[cat] = _.compact _.uniq(_.flatten(items.pluck(f)))
+      setFilterFields items, filters.filterOptions, filters.filterFields
 
   # Only show items belonging to a specific pattern.
   if filters.patternNumber
@@ -45,11 +49,13 @@ module.exports = (items, filters) ->
       model.color_id.substring(0, 2) != '00'
   if filters.selectedFilters
     _.forEach filters.selectedFilters, (selectedFilters, filterCat) ->
-      if selectedFilters and _.isArray selectedFilters
+      if selectedFilters and _.isArray(selectedFilters) and selectedFilters.length
+        setRemainingFilters = true
         #console.log filterCat
         config.filters.push (model) ->
           fid = filterCatProp[filterCat]
           _.difference(selectedFilters, model[fid]).length == 0
+
   if filters.pgSize and filters.pageIndex
     pgSize = filters.pgSize
     pageIndex = filters.pageIndex - 1
@@ -62,4 +68,5 @@ module.exports = (items, filters) ->
         id: filters.id
 
   items.configure config, resetCollection
+  setFilterFields items, filters.filterOptions, filters.possibleFilters
   return
