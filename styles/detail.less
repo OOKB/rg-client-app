@@ -128,10 +128,18 @@
   padding: 6px 0 5px;
 }
 
+/** this is replicated in collection.less — how to combine? **/
+.toggle-colors button:hover,
 .toggle-colors button.active {
   background: @rg-gold;
   color: @rg-background;
 }
+
+.toggle-colors button:active {
+  background: @rg-dark-gold;
+  color: @rg-background;
+}
+/** /end - this is replicated in collection.less — how to combine? **/
 
 #related-colors {
   margin: 0;
