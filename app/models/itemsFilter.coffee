@@ -43,7 +43,10 @@ module.exports = (items, filters) ->
   if filters.omit00
     config.filters.push (model) ->
       model.color_id.substring(0, 2) != '00'
-
+  if filters.selectedFilters
+    if filters.selectedFilters.color
+      config.filters.push (model) ->
+        _.difference(filters.selectedFilters.color, model.colors).length == 0
   if filters.pgSize and filters.pageIndex
     pgSize = filters.pgSize
     pageIndex = filters.pageIndex - 1
