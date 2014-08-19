@@ -2,6 +2,7 @@ React = require 'react'
 {div, button, ul, li, a, img, i} = require 'reactionary'
 
 module.exports = React.createClass
+
   getInitialState: ->
     pg: 0
     pgSize: 5
@@ -11,6 +12,9 @@ module.exports = React.createClass
 
   propTypes:
     collection: React.PropTypes.object.isRequired
+    setParentState: React.PropTypes.func.isRequired
+    setContainerState: React.PropTypes.func.isRequired
+    patternNumber: React.PropTypes.string.isRequired
 
   handleColorClick: (e) ->
     color_id = e.target.id

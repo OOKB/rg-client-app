@@ -1,6 +1,11 @@
 React = require 'react'
 {div, p, ul, li, button, img, i, a} = require 'reactionary'
+_ = require 'lodash'
+SubCollection = require 'ampersand-subcollection'
+
 Pager = require '../el/pager'
+Related = require '../detail/related'
+
 module.exports = React.createClass
   getInitialState: ->
     buttonsFor: ''
@@ -94,10 +99,19 @@ module.exports = React.createClass
         height: item._file[imgSize].height
         src: item._file[imgSize].path,
         onMouseOver: @setButtonsFor
-
+      relatedColors = ''
       if @props.threeUp
         if buttonsFor == item.id
           detailLink = true
+          relatedProps =
+            patternNumber: item.patternNumber
+            collection: new SubCollection app.items.collection,
+              where:
+                patternNumber: item.patternNumber
+            setParentState: () -> return
+            setContainerState: () -> return
+
+          relatedColors = Related relatedProps
       else if item.hasDetail
         detailLink = true
       else
@@ -122,7 +136,7 @@ module.exports = React.createClass
           # Item
           itemEl
           buttons
-
+          relatedColors
 
     return div
       className: 'pg-size-' + @props.initState.pgSize
