@@ -47,6 +47,7 @@ module.exports = (items, filters) ->
   if filters.omit00
     config.filters.push (model) ->
       model.color_id.substring(0, 2) != '00'
+  setRemainingFilters = false
   if filters.selectedFilters
     _.forEach filters.selectedFilters, (selectedFilters, filterCat) ->
       if selectedFilters and _.isArray(selectedFilters) and selectedFilters.length
@@ -68,5 +69,9 @@ module.exports = (items, filters) ->
         id: filters.id
 
   items.configure config, resetCollection
-  setFilterFields items, filters.filterOptions, filters.possibleFilters
+  if setRemainingFilters
+    setFilterFields items, filters.filterOptions, filters.possibleFilters
+  else
+    filters.possibleFilters = filters.filterFields
+    filters.selectedFilters = {}
   return
