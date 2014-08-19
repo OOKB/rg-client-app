@@ -44,9 +44,12 @@ module.exports = (items, filters) ->
     config.filters.push (model) ->
       model.color_id.substring(0, 2) != '00'
   if filters.selectedFilters
-    if filters.selectedFilters.color
-      config.filters.push (model) ->
-        _.difference(filters.selectedFilters.color, model.colors).length == 0
+    _.forEach filters.selectedFilters, (selectedFilters, filterCat) ->
+      if selectedFilters and _.isArray selectedFilters
+        #console.log filterCat
+        config.filters.push (model) ->
+          fid = filterCatProp[filterCat]
+          _.difference(selectedFilters, model[fid]).length == 0
   if filters.pgSize and filters.pageIndex
     pgSize = filters.pgSize
     pageIndex = filters.pageIndex - 1
