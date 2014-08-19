@@ -33,7 +33,7 @@ module.exports = (items, filters) ->
   if filters.colorSorted
     config.comparator = 'order'
 
-  if filters.filterOptions
+  if filters.filterOptions and filters.filterOptions.length
     items.configure config, true
     setFilterFields items, filters.filterOptions, filters.filterFields
 
@@ -76,7 +76,7 @@ module.exports = (items, filters) ->
         id: filters.id
 
   items.configure config, resetCollection
-  if setRemainingFilters
+  if setRemainingFilters and filters.filterOptions
     setFilterFields items, filters.filterOptions, filters.possibleFilters
   else
     filters.possibleFilters = filters.filterFields
