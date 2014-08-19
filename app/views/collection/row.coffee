@@ -14,6 +14,7 @@ module.exports = React.createClass
       patternNumber: false
       id: false
       category: e.target.value
+      selectedFilters: {}
 
   pgResize: ->
     @props.setRouterState
