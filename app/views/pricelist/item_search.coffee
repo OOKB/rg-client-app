@@ -1,5 +1,8 @@
 React = require 'react'
 {form, input, p, div, button, select, option, ul, li, a} = require 'reactionary'
+_ = require 'lodash'
+
+Pager = require '../el/pager'
 
 # props
 ## onUserInput() - defined in item_container.
@@ -9,7 +12,6 @@ module.exports = React.createClass
   handleChange: (event) ->
     @props.onUserInput
       searchTxt: @refs.filterTextInput.getDOMNode().value
-      pgSize: @refs.setpgSize.getDOMNode().value
 
   handleCollectionClick: (e) ->
     collection_id = e.target.value
@@ -18,79 +20,33 @@ module.exports = React.createClass
     @props.onUserInput
       category: collection_id
 
-  pageNext: (e) ->
-    if @props.filter.pageIndex != @props.filter.totalPages
-      @props.onUserInput
-        pageIndex: @props.filter.pageIndex + 1
-
-  pagePrevious: (e) ->
-    if @props.filter.pageIndex != 0
-      @props.onUserInput
-        pageIndex: @props.filter.pageIndex - 1
-
   render: ->
     v = @props.filter # see item_container.coffee for example object.
     #console.log 'search bar '+ v.pageIndex
     # Pager stuff.
     totalPages = @props.filter.totalPages
-    current_page = v.pageIndex
 
-    sizeSelect = li
-      className: 'pageselect',
-        'View ',
-        select
-          ref: 'setpgSize'
-          value: v.pgSize
-          onChange: @handleChange
-          type: 'select',
-            option
-              value: '50',
-                '50'
-            option
-              value: '100',
-                '100'
-            option
-              value: '10000',
-                'All'
-
-    pgCount = li
-      className: 'pagecount',
-        current_page+ ' / ' + totalPages
+    sizes = Pager _.merge(@props.filter,
+      setRouterState: @props.setRouterState
+      el: 'sizes')
+    count = Pager _.merge(@props.filter,
+      setRouterState: @props.setRouterState
+      el: 'count')
+    pre = Pager _.merge(@props.filter,
+      setRouterState: @props.setRouterState
+      el: 'pre')
+    next = Pager _.merge(@props.filter,
+      setRouterState: @props.setRouterState
+      el: 'next')
 
     if totalPages > 1
-      pager_previous_class = 'previous'
-      if v.pageIndex == 1
-        pager_previous_class += ' disabled'
-      pager_next_class = 'next'
-
-      if current_page == totalPages
-        pager_next_class += ' disabled'
-
-      pgLeft = li
-        className: pager_previous_class,
-          a
-            className: 'left'
-            role: 'button'
-            ref: 'pager-previous'
-            onClick: @pagePrevious,
-              '&#60;'
-
-      pgRight = li
-        className: 'next',
-          a
-            className: 'right'
-            role: 'button'
-            ref: 'pager-next'
-            onClick: @pageNext,
-              '&#62;'
-
       pagerListItems = ul
         className: 'pager',
-          pgLeft, sizeSelect, pgCount, pgRight
+          pre, sizes, count, next
     else
       pagerListItems = ul
         className: 'pager',
-          sizeSelect, pgCount
+          sizes, count
 
     return form {},
       input

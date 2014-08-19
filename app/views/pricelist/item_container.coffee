@@ -22,14 +22,6 @@ module.exports = React.createClass
     if new_state_obj.category and new_state_obj.category != @props.initState.category
       new_state_obj.pageIndex = 1
 
-    # Turn these into numbers.
-    if new_state_obj.pgSize
-      new_state_obj.pgSize = parseInt(new_state_obj.pgSize)
-      if new_state_obj.pgSize != @props.initState.pgSize
-        new_state_obj.pageIndex = 1
-    if new_state_obj.pageIndex
-      new_state_obj.pageIndex = parseInt(new_state_obj.pageIndex)
-
     if new_state_obj.printing
       new_state_obj.pageIndex = 1
       new_state_obj.pgSize = 10000
@@ -47,6 +39,7 @@ module.exports = React.createClass
         SearchBar
           # The search bar accepts input so we need to pass a func that has this.
           onUserInput: @handleUserInput
+          setRouterState: @props.setRouterState
           filter: @props.initState
         div
           className: 'table-scroll',
