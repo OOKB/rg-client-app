@@ -65,7 +65,10 @@ module.exports = (items, filters) ->
     pgSize = filters.pgSize
     pageIndex = filters.pageIndex - 1
     config.limit = pgSize
-    config.offset = pageIndex * pgSize
+    if pgSize == 3
+      config.offset = pageIndex
+    else
+      config.offset = pageIndex * pgSize
 
   if filters.id
     config =

@@ -3,6 +3,7 @@ React = require 'react'
 {div, ul, li, button, select, option, fieldset, label, input, span} = require 'reactionary'
 
 Items = require './items'
+Pager = require '../el/pager'
 
 module.exports = React.createClass
   getInitialState: ->
@@ -24,9 +25,6 @@ module.exports = React.createClass
       category: newCategory
       selectedFilters: {}
 
-  pgResize: ->
-    @props.setRouterState
-      pgSize: @refs.setpgSize.getDOMNode().value
 
   toggleFilter: ->
     if @state.showFilters == false
@@ -61,25 +59,6 @@ module.exports = React.createClass
   clearFilters: ->
     @props.setRouterState
       selectedFilters: {}
-
-  sizeSelect: ->
-    options = []
-    pgSizes = @props.initState.pgSizes
-    pgSize = @props.initState.pgSize
-    pgSizes.forEach (size) ->
-      options.push option
-        key: size
-        value: size,
-          size
-    li
-      key: 'pageselect'
-      className: 'pageselect',
-        select
-          ref: 'setpgSize'
-          value: pgSize
-          onChange: @pgResize
-          type: 'select',
-            options
 
   filterCategories: (activeTab) ->
     ops = []
@@ -176,15 +155,16 @@ module.exports = React.createClass
             @props.label
 
     if @props.active
+      activePager = @props.initState.totalPages > 1
       itemList = Items @props
-
-      headerList.push li
-        key: 'pagecount'
-        className: 'pagecount hidden-xs',
-          @props.initState.pageIndex + ' / ' + @props.initState.totalPages
-      headerList.push @sizeSelect()
+      if activePager
+        headerList.push Pager _.merge(@props.initState, {el: 'pre', key: 'pre'})
+      headerList.push Pager _.merge(@props.initState, {el: 'count', key: 'count'})
+      headerList.push Pager _.merge(@props.initState, {el: 'sizes', key: 'sizes'})
       headerList.push @filters()
       headerList.push titleEl
+      if activePager
+        headerList.push Pager _.merge(@props.initState, {el: 'next', key: 'next'})
     else
       itemList = div {}
       headerList.push titleEl

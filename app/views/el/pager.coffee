@@ -31,6 +31,7 @@ module.exports = React.createClass
       if props.pageIndex == 1
         liClass += ' disabled'
       return li
+        key: 'previous'
         className: liClass,
           button
             value: 'pre'
@@ -47,6 +48,7 @@ module.exports = React.createClass
       if props.pageIndex == props.totalPages
         liClass += ' disabled'
       return li
+        key: 'next'
         className: liClass,
           button
             value: 'next'
