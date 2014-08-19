@@ -10,6 +10,7 @@ module.exports = React.createClass
   getInitialState: ->
     buttonsFor: ''
     windowWidth: window.innerWidth
+    colorBoxView: false
 
   setButtonsFor: (e) ->
     unless @props.threeUp
@@ -23,6 +24,8 @@ module.exports = React.createClass
       else
         @props.setRouterState
           patternNumber: e.target.value
+    else
+      @setState colorBoxView: !@state.colorBoxView
 
   setPgPre: (e) ->
     console.log 'pre'
@@ -103,15 +106,16 @@ module.exports = React.createClass
       if @props.threeUp
         if buttonsFor == item.id
           detailLink = true
-          relatedProps =
-            patternNumber: item.patternNumber
-            collection: new SubCollection app.items.collection,
-              where:
-                patternNumber: item.patternNumber
-            setParentState: () -> return
-            setContainerState: () -> return
-
-          relatedColors = Related relatedProps
+          if @state.colorBoxView
+            relatedProps =
+              patternNumber: item.patternNumber
+              collection: new SubCollection app.items.collection,
+                where:
+                  patternNumber: item.patternNumber
+              setParentState: (newSt) =>
+                @setState newSt
+              setContainerState: () -> return
+            relatedColors = Related relatedProps
       else if item.hasDetail
         detailLink = true
       else
