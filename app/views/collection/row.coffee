@@ -10,10 +10,14 @@ module.exports = React.createClass
     filterTab: null
 
   categoryClick: (e) ->
+    newCategory = e.target.value
+    if newCategory == @props.initState.category
+      newCategory = null
+
     @props.setRouterState
       patternNumber: false
       id: false
-      category: e.target.value
+      category: newCategory
       selectedFilters: {}
 
   pgResize: ->
