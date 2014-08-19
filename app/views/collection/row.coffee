@@ -93,18 +93,21 @@ module.exports = React.createClass
     fieldOps.forEach (filterOp) =>
       possibleItems = _.contains possibleFilters, filterOp
       labelClass = 'checkbox-inline'
-      unless possibleItems
+      if possibleItems
+        filterEl = input
+          type: 'checkbox'
+          onChange: @setFilters
+          ref: filterOp
+          checked: _.contains activeFields, filterOp
+          value: filterOp,
+            filterOp
+      else
         labelClass += ' disabled'
+        filterEl = filterOp
       fields.push label
         key: filterOp
         className: labelClass,
-          input
-            type: 'checkbox'
-            onChange: @setFilters
-            ref: filterOp
-            checked: _.contains activeFields, filterOp
-            value: filterOp,
-              filterOp
+          filterEl
     div
       className: 'filter-content',
         fieldset
