@@ -58,6 +58,10 @@ module.exports = React.createClass
       selectedFilters: selected
     #console.log @state.filterTab + ': ' + filterFieldId + ' is ' + isSelected
 
+  clearFilters: ->
+    @props.setRouterState
+      selectedFilters: {}
+
   sizeSelect: ->
     options = []
     pgSizes = @props.initState.pgSizes
@@ -90,6 +94,13 @@ module.exports = React.createClass
             onClick: @setFilterTab
             value: op,
               op
+    # Clear button
+    ops.push li
+      key: 'clear'
+      className: 'clear',
+        button
+          onClick: @clearFilters,
+            'CLEAR ALL'
     ops
 
   filterFields: (activeTab) ->
