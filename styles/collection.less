@@ -27,7 +27,7 @@
   margin: 10px 0;
 }
 
-.collection ul.list li {
+.collection ul.list > li {
   box-sizing: border-box;
   display: inline-block;
   overflow: hidden;
@@ -47,9 +47,10 @@
   padding: 5px 9px 2px;
   margin: 0 2.5px;
   height: 23px;
+  font-weight: bold;
   .dropshadow;
 
-  &:hover {
+  &:hover, &.active {
     background-color: @rg-gold;
     color: @rg-background;
   }
@@ -58,6 +59,7 @@
     background-color: @rg-dark-gold;
     color: @rg-background;
   }
+
 }
 
 .item-icons button.item-favorite {
@@ -67,6 +69,12 @@
   overflow: hidden;
   width: 23px;
   background: @rg-background url(@add-fav) center center no-repeat;
+}
+
+.collection #related-colors {
+  position: absolute;
+  bottom: 50px;
+  top:initial;
 }
 
 /* ------------------------------------------------------------*/
@@ -84,60 +92,61 @@
   margin-left: -50vw;
 }
 
-.pg-size-3 ul.list {
+.pg-size-3 > ul.list {
   list-style: none;
   padding: 0;
   width: 100%
 }
 
-.pg-size-3 ul.list li {
+.pg-size-3 > ul.list > li {
   width: 100%;
   height: 225px;
+  position: relative;
 }
 
-.pg-size-3 ul.list li > a {
+.pg-size-3 > ul.list > li > a {
   display: block;
   max-width: 100%;
   margin: 0 5px;
   overflow: hidden;
 }
 
-.pg-size-3 ul.list li img {
+.pg-size-3 > ul.list > li img {
   min-height: 100%;
   width: auto;
 }
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: @screen-sm-min) {
-  .pg-size-3 ul.list li:nth-child(1),
-  .pg-size-3 ul.list li:nth-child(3) {
+  .pg-size-3 > ul.list > li:nth-child(1),
+  .pg-size-3 > ul.list > li:nth-child(3) {
     width: 30%;
   }
-  .pg-size-3 ul.list li:nth-child(2) {
+  .pg-size-3 > ul.list > li:nth-child(2) {
     width: 40%;
   }
-  .pg-size-3 ul.list li {
+  .pg-size-3 > ul.list > li {
     height: 275px;
   }
 }
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: @screen-md-min) {
-  .pg-size-3 ul.list li:nth-child(1),
-  .pg-size-3 ul.list li:nth-child(3) {
+  .pg-size-3 > ul.list > li:nth-child(1),
+  .pg-size-3 > ul.list > li:nth-child(3) {
     width: 25%;
   }
-  .pg-size-3 ul.list li:nth-child(2) {
+  .pg-size-3 > ul.list > li:nth-child(2) {
     width: 50%;
   }
-  .pg-size-3 ul.list li {
+  .pg-size-3 > ul.list > li {
     height: 350px;
   }
 }
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: @screen-lg-min) {
-  .pg-size-3 ul.list li {
+  .pg-size-3 > ul.list > li {
     height: 400px;
   }
 }
@@ -145,56 +154,56 @@
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-height: 1000px) {
-  .pg-size-3 ul.list li {
+  .pg-size-3 > ul.list > li {
     height: 450px;
   }
 }
 
 /** 3-column grid **/
-.pg-size-21 ul.list,
-.pg-size-42 ul.list,
-.pg-size-84 ul.list {
+.pg-size-21 > ul.list,
+.pg-size-42 > ul.list,
+.pg-size-84 > ul.list {
   margin-bottom: 0px;
 }
 
-.pg-size-21 ul.list li,
-.pg-size-42 ul.list li,
-.pg-size-84 ul.list li {
+.pg-size-21 > ul.list > li,
+.pg-size-42 > ul.list > li,
+.pg-size-84 > ul.list > li {
   width: 33.33333333333%;
   margin-bottom: 10px;
   padding: 0 5px;
   height: 100px;
 }
 
-.pg-size-21 ul.list li img,
-.pg-size-42 ul.list li img,
-.pg-size-84 ul.list li img {
+.pg-size-21 > ul.list > li img,
+.pg-size-42 > ul.list > li img,
+.pg-size-84 > ul.list > li img {
   width: 100%;
   height: auto;
 }
 
 @media (min-width: @screen-sm-min) {
-  .pg-size-21 ul.list li,
-  .pg-size-42 ul.list li,
-  .pg-size-84 ul.list li {
+  .pg-size-21 > ul.list > li,
+  .pg-size-42 > ul.list > li,
+  .pg-size-84 > ul.list > li {
     height: 150px;
   }
 }
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: @screen-md-min) {
-  .pg-size-21 ul.list li,
-  .pg-size-42 ul.list li,
-  .pg-size-84 ul.list li {
+  .pg-size-21 > ul.list > li,
+  .pg-size-42 > ul.list > li,
+  .pg-size-84 > ul.list > li {
     height: 200px;
   }
 }
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: @screen-lg-min) {
-  .pg-size-21 ul.list li,
-  .pg-size-42 ul.list li,
-  .pg-size-84 ul.list li {
+  .pg-size-21 > ul.list > li,
+  .pg-size-42 > ul.list > li,
+  .pg-size-84 > ul.list > li {
     height: 250px;
   }
 }
@@ -202,7 +211,7 @@
 /** 4-column grid
 
 /** Passementerie Styles **/
-#collection-passementerie ul.list li {
+#collection-passementerie ul.list > li {
   background: white;
   float: none;
   display: list-item;
@@ -218,6 +227,7 @@
   height: 23px;
   top:50%;
   margin-top: -11.5px;
+  font-weight: bold;
 }
 
 /* -----------------------------------------------------------------------*/
