@@ -170,9 +170,8 @@ module.exports = React.createClass
     headerList = []
     titleEl = li
       key: 'title'
-      className: 'hug-center on-top',
+      className: 'collection-title',
         button
-          className: 'category'
           onClick: @categoryClick
           value: @props.key,
             @props.label
