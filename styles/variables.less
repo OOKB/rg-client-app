@@ -134,3 +134,20 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+.caret {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 6px;
+  vertical-align: middle;
+  border-top: 4px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+.open .caret {
+  border-top: 0;
+  border-bottom: 4px solid;
+}

@@ -140,6 +140,9 @@ module.exports = React.createClass
               onClick: @toggleFilter
               className: 'dropdown-toggle',
                 'filter'
+                span
+                  className: 'caret',
+                    ''
             filterList
 
   render: ->
