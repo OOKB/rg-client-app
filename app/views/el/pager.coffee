@@ -1,4 +1,4 @@
-{li, button, select, option, p} = require 'reactionary'
+{li, button, select, option, p, span} = require 'reactionary'
 React = require 'react'
 
 module.exports = React.createClass
@@ -79,6 +79,9 @@ module.exports = React.createClass
     li
       key: 'pageselect'
       className: 'pageselect',
+        span
+          className: 'uppercase',
+            'View '
         select
           ref: 'setPgSize'
           value: pgSize
