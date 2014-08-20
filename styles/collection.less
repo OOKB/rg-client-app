@@ -48,6 +48,16 @@
   margin: 0 2.5px;
   height: 23px;
   .dropshadow;
+
+  &:hover {
+    background-color: @rg-gold;
+    color: @rg-background;
+  }
+
+  &:active {
+    background-color: @rg-dark-gold;
+    color: @rg-background;
+  }
 }
 
 .item-icons button.item-favorite {
@@ -58,17 +68,6 @@
   width: 23px;
   background: @rg-background url(@add-fav) center center no-repeat;
 }
-
-.item-icons button:hover {
-  background-color: @rg-gold;
-  color: @rg-background;
-}
-
-.item-icons button:active {
-  background-color: @rg-dark-gold;
-  color: @rg-background;
-}
-
 
 /* ------------------------------------------------------------*/
 /* ---------->>> different column/display format <<<-----------*/

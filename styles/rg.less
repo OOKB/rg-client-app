@@ -203,10 +203,10 @@ header nav > ul > li > a {
   font-weight: bold;
   text-decoration: none;
   .uppercase;
-}
 
-header nav > ul > li > a:hover {
-  color: @rg-gray;
+  &:hover {
+    color: @rg-gray;
+  }
 }
 
 header nav > ul > li.active > a,
@@ -230,6 +230,17 @@ li.sub-menu > ul.trade-login > li {
   max-height: 35px;
   margin: 0 10px;
   width: auto;
+}
+
+li.sub-menu > ul.trade-login > li > a {
+  color: @rg-gold;
+  font-size: .875em;
+  text-decoration: none;
+  .uppercase;
+
+  &:hover {
+    color: @rg-dark-gold;
+  }
 }
 
 #content {
