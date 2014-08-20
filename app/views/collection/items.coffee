@@ -73,11 +73,14 @@ module.exports = React.createClass
       if buttonsFor == item.id
         buttons = []
         if @props.extraButtons
+          colorButtonClass = 'item-colors'
+          if @state.colorBoxView or @props.initState.patternNumber
+            colorButtonClass += ' active'
           buttons.push button
             key: 'colors'
             value: item.patternNumber
             onClick: @colorsClick
-            className: 'item-colors',
+            className: colorButtonClass,
               'Colors'
         buttons.push button
           key: 'favs'
@@ -112,6 +115,7 @@ module.exports = React.createClass
               collection: new SubCollection app.items.collection,
                 where:
                   patternNumber: item.patternNumber
+                  hasDetail: true
               setParentState: (newSt) =>
                 @setState newSt
               setContainerState: () -> return
