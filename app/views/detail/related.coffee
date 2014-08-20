@@ -17,13 +17,14 @@ module.exports = React.createClass
     patternNumber: React.PropTypes.string.isRequired
 
   handleColorClick: (e) ->
-    color_id = e.target.id
-    href = e.target.parentElement.hash.substr(1)
-    if e.preventDefault
-      e.preventDefault()
-    app.container.router.redirectTo href
-    @props.setParentState isRelated: true
-    @props.setContainerState color_id: color_id
+    unless @props.section == 'collection'
+      color_id = e.target.id
+      href = e.target.parentElement.hash.substr(1)
+      if e.preventDefault
+        e.preventDefault()
+      app.container.router.navigate href, replace: true
+      @props.setParentState isRelated: true
+      @props.setContainerState color_id: color_id
 
   handleColorDown: (e) ->
     @props.setParentState

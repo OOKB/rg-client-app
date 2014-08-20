@@ -111,6 +111,8 @@ module.exports = React.createClass
           detailLink = true
           if @state.colorBoxView
             relatedProps =
+              id: item.id
+              section: @props.initState.section
               patternNumber: item.patternNumber
               collection: new SubCollection app.items.collection,
                 where:
