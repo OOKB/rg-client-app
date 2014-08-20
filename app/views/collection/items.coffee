@@ -132,10 +132,13 @@ module.exports = React.createClass
           href: item.detail,
             itemImg
       else
-        if index == 0
-          onClick = @setPgPre
-        else if index == 2
-          onClick = @setPgNext
+        if @props.initState.pgSize == 3
+          if index == 0
+            onClick = @setPgPre
+          else if index == 2
+            onClick = @setPgNext
+        else
+          onClick = undefined
         itemEl = a
           onClick: onClick
           role: 'button',
