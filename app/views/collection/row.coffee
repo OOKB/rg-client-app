@@ -156,6 +156,7 @@ module.exports = React.createClass
           value: @props.key,
             @props.label
 
+    bottomPager = false
     if @props.active
       activePager = @props.initState.totalPages > 1
       itemList = Items @props
@@ -167,6 +168,14 @@ module.exports = React.createClass
       headerList.push titleEl
       if activePager
         headerList.push Pager _.merge(@props.initState, {el: 'next', key: 'next'})
+        if @props.initState.pgSize > 3
+          bottomPager = div
+            className: 'collection-pager-bottom',
+              ul
+                className: 'collection-controls pager',
+                  Pager _.merge(@props.initState, {el: 'pre', key: 'pre'})
+                  Pager _.merge(@props.initState, {el: 'count', key: 'count'})
+                  Pager _.merge(@props.initState, {el: 'next', key: 'next'})
     else
       itemList = div {}
       headerList.push titleEl
@@ -178,3 +187,4 @@ module.exports = React.createClass
           className: 'collection-controls',
             headerList
         itemList
+        bottomPager
