@@ -36,7 +36,7 @@
   margin-top: 20px;
 }
 
-#content form button {
+#content form > div > button {
   width: 100%;
   display: block;
   .pointer;
@@ -44,7 +44,7 @@
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: @screen-sm-min) {
-  #content form button {
+  #content form > div > button {
     width: 32.9%;
     display: inline-block;
   }
@@ -59,6 +59,11 @@
 }
 .pricelist-header li.pagecount {
   margin: 0 0 0 10%;
+}
+
+.pricelist-header .pager {
+  border-top: 1px solid @rg-black;
+  border-bottom: 1px solid @rg-black;
 }
 
 table {

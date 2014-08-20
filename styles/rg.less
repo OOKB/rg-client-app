@@ -269,8 +269,6 @@ footer p span {
 /**********************************************************/
 /* pager */
 ul.pager {
-  border-top: 1px solid @rg-black;
-  border-bottom: 1px solid @rg-black;
   list-style: none;
   height: 36px;
   line-height: 20px;
@@ -297,29 +295,17 @@ ul.pager > li.disabled:hover {
   opacity: .22;
 }
 
-ul.collection-controls > li.disabled,
-ul.collection-controls > li.disabled a,
-ul.collection-controls > li.disabled a:hover,
-ul.collection-controls > li.disabled:hover a,
-ul.collection-controls > li.disabled button,
-ul.collection-controls > li.disabled button:hover,
-ul.collection-controls > li.disabled:hover button,
-ul.pager > li.disabled,
-ul.pager > li.disabled a,
-ul.pager > li.disabled a:hover,
-ul.pager > li.disabled:hover a {
+li.disabled button,
+li.disabled button:hover,
+li.disabled:hover button {
   cursor: not-allowed !important;
 }
 
-ul.collection-controls > li.previous > button,
-ul.collection-controls > li.previous > button.left,
-ul.collection-controls > li.next > button,
-ul.collection-controls > li.next > button.right,
-ul.pager > li.previous > a,
-ul.pager > li > a.left,
-ul.pager > li.next > a,
-ul.pager > li > a.right {
-  background-size: 12px 12px;
+li.previous > button,
+i.previous > button.left,
+li.next > button,
+li.next > button.right {
+  background-size: contain;
   display: block;
   height: 12px;
   width: 12px;
@@ -330,10 +316,10 @@ ul.pager > li > a.right {
   .pointer;
 }
 
-ul.collection-controls > li.previous,
-ul.collection-controls > li.next,
-ul.pager > li.previous,
-ul.pager > li.next {
+li.previous,
+li.next {
+  height: 12px;
+  width: 12px;
   position: absolute;
 }
 
@@ -347,26 +333,20 @@ ul.pager > li.next {
 }
 
 /* previous/left arrow */
-ul.collection-controls > li.previous,
-ul.pager > li.previous {
+li.previous {
   left: 6px;
 }
-ul.collection-controls > li.previous > button,
-ul.collection-controls > li > button.left,
-ul.pager > li.previous > a,
-ul.pager > li > a.left {
+li.previous > button,
+li > button.left{
   background: #fcfbf8 url(@left-arrow) center center no-repeat;
 }
 
 /* next/right arrow */
-ul.collection-controls > li.next,
-ul.pager > li.next {
+li.next {
   right: 6px;
 }
-ul.collection-controls > li.next > button,
-ul.collection-controls > li > button.right,
-ul.pager > li.next > a,
-ul.pager > li > a.right {
+li.next > button,
+li > button.right {
   background: #fcfbf8 url(@right-arrow) center center no-repeat;
 }
 
