@@ -111,7 +111,7 @@ module.exports = React.createClass
       className: 'filter-content',
         fieldset
           className: 'filter-attributes',
-            div # Is this really required?
+            div
               className: 'moz-hack',
                 fields
 
