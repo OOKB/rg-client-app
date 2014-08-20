@@ -51,6 +51,22 @@ module.exports = React.createClass
           h3 'Approx Width'
           p item.approx_width
 
+    # Approx size.
+    if item.approx_size
+      h_lis.push li
+        key: 'size'
+        className: 'size',
+          h3 'Approx Size'
+          p item.approx_size
+
+    # Approx width.
+    if item.approx_thick
+      h_lis.push li
+        key: 'thick'
+        className: 'thick',
+          h3 'Approx Thickness'
+          p item.approx_thick
+
     nav className: 'item-detail-header',
       div className: 'controls',
         ul {},
