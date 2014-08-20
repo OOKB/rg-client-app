@@ -59,6 +59,12 @@ module.exports = React.createClass
     @props.setRouterState
       selectedFilters: {}
 
+  setPgSize: ->
+    if @props.initState.pgSize > 3
+      @props.setRouterState pgSize: @props.initState.pgSizes[0]
+    else
+      @props.setRouterState pgSize: @props.initState.pgSizes[1]
+
   filterCategories: (activeTab) ->
     ops = []
     @props.initState.filterOptions.forEach (op) =>
@@ -145,6 +151,21 @@ module.exports = React.createClass
                     ''
             filterList
 
+  arrangeToggle: ->
+    if @props.initState.pgSize == 3
+      buttonTxt = 'vertically'
+    else
+      buttonTxt = 'horizontally'
+    li
+      key: 'arrange'
+      className: 'arrange',
+        button
+          onClick: @setPgSize
+          lassName: 'thumbs plain uppgercase',
+            'Arrange ' + buttonTxt
+            span
+              className: 'caret'
+
   render: ->
     headerList = []
     titleEl = li
@@ -166,6 +187,8 @@ module.exports = React.createClass
       headerList.push Pager _.merge(@props.initState, {el: 'sizes', key: 'sizes'})
       headerList.push @filters()
       headerList.push titleEl
+      if @props.initState.pgSizes[0] == 3
+        headerList.push @arrangeToggle()
       if activePager
         headerList.push Pager _.merge(@props.initState, {el: 'next', key: 'next'})
         if @props.initState.pgSize > 3
