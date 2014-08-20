@@ -25,7 +25,6 @@ module.exports = React.createClass
       category: newCategory
       selectedFilters: {}
 
-
   toggleFilter: ->
     if @state.showFilters == false
       @setState
@@ -132,14 +131,14 @@ module.exports = React.createClass
       filterList = ''
     li
       key: 'filter'
-      className: 'filter text-left',
+      className: 'filter',
         div
           className: containerClass,
             button
               value: 'filter'
               type: 'button'
               onClick: @toggleFilter
-              className: 'on-top uppercase plain dropdown-toggle',
+              className: 'dropdown-toggle',
                 'filter'
             filterList
 
@@ -149,7 +148,7 @@ module.exports = React.createClass
       key: 'title'
       className: 'hug-center on-top',
         button
-          className: 'uppercase'
+          className: 'category'
           onClick: @categoryClick
           value: @props.key,
             @props.label
