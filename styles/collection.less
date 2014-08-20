@@ -116,6 +116,15 @@
   width: auto;
 }
 
+@media (max-width: @screen-xs-max) {
+  .pg-size-3,
+  .pg-size-21,
+  .pg-size-42,
+  .pg-size-84 {
+    margin-top: 30px;
+  }
+}
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: @screen-sm-min) {
   .pg-size-3 > ul.list > li:nth-child(1),
@@ -242,26 +251,22 @@ ul.collection-controls li.filter,
 ul.collection-controls li.arrange,
 ul.collection-controls li.pageselect,
 ul.collection-controls li.pagecount {
-  position: absolute;
+  position: relative;
   z-index: 2;
-}
-ul.collection-controls li.pagecount {
-  left: 40px;
-  top: 5px;
-}
-
-ul.collection-controls li.pageselect {
-  left: 140px;
 }
 
 ul.collection-controls li.filter {
-  left: 300px;
-  top: 4px;
+  display: list-item;
+  position: absolute;
+  width: 100px;
+  left: 50%;
+  margin-left: -50px;
+  top:30px;
 }
 
-ul.collection-controls li.arrange {
-  right: 155px;
-  top: 4px;
+ul.collection-controls li.pagecount {
+  left: 40px;
+  top: 5px;
 }
 
 button.dropdown-toggle {
@@ -274,16 +279,76 @@ ul.collection-controls li.collection-title button {
   z-index: 99;
 }
 
-li.tab button {
-  padding: 5px 20px;
-  font: 14px;
+@media (max-width: @screen-xs-max) {
+  ul.collection-controls li.arrange,
+  ul.collection-controls li.pageselect {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@media (min-width: @screen-sm-min) {
+  ul.collection-controls li.filter,
+  ul.collection-controls li.arrange,
+  ul.collection-controls li.pageselect,
+  ul.collection-controls li.pagecount {
+    display: inline-block;
+    visibility: visible;
+    position: absolute;
+  }
+  ul.collection-controls li.pageselect {
+    display: none;
+    visibility: hidden;
+  }
+  ul.collection-controls li.pagecount {
+    left: 40px;
+    top: 5px;
+  }
+
+  ul.collection-controls li.filter {
+    z-index: 2;
+    left: 175px;
+    top: 4px;
+  }
+
+  ul.collection-controls li.arrange {
+    right: 45px;
+    top: 4px;
+  }
+}
+
+@media (min-width: @screen-md-min) {
+  ul.collection-controls li.filter,
+  ul.collection-controls li.arrange,
+  ul.collection-controls li.pageselect,
+  ul.collection-controls li.pagecount {
+    display: inline-block;
+    visibility: visible;
+  }
+
+  ul.collection-controls li.pageselect {
+    left: 140px;
+  }
+
+  ul.collection-controls li.filter {
+    left: 300px;
+    top: 4px;
+  }
+
+  ul.collection-controls li.arrange {
+    right: 155px;
+    top: 4px;
+  }
+}
+
+@media (min-width: @screen-lg-min) {
 }
 
 /** Filter dropdown menus **/
 /*actual ul that holds everything */
 .filter-list {
   position: absolute;
-  left: -118px;
+  left: -90px;
   top:-10px;
   margin: 0;
   padding: 45px 0 0 0;
@@ -294,12 +359,26 @@ li.tab button {
   background-color: white;
 }
 
+.filter-list li {
+  width: 50%;
+}
+
+.filter-list li button {
+  color: @rg-gray;
+  padding: 5px 10px;
+}
+
+.filter-list li.clear button {
+  font-weight: normal !important;
+  font-size: .9em !important;
+}
+
 .filter-list fieldset {
   color: @rg-gray;
   border-top: 1px solid #ddd;
   font-size: 11px;
   letter-spacing: 1px;
-  padding: 15px 0 0 0;
+  padding: 15px 0;
   margin: 15px 0 0 0;
 }
 
@@ -359,8 +438,13 @@ li.tab button {
 @media (min-width: @screen-sm-min) {
   .filter-list {
     width: 500px;
-    left: -70px;
+    left: -50px;
     text-align: center;
+  }
+
+  .filter-list li button {
+    color: @rg-gray;
+    padding: 5px 10px;
   }
 
   .filter-list fieldset {

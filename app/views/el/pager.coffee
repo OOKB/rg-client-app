@@ -62,7 +62,7 @@ module.exports = React.createClass
     props = @props
     li
       key: 'pagecount'
-      className: 'pagecount hidden-xs',
+      className: 'pagecount',
         props.pageIndex + ' / ' + props.totalPages
 
   sizes: ->
