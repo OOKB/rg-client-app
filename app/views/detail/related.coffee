@@ -21,8 +21,7 @@ module.exports = React.createClass
     href = e.target.parentElement.hash.substr(1)
     if e.preventDefault
       e.preventDefault()
-    #console.log href
-    app.container.router.navigate(href, {replace: true})
+    app.container.router.redirectTo href
     @props.setParentState isRelated: true
     @props.setContainerState color_id: color_id
 
