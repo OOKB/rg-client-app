@@ -4,6 +4,7 @@ Router = require 'ampersand-router'
 itemsFilter = require './models/itemsFilter'
 
 defaultCategory = 'textile'
+pageTitle = 'Rogers & Goffigon'
 
 module.exports = Router.extend
   pop: 'ka'
@@ -25,6 +26,7 @@ module.exports = Router.extend
     '*path': -> @redirectTo('cl')
 
   collection: (category, pgSize, searchTxt, pageIndex) ->
+    document.title = pageTitle + ' - Collections'
     #console.log 'collection'
     S = _.extend @getQuery(),
       section: 'collection'
@@ -38,6 +40,7 @@ module.exports = Router.extend
     @setReactState S
 
   pricelist: (category, pgSize, searchTxt, pageIndex) ->
+    document.title = pageTitle + ' - Pricelist'
     #console.log 'pricelist'
     S = @prepNewState
       section: 'pricelist'
@@ -55,6 +58,8 @@ module.exports = Router.extend
       hasDetail: true
       color_id: color_id
     itemsFilter app.items, newState
+    item = app.items.get(newState.patternNumber+'-'+newState.color_id)
+    document.title = pageTitle + ' - ' + item.name + ' in ' + item.color
     @setReactState newState
 
   isItemNumber: (possibleId) ->
@@ -116,7 +121,17 @@ module.exports = Router.extend
       when 'skin' then 'leather'
       when 'hide' then 'leather'
       else 'textile'
-
+    newState.categories = [
+      active: newState.category == 'textile'
+      id: 'textile'
+      label: 'Textiles',
+        active: newState.category == 'passementerie'
+        id: 'passementerie'
+        label: 'Passementerie',
+          active: newState.category == 'leather'
+          id: 'leather'
+          label: 'Leather'
+    ]
     newState.filterOptions = switch newState.category
       when 'textile' then ['content', 'color', 'description']
       when 'passementerie' then ['color', 'description']

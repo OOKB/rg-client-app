@@ -44,14 +44,7 @@ module.exports = React.createClass
       collection: app.items
       initState: @state
       setRouterState: @setRouterState
-      categories: [
-        id: 'textile'
-        label: 'Textiles',
-          id: 'passementerie'
-          label: 'Passementerie',
-            id: 'leather'
-            label: 'Leather'
-      ]
+      
     if _.isObject props.initState
       props.initState.setRouterState = @setRouterState
     component = switch section
