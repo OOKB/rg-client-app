@@ -32,11 +32,11 @@ module.exports = React.createClass
     if v.ids
       content = []
       favs = @props.collection
-
-      v.categories.forEach (cat) =>
-        items = new SubCollection(favs, where: category: cat.id)
+      categories = ['textile', 'leather', 'passementerie']
+      categories.forEach (cat) =>
+        items = new SubCollection(favs, where: category: cat)
         if items.length
-          content.push Items _.extend(@props, collection: items, key: cat.id)
+          content.push Items _.extend(@props, collection: items, key: cat)
     else
       content = p 'No favorites found.'
 
