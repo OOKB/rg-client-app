@@ -47,9 +47,11 @@ module.exports = (items, filters) ->
     config.filters = filters.searchTxt.split(' ').map (searchTxt) ->
       (model) ->
         model.searchStr.indexOf(searchTxt) > -1
+
   if filters.omit00
     config.filters.push (model) ->
       model.color_id.substring(0, 2) != '00'
+
   if filters.selectedFilters
     _.forEach filters.selectedFilters, (selectedFilters, filterCat) ->
       if selectedFilters and _.isArray(selectedFilters) and selectedFilters.length
@@ -75,7 +77,10 @@ module.exports = (items, filters) ->
       where:
         id: filters.id
 
+  #console.log config
+
   items.configure config, resetCollection
+
   if setRemainingFilters and filters.filterOptions
     setFilterFields items, filters.filterOptions, filters.possibleFilters
   else
