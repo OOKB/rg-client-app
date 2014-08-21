@@ -63,7 +63,7 @@ module.exports = React.createClass
 
   render: ->
     list = []
-    if @props.threeUp
+    if @props.threeUp and @props.collection.models[1]
       buttonsFor = @props.collection.models[1].id
     else
       buttonsFor = @state.buttonsFor
