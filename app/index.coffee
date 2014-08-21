@@ -1,19 +1,22 @@
 React = require 'react'
 SubCollection = require 'ampersand-subcollection'
+_ = require 'lodash'
 
 ItemsCollection = require './models/items'
 Router = require './react-router'
 
-items_data = require './models/data'
+ItemsData = require './models/data'
+Me = require './models/me'
 
 module.exports =
   blastoff: ->
+    window._ = _
     self = window.app = @
     # Create our items model collection.
-    items = new ItemsCollection items_data, parse: true
+    items = new ItemsCollection ItemsData, parse: true
     # Use the subcollection module.
     @items = new SubCollection items
-
+    @me = new Me()
     # Init the React application router.
     el = document.getElementById('content')
     routerComponent = Router {}

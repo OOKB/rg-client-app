@@ -7,6 +7,7 @@ Router = require './router'
 FilterableProductTable = require './views/pricelist/item_container'
 ItemDetail = require './views/detail/container'
 Collection = require './views/collection/container'
+Favs = require './views/favs'
 
 module.exports = React.createClass
 
@@ -44,12 +45,13 @@ module.exports = React.createClass
       collection: app.items
       initState: @state
       setRouterState: @setRouterState
-      
+
     if _.isObject props.initState
       props.initState.setRouterState = @setRouterState
     component = switch section
       when 'pricelist' then FilterableProductTable(props)
       when 'collection' then Collection(props)
       when 'detail' then ItemDetail(props)
+      when 'favs' then Favs props
       else p 'Hello there! Unfortunately our application is broken... ' + section
     return component

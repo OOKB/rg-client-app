@@ -23,6 +23,9 @@ module.exports = Router.extend
     'pricelist/:category/:pgSize': 'pricelist'
     'pricelist/:category/:pgSize(/:query)/p:page': 'pricelist'
     'detail/:pattern/:id': 'detail'
+    'f': -> @redirectTo('favs')
+    'favs': 'favs'
+    'favs/*items': 'favs'
     '*path': -> @redirectTo('cl')
 
   collection: (category, pgSize, searchTxt, pageIndex) ->
@@ -52,15 +55,38 @@ module.exports = Router.extend
 
   detail: (patternNumber, color_id) ->
     #console.log 'detail'
-    newState =
+    newSt =
       section: 'detail'
       patternNumber: patternNumber
       hasDetail: true
       color_id: color_id
-    itemsFilter app.items, newState
-    item = app.items.get(newState.patternNumber+'-'+newState.color_id)
+    itemsFilter app.items, newSt
+    item = app.items.get(newSt.patternNumber+'-'+newSt.color_id)
     document.title = pageTitle + ' - ' + item.name + ' in ' + item.color
-    @setReactState newState
+    @setReactState newSt
+
+  favs: (favStr) ->
+    unless favStr
+      favStr = app.me.favStr
+      if favStr
+        @redirectTo('favs/'+favStr)
+        return
+    ids = @parseIdStr favStr
+    newSt =
+      section: 'favs'
+      hasImage: true
+      colorSorted: true
+      omit00: true
+      ids: ids
+    if ids
+      itemsFilter app.items, newSt
+    @setReactState newSt
+
+  parseIdStr: (idStr) ->
+    unless idStr
+      return null
+    ids = _.remove idStr.split('/'), @isItemNumber
+    return favs
 
   isItemNumber: (possibleId) ->
     /^(P-|L-)?[0-9]{4,7}-[0-9]{2}[LD]?$/.test(possibleId)
