@@ -36,7 +36,7 @@ module.exports = React.createClass
       categories.forEach (cat) =>
         items = new SubCollection(favs, where: category: cat)
         if items.length
-          content.push Items _.extend(@props, collection: items, key: cat)
+          content.push Items _.extend(@props, {collection: items, key: cat, category: cat})
     else
       content = p 'No favorites found.'
 

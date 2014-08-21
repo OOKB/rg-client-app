@@ -150,10 +150,10 @@ module.exports = React.createClass
           itemEl
           buttons
           relatedColors
-
+    cat = @props.initState.category or @props.category
     return div
       className: 'pg-size-' + @props.initState.pgSize
-      id: 'collection-' + @props.initState.category,
+      id: 'collection-' + cat,
         ul
           className: 'list',
             list
