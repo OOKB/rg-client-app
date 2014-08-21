@@ -12,18 +12,13 @@ module.exports = React.createClass
       pageIndex: 1
 
   render: ->
-    categories = [
-      {id: 'textile', label: 'Textiles'}
-      {id: 'passementerie', label: 'Passementerie'}
-      {id: 'leather', label: 'Leather'}
-    ]
     v = @props
     div
       className: 'collection-menu',
-        categories.map (cat) =>
+        v.categories.map (cat) =>
           button
             key: cat.id
-            className: if (v.category == cat.id) then 'active'
+            className: if cat.active then 'active'
             onClick: @handleCollectionClick
             value: cat.id,
               cat.label
