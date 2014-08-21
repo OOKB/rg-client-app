@@ -68,7 +68,12 @@ module.exports = AmpersandModel.extend
           content = @contents
         else
           content = @content
-        (@id + ' ' + @name + ' ' + @color + ' ' + content).toLowerCase()
+        if @colors and @colors.length
+          color = @colors.join(' ')
+        else
+          color = ''
+        str = color + ' ' + @id + ' ' + @name + ' ' + @color + ' ' + content
+        str.toLowerCase()
 
     detail:
       deps: ['patternNumber', 'color_id', 'id']
