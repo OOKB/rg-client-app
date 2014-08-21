@@ -3,7 +3,7 @@ React = require 'react'
 _ = require 'lodash'
 
 Pager = require '../el/pager'
-
+CategoryMenu = require '../el/category_menu'
 # props
 ## onUserInput() - defined in item_container.
 
@@ -55,22 +55,8 @@ module.exports = React.createClass
         value: v.searchTxt,
         ref:'filterTextInput',
         onChange: @handleChange
-      div {},
-        button
-          className: if (v.category == 'textile') then 'active'
-          onClick: @handleCollectionClick
-          value: 'textile',
-          'Textiles'
-        button
-          className: if (v.category == 'passementerie') then 'active'
-          onClick: @handleCollectionClick
-          value: 'passementerie',
-          'Passementerie'
-        button
-          className: if (v.category == 'leather') then 'active'
-          onClick: @handleCollectionClick
-          value: 'leather',
-          'Leather'
+
+      CategoryMenu @props.filter
       # p {},
       #   input
       #     type: 'checkbox',

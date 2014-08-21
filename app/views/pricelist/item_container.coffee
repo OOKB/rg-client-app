@@ -19,9 +19,6 @@ module.exports = React.createClass
     unless new_state_obj.printing
       new_state_obj.printing = false
 
-    if new_state_obj.category and new_state_obj.category != @props.initState.category
-      new_state_obj.pageIndex = 1
-
     if new_state_obj.printing
       new_state_obj.pageIndex = 1
       new_state_obj.pgSize = 10000
