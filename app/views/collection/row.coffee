@@ -201,9 +201,11 @@ module.exports = React.createClass
     else
       itemList = div {}
       headerList.push titleEl
-
+    rowClassName = 'row'
+    if @props.active
+      rowClassName += ' active'
     return div
-      className: 'row'
+      className: rowClassName
       id: 'collection-row-'+@props.key,
         ul
           className: 'collection-controls',

@@ -20,10 +20,10 @@ module.exports = React.createClass
       className: 'text-area',
         'Browse the collection by category below.'
     # Add a row for each collection.
-    @props.categories.forEach (cat) ->
+    @props.initState.categories.forEach (cat) ->
       rows.push Row _.extend props,
         key: cat.id
-        active: cat.id == category
+        active: cat.active
         label: cat.label
     div
       id: 'container-collection'
