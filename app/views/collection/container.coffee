@@ -4,7 +4,6 @@ _ = require 'underscore'
 
 Standard = require './standard'
 Search = require './search'
-Row = require './row'
 
 module.exports = React.createClass
 
@@ -13,7 +12,17 @@ module.exports = React.createClass
     props = _.extend @props,
       threeUp: 3 == @props.initState.pgSize
       extraButtons: 'passementerie' == category or 3 == @props.initState.pgSize
+
     if @props.initState.searchTxt
-      Search props
+      content = Search props
     else
-      Standard props
+      content = Standard props
+
+    div
+      id: 'container-collection'
+      className: 'collection',
+        p
+          key: 'intro'
+          className: 'text-area',
+            'Browse the collection by category below.'
+        content
