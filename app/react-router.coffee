@@ -52,6 +52,6 @@ module.exports = React.createClass
       when 'pricelist' then FilterableProductTable(props)
       when 'collection' then Collection(props)
       when 'detail' then ItemDetail(props)
-      when 'favs' then Favs props
+      when 'favs' then Favs(props)
       else p 'Hello there! Unfortunately our application is broken... ' + section
     return component

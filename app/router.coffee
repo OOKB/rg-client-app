@@ -71,22 +71,12 @@ module.exports = Router.extend
       if favStr
         @redirectTo('favs/'+favStr)
         return
-    ids = @parseIdStr favStr
-    newSt =
+    newSt = @prepNewState
       section: 'favs'
-      hasImage: true
-      colorSorted: true
-      omit00: true
-      ids: ids
-    if ids
-      itemsFilter app.items, newSt
-    @setReactState newSt
+      category: null
+      ids: favStr.split('/')
 
-  parseIdStr: (idStr) ->
-    unless idStr
-      return null
-    ids = _.remove idStr.split('/'), @isItemNumber
-    return favs
+    @setReactState newSt
 
   isItemNumber: (possibleId) ->
     /^(P-|L-)?[0-9]{4,7}-[0-9]{2}[LD]?$/.test(possibleId)
@@ -158,6 +148,8 @@ module.exports = Router.extend
           id: 'leather'
           label: 'Leather'
     ]
+    if s.ids
+      newState.ids = _.remove s.ids, @isItemNumber
     newState.filterOptions = switch newState.category
       when 'textile' then ['content', 'color', 'description']
       when 'passementerie' then ['color', 'description']
@@ -182,6 +174,8 @@ module.exports = Router.extend
         pgSizes.shift()
     else if 'pricelist' == s.section
       pgSizes = [50, 100, 10000]
+    else if 'favs'
+      pgSizes = [500]
     else
       pgSizes = [1]
 
