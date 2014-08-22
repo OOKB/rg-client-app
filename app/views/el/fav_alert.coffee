@@ -10,18 +10,17 @@ module.exports = React.createClass
 
   text: ->
     item = @props.model
-    item.name + ' in ' + item.color + ' has been added to your favorites.'
+    item.name + ' in ' + item.color + ' has been added to your favorites!'
 
   render: () ->
     unless @props.itemState.favBoxView
       return false
     div
-      id: 'anonymous-faves-alert'
-      className: 'alert-favorite alert alert-dismissable text-center',
+      className: 'alert-favorite',
         button
           type: 'button'
           onClick: @close
-          className: 'close',
+          className: 'close small',
             'x'
         div
           className: 'outer',

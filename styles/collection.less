@@ -64,14 +64,23 @@ ul.collection-controls > li.collection-title button:hover {
 
 }
 
-.item-icons button.item-favorite {
+.item-icons button.item-favorite,
+.item-icons button.remove-item {
   padding: 5px 7px 2px;
   text-indent: 200%;
   white-space: nowrap;
   overflow: hidden;
   width: 23px;
+}
+
+.item-icons button.item-favorite {
   background: @rg-background url(@add-fav) center center no-repeat;
 }
+
+.item-icons button.remove-item {
+  background: @rg-background url(@remove-fav) center center no-repeat;
+}
+
 
 .collection #related-colors {
   position: absolute;
@@ -104,6 +113,9 @@ ul.collection-controls > li.collection-title button:hover {
   width: 100%;
   height: 225px;
   position: relative;
+  /***/
+  background: @rg-background url(@loading) center center no-repeat;
+  background-size: 50px 50px;
 }
 
 .pg-size-3 > ul.list > li > a {
@@ -372,6 +384,7 @@ ul.collection-controls li.collection-title button {
 
 .filter-list li {
   width: 50%;
+  display: inline-block;
 }
 
 .filter-list li button {
@@ -453,6 +466,10 @@ ul.collection-controls li.collection-title button {
     text-align: center;
   }
 
+  .filter-list li {
+    width: 33%;
+  }
+
   .filter-list li button {
     color: @rg-gray;
     padding: 5px 10px;
@@ -497,6 +514,10 @@ ul.collection-controls li.collection-title button {
     left: -125px;
   }
 
+  .filter-list li {
+    width: auto;
+  }
+
   .filter-list fieldset .moz-hack {
     -webkit-column-count:4; -webkit-column-gap:10px;
     -moz-column-count:4; -moz-column-gap:10px;
@@ -513,6 +534,7 @@ ul.collection-controls li.collection-title button {
 
 
 /** Item-information popups **/
+#collection-passementerie ul.item-information,
 #container-collection ul.item-information {
   position: absolute;
   top: 50%;
@@ -532,6 +554,7 @@ ul.collection-controls li.collection-title button {
   overflow: auto;
 }
 
+#collection-passementerie ul.item-information,
 #collection-row-passementerie ul.item-information {
   width: 600px;
   margin-left: -300px;
@@ -539,6 +562,7 @@ ul.collection-controls li.collection-title button {
   margin-top: -30px;
 }
 
+#collection-passementerie ul.item-information > li,
 #collection-row-passementerie ul.item-information > li {
   display: inline-block;
   margin: 0;
