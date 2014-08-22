@@ -106,7 +106,7 @@ module.exports = React.createClass
         checked: isChecked
         value: filterOp,
           filterOp
-      unless possibleItems
+      unless possibleItems or isChecked
         labelClass += ' disabled'
         #filterEl = span filterOp
       fields.push label
