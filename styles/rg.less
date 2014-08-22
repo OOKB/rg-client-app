@@ -86,7 +86,7 @@
   box-sizing: border-box;
 }
 
-html { font-size: 14px; }
+html { font-size: 14px; line-height: 1.33; }
 
 body {
   background: @rg-background;
@@ -135,6 +135,15 @@ button.active {
   color: @rg-dark-gold;
 }
 
+button.small.close {
+  background: transparent url(@close-btn-sm) center center no-repeat;
+  background-size: 11px 11px;
+  height: 11px;
+  width: 11px;
+  opacity: .75;
+  .hide-text;
+}
+
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
 /* These will apply everywhere unless they are overridden in one of the @media queries */
@@ -168,12 +177,10 @@ header h1 a {
   display: block;
   background: url('images/rglogo.png') center center no-repeat;
   background-size: contain;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
   height: 60px;
   margin: 0;
   padding: 0;
+  .hide-text;
 }
 
 
@@ -300,3 +307,22 @@ footer p span {
 /**********************************************************/
 /**********************************************************/
 
+/* = Vertical Centering trick */
+.outer {
+  height: 100%;
+}
+
+.outer:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -2.5%;
+}
+
+.inner {
+  display: inline-block;
+  vertical-align: middle;
+  height: auto;
+}
+/* = /vertical centering trick */
