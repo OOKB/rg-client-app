@@ -32,7 +32,8 @@ module.exports = React.createClass
     @props.setItemState favBoxView: id
 
   rmFav: (e) ->
-    app.me.rmFav e.target.value
+    id = e.target.value
+    app.me.rmFav id
 
   infoClick: ->
     @props.setItemState infoBoxView: !@props.itemState.infoBoxView

@@ -18,21 +18,34 @@ module.exports = React.createClass
       if newState
         @setState (newState)
     @router.history.start()
+    app.me.on 'change:favs', (model, ids, change) =>
+      if change and change.op == 'remove' and change.id
+        console.log 'Removing '+change.id
+        s =
+          ids: ids
+          section: 'favs'
+        newUrl = @router.urlCreate s
+        #console.log newUrl
+        console.log ids
+        @router.navigate newUrl, replace: true
+        @setRouterState ids: _.clone(ids)
 
   setRouterState: (newState) ->
     if newState
-      s = _.defaults newState, @state
-      if 'pricelist' == s.section or 'collection' == s.section
+      section = newState.section or @state.section
+      if 'pricelist' == section or 'collection' == section
         #console.log @state
-        s = @router.prepNewState s
+        s = @router.prepNewState _.defaults(newState, @state)
         redirected = @router.updateURL @state, s
         # Handle in-app state change options.
         if s.searchTxt
           if s.searchTxt != @state.searchTxt
             # Reset pageIndex.
             s.pageIndex = 1
-      else if 'detail' == newState.section
-        s = newState
+      # else if 'detail' == newState.section
+      #   s = newState
+      else if 'favs' == section
+        s = @router.prepNewState _.defaults(newState, @state)
       else
         s = newState
       @setState s

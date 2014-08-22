@@ -153,6 +153,8 @@ module.exports = Router.extend
     ]
     if s.ids
       newState.ids = _.remove(s.ids, @isItemNumber).sort()
+      if newState.ids.length and not s.ids.length
+        s.ids = newState.ids
     newState.filterOptions = switch newState.category
       when 'textile' then ['content', 'color', 'description']
       when 'passementerie' then ['color', 'description']
@@ -211,8 +213,11 @@ module.exports = Router.extend
       return ''
 
   urlCreate: (s) ->
-    if s.category == null
-      return s.section
+    unless s.category
+      if s.section == 'favs' and s.ids and s.ids.length
+        return s.section+'/'+s.ids.join('/')
+      else
+        return s.section
     urlTxt = s.section+'/'+s.category+'/'+s.pgSize
     if s.searchTxt
       urlTxt += '/' + s.searchTxt

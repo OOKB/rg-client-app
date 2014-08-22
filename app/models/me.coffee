@@ -22,15 +22,16 @@ module.exports = AmpersandModel.extend
     unless _.contains favs, id
       favs.push id
       @set('favs', favs.sort())
-      @trigger 'change:favs', @, favs
+      @trigger 'change:favs', @, favs, id: id, op: 'add'
       return true
     return false
 
   rmFav: (id) ->
     favs = @get('favs')
     if _.contains favs, id
-      @set('favs', _.without favs, id)
-      @trigger 'change:favs', @, favs
+      favs = _.without favs, id
+      @set('favs', favs)
+      @trigger 'change:favs', @, favs, id: id, op: 'remove'
       return true
     else
       return false

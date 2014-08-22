@@ -28,7 +28,7 @@ module.exports = React.createClass
             className: 'uppercase',
               'Favorites'
 
-    if v.ids
+    if v.ids and v.ids.length
       content = []
       favs = @props.collection
       categories = ['textile', 'leather', 'passementerie']
