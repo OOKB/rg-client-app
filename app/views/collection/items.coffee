@@ -6,6 +6,7 @@ SubCollection = require 'ampersand-subcollection'
 Pager = require '../el/pager'
 Info = require '../el/info'
 ItemButtons = require '../el/item_buttons'
+FavAlertBox = require '../el/fav_alert'
 Related = require '../detail/related'
 
 module.exports = React.createClass
@@ -14,6 +15,7 @@ module.exports = React.createClass
     windowWidth: window.innerWidth
     colorBoxView: false
     infoBoxView: false
+    favBoxView: false
 
   setButtonsFor: (e) ->
     unless @props.threeUp
@@ -74,7 +76,7 @@ module.exports = React.createClass
     # List
     @props.collection.forEach (item, index) =>
       buttons = ItemButtons
-        setItemState: @setState
+        setItemState: (newSt) => @setState newSt
         itemState: @state
         buttonsFor: buttonsFor
         model: item
@@ -88,11 +90,18 @@ module.exports = React.createClass
         height: item._file[imgSize].height
         src: item._file[imgSize].path,
         onMouseOver: @setButtonsFor
-      relatedColors = ''
+      relatedColors = false
+      if @state.favBoxView == item.id
+        favAlert = FavAlertBox
+          itemState: @state
+          setItemState: (newSt) => @setState newSt
+          model: item
+      else
+        favAlert = false
       if @state.infoBoxView and buttonsFor == item.id
         infoBox = Info model: item
       else
-        infoBox = ''
+        infoBox = false
       if @props.threeUp
         if buttonsFor == item.id
           detailLink = true
@@ -138,6 +147,7 @@ module.exports = React.createClass
           buttons
           relatedColors
           infoBox
+          favAlert
     cat = @props.initState.category or @props.category
     return div
       className: 'pg-size-' + @props.initState.pgSize

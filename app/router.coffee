@@ -152,7 +152,7 @@ module.exports = Router.extend
           label: 'Leather'
     ]
     if s.ids
-      newState.ids = _.remove s.ids, @isItemNumber
+      newState.ids = _.remove(s.ids, @isItemNumber).sort()
     newState.filterOptions = switch newState.category
       when 'textile' then ['content', 'color', 'description']
       when 'passementerie' then ['color', 'description']
