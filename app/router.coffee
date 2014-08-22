@@ -75,7 +75,10 @@ module.exports = Router.extend
       section: 'favs'
       category: null
       ids: favStr.split('/')
-
+    if newSt.ids and newSt.ids.length and app.me.favStr == newSt.ids.join('/')
+      newSt.myfavs = true
+    else
+      newSt.myFavs = false
     @setReactState newSt
 
   isItemNumber: (possibleId) ->

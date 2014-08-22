@@ -3,10 +3,10 @@ _ = require 'lodash'
 
 getLocalFavs = ->
   if window.localStorage and favs = window.localStorage['faves']
-    console.log 'get favs'
+    #console.log 'get favs'
     return favs.split('/')
   else
-    console.log 'no favs'
+    #console.log 'no favs'
     return []
 
 module.exports = AmpersandModel.extend
@@ -31,6 +31,13 @@ module.exports = AmpersandModel.extend
     if _.contains favs, id
       @set('favs', _.without favs, id)
       @trigger 'change:favs', @, favs
+      return true
+    else
+      return false
+
+  hasFav: (id) ->
+    favs = @get('favs')
+    if _.contains favs, id
       return true
     else
       return false
