@@ -23,7 +23,9 @@ module.exports = React.createClass
         @props.setRouterState
           patternNumber: e.target.value
     else
-      @props.setItemState colorBoxView: !@props.itemState.colorBoxView
+      @props.setItemState
+        infoBoxView: false
+        colorBoxView: !@props.itemState.colorBoxView
 
   addToFavs: (e) ->
     id = e.target.value
@@ -36,7 +38,9 @@ module.exports = React.createClass
     app.me.rmFav id
 
   infoClick: ->
-    @props.setItemState infoBoxView: !@props.itemState.infoBoxView
+    @props.setItemState
+      colorBoxView: false
+      infoBoxView: !@props.itemState.infoBoxView
 
   data: (buttonType) ->
     switch buttonType
