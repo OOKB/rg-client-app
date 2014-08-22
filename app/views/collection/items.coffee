@@ -29,6 +29,9 @@ module.exports = React.createClass
     else
       @setState colorBoxView: !@state.colorBoxView
 
+  addToFavs: (e) ->
+    app.me.addFav e.target.value
+
   setPgPre: (e) ->
     console.log 'pre'
     if e.preventDefault
@@ -86,6 +89,8 @@ module.exports = React.createClass
               'Colors'
         buttons.push button
           key: 'favs'
+          value: item.id
+          onClick: @addToFavs
           className: 'item-favorite',
             '+'
         if @props.extraButtons
