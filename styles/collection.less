@@ -513,7 +513,7 @@ ul.collection-controls li.collection-title button {
 
 
 /** Item-information popups **/
-ul.item-information {
+#container-collection ul.item-information {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -521,5 +521,21 @@ ul.item-information {
   padding: 10px;
   z-index: 99;
   .dropshadow;
+}
+
+#collection-row-textile ul.item-information,
+#collection-row-leather ul.item-information {
+  width: 240px;
+  margin: 0 -120px;
+  height: 300px;
+  margin-top: -150px;
+  overflow: auto;
+}
+
+#collection-row-passementerie ul.item-information {
+  width: 600px;
+  margin-left: -300px;
+  height: 60px;
+  margin-top: -30px;
 }
 
