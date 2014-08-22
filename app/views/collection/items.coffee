@@ -109,7 +109,10 @@ module.exports = React.createClass
         src: item._file[imgSize].path,
         onMouseOver: @setButtonsFor
       relatedColors = ''
-      infoBox = ''
+      if @state.infoBoxView and buttonsFor == item.id
+        infoBox = Info model: item
+      else
+        infoBox = ''
       if @props.threeUp
         if buttonsFor == item.id
           detailLink = true
@@ -126,8 +129,6 @@ module.exports = React.createClass
                 @setState newSt
               setContainerState: () -> return
             relatedColors = Related relatedProps
-          if @state.infoBoxView
-            infoBox = Info model: item
       else if item.hasDetail
         detailLink = true
       else
