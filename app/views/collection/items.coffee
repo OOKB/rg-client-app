@@ -5,6 +5,7 @@ SubCollection = require 'ampersand-subcollection'
 
 Pager = require '../el/pager'
 Info = require '../el/info'
+ItemButtons = require '../el/item_buttons'
 Related = require '../detail/related'
 
 module.exports = React.createClass
@@ -28,9 +29,6 @@ module.exports = React.createClass
           patternNumber: e.target.value
     else
       @setState colorBoxView: !@state.colorBoxView
-
-  addToFavs: (e) ->
-    app.me.addFav e.target.value
 
   setPgPre: (e) ->
     console.log 'pre'
@@ -75,36 +73,13 @@ module.exports = React.createClass
     imgSize = @imgSize()
     # List
     @props.collection.forEach (item, index) =>
-      if buttonsFor == item.id
-        buttons = []
-        if @props.extraButtons
-          colorButtonClass = 'item-colors'
-          if @state.colorBoxView or @props.initState.patternNumber
-            colorButtonClass += ' active'
-          buttons.push button
-            key: 'colors'
-            value: item.patternNumber
-            onClick: @colorsClick
-            className: colorButtonClass,
-              'Colors'
-        buttons.push button
-          key: 'favs'
-          value: item.id
-          onClick: @addToFavs
-          className: 'item-favorite',
-            '+'
-        if @props.extraButtons
-          buttons.push button
-            key: 'details'
-            onClick: => @setState infoBoxView: !@state.infoBoxView
-            className: 'item-details',
-              '='
-        # Action buttons
-        buttons = div
-          className: 'item-icons hidden-xs',
-            buttons
-      else
-        buttons = ''
+      buttons = ItemButtons
+        setItemState: @setState
+        itemState: @state
+        buttonsFor: buttonsFor
+        model: item
+        initState: @props.initState
+        extraButtons: @props.extraButtons
 
       # Item Image
       itemImg = img
