@@ -17,17 +17,16 @@ module.exports = React.createClass
             label
               className: 'uppercase'
               htmlFor: 'share-field',
-                'Share'
+                'Share: '
             input
               id: 'share-field'
               type: 'text'
               value: 'http://fav.rogersandgoffigon.com/'
               readOnly: true
         li
-          className: 'hug-center',
-            h3
-              className: 'uppercase',
-                'Favorites'
+          h3
+            className: 'uppercase',
+              'Favorites'
 
     if v.ids
       content = []

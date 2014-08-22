@@ -3,3 +3,83 @@
 /* -------------------------------------------------------*/
 /* ---------->>> Favorites & Projects stuff <<<-----------*/
 /* -------------------------------------------------------*/
+
+ul.favs-menu {
+  border-top: 1px solid @rg-black;
+  padding: 10px 0;
+  position: relative;
+}
+
+ul.favs-menu li.share {
+  position: absolute;
+  left: 20px;
+  top: 6px;
+  font-size: 12px;
+}
+
+ul.favs-menu li.share label {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+ul.favs-menu li.share input {
+  width: 222px;
+  font-size: 14px;
+}
+
+ul.favs-menu h3 {
+  font-size: 18px;
+  font-weight: normal;
+  letter-spacing: 2px;
+}
+
+/** # 4-column grid **/
+#container-favs ul.list > li {
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  vertical-align: top;
+}
+
+#container-favs ul.list > li img {
+  width: 100%;
+  height: auto;
+}
+
+#container-favs #collection-textile ul.list > li,
+#container-favs #collection-leather ul.list > li {
+  display: inline-block;
+  overflow: hidden;
+  width: 50%;
+  margin-bottom: 10px;
+  float: left;
+  height: 100px;
+  padding: 0 5px;
+}
+
+#container-favs #collection-passementerie {
+  clear: both;
+}
+
+@media (min-width: @screen-sm-min) {
+  #container-favs #collection-textile ul.list > li,
+  #container-favs #collection-leather ul.list > li {
+    width: 33.333333333%;
+    height: 150px;
+  }
+}
+
+@media (min-width: @screen-md-min) {
+#container-favs #collection-textile ul.list > li,
+#container-favs #collection-leather ul.list > li {
+    width: 25%;
+    height: 200px;
+  }
+}
+
+@media (min-width: @screen-lg-min) {
+#container-favs #collection-textile ul.list > li,
+#container-favs #collection-leather ul.list > li {
+    height: 250px;
+  }
+}
