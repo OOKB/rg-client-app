@@ -4,6 +4,7 @@ _ = require 'lodash'
 SubCollection = require 'ampersand-subcollection'
 
 Pager = require '../el/pager'
+Info = require '../el/info'
 Related = require '../detail/related'
 
 module.exports = React.createClass
@@ -11,6 +12,7 @@ module.exports = React.createClass
     buttonsFor: ''
     windowWidth: window.innerWidth
     colorBoxView: false
+    infoBoxView: false
 
   setButtonsFor: (e) ->
     unless @props.threeUp
@@ -89,6 +91,7 @@ module.exports = React.createClass
         if @props.extraButtons
           buttons.push button
             key: 'details'
+            onClick: => @setState infoBoxView: !@state.infoBoxView
             className: 'item-details',
               '='
         # Action buttons
@@ -106,6 +109,7 @@ module.exports = React.createClass
         src: item._file[imgSize].path,
         onMouseOver: @setButtonsFor
       relatedColors = ''
+      infoBox = ''
       if @props.threeUp
         if buttonsFor == item.id
           detailLink = true
@@ -122,6 +126,8 @@ module.exports = React.createClass
                 @setState newSt
               setContainerState: () -> return
             relatedColors = Related relatedProps
+          if @state.infoBoxView
+            infoBox = Info model: item
       else if item.hasDetail
         detailLink = true
       else
@@ -150,6 +156,7 @@ module.exports = React.createClass
           itemEl
           buttons
           relatedColors
+          infoBox
     cat = @props.initState.category or @props.category
     return div
       className: 'pg-size-' + @props.initState.pgSize
