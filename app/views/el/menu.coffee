@@ -40,6 +40,10 @@ module.exports = React.createClass
             title: 'Search'
   ]
 
+  handleChange: (event) ->
+    @props.setRouterState
+      searchTxt: @refs.searchTxt.getDOMNode().value
+
   # Menu ul wrapper element.
   createNavEl: (children, name) ->
     ul
@@ -92,12 +96,16 @@ module.exports = React.createClass
   # When active search text
   searchElActive: ->
     form
+      onMouseOut: () => @setState searchIsActive: false
       className: 'form-inline'
       role: 'form'
       id: 'search-items',
         div
           className: 'form-group',
             input
+              ref: 'searchTxt'
+              value: @props.initState.searchTxt
+              onChange: @handleChange
               className: 'form-control'
               name: 'item-search'
               placeholder: 'Enter search text'
