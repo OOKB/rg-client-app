@@ -10,31 +10,31 @@ module.exports = React.createClass
   data: [
     id: 'about'
     title: 'About Us'
-    href: false,#'/about',
+    href: '#',#'/about',
       id: 'collection'
       title: 'The Collection'
       href: '#collection/textile/3/p1',
         id: 'contact'
         title: 'Contact Us'
-        href: false,
+        href: '#',
           id: 'trade'
           title: 'Trade Login'
           children: [
             id: 'projects'
             title: 'Projects'
-            href: false,
+            href: '#',
               id: 'pricelist'
               title: 'Pricelist'
               href: '#pricelist/textile/50/p1',
                 id: 'summer-sale'
                 title: 'Summer Sale'
-                href: false,
+                href: '#',
                   id: 'account'
                   title: 'Account'
-                  href: false,
+                  href: '#',
                     id: 'logout'
                     title: 'Logout'
-                    href: false
+                    href: '#'
           ],
             id: 'search'
             title: 'Search'
