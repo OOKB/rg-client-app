@@ -26,17 +26,21 @@ module.exports = React.createClass
     # Pager stuff.
     totalPages = @props.filter.totalPages
 
-    sizes = Pager _.merge(@props.filter,
+    sizes = Pager _.extend(@props.filter,
       setRouterState: @props.setRouterState
+      key: 'sizes'
       el: 'sizes')
-    count = Pager _.merge(@props.filter,
+    count = Pager _.extend(@props.filter,
       setRouterState: @props.setRouterState
+      key: 'count'
       el: 'count')
-    pre = Pager _.merge(@props.filter,
+    pre = Pager _.extend(@props.filter,
       setRouterState: @props.setRouterState
+      key: 'pre'
       el: 'pre')
-    next = Pager _.merge(@props.filter,
+    next = Pager _.extend(@props.filter,
       setRouterState: @props.setRouterState
+      key: 'next'
       el: 'next')
 
     if totalPages > 1
@@ -56,7 +60,7 @@ module.exports = React.createClass
         ref:'filterTextInput',
         onChange: @handleChange
 
-      CategoryMenu @props.filter
+      CategoryMenu _.extend @props.filter, key: 'cat-menu'
       # p {},
       #   input
       #     type: 'checkbox',
