@@ -18,7 +18,7 @@ module.exports =
     @items = new SubCollection items
     @me = new Me()
     # Init the React application router.
-    el = document.getElementById('content')
+    el = document.getElementById('react')
     routerComponent = Router {}
     @container = React.renderComponent routerComponent, el
 

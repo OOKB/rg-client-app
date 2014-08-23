@@ -4,11 +4,13 @@ _ = require 'lodash'
 
 Router = require './router'
 
+Header = require './views/el/header'
+Footer = require './views/el/footer'
+
 FilterableProductTable = require './views/pricelist/item_container'
 ItemDetail = require './views/detail/container'
 Collection = require './views/collection/container'
 Favs = require './views/favs'
-
 module.exports = React.createClass
 
   router: new Router()
@@ -61,10 +63,14 @@ module.exports = React.createClass
 
     if _.isObject props.initState
       props.initState.setRouterState = @setRouterState
+
+    headerEl = Header props
     component = switch section
       when 'pricelist' then FilterableProductTable(props)
       when 'collection' then Collection(props)
       when 'detail' then ItemDetail(props)
       when 'favs' then Favs(props)
       else p 'Hello there! Unfortunately our application is broken... ' + section
-    return component
+    footer = Footer props
+
+    return div headerEl, component, footer
