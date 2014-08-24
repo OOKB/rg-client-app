@@ -53,12 +53,6 @@ module.exports = React.createClass
           sizes, count
 
     return form {},
-      input
-        type:'text',
-        placeholder:'Search...',
-        value: v.searchTxt,
-        ref:'filterTextInput',
-        onChange: @handleChange
 
       CategoryMenu _.extend @props.filter, key: 'cat-menu'
       # p {},
