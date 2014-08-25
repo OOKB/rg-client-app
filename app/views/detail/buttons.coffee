@@ -58,7 +58,7 @@ module.exports = React.createClass
 
     divs = []
 
-    color_toggle_class = 'toggle-colors hidden-xs'
+    color_toggle_class = 'toggle-colors hidden-xs hidden-sm'
     if item.far
       color_toggle_class += ' with-far'
 

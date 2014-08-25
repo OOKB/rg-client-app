@@ -132,7 +132,8 @@ button.active {
 }
 
 button.active {
-  color: @rg-dark-gold;
+  color: @rg-gold;
+  font-weight: bold
 }
 
 button.small.close {
@@ -253,14 +254,12 @@ li.trade > ul.sub-menu > li > a {
   }
 }
 
-#content {
+#react {
   width: auto;
   margin: 0 auto;
 }
 
-#content > div { border-bottom: 1px solid @rg-black; }
-
-#content .loading {
+#react .loading {
   height: 50px;
   width: 50px;
 }
@@ -277,24 +276,24 @@ footer p {
   margin: 1.33em 0;
 }
 
-footer p span {
+footer span {
   color: @rg-gray;
   letter-spacing: 1px;
 }
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: @screen-sm-min) {
-  #content { width: 750px; }
+  #react { width: 750px; }
 }
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: @screen-md-min) {
-  #content { width: 970px; }
+  #react { width: 970px; }
 }
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: @screen-lg-min) {
-  #content { width: 1170px; }
+  #react { width: 1170px; }
 }
 
 .text-area {
@@ -306,6 +305,21 @@ footer p span {
 /** = reusable controls and graphics **/
 /**********************************************************/
 /**********************************************************/
+.collection-menu { margin-bottom: 20px; }
+.collection-menu button {
+  width: 100%;
+  display: block;
+  .pointer;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) {
+  .collection-menu button {
+    width: 32.9%;
+    display: inline-block;
+    box-sizing: border-box;
+  }
+}
 
 /* = Vertical Centering trick */
 .outer {

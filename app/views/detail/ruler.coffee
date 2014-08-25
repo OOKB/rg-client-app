@@ -69,5 +69,5 @@ module.exports = React.createClass
           src: imgPath
           alt: imgClass
 
-    return div className: 'ruler-wrap hidden-xs',
+    return div className: 'ruler-wrap hidden-xs hidden-sm',
       els
