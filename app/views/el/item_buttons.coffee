@@ -17,10 +17,10 @@ module.exports = React.createClass
   colorsClick: (e) ->
     if 'passementerie' == @props.initState.category
       if @props.initState.patternNumber
-        @props.setRouterState
+        @props.initState.setRouterState
           patternNumber: false
       else
-        @props.setRouterState
+        @props.initState.setRouterState
           patternNumber: e.target.value
     else
       @props.setItemState

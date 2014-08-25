@@ -103,12 +103,13 @@ module.exports = React.createClass
         div
           className: 'form-group',
             input
+              type: 'text'
               ref: 'searchTxt'
               value: @props.initState.searchTxt
               onChange: @handleChange
               className: 'form-control'
               name: 'item-search'
-              placeholder: 'Enter search text'
+              placeholder: 'Enter search text'#'Search...'
 
 
   render: () ->

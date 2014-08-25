@@ -77,7 +77,7 @@ module.exports = (items, filters) ->
     else
       config.offset = pageIndex * pgSize
 
-  if filters.id
+  if filters.id and not filters.patternNumber
     config =
       where:
         id: filters.id

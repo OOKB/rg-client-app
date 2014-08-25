@@ -107,9 +107,10 @@ module.exports = Router.extend
     q
 
   setQuery: (s) ->
-    if s.id
+    if s.id or s.patternNumber
       q = id: s.id
-    else if s.patternNumber
+    if s.patternNumber
+      unless q then q = {}
       q = pattern: s.patternNumber
 
     if _.size s.selectedFilters
