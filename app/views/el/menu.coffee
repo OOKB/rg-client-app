@@ -61,7 +61,7 @@ module.exports = React.createClass
       itemIsActive = false
     # Search has a special template.
     if nav.id == 'search'
-      return @searchEl()
+      return @searchEl(nav)
     # Item has sub-items.
     if nav.children and (@state[nav.id+'IsActive'] or itemIsActive)
       child = @createNavEl(nav.children, 'sub-menu')
@@ -80,16 +80,16 @@ module.exports = React.createClass
         child
 
   # Decide what search code to render.
-  searchEl: ->
+  searchEl: (nav) ->
     if (@props.initState and @props.initState.searchTxt) or @state.searchIsActive
       search = @searchElActive()
     else
       search = i
         onMouseOver: () => @setState searchIsActive: true
         className: 'fa fa-search',
-          's'
+          nav.title
     li
-      key: 'search'
+      key: nav.id
       className: 'search-holder',
         search
 
