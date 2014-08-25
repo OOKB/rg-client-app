@@ -1,6 +1,6 @@
 _ = require 'lodash'
 React = require 'react'
-{div, ul, li, button, select, option, fieldset, label, input, span} = require 'reactionary'
+{div, ul, li, button, select, option, fieldset, label, input, span, h3} = require 'reactionary'
 
 Items = require './items'
 Pager = require '../el/pager'
@@ -168,13 +168,19 @@ module.exports = React.createClass
 
   render: ->
     headerList = []
-    titleEl = li
-      key: 'title'
-      className: 'collection-title',
-        button
-          onClick: @categoryClick
-          value: @props.key,
-            @props.label
+    if @props.initState.searchTxt
+      titleEl = li
+        className: 'search-title'
+        key: 'title',
+          h3 @props.label
+    else
+      titleEl = li
+        key: 'title'
+        className: 'collection-title',
+          button
+            onClick: @categoryClick
+            value: @props.key,
+              @props.label
 
     bottomPager = false
     if @props.active
