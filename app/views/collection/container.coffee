@@ -15,14 +15,15 @@ module.exports = React.createClass
 
     if @props.initState.searchTxt
       content = Search props
+      topTxt = false
     else
       content = Standard props
-
+      topTxt = 'Browse the collection by category below.'
     div
       id: 'container-collection'
       className: 'collection',
         p
           key: 'intro'
           className: 'text-area',
-            'Browse the collection by category below.'
+            topTxt
         content
