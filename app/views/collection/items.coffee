@@ -1,5 +1,5 @@
 React = require 'react'
-{div, p, button, img, i, a, span} = require 'reactionary'
+{div, ul, li, p, button, img, i, a, span} = require 'reactionary'
 _ = require 'lodash'
 SubCollection = require 'ampersand-subcollection'
 
