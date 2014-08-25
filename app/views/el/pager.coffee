@@ -37,7 +37,7 @@ module.exports = React.createClass
             value: 'pre'
             onClick: @setPgIndex
             className: 'left',
-              '&#60;'
+              '<'
     else
       return false
 
@@ -54,7 +54,7 @@ module.exports = React.createClass
             value: 'next'
             onClick: @setPgIndex
             className: 'next',
-              '&#62;'
+              '>'
     else
       return false
 
