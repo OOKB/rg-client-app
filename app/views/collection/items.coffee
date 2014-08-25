@@ -19,7 +19,7 @@ module.exports = React.createClass
     favBoxView: false
 
   setButtonsFor: (e) ->
-    unless @props.threeUp
+    unless @props.threeUp or @state.colorBoxView
       @setState buttonsFor: e.target.id
 
   setPgPre: (e) ->
@@ -108,9 +108,11 @@ module.exports = React.createClass
         infoBox = Info model: item
       else
         infoBox = false
-      if @props.threeUp or 'passementerie' == @props.initState.category
+      isOnTrim = 'passementerie' == @props.initState.category
+      if @props.threeUp or isOnTrim
         if buttonsFor == item.id
-          detailLink = true
+          unless isOnTrim
+            detailLink = true
           if @state.colorBoxView
             relatedProps =
               id: item.id
@@ -119,7 +121,7 @@ module.exports = React.createClass
               collection: new SubCollection app.items.collection,
                 where:
                   patternNumber: item.patternNumber
-                  hasDetail: true
+                  hasImage: item.hasImage
               setParentState: (newSt) =>
                 @setState newSt
               setContainerState: () -> return
