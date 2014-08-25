@@ -15,17 +15,17 @@ module.exports = React.createClass
     extraButtons: React.PropTypes.bool.isRequired
 
   colorsClick: (e) ->
-    if 'passementerie' == @props.initState.category
-      if @props.initState.patternNumber
-        @props.initState.setRouterState
-          patternNumber: false
-      else
-        @props.initState.setRouterState
-          patternNumber: e.target.value
-    else
-      @props.setItemState
-        infoBoxView: false
-        colorBoxView: !@props.itemState.colorBoxView
+    # if 'passementerie' == @props.initState.category
+    #   if @props.initState.patternNumber
+    #     @props.initState.setRouterState
+    #       patternNumber: false
+    #   else
+    #     @props.initState.setRouterState
+    #       patternNumber: e.target.value
+    # else
+    @props.setItemState
+      infoBoxView: false
+      colorBoxView: !@props.itemState.colorBoxView
 
   addToFavs: (e) ->
     id = e.target.value

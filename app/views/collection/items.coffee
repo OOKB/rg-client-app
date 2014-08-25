@@ -8,6 +8,7 @@ Info = require '../el/info'
 ItemButtons = require '../el/item_buttons'
 FavAlertBox = require '../el/fav_alert'
 Related = require '../detail/related'
+RelatedTrim = require './related_trim'
 
 module.exports = React.createClass
   getInitialState: ->
@@ -20,17 +21,6 @@ module.exports = React.createClass
   setButtonsFor: (e) ->
     unless @props.threeUp
       @setState buttonsFor: e.target.id
-
-  colorsClick: (e) ->
-    if 'passementerie' == @props.initState.category
-      if @props.initState.patternNumber
-        @props.setRouterState
-          patternNumber: false
-      else
-        @props.setRouterState
-          patternNumber: e.target.value
-    else
-      @setState colorBoxView: !@state.colorBoxView
 
   setPgPre: (e) ->
     if e.preventDefault
@@ -118,7 +108,7 @@ module.exports = React.createClass
         infoBox = Info model: item
       else
         infoBox = false
-      if @props.threeUp
+      if @props.threeUp or 'passementerie' == @props.initState.category
         if buttonsFor == item.id
           detailLink = true
           if @state.colorBoxView
@@ -133,7 +123,10 @@ module.exports = React.createClass
               setParentState: (newSt) =>
                 @setState newSt
               setContainerState: () -> return
-            relatedColors = Related relatedProps
+            if 'passementerie' == @props.initState.category
+              relatedColors = RelatedTrim relatedProps
+            else
+              relatedColors = Related relatedProps
       else if item.hasDetail
         detailLink = true
       else
