@@ -32,6 +32,8 @@ module.exports = AmpersandModel.extend
 
   parse: (item) ->
     item.id = item.patternNumber+'-'+item.color_id
+    if item.category == 'passementerie'
+      item.name = null
     if item._file
       item.hasImage = true
       if item.category != 'passementerie'

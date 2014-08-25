@@ -9,12 +9,13 @@ module.exports = React.createClass
     h_lis = []
 
     # Name and number.
+    name = if item.name then span item.name else false
     h_lis.push li
       key: 'name'
       className: 'name',
         h3 {}, item.label or item.category
         p {},
-          span {}, item.name
+          name
           span {}, item.id
 
     # Color.
