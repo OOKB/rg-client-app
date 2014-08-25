@@ -47,7 +47,6 @@ gulp.task 'styles', ->
   gulp.src(["styles/app.less", 'styles/print.less', 'styles/iefix.less'])
     .pipe less(paths: [path.join(__dirname, "less", "includes")])
     .pipe gulp.dest("./public")
-  return
 
 gulp.task 'compile', ->
   opts = watchify.args
@@ -88,7 +87,6 @@ gulp.task 'prod_clean', ->
     .pipe(clean())
 
 gulp.task 'prod_compile', (cb) ->
-  console.log
   # Javascript bundle
   opts =
     debug: true

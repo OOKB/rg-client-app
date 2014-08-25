@@ -33,18 +33,24 @@ module.exports = React.createClass
       @setState colorBoxView: !@state.colorBoxView
 
   setPgPre: (e) ->
-    console.log 'pre'
     if e.preventDefault
       e.preventDefault()
     if @props.initState.pageIndex != 1
       @props.setRouterState pageIndex: @props.initState.pageIndex-1
+    else if @props.threeUp
+      @props.setRouterState pageIndex: @props.initState.totalPages
+    else
+      console.log 'pre'
 
   setPgNext: (e) ->
-    console.log 'next'
     if e.preventDefault
       e.preventDefault()
     if @props.initState.pageIndex != @props.initState.totalPages
       @props.setRouterState pageIndex: @props.initState.pageIndex+1
+    else if @props.threeUp
+      @props.setRouterState pageIndex: 1
+    else
+      console.log 'next'
 
   imgSize: ->
     if @props.threeUp == false or @props.initState.category == 'passementerie'

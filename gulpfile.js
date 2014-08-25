@@ -60,7 +60,7 @@
   });
 
   gulp.task('styles', function() {
-    gulp.src(["styles/app.less", 'styles/print.less', 'styles/iefix.less']).pipe(less({
+    return gulp.src(["styles/app.less", 'styles/print.less', 'styles/iefix.less']).pipe(less({
       paths: [path.join(__dirname, "less", "includes")]
     })).pipe(gulp.dest("./public"));
   });
@@ -110,7 +110,6 @@
 
   gulp.task('prod_compile', function(cb) {
     var bundler, opts;
-    console.log;
     opts = {
       debug: true,
       extensions: ['.coffee', '.json']
