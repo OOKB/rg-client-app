@@ -1,5 +1,5 @@
 React = require 'react'
-{div, p, ul, li, button, img, i, a} = require 'reactionary'
+{div, p, button, img, i, a, span} = require 'reactionary'
 _ = require 'lodash'
 SubCollection = require 'ampersand-subcollection'
 
@@ -66,7 +66,17 @@ module.exports = React.createClass
   componentWillUnmount: ->
     window.removeEventListener 'resize', @handleResize
 
+  noResultsEl: ->
+    txt1 = span className: 'category', @props.initState.category
+    txt2 = span className: 'search-txt', @props.initState.searchTxt
+    div
+      className: 'search no-results',
+        p 'No ', txt1, ' items match your search for ', txt2, '.'
+
   render: ->
+    unless @props.collection.length
+      return @noResultsEl()
+
     list = []
     if @props.threeUp and @props.collection.models[1]
       buttonsFor = @props.collection.models[1].id
