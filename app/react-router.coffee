@@ -21,7 +21,7 @@ module.exports = React.createClass
         @setState (newState)
     @router.history.start()
     app.me.on 'change:favs', (model, ids, change) =>
-      if change and change.op == 'remove' and change.id
+      if change and change.op == 'remove' and change.id and 'favs' == @state.section
         console.log 'Removing '+change.id
         s =
           ids: ids

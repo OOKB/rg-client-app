@@ -2,6 +2,7 @@ React = require 'react'
 {nav, div, button, h3, p, span, ul, li} = require 'reactionary'
 
 Info = require '../el/info'
+FavButton = require '../el/button_fav'
 
 module.exports = React.createClass
 
