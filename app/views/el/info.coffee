@@ -57,7 +57,7 @@ module.exports = React.createClass
           h3 'Approx Size'
           p item.approx_size
 
-    # Approx width.
+    # Approx thick.
     if item.approx_thick
       h_lis.push li
         key: 'thick'

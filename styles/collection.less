@@ -285,8 +285,26 @@ ul.list li, ul.list li * {
   box-shadow: none;
 }
 
-#collection-passementerie #related-colors .colors-header {
-  display: none;
+#collection-passementerie #related-colors > ul.list {
+  margin: 0;
+}
+
+#collection-passementerie #related-colors.example-enter {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+}
+
+#collection-passementerie #related-colors.example-enter.example-enter-active {
+  opacity: 1;
+}
+
+#collection-passementerie #related-colors.example-leave {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+#collection-passementerie #related-colors.example-leave.example-leave-active {
+  opacity: 0.01;
 }
 
 /** # leather styles **/

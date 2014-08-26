@@ -6,10 +6,6 @@ module.exports = React.createClass
   render: ->
     itemCount = @props.collection.length
 
-    # Header
-    header = div
-      className: 'colors-header', 'Related Trim'
-
     # Color icons.
     relatedColorItems = []
     @props.collection.forEach (item) ->
@@ -28,4 +24,4 @@ module.exports = React.createClass
     return div
       id: 'related-colors'
       className: 'trim',
-        header, relatedColorsList
+        relatedColorsList
