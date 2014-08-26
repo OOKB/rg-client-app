@@ -16,12 +16,14 @@ module.exports = Router.extend
     'collection/:category': 'collection'
     'collection/:category/:pgSize': 'collection'
     'collection/:category/:pgSize(/:query)/p:page': 'collection'
-    'pl': -> @redirectTo('pricelist/'+defaultCategory+'/50/p1')
-    'plp': -> @redirectTo('pricelist/passementerie/50/p1')
-    'pricelist': -> @redirectTo('pricelist/'+defaultCategory+'/50/p1')
-    'pricelist/:category': 'pricelist'
-    'pricelist/:category/:pgSize': 'pricelist'
-    'pricelist/:category/:pgSize(/:query)/p:page': 'pricelist'
+    'pl': -> @redirectTo('trade/pricelist/'+defaultCategory+'/50/p1')
+    'plp': -> @redirectTo('trade/pricelist/passementerie/50/p1')
+    'pricelist': -> @redirectTo('trade/pricelist/'+defaultCategory+'/50/p1')
+    'trade/pricelist': -> @redirectTo('trade/pricelist/'+defaultCategory+'/50/p1')
+    'trade/pricelist/:category': 'pricelist'
+    'trade/pricelist/:category/:pgSize': 'pricelist'
+    'trade/pricelist/:category/:pgSize(/:query)/p:page': 'pricelist'
+    'trade/login': 'login'
     'detail/:pattern/:id': 'detail'
     'f': -> @redirectTo('favs')
     'favs': 'favs'
@@ -46,6 +48,8 @@ module.exports = Router.extend
     document.title = pageTitle + ' - Pricelist'
     #console.log 'pricelist'
     S = @prepNewState
+      reqAuth: true
+      trade: true
       section: 'pricelist'
       category: category
       pgSize: pgSize
@@ -79,6 +83,12 @@ module.exports = Router.extend
       newSt.myfavs = true
     else
       newSt.myFavs = false
+    @setReactState newSt
+
+  login: ->
+    newSt =
+      section: 'login'
+      trade: true
     @setReactState newSt
 
   isItemNumber: (possibleId) ->
@@ -128,6 +138,8 @@ module.exports = Router.extend
     newState.section = s.section
     newState.patternNumber = s.patternNumber
     newState.id = s.id
+    newState.trade = s.trade
+    newState.reqAuth = s.reqAuth
     newState.searchTxt = @searchTxtParse s.searchTxt
     newState.category = switch s.category
       when null then null
@@ -219,7 +231,11 @@ module.exports = Router.extend
         return s.section+'/'+s.ids.join('/')
       else
         return s.section
-    urlTxt = s.section+'/'+s.category+'/'+s.pgSize
+    if s.trade
+      section = 'trade/'+s.section
+    else
+      section = s.section
+    urlTxt = section+'/'+s.category+'/'+s.pgSize
     if s.searchTxt
       urlTxt += '/' + s.searchTxt
     urlTxt += '/p' + s.pageIndex + @setQuery(s)
