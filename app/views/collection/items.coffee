@@ -122,6 +122,7 @@ module.exports = React.createClass
                 where:
                   patternNumber: item.patternNumber
                   hasImage: item.hasImage
+                filter: (model) -> model.id != item.id
               setParentState: (newSt) =>
                 @setState newSt
               setContainerState: () -> return
