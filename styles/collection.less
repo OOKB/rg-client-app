@@ -456,7 +456,11 @@ ul.collection-controls li.collection-title button {
 
 .filter-list li.clear button {
   font-weight: normal !important;
-  font-size: .9em !important;
+  font-size: .7em !important;
+}
+
+.filter-list li.active button {
+  color: @rg-black;
 }
 
 .filter-list fieldset {
@@ -578,6 +582,11 @@ ul.collection-controls li.collection-title button {
 
   .filter-list li {
     width: auto;
+  }
+
+  .filter-list li button {
+    color: @rg-gray;
+    padding: 5px 20px;
   }
 
   .filter-list fieldset .moz-hack {
