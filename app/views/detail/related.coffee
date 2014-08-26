@@ -21,21 +21,19 @@ module.exports = React.createClass
 
   handleColorClick: (e) ->
     unless @props.section == 'collection'
-      color_id = e.target.id
-      href = e.target.parentElement.hash.substr(1)
       if e.preventDefault
         e.preventDefault()
+      item = @props.collection.get(e.target.id)
+      href = e.target.parentElement.hash.substr(1)
       app.container.router.navigate href, replace: true
       @props.setParentState isRelated: true
-      @props.setContainerState color_id: color_id
+      @props.setContainerState color_id: item.color_id
 
   handleColorDown: (e) ->
     @props.setParentState
       loadedLarge: false
       showRuler: false
-    id = @props.patternNumber + '-' + e.target.id
-    console.log id
-    item = @props.collection.get(id)
+    item = @props.collection.get(e.target.id)
     itemImg = new Image()
     itemImg.onload = @loadedLarge
     itemImg.src = item._file.large.path
@@ -91,15 +89,17 @@ module.exports = React.createClass
 
     # Color icons.
     relatedColorItems = []
+    console.log @props.activeId
     pageItems.forEach (item) =>
-      relatedColorItems.push li
-        key: item.id
-        className: 'related-item',
-          ItemEl
-            model: item
-            imgSize: 'small'
-            onClick: @handleColorClick
-            onMouseDown: @handleColorDown
+      unless item.id == @props.activeId
+        relatedColorItems.push li
+          key: item.id
+          className: 'related-item',
+            ItemEl
+              model: item
+              imgSize: 'small'
+              onClick: @handleColorClick
+              onMouseDown: @handleColorDown
 
     relatedColorsList = ul
       className: 'list-inline list',
