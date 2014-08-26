@@ -93,27 +93,6 @@ ul.collection-controls > li.collection-title button:hover {
   top:initial;
 }
 
-#collection-passementerie > ul.list > li {
-  transition: all 400ms ease;
-}
-
-#collection-passementerie #related-colors {
-  position: static;
-  bottom: 0;
-  top: initial;
-  margin: 0;
-  padding: 0;
-  height: auto;
-  top: 0;
-  left: 0;
-  background: white;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  -ms-box-shadow: none;
-  -o-box-shadow: none;
-  box-shadow: none;
-}
-
 /* ------------------------------------------------------------*/
 /* ---------->>> different column/display format <<<-----------*/
 /* ------------------------------------------------------------*/
@@ -280,9 +259,34 @@ ul.list li, ul.list li * {
 
 #collection-passementerie .item-icons {
   height: 23px;
+  top:20px;
+/*
   top:50%;
   margin-top: -11.5px;
+*/
   font-weight: bold;
+  z-index: 99;
+}
+
+#collection-passementerie #related-colors {
+  position: static;
+  bottom: 0;
+  top: initial;
+  margin: 0;
+  padding: 0;
+  height: auto;
+  top: 0;
+  left: 0;
+  background: white;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -ms-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+}
+
+#collection-passementerie #related-colors .colors-header {
+  display: none;
 }
 
 /** # leather styles **/
