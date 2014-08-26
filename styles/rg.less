@@ -145,9 +145,34 @@ button.small.close {
   .hide-text;
 }
 
-/* Extra small devices (phones, less than 768px) */
-/* No media query since this is the default in Bootstrap */
-/* These will apply everywhere unless they are overridden in one of the @media queries */
+/* = Main React Wrapper */
+#react {
+  width: auto;
+  margin: 0 auto;
+}
+
+#react .loading {
+  height: 50px;
+  width: 50px;
+  margin: 40px;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) {
+  #react { width: 750px; }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) {
+  #react { width: 970px; }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) {
+  #react { width: 1170px; }
+}
+
+/* = header related stuff */
 header {
   background: #fcfbf8;
   padding: 14px 0;
@@ -163,15 +188,7 @@ header {
 }
 
 header h1 {
-  width: 350px;
-  height: 60px;
-  margin: 20px auto 30px;
-  .dropshadow-light;
-  transition: all 300ms ease;
-
-  &:hover {
-    .dropshadow;
-  }
+  margin: 0 auto 20px;
 }
 
 header h1 a {
@@ -184,7 +201,27 @@ header h1 a {
   .hide-text;
 }
 
+@media (max-width: @screen-xs-max) {
+  header {
+    .dropshadow;
+  }
+}
 
+@media (min-width: @screen-sm-min) {
+  header h1 {
+    width: 350px;
+    height: 60px;
+    margin: 20px auto 30px;
+    .dropshadow-light;
+    transition: all 300ms ease;
+
+    &:hover {
+      .dropshadow;
+    }
+  }
+}
+
+/* = navigation related stuff */
 header nav {
   width: 160px;
   margin: 0 auto;
@@ -226,21 +263,15 @@ header nav > ul > li > a.active {
 }
 
 li.trade > ul.sub-menu {
-  margin: 0 0 0 -275px;
+  margin: 0 0 10px;
   padding: 0;
-  width: 550px;
-  position: relative;
-  left: 50%;
+  width: 100%;
 }
 
 li.trade > ul.sub-menu > li {
-  display: inline-block;
-  display: inline-block;
+  display: list-item;
   height: auto;
-  min-height: 25px;
-  max-height: 35px;
-  margin: 0 10px;
-  width: auto;
+  margin: 0;
 }
 
 li.trade > ul.sub-menu > li > a {
@@ -254,16 +285,31 @@ li.trade > ul.sub-menu > li > a {
   }
 }
 
-#react {
-  width: auto;
-  margin: 0 auto;
+li.trade > ul.sub-menu > li.active > a {
+  color: @rg-dark-gold;
+  font-weight: bold;
 }
 
-#react .loading {
-  height: 50px;
-  width: 50px;
+@media (min-width: @screen-sm-min) {
+  li.trade > ul.sub-menu {
+    margin: 0 0 0 -275px;
+    padding: 0;
+    width: 550px;
+    position: relative;
+    left: 50%;
+  }
+
+  li.trade > ul.sub-menu > li {
+    display: inline-block;
+    height: auto;
+    min-height: 25px;
+    max-height: 35px;
+    margin: 0 10px;
+    width: auto;
+  }
 }
 
+/* = footer styles */
 footer {
   margin-top: 100px;
   margin-bottom: 60px;
@@ -279,21 +325,6 @@ footer p {
 footer span {
   color: @rg-gray;
   letter-spacing: 1px;
-}
-
-/* Small devices (tablets, 768px and up) */
-@media (min-width: @screen-sm-min) {
-  #react { width: 750px; }
-}
-
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: @screen-md-min) {
-  #react { width: 970px; }
-}
-
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width: @screen-lg-min) {
-  #react { width: 1170px; }
 }
 
 .text-area {
