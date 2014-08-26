@@ -119,6 +119,7 @@
 }
 
 /** styling for colors button and colors popup on detail **/
+.toggle-far,
 .toggle-colors {
   position: fixed;
   top: 90px;
@@ -128,6 +129,21 @@
   .dropshadow;
 }
 
+.toggle-far {
+  left: 50%;
+  width: 150px;
+  margin-left: 7px;
+}
+
+.toggle-colors.with-far {
+  left: initial;
+  right: 50%;
+  margin-left: 0;
+  margin-right: 7px;
+  width: 150px;
+}
+
+.toggle-far button,
 .toggle-colors button {
   width: 100%;
   color: @rg-gray;
