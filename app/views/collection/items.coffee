@@ -97,6 +97,7 @@ module.exports = React.createClass
         src: item._file[imgSize].path,
         onMouseOver: @setButtonsFor
       relatedColors = false
+      itemClassName = 'list-item'
       if @state.favBoxView == item.id
         favAlert = FavAlertBox
           itemState: @state
@@ -128,6 +129,7 @@ module.exports = React.createClass
               setContainerState: () -> return
             if 'passementerie' == @props.initState.category
               relatedColors = RelatedTrim relatedProps
+              itemClassName += ' open'
             else
               relatedColors = Related relatedProps
       else if item.hasDetail
@@ -153,6 +155,7 @@ module.exports = React.createClass
             itemImg
 
       list.push li
+        className: itemClassName
         key: item.id,
           # Item
           itemEl
