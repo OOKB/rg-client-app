@@ -2,6 +2,7 @@ React = require 'react'
 {div, button, ul, li, a, img, i} = require 'reactionary'
 
 CloseButton = require '../el/button_close'
+ItemEl = require '../collection/item_el'
 
 module.exports = React.createClass
 
@@ -94,14 +95,11 @@ module.exports = React.createClass
       relatedColorItems.push li
         key: item.id
         className: 'related-item',
-          a
+          ItemEl
+            model: item
+            imgSize: 'small'
             onClick: @handleColorClick
             onMouseDown: @handleColorDown
-            href: item.detail,
-              img
-                id: item.color_id
-                src: item._file.small.path
-                alt: item.color
 
     relatedColorsList = ul
       className: 'list-inline list',

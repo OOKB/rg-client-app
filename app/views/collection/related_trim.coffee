@@ -2,6 +2,7 @@ React = require 'react'
 {div, ul, li, a, img, i} = require 'reactionary'
 
 CloseButton = require '../el/button_close'
+ItemEl = require './item_el'
 
 module.exports = React.createClass
 
@@ -14,10 +15,10 @@ module.exports = React.createClass
       relatedColorItems.push li
         key: item.id
         className: 'related-item',
-          img
-            id: item.color_id
-            src: item._file.small.path
-            alt: item.color
+          ItemEl
+            imgSize: 'small'
+            model: item
+            itemState: {}
 
     relatedColorsList = ul
       className: 'list',
