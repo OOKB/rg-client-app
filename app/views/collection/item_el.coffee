@@ -8,9 +8,7 @@ module.exports = React.createClass
   propTypes:
     model: React.PropTypes.object.isRequired
     imgSize: React.PropTypes.string.isRequired
-    itemState: React.PropTypes.object
-    threeUp: React.PropTypes.bool
-    index: React.PropTypes.number
+    preventDetail: React.PropTypes.bool # Required when threeUp
     onClick: React.PropTypes.func
     onMouseDown: React.PropTypes.func
     onMouseOver: React.PropTypes.func
@@ -26,22 +24,9 @@ module.exports = React.createClass
     onMouseDown = @props.onMouseDown
     onMouseOver = @props.onMouseOver
 
-    activeId = @props.itemState and @props.itemState.buttonsFor
-
     href = undefined
 
-    if @props.threeUp
-      index = @props.index
-      # Only center item has link.
-      if item.id == activeId
-        href = item.detail
-      # First item is pager back.
-      else if index == 0
-        onClick = @setPgPre
-      # Last item is pager forward.
-      else if index == 2
-        onClick = @setPgNext
-    else if item.hasDetail
+    if item.hasDetail and not @props.preventDetail
       # Has a detail page so link it.
       href = item.detail
 
