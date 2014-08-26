@@ -10,7 +10,8 @@ module.exports = React.createClass
 
   text: ->
     item = @props.model
-    item.name + ' in ' + item.color + ' has been added to your favorites!'
+    name = item.name or item.patternNumber
+    name + ' in ' + item.color + ' has been added to your favorites!'
 
   render: () ->
     unless @props.itemState.favBoxView
