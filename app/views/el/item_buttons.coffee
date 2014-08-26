@@ -57,6 +57,7 @@ module.exports = React.createClass
       return false
 
     favThisButton = FavButton
+      key: 'fav'
       model: item
       setItemState: @props.setItemState
       itemState: itemState
