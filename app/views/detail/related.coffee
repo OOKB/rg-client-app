@@ -1,6 +1,8 @@
 React = require 'react'
 {div, button, ul, li, a, img, i} = require 'reactionary'
 
+CloseButton = require '../el/button_close'
+
 module.exports = React.createClass
 
   getInitialState: ->
@@ -74,19 +76,14 @@ module.exports = React.createClass
       pager = true
       pager_txt = (@state.pg+1) + ' / ' + pages
     else
-      pager_txt = ''
-
-    closeButton = button
-      key: 'close'
-      className: 'close'
-      onClick: @handleXclick
-      type: 'button',
-        'X'
+      pager_txt = false
 
     # Header
     header = div
       className: 'colors-header',
-        pager_txt, closeButton
+        pager_txt
+        CloseButton
+          onClick: @handleXclick
     offset = @state.pg * @state.pgSize
     limit = (@state.pg + 1) * @state.pgSize
     pageItems = @props.collection.models.slice(offset, limit)

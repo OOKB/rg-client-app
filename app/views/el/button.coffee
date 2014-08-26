@@ -19,8 +19,8 @@ module.exports = React.createClass
     btn = @props.buttonInfo
     active = @props.active
     props =
-      key: btn.key
-      className: btn.name
+      key: btn.key or btn.className
+      className: btn.name or btn.className
       onClick: btn.onClick
     if active
       props.className += ' active'
