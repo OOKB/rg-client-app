@@ -90,7 +90,7 @@ module.exports = React.createClass
         setContainerState: @props.onUserInput
         setParentState: @handleUserInput
         patternNumber: @props.patternNumber
-
+        activeId: @props.activeId
     # big-ol-image
     divs.push div
       key: 'main-image'

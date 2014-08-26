@@ -43,7 +43,7 @@ module.exports = React.createClass
       isRelated: @state.isRelated
       patternNumber: ops.patternNumber
       itemState: @state
-
+      activeId: id
     div
       id: 'container-detail'
       className: 'item-detail '+item.category,
