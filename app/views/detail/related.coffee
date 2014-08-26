@@ -89,7 +89,6 @@ module.exports = React.createClass
 
     # Color icons.
     relatedColorItems = []
-    console.log @props.activeId
     pageItems.forEach (item) =>
       unless item.id == @props.activeId
         relatedColorItems.push li
