@@ -1,6 +1,8 @@
 React = require 'react'
-{div, p, ul, li, button, img, i, a} = require 'reactionary'
+{div, p, ul, li, i, a} = require 'reactionary'
 _ = require 'lodash'
+
+Button = require './button'
 
 # Action buttons
 
@@ -36,6 +38,7 @@ module.exports = React.createClass
   rmFav: (e) ->
     id = e.target.value
     app.me.rmFav id
+    @props.setItemState favBoxView: false
 
   infoClick: ->
     @props.setItemState
@@ -68,20 +71,6 @@ module.exports = React.createClass
         onClick: @infoClick
         label: '='
 
-  # Template for the button itself.
-  # btn is one of the objects from @data above ^.
-  # active is boolean.
-  createButtonEl: (item, btn, active) ->
-    props =
-      key: btn.key
-      className: btn.name
-      onClick: btn.onClick
-    if active
-      props.className += ' active'
-    if btn.value and item[btn.value]
-      props.value = item[btn.value]
-    button props, btn.label
-
   # Template for the buttons container.
   el: (child) ->
     div
@@ -105,7 +94,10 @@ module.exports = React.createClass
       fav = 'addFav'
     # Simply return the favs button.
     if favsOnly or not extraButtons
-      return @el @createButtonEl(item, @data(fav), false)
+      return @el Button
+        model: item
+        buttonInfo: @data(fav)
+        active: false
     # Possible buttons to display.
     buttonTypes = ['color', fav, 'info']
     # Array to pass to @el()
@@ -113,9 +105,13 @@ module.exports = React.createClass
     buttonTypes.forEach (buttonType) =>
       btn = @data(buttonType)
       # Set if active be added to the className.
-      active = itemState[buttonType+'BoxView']
+      active = itemState[buttonType+'BoxView'] or false
       if 'color' == buttonType and initState.patternNumber
         active = true
-      buttons.push @createButtonEl(item, btn, active)
+      buttons.push Button
+        key: btn.key
+        model: item
+        buttonInfo: btn
+        active: active
     # Return all the buttons.
     return @el buttons
