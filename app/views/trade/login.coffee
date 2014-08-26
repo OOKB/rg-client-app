@@ -8,7 +8,7 @@ module.exports = React.createClass
     user = @refs.email.getDOMNode().value
     pass = @refs.password.getDOMNode().value
     console.log user, pass
-    
+
   render: ->
     div
       className: 'trade-login text-center col-sm-8 col-sm-offset-2',

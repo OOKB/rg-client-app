@@ -16,6 +16,8 @@ module.exports = AmpersandModel.extend
       type: 'array'
       required: true
       default: getLocalFavs
+    accountId: 'string'
+    loggedIn: ['bool', true, false]
 
   addFav: (id) ->
     favs = @get('favs')
