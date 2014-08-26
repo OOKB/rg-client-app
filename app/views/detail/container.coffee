@@ -3,10 +3,12 @@ React = require 'react'
 
 HeaderBar = require './header'
 Switcher = require './buttons'
+FavAlert = require '../el/fav_alert'
 
 module.exports = React.createClass
   getInitialState: ->
     isRelated: false
+    favBoxView: false
 
   handleUserInput: (newSt) ->
     if newSt.color_id
@@ -40,8 +42,14 @@ module.exports = React.createClass
       onUserInput: @handleUserInput
       isRelated: @state.isRelated
       patternNumber: ops.patternNumber
+      itemState: @state
+
     div
       id: 'container-detail'
       className: 'item-detail '+item.category,
         HeaderBar props
+        FavAlert
+          itemState: @state
+          model: item
+          setItemState: (st) => @setState st
         Switcher props

@@ -14,7 +14,10 @@ module.exports = React.createClass
       div className: 'controls',
         ul {},
           li className: 'fav',
-            button className: 'fav', '+'
+            FavButton
+              model: @props.model
+              itemState: @props.itemState
+              setItemState: @props.onUserInput
           li className: 'close',
             button
               className: 'close'
