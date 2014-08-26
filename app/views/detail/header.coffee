@@ -3,7 +3,7 @@ React = require 'react'
 
 Info = require '../el/info'
 FavButton = require '../el/button_fav'
-
+CloseButton = require '../el/button_close'
 module.exports = React.createClass
 
   handleXclick: ->
@@ -19,12 +19,8 @@ module.exports = React.createClass
               itemState: @props.itemState
               setItemState: @props.onUserInput
           li className: 'close',
-            button
-              className: 'close'
-              type: 'button'
+            CloseButton
               onClick: @handleXclick
-              'area-hidden': 'true',
-                'X'
         h3 className: 'hidden-md hidden-lg', 'Details'
         button
           className: 'toggle hidden-md hidden-lg'
