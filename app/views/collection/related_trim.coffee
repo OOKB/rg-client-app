@@ -1,5 +1,7 @@
 React = require 'react'
-{div, button, ul, li, a, img, i} = require 'reactionary'
+{div, ul, li, a, img, i} = require 'reactionary'
+
+CloseButton = require '../el/button_close'
 
 module.exports = React.createClass
 
@@ -24,4 +26,6 @@ module.exports = React.createClass
     return div
       id: 'related-colors'
       className: 'trim',
+        CloseButton
+          onClick: => @props.setItemState colorBoxView: false
         relatedColorsList

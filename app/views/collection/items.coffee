@@ -119,6 +119,7 @@ module.exports = React.createClass
               id: item.id
               section: @props.initState.section
               patternNumber: item.patternNumber
+              setItemState: (newSt) => @setState newSt
               collection: new SubCollection app.items.collection,
                 where:
                   patternNumber: item.patternNumber
