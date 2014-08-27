@@ -40,7 +40,7 @@
 }
 
 table {
-  width: 100%;
+  width: 970px;
   border-collapse: collapse;
   border: 0;
   text-align: left;
@@ -102,39 +102,35 @@ table .last td {
   text-align: right;
 }
 
-/* column widths — there might need to be classes on the <table> to go with specific states to change these up... just in case */
-/* textile table column widths */
 table tr th,
 table tr td {
-  padding: 3px 6px;
+  padding: 3px 12px;
 }
 
-@media (max-width: @screen-xs-max) {
-  .textile table .c-name    { width: 90px; }
-  .textile table .c-number  { width: 80px; }
-  .textile table .c-color   { width: 115px; }
-  .textile table .c-price   { width: 55px; }
-  .textile table .c-content { width: 90px; }
-  .textile table .c-repeat  { width: 85px; }
-  .textile table .c-width   { width: 85px; }
+.textile table .c-name    { width: 145px; }
+.textile table .c-number  { width: 105px; }
+.textile table .c-color   { width: 140px; }
+.textile table .c-price   { width: 100px; }
+.textile table .c-content { width: 200px; }
+.textile table .c-repeat  { width: 140px; }
+.textile table .c-width   { width: 140px; }
 
-  /* passementerie table column widths */
-  .passementerie table .c-number  { width: 78px; }
-  .passementerie table .c-color   { width: 111px; }
-  .passementerie table .c-price   { width: 55px; }
-  .passementerie table .c-content { width: 186px; }
-  .passementerie table .c-repeat  { width: 85px; }
-  .passementerie table .c-width   { width: 85px; }
+/* passementerie table column widths */
+.passementerie table .c-number  { width: 100px; }
+.passementerie table .c-color   { width: 120px; }
+.passementerie table .c-price   { width: 100px; }
+.passementerie table .c-content { width: auto; }
+.passementerie table .c-repeat  { width: 140px; }
+.passementerie table .c-width    { width: 140px; }
 
-  /* leather table column widths */
-  .leather table .c-name    { width: 68px; }
-  .leather table .c-number  { width: 78px; }
-  .leather table .c-color   { width: 88px; }
-  .leather table .c-price   { width: 55px; }
-  .leather table .c-content { width: 146px; }
-  .leather table .c-size    { width: 85px; }
-  .leather table .c-thick   { width: 80px; }
-}
+/* leather table column widths */
+.leather table .c-name    { width: 90px; }
+.leather table .c-number  { width: 110px; }
+.leather table .c-color   { width: 130px; }
+.leather table .c-price   { width: 100px; }
+.leather table .c-content { width: 230px; }
+.leather table .c-size    { width: 155px; }
+.leather table .c-thick   { width: 155px; }
 
 @media (min-width: @screen-sm-min) {
   .pricelist-header li.pageselect {
@@ -143,37 +139,6 @@ table tr td {
   .pricelist-header li.pagecount {
     margin: 0 0 0 22%;
   }
-
-  table tr th,
-  table tr td {
-    padding: 3px 12px;
-  }
-  /* column widths — there might need to be classes on the <table> to go with specific states to change these up... just in case */
-  /* textile table column widths */
-  .textile table .c-name    { width: auto; }
-  .textile table .c-number  { width: 95px; }
-  .textile table .c-color   { width: 120px; }
-  .textile table .c-price   { width: 55px; }
-  .textile table .c-content { width: auto; }
-  .textile table .c-repeat  { width: 85px; }
-  .textile table .c-width   { width: 85px; }
-
-  /* passementerie table column widths */
-  .passementerie table .c-number  { width: 100px; }
-  .passementerie table .c-color   { width: 120px; }
-  .passementerie table .c-price   { width: 55px; }
-  .passementerie table .c-content { width: auto; }
-  .passementerie table .c-repeat  { width: 85px; }
-  .passementerie table .c-width   { width: 85px; }
-
-  /* leather table column widths */
-  .leather table .c-name    { width: 75px; }
-  .leather table .c-number  { width: 90px; }
-  .leather table .c-color   { width: 100px; }
-  .leather table .c-price   { width: 75px; }
-  .leather table .c-content { width: 210px; }
-  .leather table .c-size    { width: 100px; }
-  .leather table .c-thick   { width: 100px; }
 }
 
 @media (min-width: @screen-md-min) {
@@ -183,32 +148,6 @@ table tr td {
   .pricelist-header li.pagecount {
     margin: 0 0 0 33%;
   }
-  /* column widths — there might need to be classes on the <table> to go with specific states to change these up... just in case */
-  /* textile table column widths */
-  .textile table .c-name    { width: 145px; }
-  .textile table .c-number  { width: 95px; }
-  .textile table .c-color   { width: 120px; }
-  .textile table .c-price   { width: 100px; }
-  .textile table .c-content { width: auto; }
-  .textile table .c-repeat  { width: 140px; }
-  .textile table .c-width   { width: 140px; }
-
-  /* passementerie table column widths */
-  .passementerie table .c-number  { width: 100px; }
-  .passementerie table .c-color   { width: 120px; }
-  .passementerie table .c-price   { width: 100px; }
-  .passementerie table .c-content { width: auto; }
-  .passementerie table .c-repeat  { width: 140px; }
-  .passementerie table .c-width    { width: 140px; }
-
-  /* leather table column widths */
-  .leather table .c-name    { width: 90px; }
-  .leather table .c-number  { width: 100px; }
-  .leather table .c-color   { width: 100px; }
-  .leather table .c-price   { width: 100px; }
-  .leather table .c-content { width: 270px; }
-  .leather table .c-size    { width: 155px; }
-  .leather table .c-thick   { width: 155px; }
 }
 
 /* style links to details */
@@ -218,6 +157,7 @@ tr.color a {
 }
 
 /** Some ipad/mobile styles for making pricelist viewing easier without removing columns/content **/
+/** It also provides a cool scrolling table feature **/
 @media (max-width: @screen-sm-max) {
   .pricelist-header {
     margin-bottom: 0;
@@ -231,11 +171,12 @@ tr.color a {
     width: 100%;
     border-spacing: 0;
     margin: 0;
-  }
-
-  #container-pricelist table {
-    min-width: 600px;
-    max-width: 750px;
+    padding-top: 20px;
+    -webkit-box-shadow: inset -6px -3px 8px 0 rgba(132,132,132,0.5);
+    -moz-box-shadow: inset -6px -3px 8px 0 rgba(132,132,132,0.5);
+    -ms-box-shadow: inset -6px -3px 8px 0 rgba(132,132,132,0.5);
+    -o-box-shadow: inset -6px -3px 8px 0 rgba(132,132,132,0.5);
+    box-shadow: inset -6px -3px 8px 0 rgba(132,132,132,0.5);
   }
 
   table tr th:first-child,
@@ -247,16 +188,6 @@ tr.color a {
     padding-right: 7px;
   }
 
-}
-
-@media (max-width: @screen-xs-max) {
-  #container-pricelist .table-scroll {
-    -webkit-box-shadow: inset -6px -3px 8px 0 rgba(132,132,132,0.5);
-    -moz-box-shadow: inset -6px -3px 8px 0 rgba(132,132,132,0.5);
-    -ms-box-shadow: inset -6px -3px 8px 0 rgba(132,132,132,0.5);
-    -o-box-shadow: inset -6px -3px 8px 0 rgba(132,132,132,0.5);
-    box-shadow: inset -6px -3px 8px 0 rgba(132,132,132,0.5);
-  }
 }
 
 /* ============================ /Pricelist ============================ */
