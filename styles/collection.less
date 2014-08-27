@@ -251,10 +251,16 @@ ul.list li, ul.list li * {
   display: list-item;
   width: 100%;
   height: auto;
-  margin: 0;
   padding: 10px 0;
+  margin: 0;
   overflow: visible;
   position: relative;
+}
+
+@media (max-width: @screen-xs-max) {
+  #collection-passementerie ul.list > li { padding: 0; }
+  #collection-passementerie ul.list > li:first-child { padding-top:10px; }
+  #collection-passementerie ul.list > li:last-child { padding-bottom:10px; }
 }
 
 #collection-passementerie .item-icons {
@@ -367,6 +373,10 @@ ul.collection-controls li.collection-title button {
   ul.collection-controls li.pageselect {
     display: none;
     visibility: hidden;
+  }
+  ul.collection-controls li.pagecount {
+    position: absolute;
+    left: 40px;
   }
 }
 
