@@ -205,7 +205,7 @@ module.exports = React.createClass
                   Pager _.merge(@props.initState, {el: 'count', key: 'count'})
                   Pager _.merge(@props.initState, {el: 'next', key: 'next'})
     else
-      itemList = div {}
+      itemList = false
       headerList.push titleEl
     rowClassName = 'row'
     if @props.active
