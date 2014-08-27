@@ -8,20 +8,10 @@ module.exports = React.createClass
   getInitialState: ->
     colorBoxView: false
     farView: false
-    windowWidth: window.innerWidth
     showRuler: true
     isRelated: false
     loadedLarge: false
     loadedXlarge: false
-
-  handleResize: (e) ->
-    @setState windowWidth: window.innerWidth
-
-  componentDidMount: ->
-    window.addEventListener 'resize', @handleResize
-
-  componentWillUnmount: ->
-    window.removeEventListener 'resize', @handleResize
 
   toggleColorBoxView: ->
     @setState colorBoxView: !@state.colorBoxView
@@ -32,7 +22,7 @@ module.exports = React.createClass
   render: ->
     item = @props.model
     # Data for the main image.
-    ww = @state.windowWidth
+    ww = @props.windowWidth
     if ww < 640
       imgSize = 'small'
     else if ww < 1536

@@ -9,6 +9,18 @@ module.exports = React.createClass
   getInitialState: ->
     isRelated: false
     favBoxView: false
+    windowWidth: window.innerWidth
+
+  handleResize: (e) ->
+    ww = window.innerWidth
+    if ww % 5 == 0
+      @setState windowWidth: ww
+
+  componentDidMount: ->
+    window.addEventListener 'resize', @handleResize
+
+  componentWillUnmount: ->
+    window.removeEventListener 'resize', @handleResize
 
   handleUserInput: (newSt) ->
     if newSt.color_id
@@ -42,6 +54,7 @@ module.exports = React.createClass
       onUserInput: @handleUserInput
       isRelated: @state.isRelated
       patternNumber: ops.patternNumber
+      windowWidth: @state.windowWidth
       itemState: @state
       activeId: id
     div
