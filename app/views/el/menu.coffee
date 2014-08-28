@@ -7,6 +7,7 @@ module.exports = React.createClass
   getInitialState: ->
     searchIsActive: false
     tradeIsActive: false
+
   data: [
     id: 'about'
     title: 'About Us'
@@ -17,42 +18,57 @@ module.exports = React.createClass
         id: 'contact'
         title: 'Contact Us'
         href: '#',
-          id: 'trade'
-          title: 'Trade Login'
-          children: [
-            id: 'projects'
-            title: 'Projects'
-            href: '#',
-              id: 'pricelist'
-              title: 'Pricelist'
-              href: '#pricelist/textile/50/p1',
-                id: 'summer-sale'
-                title: 'Summer Sale'
-                href: '#',
-                  id: 'account'
-                  title: 'Account'
-                  href: '#',
-                    id: 'logout'
-                    title: 'Logout'
-                    href: '#'
-          ],
+          id: 'trade',
             id: 'search'
             title: 'Search'
   ]
+
+  tradeData: ->
+    if @props.initState.loggedIn
+      id: 'trade'
+      title: 'Trade Account'
+      onMouseOver: => @setState tradeIsActive: true
+      onClick: => @setState tradeIsActive: !@state.tradeIsActive
+      #onMouseOut:
+      #childrenOut: =>
+      children: [
+        id: 'projects'
+        title: 'Projects'
+        href: '#',
+          id: 'pricelist'
+          title: 'Pricelist'
+          href: '#trade/pricelist/textile/50/p1',
+            id: 'summer-sale'
+            title: 'Summer Sale'
+            href: '#',
+              id: 'account'
+              title: 'Account'
+              href: '#',
+                id: 'logout'
+                title: 'Logout'
+                href: '#'
+                onClick: -> app.me.customerNumber = null
+      ]
+    else
+      id: 'trade'
+      title: 'Trade Login'
+      href: '#trade/login'
 
   handleChange: (event) ->
     @props.setRouterState
       searchTxt: @refs.searchTxt.getDOMNode().value
 
   # Menu ul wrapper element.
-  createNavEl: (children, name) ->
+  createNavEl: (children, name, onOut) ->
     ul
+      onMouseOut: onOut
       className: name,
         children.map @createMenuEl
 
   # Menu li element.
   createMenuEl: (nav) ->
     section = @props.initState and @props.initState.section
+    if nav.id == 'trade' then nav = @tradeData()
     if nav.children and _.find(nav.children, id: section)
       itemIsActive = true
     else if section == nav.id
@@ -64,7 +80,8 @@ module.exports = React.createClass
       return @searchEl(nav)
     # Item has sub-items.
     if nav.children and (@state[nav.id+'IsActive'] or itemIsActive)
-      child = @createNavEl(nav.children, 'sub-menu')
+      itemIsActive = true
+      child = @createNavEl(nav.children, 'sub-menu', nav.childrenOut)
     else
       child = false
     liClass = nav.id
@@ -73,6 +90,9 @@ module.exports = React.createClass
     # Template.
     li
       key: nav.id
+      onClick: nav.onClick
+      onMouseOver: nav.onMouseOver
+      onMouseOut: nav.onMouseOut
       className: liClass,
         a
           href: nav.href,

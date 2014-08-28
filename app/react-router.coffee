@@ -13,6 +13,8 @@ Collection = require './views/collection/container'
 Favs = require './views/favs'
 Login = require './views/trade/login'
 module.exports = React.createClass
+  getInitialState: ->
+    loggedIn: app.me.loggedIn
 
   router: new Router()
 
@@ -32,6 +34,9 @@ module.exports = React.createClass
         console.log ids
         @router.navigate newUrl, replace: true
         @setRouterState ids: _.clone(ids)
+    app.me.on 'change:loggedIn', (model, isLoggedIn) =>
+      console.log 'change login', isLoggedIn
+      @setState loggedIn: isLoggedIn
 
   setRouterState: (newState) ->
     if newState
@@ -71,7 +76,11 @@ module.exports = React.createClass
       when 'collection' then Collection(props)
       when 'detail' then ItemDetail(props)
       when 'favs' then Favs(props)
-      when 'login' then Login(props)
+      when 'login'
+        if @state.loggedIn
+          p 'You are already logged in.'
+        else
+          Login(props)
       else p 'Hello there! Unfortunately our application is broken... ' + section
     footer = Footer props
 

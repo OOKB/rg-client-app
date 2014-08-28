@@ -45,6 +45,9 @@ module.exports = Router.extend
     @setReactState S
 
   pricelist: (category, pgSize, searchTxt, pageIndex) ->
+    unless app.me.loggedIn
+      @redirectTo 'trade/login'
+      return
     document.title = pageTitle + ' - Pricelist'
     #console.log 'pricelist'
     S = @prepNewState
@@ -86,6 +89,9 @@ module.exports = Router.extend
     @setReactState newSt
 
   login: ->
+    if app.me.loggedIn
+      @redirectTo 'trade/account'
+      return
     newSt =
       section: 'login'
       trade: true
