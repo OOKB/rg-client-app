@@ -42,7 +42,7 @@ ul.collection-controls > li.collection-title button:hover {
   vertical-align: top;
 }
 
-.collection ul.list li {
+.collection [class*="pg-size-"] > ul.list > li {
   background: @rg-background url(@loading) center center no-repeat;
   background-size: 50px 50px;
 }
@@ -138,11 +138,7 @@ ul.collection-controls > li.collection-title button:hover {
 }
 
 @media (max-width: @screen-xs-max) {
-  .pg-size-3,
-  .pg-size-12,
-  .pg-size-21,
-  .pg-size-42,
-  .pg-size-84 {
+  [class*="pg-size-"] {
     margin-top: 30px;
   }
 }
