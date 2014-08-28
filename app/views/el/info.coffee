@@ -3,11 +3,15 @@ React = require 'react'
 
 module.exports = React.createClass
 
+  round: (x, to) ->
+    Math.round(x / to) * to
+
   render: ->
     item = @props.model
 
     h_lis = []
-
+    fieldCount = 0
+    charCount = 0
     # Name and number.
     name = if item.name then span item.name else false
     h_lis.push li
@@ -27,6 +31,8 @@ module.exports = React.createClass
 
     # Content.
     if item.content
+      fieldCount++
+      charCount += item.contents.length
       h_lis.push li
         key: 'content'
         className: 'content',
@@ -35,14 +41,19 @@ module.exports = React.createClass
 
     # Repeat.
     if item.repeat
+      fieldCount++
+      charCount += item.repeat.length
       h_lis.push li
         key: 'repeat'
         className: 'repeat',
           h3 'Repeat'
           p item.repeat
 
+
     # Approx width.
     if item.approx_width
+      fieldCount++
+      charCount += item.approx_width.length
       h_lis.push li
         key: 'width'
         className: 'width',
@@ -51,6 +62,8 @@ module.exports = React.createClass
 
     # Approx size.
     if item.approx_size
+      fieldCount++
+      charCount += item.approx_size.length
       h_lis.push li
         key: 'size'
         className: 'size',
@@ -59,12 +72,26 @@ module.exports = React.createClass
 
     # Approx thick.
     if item.approx_thick
+      fieldCount++
+      charCount += item.approx_thick.length
       h_lis.push li
         key: 'thick'
         className: 'thick',
           h3 'Approx Thickness'
           p item.approx_thick
 
+    if item.price
+      fieldCount++
+      charCount += 2
+      h_lis.push li
+        key: 'price'
+        className: 'price',
+          h3 'Price'
+          p item.price
+
+    fieldsClass = 'item-information'
+    fieldsClass += ' f-qty-'+fieldCount
+    fieldsClass += ' char-qty-'+@round(charCount, 25)
     ul
-      className: 'item-information',
+      className: fieldsClass,
         h_lis
