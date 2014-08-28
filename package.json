@@ -37,6 +37,7 @@
     "query-param-getter": "0.0.1",
     "ampersand-router": "^1.0.2",
     "qs": "^1.2.2",
-    "superagent": "^0.18.2"
+    "superagent": "^0.18.2",
+    "cookies-js": "^0.4.0"
   }
 }

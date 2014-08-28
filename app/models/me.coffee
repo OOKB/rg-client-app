@@ -1,6 +1,7 @@
 AmpersandModel = require("ampersand-model")
 _ = require 'lodash'
 r = require 'superagent'
+Cookies = require 'cookies-js'
 
 getLocalFavs = ->
   if window.localStorage and favs = window.localStorage['faves']
@@ -9,6 +10,9 @@ getLocalFavs = ->
   else
     #console.log 'no favs'
     return []
+
+getCustNum = ->
+  return Cookies.get('custNum')
 
 module.exports = AmpersandModel.extend
 
@@ -20,14 +24,15 @@ module.exports = AmpersandModel.extend
     address: 'string'
     address2: 'string'
     city: 'string'
-    customerNumber: 'string'
+    customerNumber:
+      type: 'string'
+      default: getCustNum
     email: 'string'
     phoneNumber: 'string'
     state: 'string'
     zip: 'string'
     username: 'string'
-    password: 'string'
-    loggedIn: ['bool', true, false]
+    #loggedIn: ['bool', true, false]
 
   derived:
     favStr:
@@ -39,14 +44,26 @@ module.exports = AmpersandModel.extend
         if window.localStorage
           window.localStorage['faves'] = favStr
         return favStr
+    loggedIn:
+      deps: ['customerNumber']
+      fn: ->
+        #console.log 'set cookie to '+@customerNumber
+        if @customerNumber == null
+          Cookies.expire('custNum')
+        else
+          Cookies.set('custNum', @customerNumber, expires: 86400)
+        return if @customerNumber then true else false
 
   login: (password) ->
     data =
       username: @username
       password: password
-    r.post 'https://r_g.cape.io/_login', data, (err, res) ->
+    r.post 'https://r_g.cape.io/_login', data, (err, res) =>
       if res.status == 200 and res.body.user
-        console.log res.body.user
+        resp = res.body.user
+        #console.log resp
+        @set(resp)
+        @trigger 'sync', @, resp
       else
         console.log 'error logging in'
 
