@@ -16,14 +16,18 @@ module.exports = React.createClass
     extraButtons: React.PropTypes.bool.isRequired
 
   colorsClick: (e) ->
-    @props.setItemState
-      infoBoxView: false
+    s =
       colorBoxView: !@props.itemState.colorBoxView
+      infoBoxView: false
+    @props.setItemState s
 
   infoClick: ->
-    @props.setItemState
-      colorBoxView: false
+    s =
       infoBoxView: !@props.itemState.infoBoxView
+    unless @props.model.category == 'passementerie'
+      s.colorBoxView = false
+    @props.setItemState s
+
 
   data: (buttonType) ->
     switch buttonType
