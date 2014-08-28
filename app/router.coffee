@@ -202,7 +202,7 @@ module.exports = Router.extend
     if 'collection' == s.section
       newState.hasImage = true
       newState.colorSorted = true
-      pgSizes = [3, 12, 21, 42, 84]
+      pgSizes = [3, 12, 24, 48, 96]
       if 'passementerie' == newState.category or newState.searchTxt
         pgSizes.shift()
     else if 'pricelist' == s.section

@@ -103,11 +103,34 @@
     width: auto;
     margin: 0 20px;
   }
+  .item-detail-content > ul.f-qty-4 {
+    margin: 0 50px;
+  }
   .item-detail-content > ul > li {
     display: inline-block;
     margin: 0;
     min-width: calc(100% / 6);
     max-width: 25%;
+    vertical-align: middle;
+  }
+
+  /** some special leather stuff **/
+  .item-detail.leather .item-detail-content > ul.f-qty-4 {
+    width: auto;
+    margin: 0 20px;
+  }
+  .item-detail.leather .item-detail-content > ul.f-qty-4 > li {
+    display: inline-block;
+    margin: 0;
+    width: 12.5%;
+    min-width: 0;
+    max-width: none;
+    vertical-align: middle;
+  }
+  .item-detail.leather .item-detail-content > ul.f-qty-4 > li.content {
+    display: inline-block;
+    margin: 0;
+    width: 25%;
     vertical-align: middle;
   }
 }
