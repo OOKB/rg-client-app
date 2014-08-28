@@ -1,5 +1,6 @@
 React = require 'react'
 {div, p, ul, li, i, a} = require 'reactionary'
+_ = require 'lodash'
 
 Button = require './button'
 FavButton = require './button_fav'
@@ -72,6 +73,8 @@ module.exports = React.createClass
 
     # Possible buttons to display.
     buttonTypes = @props.buttonTypes or ['color', 'fav', 'info']
+    unless item.hasRelated
+      buttonTypes = _.without buttonTypes, 'color'
 
     # Array to pass to @el()
     buttons = []
