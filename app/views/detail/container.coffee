@@ -49,6 +49,7 @@ module.exports = React.createClass
       color_toggle_class += ' with-far'
     props =
       model: item
+      initState: @props.initState
       collection: @props.collection
       pageIndex: @state.pageIndex
       onUserInput: @handleUserInput

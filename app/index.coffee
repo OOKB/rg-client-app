@@ -6,12 +6,14 @@ ItemsCollection = require './models/items'
 Router = require './react-router'
 
 ItemsData = require './models/data'
+PatternColors = require './models/pattern_colors'
 Me = require './models/me'
 
 module.exports =
   blastoff: ->
     window._ = _
     self = window.app = @
+    @patternColors = PatternColors
     # Create our items model collection.
     items = new ItemsCollection ItemsData, parse: true
     # Use the subcollection module.
