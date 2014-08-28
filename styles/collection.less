@@ -274,6 +274,10 @@ ul.list li, ul.list li * {
   z-index: 99;
 }
 
+#collection-passementerie ul.list li.list-item.open {
+  border-top: 1px solid #ddd;
+}
+
 #collection-passementerie #related-colors {
   position: static;
   bottom: 0;
@@ -295,10 +299,23 @@ ul.list li, ul.list li * {
 }
 
 #collection-passementerie #related-colors button.close {
-  top: initial;
-  bottom: 20px;
-  right: 5px;
-  z-index: 99;
+  position: static;
+  background-position: left center;
+  line-height: 11px;
+  font-size: 12px;
+  padding: 0;
+  width: auto;
+  padding-left: 20px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  text-indent: 0;
+  overflow: visible;
+  text-decoration: underline;
+  -webkit-text-decoration-color: @rg-gray;
+  -moz-text-decoration-color: @rg-gray;
+  -ms-text-decoration-color: @rg-gray;
+  -o-text-decoration-color: @rg-gray;
+  text-decoration-color: @rg-gray;
 }
 
 #collection-passementerie #related-colors > ul.list {
