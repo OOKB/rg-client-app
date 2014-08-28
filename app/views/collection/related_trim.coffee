@@ -6,8 +6,11 @@ ItemEl = require './item_el'
 ItemButtons = require '../el/item_buttons'
 Info = require '../el/info'
 FavAlertBox = require '../el/fav_alert'
-
+Button = require '../el/button'
 module.exports = React.createClass
+  closeColors: ->
+    document.querySelector('img#'+@props.id).scrollIntoView(true)
+    @props.setItemState colorBoxView: false
 
   getInitialState: ->
     buttonsFor: ''
@@ -56,6 +59,10 @@ module.exports = React.createClass
     return div
       id: 'related-colors'
       className: 'trim',
-        CloseButton
-          onClick: => @props.setItemState colorBoxView: false
         relatedColorsList
+        CloseButton
+          onClick: @closeColors
+        Button
+          buttonInfo:
+            onClick: @closeColors
+            label: 'Close Colors'
