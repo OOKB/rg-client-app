@@ -33,13 +33,15 @@ module.exports = React.createClass
       favs = @props.collection
       categories = ['textile', 'leather', 'passementerie']
       categories.forEach (cat) =>
+        isOnTrim = 'passementerie' == cat
         items = new SubCollection(favs, where: category: cat)
         if items.length
           props =
             collection: items
             key: cat
             category: cat
-            extraButtons: 'passementerie' == cat
+            isOnTrim: isOnTrim
+            extraButtons: isOnTrim
           content.push Items _.extend(@props, props)
     else
       content = p 'No favorites found.'
