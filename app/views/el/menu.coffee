@@ -1,5 +1,5 @@
 React = require 'react'
-{div, nav, ul, li, a, i, form, input} = require 'reactionary'
+{div, nav, ul, li, a, i, input} = require 'reactionary'
 _ = require 'lodash'
 
 # Menu
@@ -115,7 +115,7 @@ module.exports = React.createClass
 
   # When active search text
   searchElActive: ->
-    form
+    div
       onMouseOut: () => @setState searchIsActive: false
       className: 'form-inline'
       role: 'form'
