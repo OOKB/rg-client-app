@@ -82,12 +82,12 @@ module.exports = React.createClass
 
     if item.price
       fieldCount++
-      charCount += 2
+      charCount += 3
       h_lis.push li
         key: 'price'
         className: 'price',
           h3 'Price'
-          p item.price
+          p item.priceDisplay
 
     fieldsClass = 'item-information'
     fieldsClass += ' f-qty-'+fieldCount
