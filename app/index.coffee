@@ -13,9 +13,9 @@ module.exports =
   blastoff: ->
     window._ = _
     self = window.app = @
+    @patternColors = PatternColors
     # Create our items model collection.
     items = new ItemsCollection ItemsData, parse: true
-    @patternColors = PatternColors
     # Use the subcollection module.
     @items = new SubCollection items
     @me = new Me()

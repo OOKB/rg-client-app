@@ -28,10 +28,14 @@ module.exports = AmpersandModel.extend
     patternNumber: ['string', true]
     price: 'number'
     repeat: 'string'
+    related: 'array'
     ruler: ['string', true]
 
   parse: (item) ->
+    # Set ID.
     item.id = item.patternNumber+'-'+item.color_id
+    related = app.patternColors[item.patternNumber]
+    item.related = _.without related, item.color_id
     if item.category == 'passementerie'
       item.name = null
     if item._file
@@ -102,3 +106,9 @@ module.exports = AmpersandModel.extend
         cm:
           large: cdn+'media/ruler/cm/'+@ruler+'-1536.png'
           xlarge: cdn+'media/ruler/cm/'+@ruler+'-2560.png'
+
+    # Decide if it has related colors.
+    hasRelated:
+      deps: ['related']
+      fn: ->
+        if @related.length then true else false
