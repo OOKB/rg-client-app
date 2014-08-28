@@ -148,8 +148,11 @@ module.exports = React.createClass
           infoBox
           favAlert
     cat = @props.initState.category or @props.category
+    collectionClassName = 'pg-size-' + @props.initState.pgSize
+    unless @props.threeUp
+      collectionClassName += ' pg-vert'
     return div
-      className: 'pg-size-' + @props.initState.pgSize
+      className: collectionClassName
       id: 'collection-' + cat,
         ul
           className: 'list',
