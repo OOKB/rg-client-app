@@ -75,6 +75,7 @@ module.exports = React.createClass
     # Related colors.
     if @state.colorBoxView
       divs.push Colors
+        initState: @props.initState
         key: 'related-colors'
         collection: @props.collection
         setContainerState: @props.onUserInput
