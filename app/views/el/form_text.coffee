@@ -19,6 +19,7 @@ module.exports = React.createClass
         input
           className: 'form-control'
           id: @props.id
-          ref: @props.id
+          value: @props.value
+          onChange: @props.onChange
           type: @props.fieldType
           placeholder: @props.placeholder

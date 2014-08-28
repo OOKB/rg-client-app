@@ -1,13 +1,23 @@
 React = require 'react'
-{div, p, form} = require 'reactionary'
+{div, p, a, form, button} = require 'reactionary'
 
 FieldTxt = require '../el/form_text'
 
 module.exports = React.createClass
-  submitLogin: ->
-    user = @refs.email.getDOMNode().value
-    pass = @refs.password.getDOMNode().value
-    console.log user, pass
+
+  submitLogin: (e) ->
+    if e.preventDefault
+      e.preventDefault()
+
+    app.me.username = @refs.username.getDOMNode().querySelector('input').value
+    password = @refs.password.getDOMNode().querySelector('input').value
+    app.me.login(password)
+
+  handleEmail: (e) ->
+    app.me.username = e.target.value
+
+  handlePassword: (e) ->
+    app.me.password = e.target.value
 
   render: ->
     div
@@ -29,13 +39,20 @@ module.exports = React.createClass
               fieldType: 'text'
               label: 'Email or Account Number'
               id: 'email'
+              ref: 'username'
               placeholder: 'Email or Account Number'
+              onChange: @handleEmail
+              value: app.me.username
             FieldTxt
               fieldType: 'password'
               label: 'Password or Zip Code'
               id: 'password'
               placeholder: 'Password'
+              onChange: @handlePassword
+              value: app.me.password
+              ref: 'password'
             button
+              onClick: @submitLogin
               className: 'btn btn-default uppercase'
               type: 'submit',
                 'Log In'

@@ -20,7 +20,7 @@ module.exports = React.createClass
     active = @props.active
     props =
       key: btn.key or btn.className
-      className: btn.name or btn.className
+      className: btn.name or btn.className or 'btn btn-default uppercase'
       onClick: btn.onClick
     if active
       props.className += ' active'

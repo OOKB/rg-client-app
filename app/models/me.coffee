@@ -1,5 +1,6 @@
 AmpersandModel = require("ampersand-model")
 _ = require 'lodash'
+r = require 'superagent'
 
 getLocalFavs = ->
   if window.localStorage and favs = window.localStorage['faves']
@@ -16,8 +17,38 @@ module.exports = AmpersandModel.extend
       type: 'array'
       required: true
       default: getLocalFavs
-    accountId: 'string'
+    address: 'string'
+    address2: 'string'
+    city: 'string'
+    customerNumber: 'string'
+    email: 'string'
+    phoneNumber: 'string'
+    state: 'string'
+    zip: 'string'
+    username: 'string'
+    password: 'string'
     loggedIn: ['bool', true, false]
+
+  derived:
+    favStr:
+      deps: ['favs']
+      fn: ->
+        favStr = ''
+        if @favs.length
+          favStr = @favs.join('/')
+        if window.localStorage
+          window.localStorage['faves'] = favStr
+        return favStr
+
+  login: (password) ->
+    data =
+      username: @username
+      password: password
+    r.post 'https://r_g.cape.io/_login', data, (err, res) ->
+      if res.status == 200 and res.body.user
+        console.log res.body.user
+      else
+        console.log 'error logging in'
 
   addFav: (id) ->
     favs = @get('favs')
@@ -44,14 +75,3 @@ module.exports = AmpersandModel.extend
       return true
     else
       return false
-
-  derived:
-    favStr:
-      deps: ['favs']
-      fn: ->
-        favStr = ''
-        if @favs.length
-          favStr = @favs.join('/')
-        if window.localStorage
-          window.localStorage['faves'] = favStr
-        return favStr
