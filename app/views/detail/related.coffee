@@ -20,7 +20,7 @@ module.exports = React.createClass
     patternNumber: React.PropTypes.string.isRequired
 
   handleColorClick: (e) ->
-    unless @props.section == 'collection'
+    unless @props.initState.section == 'collection'
       if e.preventDefault
         e.preventDefault()
       item = @props.collection.get(e.target.id)

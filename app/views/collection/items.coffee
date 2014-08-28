@@ -115,7 +115,7 @@ module.exports = React.createClass
         if buttonsFor == item.id and @state.colorBoxView
           relatedProps =
             id: item.id
-            section: @props.initState.section
+            initState: @props.initState
             patternNumber: item.patternNumber
             setItemState: (newSt) => @setState newSt
             collection: new SubCollection app.items.collection,

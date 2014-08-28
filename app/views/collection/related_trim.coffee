@@ -3,22 +3,51 @@ React = require 'react'
 
 CloseButton = require '../el/button_close'
 ItemEl = require './item_el'
+ItemButtons = require '../el/item_buttons'
+Info = require '../el/info'
+FavAlertBox = require '../el/fav_alert'
 
 module.exports = React.createClass
+
+  getInitialState: ->
+    buttonsFor: ''
+    infoBoxView: false
+    favBoxView: false
 
   render: ->
     itemCount = @props.collection.length
 
     # Color icons.
     relatedColorItems = []
-    @props.collection.forEach (item) ->
+    @props.collection.forEach (item) =>
+      if @state.infoBoxView and @state.buttonsFor == item.id
+        infoBox = Info model: item
+      else
+        infoBox = false
+      if @state.favBoxView == item.id
+        favAlert = FavAlertBox
+          itemState: @state
+          setItemState: (newSt) => @setState newSt
+          model: item
+      else
+        favAlert = false
       relatedColorItems.push li
         key: item.id
         className: 'related-item',
           ItemEl
             imgSize: 'small'
             model: item
-            itemState: {}
+            onMouseOver: (e) => @setState buttonsFor: e.target.id
+          ItemButtons
+            setItemState: (newSt) => @setState newSt
+            itemState: @state
+            buttonsFor: @state.buttonsFor
+            model: item
+            initState: @props.initState
+            extraButtons: true
+            buttonTypes: ['fav', 'info']
+          infoBox
+          favAlert
 
     relatedColorsList = ul
       className: 'list',
