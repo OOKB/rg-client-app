@@ -24,6 +24,7 @@ module.exports = Router.extend
     'trade/pricelist/:category/:pgSize': 'pricelist'
     'trade/pricelist/:category/:pgSize(/:query)/p:page': 'pricelist'
     'trade/login': 'login'
+    'trade/account': 'account'
     'detail/:pattern/:id': 'detail'
     'f': -> @redirectTo('favs')
     'favs': 'favs'
@@ -94,6 +95,14 @@ module.exports = Router.extend
       return
     newSt =
       section: 'login'
+      trade: true
+    @setReactState newSt
+  account: ->
+    unless app.me.loggedIn
+      @redirectTo 'trade/login'
+      return
+    newSt =
+      section: 'account'
       trade: true
     @setReactState newSt
 
