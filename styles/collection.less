@@ -275,7 +275,7 @@ ul.list li, ul.list li * {
 }
 
 #collection-passementerie ul.list li.list-item.open {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid @rg-light-gray;
 }
 
 #collection-passementerie #related-colors {
@@ -294,29 +294,30 @@ ul.list li, ul.list li * {
   -o-box-shadow: none;
   box-shadow: none;
   /**/
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid @rg-light-gray;
   padding-bottom: 11px;
 }
 
 #collection-passementerie #related-colors button.close {
   position: static;
-  background-position: left center;
+  padding: 0;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle
+}
+
+#collection-passementerie #related-colors button.btn {
+  position: static;
   line-height: 11px;
   font-size: 12px;
   padding: 0;
-  width: auto;
-  padding-left: 20px;
   margin-top: 25px;
   margin-bottom: 10px;
-  text-indent: 0;
-  overflow: visible;
-  text-decoration: underline;
-  -webkit-text-decoration-color: @rg-gray;
-  -moz-text-decoration-color: @rg-gray;
-  -ms-text-decoration-color: @rg-gray;
-  -o-text-decoration-color: @rg-gray;
-  text-decoration-color: @rg-gray;
+  border-bottom: 1px solid @rg-gray;
 }
+
 
 #collection-passementerie #related-colors > ul.list {
   margin: 0;
@@ -492,7 +493,7 @@ ul.collection-controls li.collection-title button {
 
 .filter-list fieldset {
   color: @rg-gray;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid @rg-light-gray;
   font-size: 11px;
   letter-spacing: 1px;
   padding: 15px 0;
