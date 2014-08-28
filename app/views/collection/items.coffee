@@ -5,6 +5,7 @@ SubCollection = require 'ampersand-subcollection'
 
 Pager = require '../el/pager'
 Info = require '../el/info'
+ItemEl = require './item_el'
 ItemButtons = require '../el/item_buttons'
 FavAlertBox = require '../el/fav_alert'
 Related = require '../detail/related'
@@ -73,31 +74,30 @@ module.exports = React.createClass
     unless @props.collection.length
       return @noResultsEl()
 
+    isOnTrim = @props.isOnTrim
+    imgSize = @imgSize()
     list = []
-    if @props.threeUp and @props.collection.models[1]
-      buttonsFor = @props.collection.models[1].id
+    if @props.threeUp
+      buttonsFor = @props.threeUp
     else
       buttonsFor = @state.buttonsFor
-    imgSize = @imgSize()
+
     # List
     @props.collection.forEach (item, index) =>
-      buttons = ItemButtons
-        setItemState: (newSt) => @setState newSt
-        itemState: @state
-        buttonsFor: buttonsFor
+      itemProps =
+        key: item.id
         model: item
-        initState: @props.initState
-        extraButtons: @props.extraButtons
-
-      # Item Image
-      itemImg = img
-        id: item.id
-        width: item._file[imgSize].width
-        height: item._file[imgSize].height
-        src: item._file[imgSize].path,
         onMouseOver: @setButtonsFor
+        imgSize: imgSize
+      if @props.threeUp
+        if index == 0
+          itemProps.onClick = @setPgPre
+        else if index == 2
+          itemProps.onClick = @setPgNext
+
       relatedColors = false
       itemClassName = 'list-item'
+
       if @state.favBoxView == item.id
         favAlert = FavAlertBox
           itemState: @state
@@ -105,62 +105,45 @@ module.exports = React.createClass
           model: item
       else
         favAlert = false
+
       if @state.infoBoxView and buttonsFor == item.id
         infoBox = Info model: item
       else
         infoBox = false
-      isOnTrim = 'passementerie' == @props.initState.category
-      if @props.threeUp or isOnTrim
-        if buttonsFor == item.id
-          unless isOnTrim
-            detailLink = true
-          if @state.colorBoxView
-            relatedProps =
-              id: item.id
-              section: @props.initState.section
-              patternNumber: item.patternNumber
-              setItemState: (newSt) => @setState newSt
-              collection: new SubCollection app.items.collection,
-                where:
-                  patternNumber: item.patternNumber
-                  hasImage: item.hasImage
-                filter: (model) -> model.id != item.id
-              setParentState: (newSt) =>
-                @setState newSt
-              setContainerState: () -> return
-            if 'passementerie' == @props.initState.category
-              relatedColors = RelatedTrim relatedProps
-              itemClassName += ' open'
-            else
-              relatedColors = Related relatedProps
-      else if item.hasDetail
-        detailLink = true
-      else
-        detailLink = false
 
-      if detailLink
-        itemEl = a
-          href: item.detail,
-            itemImg
-      else
-        if @props.initState.pgSize == 3
-          if index == 0
-            onClick = @setPgPre
-          else if index == 2
-            onClick = @setPgNext
-        else
-          onClick = undefined
-        itemEl = a
-          onClick: onClick
-          role: 'button',
-            itemImg
+      if @props.threeUp or isOnTrim
+        if buttonsFor == item.id and @state.colorBoxView
+          relatedProps =
+            id: item.id
+            section: @props.initState.section
+            patternNumber: item.patternNumber
+            setItemState: (newSt) => @setState newSt
+            collection: new SubCollection app.items.collection,
+              where:
+                patternNumber: item.patternNumber
+                hasImage: item.hasImage
+              filter: (model) -> model.id != item.id
+            setParentState: (newSt) =>
+              @setState newSt
+            setContainerState: () -> return
+          if isOnTrim
+            relatedColors = RelatedTrim relatedProps
+            itemClassName += ' open'
+          else
+            relatedColors = Related relatedProps
 
       list.push li
         className: itemClassName
         key: item.id,
           # Item
-          itemEl
-          buttons
+          ItemEl itemProps
+          ItemButtons
+            setItemState: (newSt) => @setState newSt
+            itemState: @state
+            buttonsFor: buttonsFor
+            model: item
+            initState: @props.initState
+            extraButtons: @props.extraButtons
           relatedColors
           infoBox
           favAlert

@@ -67,7 +67,8 @@ module.exports = React.createClass
       return @el favThisButton
 
     # Possible buttons to display.
-    buttonTypes = ['color', 'fav', 'info']
+    buttonTypes = @props.buttonTypes or ['color', 'fav', 'info']
+
     # Array to pass to @el()
     buttons = []
     buttonTypes.forEach (buttonType) =>
