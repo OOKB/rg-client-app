@@ -24,6 +24,7 @@ module.exports = Router.extend
     'trade/pricelist/:category/:pgSize': 'pricelist'
     'trade/pricelist/:category/:pgSize(/:query)/p:page': 'pricelist'
     'trade/login': 'login'
+    'trade/account': 'account'
     'detail/:pattern/:id': 'detail'
     'f': -> @redirectTo('favs')
     'favs': 'favs'
@@ -94,6 +95,14 @@ module.exports = Router.extend
       return
     newSt =
       section: 'login'
+      trade: true
+    @setReactState newSt
+  account: ->
+    unless app.me.loggedIn
+      @redirectTo 'trade/login'
+      return
+    newSt =
+      section: 'account'
       trade: true
     @setReactState newSt
 
@@ -193,7 +202,7 @@ module.exports = Router.extend
     if 'collection' == s.section
       newState.hasImage = true
       newState.colorSorted = true
-      pgSizes = [3, 21, 42, 84]
+      pgSizes = [3, 12, 21, 42, 84]
       if 'passementerie' == newState.category or newState.searchTxt
         pgSizes.shift()
     else if 'pricelist' == s.section

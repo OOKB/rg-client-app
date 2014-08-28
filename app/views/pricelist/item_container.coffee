@@ -3,6 +3,7 @@ React = require 'react'
 
 SearchBar = require './item_search'
 ItemTable = require './item_table'
+Pager = require './pager'
 
 module.exports = React.createClass
   # The model prototype.
@@ -43,3 +44,4 @@ module.exports = React.createClass
             ItemTable
               collection: @props.collection
               filter: @props.initState
+        Pager initState: @props.initState, hideSizes: true
