@@ -15,7 +15,7 @@ module.exports = React.createClass
     @setState forceInfo: !@state.forceInfo
 
   render: ->
-    if @props.windowWidth > 767 or @state.forceInfo
+    if @props.windowWidth > 991 or @state.forceInfo
       itemInfo = div
         className: 'item-detail-content',
           Info @props
