@@ -11,6 +11,7 @@ FilterableProductTable = require './views/pricelist/item_container'
 ItemDetail = require './views/detail/container'
 Collection = require './views/collection/container'
 Favs = require './views/favs'
+Login = require './views/trade/login'
 module.exports = React.createClass
 
   router: new Router()
@@ -70,6 +71,7 @@ module.exports = React.createClass
       when 'collection' then Collection(props)
       when 'detail' then ItemDetail(props)
       when 'favs' then Favs(props)
+      when 'login' then Login(props)
       else p 'Hello there! Unfortunately our application is broken... ' + section
     footer = Footer props
 
