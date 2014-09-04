@@ -2,9 +2,36 @@
 /* ---------->>> SEARCH <<<-----------*/
 /* -----------------------------------*/
 
+/** = Search form in Nav **/
+header nav > ul > li > .fa-search {
+  display: block;
+  padding: 7px 0;
+  font-size: .875em;
+  .uppercase;
+
+  background: transparent url(@search) center center no-repeat;
+  background-size: 11px 11px;
+  .hide-text;
+}
+
+li.search-holder .form-inline,
+li.search-holder .form-inline .form-group,
+li.search-holder .form-inline .form-group input {
+  width: 100%;
+}
+
+li.search-holder .form-inline .form-group input {
+  box-sizing: border-box;
+  margin-top: 3px;
+  height: 25px;
+  text-align: center;
+}
+
+/* = Actual Search Page */
+
 .search { margin-bottom: 20px; }
 
-/** 4 column styles (search and favorites and projects ) **/
+/** = 4 column styles (search and favorites and projects ) **/
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: @screen-md-min) {
   .search ul.list > li,
