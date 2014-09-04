@@ -11,7 +11,7 @@ module.exports = Router.extend
   itemsFilter: itemsFilter
   routes:
     '': -> @redirectTo('cl')
-    'cl': -> @redirectTo('collection/'+defaultCategory+'/3')
+    'cl': -> @redirectTo('collection/'+defaultCategory+'/3/p1')
     'collection': 'collection'
     'collection/:category': 'collection'
     'collection/:category/:pgSize': 'collection'
@@ -25,17 +25,39 @@ module.exports = Router.extend
     'trade/pricelist/:category/:pgSize(/:query)/p:page': 'pricelist'
     'trade/login': 'login'
     'trade/account': 'account'
+    'trade/summer': -> @redirectTo('trade/summer/'+defaultCategory+'/3/p1')
+    'trade/summer/:category/:pgSize(/:query)/p:page': 'summer'
     'detail/:pattern/:id': 'detail'
     'f': -> @redirectTo('favs')
     'favs': 'favs'
     'favs/*items': 'favs'
-    '*path': -> @redirectTo('cl')
+    '*path': ->
+      console.log 'redirect '+@history.fragment
+      @redirectTo('cl')
+
+  summer: (category, pgSize, searchTxt, pageIndex) ->
+    document.title = pageTitle + ' - Summer Sale'
+    #console.log 'collection'
+    S = _.extend @getQuery(),
+      section: 'summer'
+      trade: true
+      reqAuth: true
+      category: category
+      pgSize: pgSize
+      searchTxt: searchTxt
+      pageIndex: pageIndex
+    #console.log S
+    S = @prepNewState S
+
+    @setReactState S
 
   collection: (category, pgSize, searchTxt, pageIndex) ->
     document.title = pageTitle + ' - Collections'
     #console.log 'collection'
     S = _.extend @getQuery(),
       section: 'collection'
+      trade: false
+      reqAuth: false
       category: category
       pgSize: pgSize
       searchTxt: searchTxt
@@ -64,6 +86,8 @@ module.exports = Router.extend
   detail: (patternNumber, color_id) ->
     #console.log 'detail'
     newSt =
+      trade: false
+      reqAuth: false
       section: 'detail'
       patternNumber: patternNumber
       hasDetail: true
@@ -80,6 +104,8 @@ module.exports = Router.extend
         @redirectTo('favs/'+favStr)
         return
     newSt = @prepNewState
+      trade: false
+      reqAuth: false
       section: 'favs'
       category: null
       ids: favStr.split('/')
@@ -93,17 +119,18 @@ module.exports = Router.extend
     if app.me.loggedIn
       @redirectTo 'trade/account'
       return
-    newSt =
-      section: 'login'
-      trade: true
+    newSt = @resetState()
+    newSt.section = 'login'
+    newSt.trade = true
     @setReactState newSt
+
   account: ->
     unless app.me.loggedIn
       @redirectTo 'trade/login'
       return
-    newSt =
-      section: 'account'
-      trade: true
+    newSt = @resetState()
+    newSt.section = 'account'
+    newSt.trade = true
     @setReactState newSt
 
   isItemNumber: (possibleId) ->
@@ -199,10 +226,12 @@ module.exports = Router.extend
 
     # Default to HIDE color_id 00.
     newState.omit00 = true
-    if 'collection' == s.section
+    if 'collection' == s.section or 'summer' == s.section
       newState.hasImage = true
       newState.colorSorted = true
       pgSizes = [3, 12, 24, 48, 96]
+      if 'summer' == s.section
+        newState.summerSale = true
       if 'passementerie' == newState.category or newState.searchTxt
         pgSizes.shift()
     else if 'pricelist' == s.section
@@ -229,6 +258,13 @@ module.exports = Router.extend
       @updateURL s, newState
     #console.log newState
     return newState
+
+  resetState: ->
+    searchTxt: ''
+    id: null
+    trade: false
+    reqAuth: false
+    patternNumber: null
 
   searchTxtParse: (searchTxt) ->
     if typeof searchTxt == 'string'

@@ -30,6 +30,7 @@ module.exports = AmpersandModel.extend
     repeat: 'string'
     related: 'array'
     ruler: ['string', true]
+    summerSale: ['boolean', true, false]
 
   parse: (item) ->
     # Set ID.

@@ -48,7 +48,12 @@ module.exports = React.createClass
   setRouterState: (newState) ->
     if newState
       section = newState.section or @state.section
-      if 'pricelist' == section or 'collection' == section
+      searchableSection = _.contains ['pricelist', 'collection', 'summer'], section
+      if newState.searchTxt and not searchableSection
+        searchableSection = true
+        newState.section = 'collection'
+        console.log 'Going to search pg.'
+      if searchableSection
         #console.log @state
         s = @router.prepNewState _.defaults(newState, @state)
         redirected = @router.updateURL @state, s
@@ -80,7 +85,7 @@ module.exports = React.createClass
     headerEl = Header props
     component = switch section
       when 'pricelist' then FilterableProductTable(props)
-      when 'collection' then Collection(props)
+      when 'collection', 'summer' then Collection(props)
       when 'detail' then ItemDetail(props)
       when 'favs' then Favs(props)
       when 'login' then Login(props)
