@@ -112,6 +112,7 @@ module.exports = Router.extend
       reqAuth: false
       section: 'favs'
       category: null
+      summerSale: null
       ids: favStr.split('/')
     if newSt.ids and newSt.ids.length and app.me.favStr == newSt.ids.join('/')
       newSt.myfavs = true
@@ -187,6 +188,7 @@ module.exports = Router.extend
     newState.trade = s.trade
     newState.reqAuth = s.reqAuth
     newState.searchTxt = @searchTxtParse s.searchTxt
+    newState.summerSale = s.summerSale
     newState.category = switch s.category
       when null then null
       when 't' then 'textile'
