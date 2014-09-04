@@ -92,6 +92,7 @@ module.exports = Router.extend
       patternNumber: patternNumber
       hasDetail: true
       color_id: color_id
+      summerSale: null
     itemsFilter app.items, newSt
     item = app.items.get(newSt.patternNumber+'-'+newSt.color_id)
     document.title = pageTitle + ' - ' + item.name + ' in ' + item.color

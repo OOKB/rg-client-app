@@ -42,10 +42,11 @@ module.exports = (items, filters) ->
     config.where.patternNumber = filters.patternNumber
     setRemainingFilters = true
 
-  if filters.summerSale
-    config.where.summerSale = true
-  else
-    config.where.summerSale = false
+  unless filters.summerSale == null
+    if filters.summerSale
+      config.where.summerSale = true
+    else
+      config.where.summerSale = false
 
   config.filters = []
   if filters.searchTxt
