@@ -11,7 +11,7 @@ module.exports = React.createClass
 
   render: ->
     div
-      className: 'form-group col-sm-6',
+      className: 'form-group',
         label
           className: 'sr-only'
           htmlFor: @props.id,

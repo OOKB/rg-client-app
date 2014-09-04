@@ -21,7 +21,7 @@ module.exports = React.createClass
 
   render: ->
     div
-      className: 'trade-login text-center col-sm-8 col-sm-offset-2',
+      className: 'trade-login text-center',
         div
           className: 'page-content',
             p
@@ -37,22 +37,22 @@ module.exports = React.createClass
           role: 'form',
             FieldTxt
               fieldType: 'text'
-              label: 'Email or Account Number'
+              label: 'Account Number'
               id: 'email'
               ref: 'username'
-              placeholder: 'Email or Account Number'
+              placeholder: 'Account Number'
               onChange: @handleEmail
               value: app.me.username
             FieldTxt
               fieldType: 'password'
-              label: 'Password or Zip Code'
+              label: 'Zip Code'
               id: 'password'
-              placeholder: 'Password'
+              placeholder: 'Zip Code'
               onChange: @handlePassword
               value: app.me.password
               ref: 'password'
             button
               onClick: @submitLogin
-              className: 'btn btn-default uppercase'
+              className: 'btn btn-default'
               type: 'submit',
                 'Log In'
