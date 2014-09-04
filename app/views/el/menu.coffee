@@ -67,6 +67,11 @@ module.exports = React.createClass
 
   # Menu li element.
   createMenuEl: (nav) ->
+    unless nav.onClick
+      nav.onClick = =>
+        @setState
+          tradeIsActive: false
+          searchIsActive: false
     section = @props.initState and @props.initState.section
     if nav.id == 'trade' then nav = @tradeData()
     if nav.children and _.find(nav.children, id: section)

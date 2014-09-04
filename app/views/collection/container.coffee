@@ -1,4 +1,5 @@
-React = require 'react'
+React = require 'react/addons'
+cx = React.addons.classSet
 {p, div, ul, li, button} = require 'reactionary'
 _ = require 'underscore'
 
@@ -22,14 +23,15 @@ module.exports = React.createClass
       content = Standard props
       topTxt = 'Browse the collection by category below.'
     if @props.initState.section == 'summer'
-      topTxt = p
-        className: 'summer-desc',
-          'Browse Summer Sale items from the collections below.
+      topTxt = 'Browse Summer Sale items from the collections below.
           Limited stock, contact representative for details.
           All sales are final and fabric is sold as is.'
+    classes = cx
+      collection: @props.initState.section == 'collection'
+      summer: @props.initState.section == 'summer'
     div
       id: 'container-collection'
-      className: 'collection',
+      className: classes,
         p
           key: 'intro'
           className: 'text-area',
