@@ -85,7 +85,8 @@
   });
 
   gulp.task('data', function() {
-    return r('http://r_g.cape.io/_view/pricelist/data.json').pipe(source('data.json')).pipe(gulp.dest('./app/models/'));
+    r('http://r_g.cape.io/_view/pricelist/data.json').pipe(source('data.json')).pipe(gulp.dest('./app/models/'));
+    return r('http://r_g.cape.io/_view/colors/data.json').pipe(source('pattern_colors.json')).pipe(gulp.dest('./app/models/'));
   });
 
   gulp.task('set_sha', function(cb) {
