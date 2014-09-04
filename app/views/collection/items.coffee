@@ -65,10 +65,17 @@ module.exports = React.createClass
 
   noResultsEl: ->
     txt1 = span className: 'category', @props.initState.category
-    txt2 = span className: 'search-txt', @props.initState.searchTxt
+    txt3 = span className: 'search-txt', @props.initState.searchTxt
+    if @props.initState.section == 'summer'
+      if @props.initState.searchTxt
+        txt2 = ' items match your summer sale search for '
+      else
+        txt2 = ' on summer sale'
+    else
+      txt2 = ' items match your search for '
     div
       className: 'search no-results',
-        p 'No ', txt1, ' items match your search for ', txt2, '.'
+        p 'No ', txt1, txt2, txt3, '.'
 
   render: ->
     unless @props.collection.length
