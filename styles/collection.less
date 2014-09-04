@@ -42,7 +42,8 @@ ul.collection-controls > li.collection-title button:hover {
   vertical-align: top;
 }
 
-.collection [class*="pg-size-"] > ul.list > li {
+.collection .pg-size-3 > ul.list > li,
+.collection .pg-vert > ul.list > li {
   background: @rg-background url(@loading) center center no-repeat;
   background-size: 50px 50px;
 }
@@ -138,7 +139,8 @@ ul.collection-controls > li.collection-title button:hover {
 }
 
 @media (max-width: @screen-xs-max) {
-  [class*="pg-size-"] {
+  .pg-size-3,
+  .pg-vert {
     margin-top: 30px;
   }
 }
@@ -194,57 +196,39 @@ ul.list li, ul.list li * {
 }
 
 /** # 3-column grid **/
-.pg-size-12 > ul.list,
-.pg-size-24 > ul.list,
-.pg-size-48 > ul.list,
-.pg-size-96 > ul.list {
+.pg-vert > ul.list {
   margin-bottom: 0px;
   text-align: left;
 }
 
-.pg-size-12 > ul.list > li,
-.pg-size-24 > ul.list > li,
-.pg-size-48 > ul.list > li,
-.pg-size-96 > ul.list > li {
+.pg-vert> ul.list > li {
   width: 50%;
   margin-bottom: 10px;
   padding: 0 5px;
   height: 150px;
 }
 
-.pg-size-12 > ul.list > li img,
-.pg-size-24 > ul.list > li img,
-.pg-size-48 > ul.list > li img,
-.pg-size-96 > ul.list > li img {
+.pg-vert > ul.list > li img {
   width: 100%;
   height: auto;
 }
 
 @media (min-width: @screen-sm-min) {
-  .pg-size-12 > ul.list > li,
-  .pg-size-24 > ul.list > li,
-  .pg-size-48 > ul.list > li,
-  .pg-size-96 > ul.list > li {
+  .pg-vert > ul.list > li {
     height: 200px;
   }
 }
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: @screen-md-min) {
-  .pg-size-12 > ul.list > li,
-  .pg-size-24 > ul.list > li,
-  .pg-size-48 > ul.list > li,
-  .pg-size-96 > ul.list > li {
+  .pg-vert > ul.list > li {
     width: 33.33333333333%;
   }
 }
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: @screen-lg-min) {
-  .pg-size-12 > ul.list > li,
-  .pg-size-24 > ul.list > li,
-  .pg-size-48 > ul.list > li,
-  .pg-size-96 > ul.list > li {
+  .pg-vert > ul.list > li {
     height: 250px;
   }
 }
@@ -647,7 +631,7 @@ ul.collection-controls li.collection-title button {
   top: 50%;
   left: 50%;
   margin: 0;
-  padding: 10px;
+  padding: 15px;
   z-index: 99;
   .dropshadow;
 }
@@ -656,9 +640,55 @@ ul.collection-controls li.collection-title button {
 #collection-row-leather ul.item-information {
   width: 240px;
   margin: 0 -120px;
+  overflow: auto;
+}
+
+/* = different textile item info heights */
+#collection-row-textile ul.item-information {
+  height: 122px;
+  margin-top: -61px;
+}
+
+#collection-row-textile ul.item-information.f-qty-1 {
+  height: 168px;
+  margin-top: -84px;
+}
+
+#collection-row-textile ul.item-information.f-qty-2 {
+  height: 214px;
+  margin-top: -107px;
+}
+
+#collection-row-textile ul.item-information.f-qty-3 {
+  height: 260px;
+  margin-top: -130px;
+}
+
+#collection-row-textile ul.item-information.f-qty-4 {
+  height: 306px;
+  margin-top: -153px;
+}
+
+/* = different leather item info heights */
+#collection-row-leather ul.item-information {
+  height: 122px;
+  margin-top: -61px;
+}
+#collection-row-leather ul.item-information.f-qty-1 {
+  height: 208px;
+  margin-top: -104px;
+}
+#collection-row-leather ul.item-information.f-qty-2 {
+  height: 254px;
+  margin-top: -127px;
+}
+#collection-row-leather ul.item-information.f-qty-3 {
   height: 300px;
   margin-top: -150px;
-  overflow: auto;
+}
+#collection-row-leather ul.item-information.f-qty-4 {
+  height: 346px;
+  margin-top: -173px;
 }
 
 #collection-passementerie ul.item-information,
