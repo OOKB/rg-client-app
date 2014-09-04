@@ -8,6 +8,20 @@ Search = require './search'
 
 module.exports = React.createClass
 
+  topTxt: ->
+    if @props.initState.section == 'summer'
+      return ul
+        className: 'summer-txt',
+          li 'Browse Summer Sale items from the collections below.'
+          li 'Limited stock, contact representative for details.'
+          li 'All sales are final and fabric is sold as is.'
+    else if @props.initState.searchTxt
+      return false
+    else
+      return p
+        className: 'text-area',
+          'Browse the collection by category below.'
+
   render: ->
     category = @props.initState.category
     isOnTrim = 'passementerie' == category
@@ -18,24 +32,14 @@ module.exports = React.createClass
 
     if @props.initState.searchTxt
       content = Search props
-      topTxt = false
     else
       content = Standard props
-      topTxt = 'Browse the collection by category below.'
-    if @props.initState.section == 'summer'
-      topTxt = '''
-               Browse Summer Sale items from the collections below.
-               Limited stock, contact representative for details.
-               All sales are final and fabric is sold as is.
-               '''
+
     classes = cx
       collection: true
       summer: @props.initState.section == 'summer'
     div
       id: 'container-collection'
       className: classes,
-        p
-          key: 'intro'
-          className: 'text-area',
-            topTxt
+        @topTxt()
         content
