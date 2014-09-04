@@ -1,5 +1,5 @@
 React = require 'react'
-{h3, p, span, ul, li} = require 'reactionary'
+{h3, p, span, ul, li, strong} = require 'reactionary'
 
 module.exports = React.createClass
 
@@ -83,11 +83,15 @@ module.exports = React.createClass
     if item.price
       fieldCount++
       charCount += 3
+      if item.summerSale
+        price = strong item.priceDisplay
+      else
+        price = item.priceDisplay
       h_lis.push li
         key: 'price'
         className: 'price',
           h3 'Price'
-          p item.priceDisplay
+          p price
 
     fieldsClass = 'item-information'
     fieldsClass += ' f-qty-'+fieldCount
