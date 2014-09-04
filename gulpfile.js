@@ -84,6 +84,10 @@
     gulp.watch('images/**', ['copy']);
   });
 
+  gulp.task('data', function() {
+    return r('http://r_g.cape.io/_view/pricelist/data.json').pipe(source('data.json')).pipe(gulp.dest('./app/models/'));
+  });
+
   gulp.task('set_sha', function(cb) {
     var r_ops;
     r_ops = {

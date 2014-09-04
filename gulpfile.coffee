@@ -67,6 +67,11 @@ gulp.task "default", ['compile', 'styles', 'templates', 'browser-sync', 'copy'],
   gulp.watch 'images/**', ['copy']
   return
 
+gulp.task 'data', ->
+  r('http://r_g.cape.io/_view/pricelist/data.json')
+    .pipe source('data.json')
+    .pipe gulp.dest('./app/models/')
+
 # - - - - prod - - - -
 
 gulp.task 'set_sha', (cb) ->
