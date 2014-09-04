@@ -77,7 +77,8 @@ ul.collection-controls > li.collection-title button:hover {
 }
 
 .item-icons button.item-favorite,
-.item-icons button.remove-item {
+.item-icons button.remove-item,
+.item-icons button.item-details {
   padding: 0;
   height: 23px;
   width: 23px;
@@ -92,6 +93,9 @@ ul.collection-controls > li.collection-title button:hover {
   background: @rg-background url(@remove-fav) center center no-repeat;
 }
 
+.item-icons button.item-details {
+  background: @rg-background url(@item-info) center center no-repeat;
+}
 
 .collection #related-colors {
   position: absolute;

@@ -23,9 +23,11 @@ module.exports = React.createClass
       content = Standard props
       topTxt = 'Browse the collection by category below.'
     if @props.initState.section == 'summer'
-      topTxt = 'Browse Summer Sale items from the collections below.
-          Limited stock, contact representative for details.
-          All sales are final and fabric is sold as is.'
+      topTxt = '''
+               Browse Summer Sale items from the collections below.
+               Limited stock, contact representative for details.
+               All sales are final and fabric is sold as is.
+               '''
     classes = cx
       collection: true
       summer: @props.initState.section == 'summer'
