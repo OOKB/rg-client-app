@@ -27,7 +27,7 @@ module.exports = React.createClass
           Limited stock, contact representative for details.
           All sales are final and fabric is sold as is.'
     classes = cx
-      collection: @props.initState.section == 'collection'
+      collection: true
       summer: @props.initState.section == 'summer'
     div
       id: 'container-collection'
