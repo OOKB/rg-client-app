@@ -70,7 +70,7 @@ module.exports = React.createClass
       if @props.initState.searchTxt
         txt2 = ' items match your summer sale search for '
       else
-        txt2 = ' on summer sale'
+        txt2 = ' items on summer sale'
     else
       txt2 = ' items match your search for '
     div

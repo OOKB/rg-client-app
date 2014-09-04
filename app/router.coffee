@@ -36,6 +36,9 @@ module.exports = Router.extend
       @redirectTo('cl')
 
   summer: (category, pgSize, searchTxt, pageIndex) ->
+    unless app.me.loggedIn
+      @redirectTo 'trade/login'
+      return
     document.title = pageTitle + ' - Summer Sale'
     #console.log 'collection'
     S = _.extend @getQuery(),
