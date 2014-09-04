@@ -5,7 +5,7 @@ module.exports = React.createClass
 
   render: ->
     div
-      className: 'trade-login text-center col-sm-8 col-sm-offset-2',
+      className: 'trade-login text-center',
         div
           className: 'page-content',
             p
