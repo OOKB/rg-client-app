@@ -21,6 +21,12 @@ module.exports = React.createClass
     else
       content = Standard props
       topTxt = 'Browse the collection by category below.'
+    if @props.initState.section == 'summer'
+      topTxt = p
+        className: 'summer-desc',
+          'Browse Summer Sale items from the collections below.
+          Limited stock, contact representative for details.
+          All sales are final and fabric is sold as is.'
     div
       id: 'container-collection'
       className: 'collection',
