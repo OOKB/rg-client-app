@@ -34,6 +34,24 @@
   margin: 0 0 0 10%;
 }
 
+@media (min-width: @screen-sm-min) {
+  .pricelist-header li.pageselect {
+    margin: 0 22% 0 0;
+  }
+  .pricelist-header li.pagecount {
+    margin: 0 0 0 22%;
+  }
+}
+
+@media (min-width: @screen-md-min) {
+  .pricelist-header li.pageselect {
+    margin: 0 33% 0 0;
+  }
+  .pricelist-header li.pagecount {
+    margin: 0 0 0 33%;
+  }
+}
+
 .pricelist-header .pager {
   border-top: 1px solid @rg-black;
   border-bottom: 1px solid @rg-black;
@@ -56,6 +74,7 @@ table tr td {
   border: 0;
   height: 14px;
   font-weight: normal;
+  text-align: left;
 }
 
 table tr th:first-child,
@@ -73,6 +92,7 @@ table thead {
   letter-spacing: 2px;
   font-size: 1em;
   font-variant: small-caps;
+  text-align: left;
 }
 
 table thead th {
@@ -84,11 +104,18 @@ table thead th {
 table .pattern th {
   border-top: 1px solid @rg-light-gray;
   padding-top: 16px;
+  text-align: left;
 }
 
 table .last th,
 table .last td {
   padding-bottom: 16px;
+}
+
+/* style links to details */
+tr.pattern a,
+tr.color a {
+  .link3;
 }
 
 /** Individual column widths to try and match PDF */
@@ -98,63 +125,40 @@ table .last td {
   overflow: visible;
 }
 
+table .pattern th.c-number,
 .c-number {
   text-align: right;
 }
 
 table tr th,
 table tr td {
-  padding: 4px 12px;
+  padding: 4px 10px;
 }
 
-.textile table .c-name    { width: 145px; }
+.textile table .c-name    { width: 155px; padding-right: 0; }
 .textile table .c-number  { width: 105px; }
 .textile table .c-color   { width: 140px; }
 .textile table .c-price   { width: 100px; }
 .textile table .c-content { width: 200px; }
 .textile table .c-repeat  { width: 140px; }
-.textile table .c-width   { width: 140px; }
+.textile table .c-width   { width: 130px; }
 
 /* passementerie table column widths */
 .passementerie table .c-number  { width: 100px; }
-.passementerie table .c-color   { width: 120px; }
+.passementerie table .c-color   { width: 150px; }
 .passementerie table .c-price   { width: 100px; }
 .passementerie table .c-content { width: auto; }
 .passementerie table .c-repeat  { width: 140px; }
-.passementerie table .c-width    { width: 140px; }
+.passementerie table .c-width   { width: 140px; }
 
 /* leather table column widths */
-.leather table .c-name    { width: 90px; }
+.leather table .c-name    { width: 85px; padding-right: 0;}
 .leather table .c-number  { width: 110px; }
-.leather table .c-color   { width: 130px; }
+.leather table .c-color   { width: 140px; }
 .leather table .c-price   { width: 100px; }
-.leather table .c-content { width: 230px; }
+.leather table .c-content { width: 230px; padding-left: 0; }
 .leather table .c-size    { width: 155px; }
-.leather table .c-thick   { width: 155px; }
-
-@media (min-width: @screen-sm-min) {
-  .pricelist-header li.pageselect {
-    margin: 0 22% 0 0;
-  }
-  .pricelist-header li.pagecount {
-    margin: 0 0 0 22%;
-  }
-}
-
-@media (min-width: @screen-md-min) {
-  .pricelist-header li.pageselect {
-    margin: 0 33% 0 0;
-  }
-  .pricelist-header li.pagecount {
-    margin: 0 0 0 33%;
-  }
-}
-
-/* style links to details */
-tr.pattern a,
-tr.color a {
-  .link3;
-}
+.leather table .c-thick   { width: 150px; }
 
 /** Some ipad/mobile styles for making pricelist viewing easier without removing columns/content **/
 /** It also provides a cool scrolling table feature **/
