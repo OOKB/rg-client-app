@@ -33,7 +33,6 @@ module.exports = React.createClass
     if @state.farView
       imgPath = item._file[imgSize].path_far
       imgClass = 'img-container pattern'
-      imgDiv = ''
     else
       if @state.isRelated and !@state.loadedLarge and !@state.loadedXlarge
         mainImgSize = 'small'
@@ -41,10 +40,10 @@ module.exports = React.createClass
         mainImgSize = imgSize
       imgPath = item._file[mainImgSize].path
       imgClass = 'img-container large'
-      imgDiv = img
-        className: 'img-large'
-        alt: item.name
-        src: imgPath
+    imgDiv = img
+      className: imgClass
+      alt: item.name
+      src: imgPath
 
     divs = []
 
@@ -68,9 +67,12 @@ module.exports = React.createClass
       divs.push div
         key: 'far-button'
         className: 'toggle-far hidden-xs',
-          button className: 'uppercase',
-            span className: 'pattern',
-              'View Pattern'
+          button
+            onClick: => @setState farView: !@state.farView
+            className: 'uppercase',
+              span
+                className: 'pattern',
+                  'View Pattern'
 
     # Related colors.
     if @state.colorBoxView
