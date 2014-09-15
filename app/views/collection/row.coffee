@@ -184,8 +184,9 @@ module.exports = React.createClass
 
     bottomPager = false
     activePager = @props.initState.totalPages > 1
+    noItems = @props.collection.length == 0
     # Issue #132. Don't show filter header items.
-    if @props.active and @props.initState.section == 'summer' and not activePager
+    if @props.active and @props.initState.section == 'summer' and noItems
       headerList.push titleEl
       itemList = Items @props
     else if @props.active
