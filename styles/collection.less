@@ -86,15 +86,35 @@ ul.collection-controls > li.collection-title button:hover {
 }
 
 .item-icons button.item-favorite {
-  background: @rg-background url(@add-fav) center center no-repeat;
+  background: @rg-background url(@add-fav-sm) -3px center no-repeat;
 }
 
 .item-icons button.remove-item {
-  background: @rg-background url(@remove-fav) center center no-repeat;
+  background: @rg-background url(@remove-fav-sm) -3px center no-repeat;
 }
 
 .item-icons button.item-details {
-  background: @rg-background url(@item-info) center center no-repeat;
+  background: @rg-background url(@item-info) -3px center no-repeat;
+}
+
+.item-icons button.item-favorite:hover,
+.item-icons button.remove-item:hover,
+.item-icons button.item-favorite:focus,
+.item-icons button.remove-item:focus,
+.item-icons button.item-favorite:active,
+.item-icons button.remove-item:active,
+.item-icons button.item-details:hover,
+.item-icons button.item-details:active,
+.item-icons button.item-details:focus,
+.item-icons button.item-details.active {
+  background-color: @rg-gold;
+  background-position-x: -32px;
+}
+
+.item-icons button.item-favorite:active,
+.item-icons button.remove-item:active,
+.item-icons button.item-details:active {
+  background-color: @rg-dark-gold;
 }
 
 .collection #related-colors {
