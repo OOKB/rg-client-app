@@ -183,8 +183,12 @@ module.exports = React.createClass
               @props.label
 
     bottomPager = false
-    if @props.active
-      activePager = @props.initState.totalPages > 1
+    activePager = @props.initState.totalPages > 1
+    # Issue #132. Don't show filter header items.
+    if @props.active and @props.initState.section == 'summer' and not activePager
+      headerList.push titleEl
+      itemList = Items @props
+    else if @props.active
       itemList = Items @props
       if activePager
         headerList.push Pager _.merge(@props.initState, {el: 'pre', key: 'pre'})
