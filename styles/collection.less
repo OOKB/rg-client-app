@@ -1,6 +1,6 @@
-/* --------------------------------------------*/
-/* ---------->>> Collection View <<<-----------*/
-/* --------------------------------------------*/
+/* --------------------------------------------------------------*/
+/* ---------->>> collection.less - Collection View <<<-----------*/
+/* --------------------------------------------------------------*/
 
 #container-collection {
   border-bottom: 1px solid @rg-black;
@@ -340,7 +340,7 @@ ul.list li, ul.list li * {
   padding-bottom: 11px;
 }
 
-#collection-passementerie #related-colors button.close {
+#collection-passementerie #related-colors > button.close {
   position: static;
   padding: 0;
   margin-top: 25px;
@@ -350,7 +350,7 @@ ul.list li, ul.list li * {
   vertical-align: middle
 }
 
-#collection-passementerie #related-colors button.btn {
+#collection-passementerie #related-colors > button.btn {
   position: static;
   line-height: 11px;
   font-size: 12px;
@@ -746,20 +746,63 @@ ul.collection-controls li.collection-title button {
 
 #collection-passementerie ul.item-information,
 #collection-row-passementerie ul.item-information {
-  width: 600px;
-  margin-left: -300px;
+  width: 300px;
+  margin-left: -150px;
   height: 60px;
   margin-top: -30px;
+}
+
+#collection-passementerie ul.item-information.f-qty-1,
+#collection-row-passementerie ul.item-information.f-qty-1 {
+  width: 400px;
+  margin-left: -200px;
+}
+
+#collection-passementerie ul.item-information.f-qty-2,
+#collection-row-passementerie ul.item-information.f-qty-2 {
+  width: 500px;
+  margin-left: -250px;
+}
+
+#collection-passementerie ul.item-information.f-qty-3,
+#collection-row-passementerie ul.item-information.f-qty-3 {
+  width: 600px;
+  margin-left: -300px;
+}
+
+#collection-passementerie ul.item-information.f-qty-4,
+#collection-row-passementerie ul.item-information.f-qty-4 {
+  width: 700px;
+  margin-left: -350px;
 }
 
 #collection-passementerie ul.item-information > li,
 #collection-row-passementerie ul.item-information > li {
   display: inline-block;
   margin: 0;
-  min-width: calc(100% / 6);
-  max-width: 25%;
+  width: calc(100% / 2);
   vertical-align: middle;
   padding: 0;
+}
+
+#collection-passementerie ul.item-information.f-qty-1 > li,
+#collection-row-passementerie ul.item-information.f-qty-1 > li {
+  width: calc(100% / 3);
+}
+
+#collection-passementerie ul.item-information.f-qty-2 > li,
+#collection-row-passementerie ul.item-information.f-qty-2 > li {
+  width: calc(100% / 4);
+}
+
+#collection-passementerie ul.item-information.f-qty-3 > li,
+#collection-row-passementerie ul.item-information.f-qty-3 > li {
+  width: calc(100% / 5);
+}
+
+#collection-passementerie ul.item-information.f-qty-4 > li,
+#collection-row-passementerie ul.item-information.f-qty-4 > li {
+  width: calc(100% / 6);
 }
 
 #container-collection ul.item-information > li {
