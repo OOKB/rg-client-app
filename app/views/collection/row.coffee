@@ -193,7 +193,8 @@ module.exports = React.createClass
       if activePager
         headerList.push Pager _.merge(@props.initState, {el: 'pre', key: 'pre'})
       headerList.push Pager _.merge(@props.initState, {el: 'count', key: 'count'})
-      headerList.push Pager _.merge(@props.initState, {el: 'sizes', key: 'sizes'})
+      unless @props.threeUp
+        headerList.push Pager _.merge(@props.initState, {el: 'sizes', key: 'sizes'})
       headerList.push @filters()
       headerList.push titleEl
       if @props.initState.pgSizes[0] == 3
