@@ -80,7 +80,7 @@ module.exports = React.createClass
           h3 'Approx Thickness'
           p item.approx_thick
 
-    if item.price
+    if app.me.loggedIn and item.price
       fieldCount++
       charCount += 3
       if item.summerSale

@@ -95,8 +95,12 @@ module.exports = AmpersandModel.extend
 
     priceDisplay:
       deps: ['price']
+      cache: false
       fn: ->
-        '$'+@price
+        if app.me.loggedIn
+          '$'+@price
+        else
+          'n/a'
 
     rulerPath:
       deps: ['ruler']
