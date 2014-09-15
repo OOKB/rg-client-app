@@ -45,6 +45,7 @@ module.exports = (items, filters) ->
   unless filters.summerSale == null
     if filters.summerSale
       config.where.summerSale = true
+      setRemainingFilters = true
     else
       config.where.summerSale = false
 
