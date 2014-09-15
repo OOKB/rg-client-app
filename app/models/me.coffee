@@ -32,6 +32,7 @@ module.exports = AmpersandModel.extend
     state: 'string'
     zip: 'string'
     username: 'string'
+    failedLogins: ['number', true, 0]
     #loggedIn: ['bool', true, false]
 
   derived:
@@ -65,7 +66,10 @@ module.exports = AmpersandModel.extend
         @set(resp)
         @trigger 'sync', @, resp
       else
-        console.log 'error logging in'
+        failed = @failedLogins+1
+        @set 'failedLogins', failed
+        @trigger 'change:failedLogins', @, failed
+        console.log 'Failed login number '+failed
 
   addFav: (id) ->
     favs = @get('favs')

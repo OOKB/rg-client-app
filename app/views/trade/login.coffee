@@ -2,8 +2,11 @@ React = require 'react'
 {div, p, a, form, button} = require 'reactionary'
 
 FieldTxt = require '../el/form_text'
+Failed = require './login_fail'
 
 module.exports = React.createClass
+  getInitialState: ->
+    showFailed: false
 
   submitLogin: (e) ->
     if e.preventDefault
@@ -12,6 +15,9 @@ module.exports = React.createClass
     app.me.username = @refs.username.getDOMNode().querySelector('input').value
     password = @refs.password.getDOMNode().querySelector('input').value
     app.me.login(password)
+    if @state.showFailed
+      @setState showFailed: false
+    return
 
   handleEmail: (e) ->
     app.me.username = e.target.value
@@ -19,7 +25,20 @@ module.exports = React.createClass
   handlePassword: (e) ->
     app.me.password = e.target.value
 
+  showFailure: ->
+    @setState showFailed: true
+
+  componentDidMount: ->
+    app.me.on 'change:failedLogins', @showFailure
+
+  componentWillUnmount: ->
+    app.me.off 'change:failedLogins', @showFailure
+
   render: ->
+    if @state.showFailed
+      failure = Failed onClick: => @setState showFailed: false
+    else
+      failure = false
     div
       className: 'trade-login text-center',
         div
@@ -56,3 +75,4 @@ module.exports = React.createClass
               className: 'btn btn-default'
               type: 'submit',
                 'Log In'
+        failure
