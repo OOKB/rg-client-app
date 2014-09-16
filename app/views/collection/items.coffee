@@ -47,7 +47,7 @@ module.exports = React.createClass
     if @props.threeUp == false or @props.initState.category == 'passementerie'
       return 'small'
     ww = @state.windowWidth
-    if ww < 1280 or @props.initState.pgSize == 500
+    if ww < 1090 or @props.initState.pgSize == 500
       return 'small'
     else
       return 'large'
