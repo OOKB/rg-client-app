@@ -117,6 +117,36 @@ module.exports = AmpersandModel.extend
       deps: ['related']
       fn: ->
         if @related.length then true else false
+
+    splitContents:
+      deps: ['contents']
+      fn: ->
+        lines = []
+        newLine = true
+        # Split on spaces
+        arr = @contents.split(' ')
+        last = arr.length - 1
+        line = ''
+        arr.forEach (word, i) ->
+          if !isNaN(word.substr(0, 1)) or word == 'Total'
+            if line
+              if word == '1/2%'
+                line += ' ' + word
+              else
+                lines.push line+'<br />'
+                line = word
+            else
+              line = word
+          else if _.contains word, ':'
+            section = word.split(':')
+            lines.push line+' '+section[0]+':<br />'
+            line = section[1] or ''
+          else
+            line += ' ' + word
+          if last == i
+            lines.push line
+        return lines.join('')
+
     splitRepeat:
       deps: ['repeat']
       fn: ->

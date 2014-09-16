@@ -39,8 +39,9 @@ module.exports = React.createClass
     tds.push td
       key: 'content'
       className: 'c-content'
-      rowSpan: @props.rowSpan,
-        item.contents
+      rowSpan: @props.rowSpan
+      dangerouslySetInnerHTML:
+        __html: item.splitContents
     # Hide repeat for leather.
     if @props.filter.category == 'leather'
       tds.push td
