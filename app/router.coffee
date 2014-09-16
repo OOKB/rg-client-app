@@ -25,7 +25,8 @@ module.exports = Router.extend
     'trade/pricelist/:category/:pgSize(/:query)/p:page': 'pricelist'
     'trade/login': 'login'
     'trade/account': 'account'
-    'trade/summer': -> @redirectTo('trade/summer/'+defaultCategory+'/3/p1')
+    'trade/summer': 'summer'
+    'trade/summer/:category': 'summer'
     'trade/summer/:category/:pgSize(/:query)/p:page': 'summer'
     'detail/:pattern/:id': 'detail'
     'f': -> @redirectTo('favs')

@@ -14,7 +14,7 @@ module.exports = React.createClass
     href: '#',#'/about',
       id: 'collection'
       title: 'The Collection'
-      href: '#collection/textile/3/p1',
+      href: '#collection',
         id: 'contact'
         title: 'Contact Us'
         href: '#',
