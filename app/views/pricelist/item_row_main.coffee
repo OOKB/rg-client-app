@@ -56,8 +56,9 @@ module.exports = React.createClass
     else
       tds.push td
         key: 'repeat'
-        className: 'c-repeat',
-          item.repeat
+        className: 'c-repeat'
+        dangerouslySetInnerHTML:
+          __html: item.splitRepeat
       tds.push td
         key: 'width'
         className: 'c-width',

@@ -117,3 +117,13 @@ module.exports = AmpersandModel.extend
       deps: ['related']
       fn: ->
         if @related.length then true else false
+    splitRepeat:
+      deps: ['repeat']
+      fn: ->
+        r = @repeat
+        if _.contains r, ' V'
+          r.replace ' V', '<br />V'
+        else if _.contains r, ' H'
+          r.replace ' H', '<br />H'
+        else
+          r
