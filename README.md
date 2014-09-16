@@ -26,3 +26,8 @@ If you haven't already, install gulp globally `npm i gulp -g`. When installing g
     git pull
     npm i
     gulp
+
+## Update the prod site
+
+    git pull
+    gulp prod
