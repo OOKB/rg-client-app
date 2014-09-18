@@ -56,7 +56,7 @@ module.exports = React.createClass
       if searchableSection
         #console.log @state
         s = @router.prepNewState _.defaults(newState, @state)
-        redirected = @router.updateURL @state, s
+        #redirected = @router.updateURL @state, s
         # Handle in-app state change options.
         if s.searchTxt
           if s.searchTxt != @state.searchTxt
@@ -69,6 +69,10 @@ module.exports = React.createClass
       else
         s = newState
       @setState s
+
+  componentDidUpdate: (prevProps, prevState) ->
+    @router.updateURL prevState, @state
+    return
 
   render: ->
     section = null

@@ -11,7 +11,7 @@ module.exports = Router.extend
   itemsFilter: itemsFilter
   routes:
     '': -> @redirectTo('cl')
-    'cl': -> @redirectTo('collection/'+defaultCategory+'/3/p1')
+    'cl': -> @redirectTo('collection')
     'collection': 'collection'
     'collection/:category': 'collection'
     'collection/:category/:pgSize': 'collection'
@@ -305,7 +305,7 @@ module.exports = Router.extend
     oldURL = @urlCreate oldSt
     if newStateURL != oldURL
       #console.log newStateURL + ' - ' + oldURL
-      @redirectTo newStateURL
+      @navigate newStateURL, replace: true
       return true
     else
       return false
