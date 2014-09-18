@@ -59,11 +59,34 @@
   border-color: @rg-black;
 }
 
-
 .trade-login form input:active,
 .trade-login form input:focus {
   border-color: @rg-dark-gold;
   outline: 0;
   -webkit-box-shadow: 0 0 6px rgba(114, 90, 56, 0.6);
   box-shadow: 0 0 6px rgba(114, 90, 56, 0.6);
+}
+
+/******* = Account Page Styles *******/
+
+.account-information {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  padding: 2em 0;
+}
+
+.account-item {
+  padding-bottom: 2em;
+}
+
+.account-item:last-child {
+  padding-bottom: 0;
+}
+
+.account-item h3 {
+  color: @rg-dark-gold;
+  font-weight: normal;
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin-bottom: .5em;
 }
