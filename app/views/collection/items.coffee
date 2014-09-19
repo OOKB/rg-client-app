@@ -68,14 +68,14 @@ module.exports = React.createClass
     txt3 = span className: 'search-txt', @props.initState.searchTxt
     if @props.initState.section == 'summer'
       if @props.initState.searchTxt
-        txt2 = ' items match your summer sale search for '
+        txt2 = ' on sale match your search for '
       else
-        txt2 = ' items on summer sale'
+        txt2 = ' on sale '
     else
-      txt2 = ' items match your search for '
+      txt2 = ' on sale '
     div
       className: 'search no-results',
-        p 'No ', txt1, txt2, txt3, '.'
+        p 'No ', txt1, txt2, txt3, ' at this time.'
 
   render: ->
     unless @props.collection.length
