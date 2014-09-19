@@ -59,9 +59,7 @@
     return gulp.src('./images/**').pipe(gulp.dest('./public/images/'));
   });
 
-  gulp.task('static', function() {
-    return gulp.src('./static/**').pipe(gulp.dest('./public/'));
-  });
+  gulp.task('static', function() {});
 
   gulp.task('styles', function() {
     return gulp.src(["styles/app.less", 'styles/print.less', 'styles/iefix.less']).pipe(less({

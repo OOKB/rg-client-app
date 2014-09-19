@@ -28,6 +28,7 @@ module.exports = Router.extend
     'trade/summer': 'summer'
     'trade/summer/:category': 'summer'
     'trade/summer/:category/:pgSize(/:query)/p:page': 'summer'
+    'trade/projects': 'projects'
     'detail/:pattern/:id': 'detail'
     'f': -> @redirectTo('favs')
     'favs': 'favs'
@@ -35,6 +36,15 @@ module.exports = Router.extend
     '*path': ->
       console.log 'redirect '+@history.fragment
       @redirectTo('cl')
+
+  projects: ->
+    unless app.me.loggedIn
+      @redirectTo 'trade/login'
+      return
+    @setReactState
+      trade: true
+      reqAuth: true
+      section: 'projects'
 
   summer: (category, pgSize, searchTxt, pageIndex) ->
     unless app.me.loggedIn
@@ -287,6 +297,8 @@ module.exports = Router.extend
     unless s.category
       if s.section == 'favs' and s.ids and s.ids.length
         return s.section+'/'+s.ids.join('/')
+      else if s.trade
+        return 'trade/'+s.section
       else
         return s.section
     if s.trade

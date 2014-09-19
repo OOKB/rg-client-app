@@ -34,7 +34,7 @@ module.exports = React.createClass
       children: [
         id: 'projects'
         title: 'Projects'
-        href: '#',
+        href: '#trade/projects',
           id: 'pricelist'
           title: 'Pricelist'
           href: '#trade/pricelist/textile/50/p1',

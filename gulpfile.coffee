@@ -44,8 +44,9 @@ gulp.task 'copy', ->
     .pipe gulp.dest('./public/images/')
 
 gulp.task 'static', ->
-  gulp.src('./static/**')
-    .pipe gulp.dest('./public/')
+  return
+  # gulp.src('./static/**')
+  #   .pipe gulp.dest('./public/')
 
 gulp.task 'styles', ->
   gulp.src(["styles/app.less", 'styles/print.less', 'styles/iefix.less'])
@@ -78,6 +79,9 @@ gulp.task 'data', ->
   r('http://r_g.cape.io/_view/colors/data.json')
     .pipe source('pattern_colors.json')
     .pipe gulp.dest('./app/models/')
+
+# gulp.task 'static_dl', ->
+#   r('')
 
 # - - - - prod - - - -
 

@@ -59,17 +59,12 @@ module.exports = AmpersandModel.extend
           Cookies.expire('token')
         else
           Cookies.set('token', @token, expires: 86400)
-          @fetch()
+          @fetch
+            success: (model, response, options) ->
+              # Fetch the project lists too.
+              model.projects.fetch()
         return if @token then true else false
 
-    gotProjects:
-      depts: ['customerNumber']
-      fn: ->
-        if @customerNumber and @token
-          @projects.fetch()
-          true
-        else
-          false
   login: (password) ->
     data =
       username: @username

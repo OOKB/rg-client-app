@@ -13,6 +13,7 @@ Collection = require './views/collection/container'
 Favs = require './views/favs'
 Login = require './views/trade/login'
 Account = require './views/trade/account'
+Projects = require './views/trade/projects'
 
 module.exports = React.createClass
   getInitialState: ->
@@ -94,6 +95,7 @@ module.exports = React.createClass
       when 'favs' then Favs(props)
       when 'login' then Login(props)
       when 'account' then Account(props)
+      when 'projects' then Projects(props)
       else p 'Hello there! Unfortunately our application is broken... ' + section
     footer = Footer props
 
