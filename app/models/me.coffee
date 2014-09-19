@@ -30,11 +30,11 @@ module.exports = AmpersandModel.extend
     username: 'string'
     token:
       type: 'string'
-      default: =>
-        console.log @
-        Cookies.get('token')
+      default: -> Cookies.get('token')
     failedLogins: ['number', true, 0]
-    #loggedIn: ['bool', true, false]
+
+  url: ->
+    'http://r_g.cape.io/_restricted?access_token='+@token
 
   derived:
     favStr:
@@ -53,6 +53,7 @@ module.exports = AmpersandModel.extend
           Cookies.expire('token')
         else
           Cookies.set('token', @token, expires: 86400)
+          @fetch()
         return if @token then true else false
 
   login: (password) ->
