@@ -1,7 +1,9 @@
-AmpersandModel = require("ampersand-model")
+AmpersandModel = require 'ampersand-model'
 _ = require 'lodash'
 r = require 'superagent'
 Cookies = require 'cookies-js'
+
+Projects = require './projects'
 
 getLocalFavs = ->
   if window.localStorage and favs = window.localStorage['faves']
@@ -33,6 +35,9 @@ module.exports = AmpersandModel.extend
       default: -> Cookies.get('token')
     failedLogins: ['number', true, 0]
 
+  children:
+    projects: Projects
+
   url: ->
     'http://r_g.cape.io/_restricted?access_token='+@token
 
@@ -46,6 +51,7 @@ module.exports = AmpersandModel.extend
         if window.localStorage
           window.localStorage['faves'] = favStr
         return favStr
+
     loggedIn:
       deps: ['token']
       fn: ->
@@ -56,6 +62,14 @@ module.exports = AmpersandModel.extend
           @fetch()
         return if @token then true else false
 
+    gotProjects:
+      depts: ['customerNumber']
+      fn: ->
+        if @customerNumber and @token
+          @projects.fetch()
+          true
+        else
+          false
   login: (password) ->
     data =
       username: @username
