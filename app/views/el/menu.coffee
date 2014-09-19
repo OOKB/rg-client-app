@@ -11,13 +11,13 @@ module.exports = React.createClass
   data: [
     id: 'about'
     title: 'About Us'
-    href: '#',#'/about',
+    href: '/about',
       id: 'collection'
       title: 'The Collection'
       href: '#collection',
         id: 'contact'
         title: 'Contact Us'
-        href: '#',
+        href: '/contact',
           id: 'trade',
             id: 'search'
             title: 'Search'
