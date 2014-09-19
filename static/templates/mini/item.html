@@ -1,0 +1,83 @@
+<!-- item.html -->
+
+<img class="loading" src="/media/rg-loading.gif" alt="" title="" />
+
+<!-- Detailed item view -->
+<table class="itemoverlay-header {{item.collection}}">
+  <tbody>
+    <tr>
+      <td class="fav text-left" width="29"><button class="plain fav">+</button></td>
+      <td class="padding" width="15"></td>
+      <td class="name"><h3>{{item.label}}{{^item.label}}{{item.collection}}{{/item.label}}</h3><p><span class="roman">{{item.name}}</span> {{item.id}}</p></td>
+      <td class="color"><h3>Color</h3><p>{{item.color}}</p></td>
+      <td class="content"><h3>Content</h3><p>{{item.contents}}</p></td>
+      {{#item.repeat}}<td class="repeat"><h3>Repeat</h3><p>{{item.repeat}}</p></td>{{/item.repeat}}
+      {{#item.width}}<td class="width"><h3>Approx Width</h3><p>{{item.width}}</p></td>{{/item.width}}
+      {{#item.tradeprice}}<td class="price"><h3>Price</h3><p>{{item.tradeprice}}</p></td>{{/item.tradeprice}}
+      <td class="padding" width="15"></td>
+      <td class="close text-left" width="29"><button type="button" class="close plain" aria-hidden="true">X</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="toggle-colors hidden-xs {{#item.far}}with-far{{/item.far}}">
+  <button class="uppercase">
+    Colors
+  </button>
+</div>
+
+{{#item.far}}
+<div class="toggle-far hidden-xs">
+  <button class="uppercase">
+    <span class="pattern">View Pattern</span> <span class="detail" style="display:none;">View Detail</span>
+  </button>
+</div>
+{{/item.far}}
+
+<div id="related-products" class="hidden-xs {{collection}}">
+  {{#pager}}<div class="related-page-count"></div>{{/pager}}
+  <button type="button" class="close plain">X</button>
+  {{#pager}}
+  <button class="left plain controls rel-previous">
+    <i class="fa fa-angle-left fa-2x"></i>
+  </button>
+  {{/pager}}
+  <ul class="list-inline list">
+  {{#item.itemcolors}}
+    <li class="related-item">
+      <a href="/collection.html#{{item.linkitem}}detailedview={{.}}" style="display:block;">
+        <img src="http://img.rg.cape.io/items/{{.}}/640.jpg"> <!-- does this url need to be corrected? -->
+      </a>
+    </li>
+  {{/item.itemcolors}}
+  </ul>
+  {{#pager}}
+  <button class="right plain controls rel-next">
+    <i class="fa fa-angle-right fa-2x"></i>
+  </button>
+  {{/pager}}
+</div>
+
+<div class="img-large-container {{item.collection}}">
+  <img src="{{item.img_large}}" class="img-large" alt="" width="" height="" />
+</div>
+
+<!-- This is working for now. -->
+{{#item.far}}
+<div class="img-pattern-container" style="display:none;">
+  <div class="full-pattern" style="background-image: url(/items/{{item.id}}/far/1536.jpg);"></div>
+</div>
+{{/item.far}}
+
+<div class="ruler-wrap hidden-xs {{collection}}">
+  <ul class="ruler-toggle">
+    <li class="active"><a href="#" class="ruler-inches uppercase">Inches</a></li>
+    <li><a href="#" class="ruler-cm uppercase">Centimeters</a></li>
+  </ul>
+  <div class="rulers">
+    <img src="/media/ruler/inch/{{item.ruler}}-1536.png" class="ruler-inches" alt="" width="" height="">
+    <img src="/media/ruler/cm/{{item.ruler}}-1536.png" class="ruler-cm" alt="" width="" height="" style="display:none;">
+  </div>
+</div>
+
+<!-- /item.html -->

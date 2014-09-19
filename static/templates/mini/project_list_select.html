@@ -1,0 +1,16 @@
+<!-- List of projects used to add to trade lists -->
+<div id="project-list-select" class="alert-favorite alert alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <form>
+    <label for="project-trade-list">Add to</label>
+    <select id="project-trade-list" class="form-control">
+      {{#lists}}
+      <option value="{{id}}">{{name}}</option>
+      {{/lists}}
+    </select>
+    <button type="submit" class="btn btn-default uppercase">
+      Add
+    </button>
+  </form>
+  <a href="#" class="editable editable-click" id="listname" data-type="text" data-placement="right" data-title="Enter list name">Create new list</a>
+</div>

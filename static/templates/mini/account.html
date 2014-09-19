@@ -1,0 +1,29 @@
+<!-- mini/account.html -->
+
+<div class="account-item">
+  <div class="account-header uppercase">Account Number</div>
+  {{customerNumber}}
+</div>
+
+<div class="account-item">
+  <div class="account-header uppercase">Email</div>
+  <a href="#" class="editable" id="email" data-type="email" data-placement="right" data-title="Enter email">{{email}}</a>
+</div>
+
+<div class="account-item">
+  <div class="account-header uppercase">Phone</div>
+  <a href="#" class="editable" id="phoneNumber" data-type="text" data-placement="right" data-title="Enter phone">{{phoneNumber}}</a>
+</div>
+
+<div class="account-item">
+  <div class="account-header uppercase">Address</div>
+  <a href="#" class="editable" id="address" data-type="text" data-placement="right" data-title="Enter address">{{address}}</a>
+</div>
+
+<div class="account-item">
+  <div class="account-header uppercase">Sales Representative</div>
+  {{sales_rep.name}}<br />
+  {{sales_rep.email}}
+</div>
+
+<!-- mini/account.html -->

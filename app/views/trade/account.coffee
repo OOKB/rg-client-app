@@ -27,7 +27,7 @@ module.exports = React.createClass
         div
           className: 'account-information',
             @acctWrap 'Account Number', app.me.customerNumber
-            @acctWrap 'Email', @editable('me@you.com', 'email')
-            @acctWrap 'Phone', @editable('612-555-1234', 'phone')
+            @acctWrap 'Email', @editable(app.me.email, 'email')
+            @acctWrap 'Phone', @editable(app.me.phoneNumber, 'phone')
             @acctWrap 'Address', @editable('123 Main St, New York, NY 10001', 'address')
-            @acctWrap 'Sales Representative', 'Dr. King'
+            @acctWrap 'Sales Representative', 'Dr. W'

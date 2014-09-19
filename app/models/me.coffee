@@ -11,9 +11,6 @@ getLocalFavs = ->
     #console.log 'no favs'
     return []
 
-getToken = ->
-  return Cookies.get('token')
-
 module.exports = AmpersandModel.extend
 
   props:
@@ -33,7 +30,9 @@ module.exports = AmpersandModel.extend
     username: 'string'
     token:
       type: 'string'
-      default: getToken
+      default: =>
+        console.log @
+        Cookies.get('token')
     failedLogins: ['number', true, 0]
     #loggedIn: ['bool', true, false]
 

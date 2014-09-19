@@ -1,0 +1,18 @@
+<!-- In the trade projects, this is the template for each list of items -->
+<ul class="list-inline trade-items">
+  {{#items}}
+  <li>
+    <img src="http://img.rg.cape.io/items/{{.}}/640.jpg" data-id="{{.}}">
+    <div class="extras visible-print">
+      <!-- need to get this for purposes of printing/pdfing -->
+      <p class="item-num">{{id}}</p>
+      <p class="name">{{name}}</p>
+      <p class="color">{{color}}</p>
+    </div>
+    <button class="remove-trade-item">
+      <i class="fa fa-minus-square-o"></i>
+    </button>
+  </li>
+  {{/items}}
+</ul>
+{{#nomatch}}<div class="trade-items-noresults uppercase">No results found</div>{{/nomatch}}
