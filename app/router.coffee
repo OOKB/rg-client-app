@@ -24,6 +24,7 @@ module.exports = Router.extend
     'trade/pricelist/:category/:pgSize': 'pricelist'
     'trade/pricelist/:category/:pgSize(/:query)/p:page': 'pricelist'
     'trade/login': 'login'
+    'trade/logout': 'logout'
     'trade/account': 'account'
     'trade/summer': 'summer'
     'trade/summer/:category': 'summer'
@@ -139,6 +140,16 @@ module.exports = Router.extend
     newSt.section = 'login'
     newSt.trade = true
     @setReactState newSt
+
+  # Log the user out.
+  logout: ->
+    if app.me.loggedIn
+      # Should null out all the fields?
+      app.me.token = null
+      app.me.customerNumber = null
+    # Send back to the login page after a logout? or maybe the front page?
+    @redirectTo 'trade/login'
+    return
 
   account: ->
     unless app.me.loggedIn

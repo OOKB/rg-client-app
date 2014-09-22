@@ -46,7 +46,7 @@ module.exports = React.createClass
               href: '#trade/account',
                 id: 'logout'
                 title: 'Logout'
-                href: '#'
+                href: '#trade/logout'
                 onClick: -> app.me.customerNumber = null
       ]
     else
