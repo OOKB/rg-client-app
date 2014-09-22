@@ -245,6 +245,8 @@ module.exports = Router.extend
       if project and project.id
         newState.summerSale = null
         newState.ids = _.pluck project.entities.models, 'id'
+      else
+        newState.projectId = null
 
     # Collection filters.
     newState.filterOptions = switch newState.category
