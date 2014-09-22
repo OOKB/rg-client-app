@@ -140,7 +140,10 @@
   position: relative;
 }
 
-.trade-projects .project .list-name {
+.trade-projects .project .list-name,
+.trade-projects .project .list-name a {
+  color: @rg-black;
+  text-decoration: none;
   .uppercase;
   font-size: 18px;
   font-weight: normal;
@@ -185,7 +188,11 @@
   background: transparent url(@edit) center center no-repeat;
 }
 
+.trade-projects .project .list-name a:hover,
 .trade-projects .project .list-edit button:hover {
   opacity: .5;
 }
 
+.trade-projects .project p {
+  margin: 20px 0 10px;
+}
