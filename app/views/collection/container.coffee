@@ -13,7 +13,7 @@ module.exports = React.createClass
       return ul
         className: 'summer-txt',
           li 'Browse Summer Sale items from the collections below.'
-          li 'Limited stock, contact representative for details.'
+          li 'Limited stock. Contact Customer Service for details.'
           li 'All sales are final and fabric is sold as is.'
     else if @props.initState.searchTxt
       return false
