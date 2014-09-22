@@ -15,3 +15,6 @@ module.exports = AmpersandModel.extend
 
   children:
     entities: Lists
+
+  url: ->
+    'http://r_g.cape.io/_api/list/' + @id + '?access_token='+app.me.token
