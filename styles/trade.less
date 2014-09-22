@@ -61,6 +61,8 @@
   border-color: @rg-black;
 }
 
+.trade-projects .project input:active,
+.trade-projects .project input:focus,
 .trade-login form input:active,
 .trade-login form input:focus {
   border-color: @rg-dark-gold;
@@ -99,7 +101,7 @@
   /**/
   padding: 20px;
   margin: 0;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   width: 250px;
@@ -110,6 +112,8 @@
 
 .login-failed p {
   margin: 1em 0;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
 .login-failed .close {
@@ -142,16 +146,46 @@
   font-weight: normal;
 }
 
+.trade-projects .project input {
+  min-width: 200px;
+  text-align: center;
+}
+
+.trade-projects .project input:active,
+.trade-projects .project input:focus {
+  border-width: 1px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
 .trade-projects .project .list-edit {
   position: absolute;
-  right: 0;
+  top: 16px;
+  right: 5px;
 }
 
 .login-failed .close,
 .trade-projects .project .list-edit button {
-  background: transparent url(@close-btn-sm) center center no-repeat;
   background-size: 11px 11px;
   height: 11px;
   width: 11px;
   .hide-text;
 }
+
+.trade-projects .project .list-edit button {
+  margin-left: 22px;
+}
+
+.login-failed .close,
+.trade-projects .project .list-edit button.delete {
+  background: transparent url(@close-btn-sm) center center no-repeat;
+}
+
+.trade-projects .project .list-edit button.edit {
+  background: transparent url(@edit) center center no-repeat;
+}
+
+.trade-projects .project .list-edit button:hover {
+  opacity: .5;
+}
+
