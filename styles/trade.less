@@ -44,6 +44,7 @@
   border-radius: 0;
 }
 
+.trade-projects button.new-project,
 .trade-login form button.btn-default {
   display: inline-block;
   margin-top: 20px;
@@ -55,6 +56,7 @@
   .uppercase;
 }
 
+.trade-projects button.new-project:hover,
 .trade-login form button.btn-default:hover {
   border-color: @rg-black;
 }
@@ -91,6 +93,31 @@
   margin-bottom: .5em;
 }
 
+.login-failed {
+  .dropshadow;
+  .uppercase;
+  /**/
+  padding: 20px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  height: 80px;
+  margin-left: -125px;
+  margin-top: -40px;
+}
+
+.login-failed p {
+  margin: 1em 0;
+}
+
+.login-failed .close {
+  position: absolute;
+  top:10px;
+  right: 10px;
+}
+
 /******* = Projects Page Styles *******/
 
 .trade-projects,
@@ -120,6 +147,7 @@
   right: 0;
 }
 
+.login-failed .close,
 .trade-projects .project .list-edit button {
   background: transparent url(@close-btn-sm) center center no-repeat;
   background-size: 11px 11px;
