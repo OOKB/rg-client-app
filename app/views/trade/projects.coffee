@@ -1,6 +1,8 @@
 React = require 'react'
 {div, ul, li, button, span, input} = require 'reactionary'
-#_ = require 'lodash'
+_ = require 'lodash'
+
+Favs = require '../favs_content'
 
 module.exports = React.createClass
   getInitialState: ->
@@ -53,6 +55,17 @@ module.exports = React.createClass
       name = @nameForm project.name
     else
       name = @nameTxt project.name
+
+    if project.entities.length
+      ids = _.pluck project.entities.models, 'id'
+      console.log ids
+      projectItems = false
+      # Favs
+      #   _.extend @props,
+      #     ids:
+    else
+      projectItems = false
+
     li
       key: project.id
       className: 'project',
@@ -67,6 +80,7 @@ module.exports = React.createClass
 
               value: project.id,
                 'delete'
+        projectItems
 
   render: ->
     if @state.projects

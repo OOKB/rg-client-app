@@ -1,14 +1,13 @@
 React = require 'react'
 {p, h3, div, ul, li, label, input} = require 'reactionary'
-_ = require 'lodash'
-SubCollection = require 'ampersand-subcollection'
 
 Items = require './collection/items'
+
+FavContent = require './favs_content'
 
 module.exports = React.createClass
 
   render: ->
-    v = @props.initState
 
     favsMenu = ul
       className: 'favs-menu',
@@ -28,24 +27,6 @@ module.exports = React.createClass
             className: 'uppercase',
               'Favorites'
 
-    if v.ids and v.ids.length
-      content = []
-      favs = @props.collection
-      categories = ['textile', 'leather', 'passementerie']
-      categories.forEach (cat) =>
-        isOnTrim = 'passementerie' == cat
-        items = new SubCollection(favs, where: category: cat)
-        if items.length
-          props =
-            collection: items
-            key: cat
-            category: cat
-            isOnTrim: isOnTrim
-            extraButtons: isOnTrim
-          content.push Items _.extend(@props, props)
-    else
-      content = p 'No favorites found.'
-
     div
       id: 'container-favs',
         p
@@ -53,4 +34,4 @@ module.exports = React.createClass
           className: 'text-area',
             'Browse and edit your favorites.'
         favsMenu
-        content
+        FavContent @props
