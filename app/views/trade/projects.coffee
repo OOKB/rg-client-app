@@ -81,11 +81,12 @@ module.exports = React.createClass
         span
           className: 'list-edit',
             button
+              className: 'edit',
               onClick: @handleEdit
               value: project.id,
                 'edit'
             button
-
+              className: 'delete',
               value: project.id,
                 'delete'
         projectItems
@@ -100,7 +101,7 @@ module.exports = React.createClass
         div
           className: 'row',
             button
-              className: 'uppercase',
+              className: 'new-project',
                 'Add New Project'
         div
           className: 'existing-projects',

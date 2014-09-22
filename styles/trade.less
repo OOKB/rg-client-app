@@ -44,6 +44,7 @@
   border-radius: 0;
 }
 
+.trade-projects button.new-project,
 .trade-login form button.btn-default {
   display: inline-block;
   margin-top: 20px;
@@ -55,10 +56,13 @@
   .uppercase;
 }
 
+.trade-projects button.new-project:hover,
 .trade-login form button.btn-default:hover {
   border-color: @rg-black;
 }
 
+.trade-projects .project input:active,
+.trade-projects .project input:focus,
 .trade-login form input:active,
 .trade-login form input:focus {
   border-color: @rg-dark-gold;
@@ -91,6 +95,33 @@
   margin-bottom: .5em;
 }
 
+.login-failed {
+  .dropshadow;
+  .uppercase;
+  /**/
+  padding: 20px;
+  margin: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  height: 80px;
+  margin-left: -125px;
+  margin-top: -40px;
+}
+
+.login-failed p {
+  margin: 1em 0;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.login-failed .close {
+  position: absolute;
+  top:10px;
+  right: 10px;
+}
+
 /******* = Projects Page Styles *******/
 
 .trade-projects,
@@ -115,15 +146,46 @@
   font-weight: normal;
 }
 
-.trade-projects .project .list-edit {
-  position: absolute;
-  right: 0;
+.trade-projects .project input {
+  min-width: 200px;
+  text-align: center;
 }
 
+.trade-projects .project input:active,
+.trade-projects .project input:focus {
+  border-width: 1px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.trade-projects .project .list-edit {
+  position: absolute;
+  top: 16px;
+  right: 5px;
+}
+
+.login-failed .close,
 .trade-projects .project .list-edit button {
-  background: transparent url(@close-btn-sm) center center no-repeat;
   background-size: 11px 11px;
   height: 11px;
   width: 11px;
   .hide-text;
 }
+
+.trade-projects .project .list-edit button {
+  margin-left: 22px;
+}
+
+.login-failed .close,
+.trade-projects .project .list-edit button.delete {
+  background: transparent url(@close-btn-sm) center center no-repeat;
+}
+
+.trade-projects .project .list-edit button.edit {
+  background: transparent url(@edit) center center no-repeat;
+}
+
+.trade-projects .project .list-edit button:hover {
+  opacity: .5;
+}
+
