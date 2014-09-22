@@ -36,6 +36,7 @@ ul.favs-menu h3 {
 }
 
 /** # 4-column grid **/
+.project ul.list > li,
 #container-favs ul.list > li {
   box-sizing: border-box;
   overflow: hidden;
@@ -43,11 +44,14 @@ ul.favs-menu h3 {
   vertical-align: top;
 }
 
+.project ul.list > li img,
 #container-favs ul.list > li img {
   width: 100%;
   height: auto;
 }
 
+.project #collection-textile ul.list > li,
+.project #collection-leather ul.list > li,
 #container-favs #collection-textile ul.list > li,
 #container-favs #collection-leather ul.list > li {
   display: inline-block;
@@ -59,11 +63,14 @@ ul.favs-menu h3 {
   padding: 0 5px;
 }
 
+.project #collection-passementerie,
 #container-favs #collection-passementerie {
   clear: both;
 }
 
 @media (min-width: @screen-sm-min) {
+  .project #collection-textile ul.list > li,
+  .project #collection-leather ul.list > li,
   #container-favs #collection-textile ul.list > li,
   #container-favs #collection-leather ul.list > li {
     width: 33.333333333%;
@@ -72,16 +79,20 @@ ul.favs-menu h3 {
 }
 
 @media (min-width: @screen-md-min) {
-#container-favs #collection-textile ul.list > li,
-#container-favs #collection-leather ul.list > li {
+  .project #collection-textile ul.list > li,
+  .project #collection-leather ul.list > li,
+  #container-favs #collection-textile ul.list > li,
+  #container-favs #collection-leather ul.list > li {
     width: 25%;
     height: 200px;
   }
 }
 
 @media (min-width: @screen-lg-min) {
-#container-favs #collection-textile ul.list > li,
-#container-favs #collection-leather ul.list > li {
+  .project #collection-textile ul.list > li,
+  .project #collection-leather ul.list > li,
+  #container-favs #collection-textile ul.list > li,
+  #container-favs #collection-leather ul.list > li {
     height: 250px;
   }
 }
@@ -112,3 +123,4 @@ ul.favs-menu h3 {
 .alert-favorite p a {
   .link1;
 }
+
