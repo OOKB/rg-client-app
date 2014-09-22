@@ -38,10 +38,18 @@ module.exports = React.createClass
     # Save it to the db.
     project.save name: project.name
 
-  nameTxt: (name) ->
+  showProject: (e) ->
+    id = e.target.value
+    @props.setRouterState
+      projectId: id
+
+  nameTxt: (name, id) ->
     span
       className: 'list-name',
-        name
+        button
+          onClick: @showProject
+          value: id,
+            name
 
   nameForm: (name) ->
     input
@@ -54,7 +62,7 @@ module.exports = React.createClass
     if @state.editName == project.id
       name = @nameForm project.name
     else
-      name = @nameTxt project.name
+      name = @nameTxt project.name, project.id
 
     if project.entities.length
       ids = _.pluck project.entities.models, 'id'
