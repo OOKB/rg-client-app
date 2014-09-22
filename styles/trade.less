@@ -90,3 +90,40 @@
   letter-spacing: 2px;
   margin-bottom: .5em;
 }
+
+/******* = Projects Page Styles *******/
+
+.trade-projects,
+.trade-projects .existing-projects {
+  padding-top: 30px;
+}
+
+.trade-projects .existing-projects {
+  border-bottom: 1px solid @rg-black;
+  min-height: 70px;
+}
+
+.trade-projects .project {
+  border-top: 1px solid @rg-black;
+  padding: 10px 0;
+  position: relative;
+}
+
+.trade-projects .project .list-name {
+  .uppercase;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.trade-projects .project .list-edit {
+  position: absolute;
+  right: 0;
+}
+
+.trade-projects .project .list-edit button {
+  background: transparent url(@close-btn-sm) center center no-repeat;
+  background-size: 11px 11px;
+  height: 11px;
+  width: 11px;
+  .hide-text;
+}
