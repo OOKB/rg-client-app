@@ -65,7 +65,7 @@ module.exports = React.createClass
             s.pageIndex = 1
       # else if 'detail' == newState.section
       #   s = newState
-      else if 'favs' == section
+      else if 'favs' == section or 'projects' == section
         s = @router.prepNewState _.defaults(newState, @state)
       else
         s = newState

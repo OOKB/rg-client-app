@@ -30,6 +30,7 @@ module.exports = Router.extend
     'trade/summer/:category': 'summer'
     'trade/summer/:category/:pgSize(/:query)/p:page': 'summer'
     'trade/projects': 'projects'
+    'trade/projects/:projectId': 'projects'
     'detail/:pattern/:id': 'detail'
     'f': -> @redirectTo('favs')
     'favs': 'favs'
@@ -37,15 +38,6 @@ module.exports = Router.extend
     '*path': ->
       console.log 'redirect '+@history.fragment
       @redirectTo('cl')
-
-  projects: ->
-    unless app.me.loggedIn
-      @redirectTo 'trade/login'
-      return
-    @setReactState
-      trade: true
-      reqAuth: true
-      section: 'projects'
 
   summer: (category, pgSize, searchTxt, pageIndex) ->
     unless app.me.loggedIn
@@ -132,6 +124,19 @@ module.exports = Router.extend
       newSt.myFavs = false
     @setReactState newSt
 
+  projects: (projectId) ->
+    unless app.me.loggedIn
+      @redirectTo 'trade/login'
+      return
+    newSt = @prepNewState
+      trade: true
+      reqAuth: true
+      section: 'projects'
+      category: null
+      projectId: projectId
+
+    @setReactState newSt
+
   login: ->
     if app.me.loggedIn
       @redirectTo 'trade/account'
@@ -203,14 +208,7 @@ module.exports = Router.extend
 
   # Prep state object for collection and pricelist section views.
   prepNewState: (s) ->
-    newState = {}
-    newState.section = s.section
-    newState.patternNumber = s.patternNumber
-    newState.id = s.id
-    newState.trade = s.trade
-    newState.reqAuth = s.reqAuth
-    newState.searchTxt = @searchTxtParse s.searchTxt
-    newState.summerSale = s.summerSale
+    newState = _.cloneDeep s
     newState.category = switch s.category
       when null then null
       when 't' then 'textile'
@@ -234,17 +232,27 @@ module.exports = Router.extend
           id: 'leather'
           label: 'Leather'
     ]
+    # Public favs have ids.
     if s.ids
+      # Sort public favs in order of itemNumber.
       newState.ids = _.remove(s.ids, @isItemNumber).sort()
+      # Why the F would this ever happen?
       if newState.ids.length and not s.ids.length
         s.ids = newState.ids
+    # Trade projects
+    if s.projectId
+      project = app.me.projects.get(s.projectId)
+      if project and project.id
+        newState.summerSale = null
+        newState.ids = _.pluck project.entities.models, 'id'
+
+    # Collection filters.
     newState.filterOptions = switch newState.category
       when 'textile' then ['content', 'color', 'description']
       when 'passementerie' then ['color', 'description']
       when 'leather' then ['type', 'color']
     newState.filterFields = {}
-    newState.selectedFilters = s.selectedFilters or {}
-    newState.possibleFilters = s.possibleFilters or {}
+
     if s.pageIndex
       newState.pageIndex = parseInt s.pageIndex
       if !newState.pageIndex > 0
@@ -254,6 +262,7 @@ module.exports = Router.extend
 
     # Default to HIDE color_id 00.
     newState.omit00 = true
+
     if 'collection' == s.section or 'summer' == s.section
       newState.hasImage = true
       newState.colorSorted = true
@@ -264,7 +273,7 @@ module.exports = Router.extend
         pgSizes.shift()
     else if 'pricelist' == s.section
       pgSizes = [50, 100, 10000]
-    else if 'favs'
+    else if 'favs' == s.section or 'projects' == s.section
       pgSizes = [500]
     else
       pgSizes = [1]
@@ -309,7 +318,10 @@ module.exports = Router.extend
       if s.section == 'favs' and s.ids and s.ids.length
         return s.section+'/'+s.ids.join('/')
       else if s.trade
-        return 'trade/'+s.section
+        url = 'trade/'+s.section
+        if s.projectId and 'projects' == s.section
+          url += '/'+s.projectId
+        return url
       else
         return s.section
     if s.trade

@@ -1,5 +1,5 @@
 React = require 'react'
-{div, ul, li, button, span, input} = require 'reactionary'
+{div, ul, li, button, span, input, a} = require 'reactionary'
 _ = require 'lodash'
 
 Favs = require '../favs_content'
@@ -38,17 +38,15 @@ module.exports = React.createClass
     # Save it to the db.
     project.save name: project.name
 
-  showProject: (e) ->
-    id = e.target.value
-    @props.setRouterState
-      projectId: id
-
   nameTxt: (name, id) ->
+    if id == @props.initState.projectId
+      link = '#trade/projects'
+    else
+      link = '#trade/projects/'+id
     span
       className: 'list-name',
-        button
-          onClick: @showProject
-          value: id,
+        a
+          href: link,
             name
 
   nameForm: (name) ->
@@ -64,13 +62,8 @@ module.exports = React.createClass
     else
       name = @nameTxt project.name, project.id
 
-    if project.entities.length
-      ids = _.pluck project.entities.models, 'id'
-      console.log ids
-      projectItems = false
-      # Favs
-      #   _.extend @props,
-      #     ids:
+    if project.id == @props.initState.projectId
+      projectItems = Favs @props
     else
       projectItems = false
 
