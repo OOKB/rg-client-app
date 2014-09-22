@@ -34,6 +34,7 @@ module.exports = AmpersandModel.extend
       type: 'string'
       default: -> Cookies.get('token')
     failedLogins: ['number', true, 0]
+    showroom: 'object'
 
   children:
     projects: Projects

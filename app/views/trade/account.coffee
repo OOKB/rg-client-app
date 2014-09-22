@@ -18,6 +18,13 @@ module.exports = React.createClass
       role: 'button',
         value
 
+  salesRep: (sr) ->
+    console.log sr
+    if sr
+      p sr.name, ' - ', sr.phoneNumber
+    else
+      false
+
   render: ->
     div
       className: 'trade-acct text-center',
@@ -30,4 +37,4 @@ module.exports = React.createClass
             @acctWrap 'Email', @editable(app.me.email, 'email')
             @acctWrap 'Phone', @editable(app.me.phoneNumber, 'phone')
             @acctWrap 'Address', @editable('123 Main St, New York, NY 10001', 'address')
-            @acctWrap 'Sales Representative', 'Dr. W'
+            @acctWrap 'Sales Representative', @salesRep(app.me.showroom)
