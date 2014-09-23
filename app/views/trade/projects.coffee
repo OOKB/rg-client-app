@@ -20,6 +20,14 @@ module.exports = React.createClass
         @_saveName()
       @setState editName: e.target.value
 
+  handleDelete: (e) ->
+    app.me.projects.get(e.target.value).destroy
+      error: ->
+        alert('There was an error destroying the task')
+      success: ->
+        console.log 'gone'
+    @forceUpdate()
+
   changeName: (e) ->
     newName = @refs.newName.getDOMNode().value
     id = @state.editName
@@ -87,6 +95,7 @@ module.exports = React.createClass
                 'edit'
             button
               className: 'delete',
+              onClick: @handleDelete
               value: project.id,
                 'delete'
         projectItems
