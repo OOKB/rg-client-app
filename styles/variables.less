@@ -180,3 +180,24 @@
   width: 11px;
 }
 
+/* = Vertical Centering trick */
+.outer {
+  height: 100%;
+}
+
+.outer:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -2.5%;
+}
+
+.inner {
+  display: inline-block;
+  vertical-align: middle;
+  height: auto;
+}
+/* = /vertical centering trick */
+
+
