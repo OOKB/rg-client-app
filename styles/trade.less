@@ -33,6 +33,7 @@
   float: left;
 }
 
+.trade-projects .new-project input,
 .trade-login form div.form-group input {
   width: 100%;
   padding: .4em;
@@ -45,6 +46,7 @@
 }
 
 .trade-projects button.new-project,
+.new-project button.btn-default,
 .trade-login form button.btn-default {
   display: inline-block;
   margin-top: 20px;
@@ -57,10 +59,13 @@
 }
 
 .trade-projects button.new-project:hover,
+.new-project button.btn-default:hover,
 .trade-login form button.btn-default:hover {
   border-color: @rg-black;
 }
 
+.trade-projects .new-project input:active,
+.trade-projects .new-project input:focus,
 .trade-projects .project input:active,
 .trade-projects .project input:focus,
 .trade-login form input:active,
@@ -95,7 +100,8 @@
   margin-bottom: .5em;
 }
 
-.login-failed {
+.login-failed,
+.new-project.alert {
   .dropshadow;
   .uppercase;
   /**/
@@ -105,9 +111,35 @@
   top: 50%;
   left: 50%;
   width: 250px;
-  height: 80px;
   margin-left: -125px;
+  height: 80px;
   margin-top: -40px;
+  z-index: 99;
+}
+
+.new-project.alert {
+  width: 420px;
+  margin-left: -210px;
+  height: 100px;
+  margin-top: -50px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.new-project.alert .form-group {
+  width: 70%;
+  display: inline-block;
+  text-align: left;
+}
+
+.new-project.alert .form-group input {
+  width: 96%;
+}
+
+.new-project.alert button.btn-default {
+  width: 30%;
+  display: inline-block;
+  margin-top: 15px;
 }
 
 .login-failed p {
@@ -116,11 +148,14 @@
   letter-spacing: 2px;
 }
 
+.new-project.alert .close,
 .login-failed .close {
   position: absolute;
   top:10px;
   right: 10px;
 }
+
+.new-project.alert label { display: none; }
 
 /******* = Projects Page Styles *******/
 
