@@ -20,7 +20,7 @@ module.exports = AmpersandModel.extend
     entities: Lists
 
   parse: (pj, i) ->
-    unless pj.order
+    if _.isUndefined pj.order
       pj.order = _.random(0, 50)
     pj
 

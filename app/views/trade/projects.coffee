@@ -95,9 +95,7 @@ module.exports = React.createClass
     if from < to then to--
     if this.nodePlacement == "after" then to++
     data.splice(to, 0, data.splice(from, 1)[0])
-    data.forEach (id, i) ->
-      app.me.projects.get(id).order = i
-    app.me.projects.sort()
+    app.me.projects.saveOrder(data)
     @setState projects: app.me.projects
     #console.log @state.projects.pluck('id')#from, to
     #@forceUpdate()
