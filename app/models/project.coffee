@@ -25,6 +25,14 @@ module.exports = AmpersandModel.extend
       pj.order = _.random(0, 50)
     pj
 
+  addEntity: (entityId) ->
+    @entities.add
+      id: entityId
+      order: 101
+    r.put 'http://r_g.cape.io/_index/list/' + @id + '/' + entityId+'?access_token='+app.me.token, order: 101
+      .end (res) ->
+        console.log res
+
   rmEntity: (entityId) ->
     @entities.remove entityId
     r.del 'http://r_g.cape.io/_index/list/' + @id + '/' + entityId+'?access_token='+app.me.token

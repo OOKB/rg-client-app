@@ -8,6 +8,7 @@ Info = require '../el/info'
 ItemEl = require './item_el'
 ItemButtons = require '../el/item_buttons'
 FavAlertBox = require '../el/fav_alert'
+ProjectBox = require '../el/project_box'
 Related = require '../detail/related'
 RelatedTrim = require './related_trim'
 
@@ -18,6 +19,7 @@ module.exports = React.createClass
     colorBoxView: false
     infoBoxView: false
     favBoxView: false
+    projectBoxView: false
 
   setButtonsFor: (e) ->
     unless @props.threeUp or @state.colorBoxView
@@ -124,6 +126,15 @@ module.exports = React.createClass
       else
         infoBox = false
 
+      # Add to projects
+      if @state.projectBoxView == item.id
+        projectBox = ProjectBox
+          itemState: @state
+          setItemState: @setItemState
+          model: item
+      else
+        projectBox = false
+
       if @props.threeUp or isOnTrim
         if buttonsFor == item.id and @state.colorBoxView
           relatedProps =
@@ -160,6 +171,7 @@ module.exports = React.createClass
           relatedColors
           infoBox
           favAlert
+          projectBox
     cat = @props.initState.category or @props.category
     collectionClassName = 'pg-size-' + @props.initState.pgSize
     unless @props.threeUp
