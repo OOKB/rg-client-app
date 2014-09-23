@@ -21,12 +21,14 @@ module.exports = React.createClass
       @setState editName: e.target.value
 
   handleDelete: (e) ->
-    app.me.projects.get(e.target.value).destroy
-      error: ->
-        alert('There was an error destroying the task')
-      success: ->
-        console.log 'gone'
-    @forceUpdate()
+    if confirm 'Are you sure you want to destroy this project?'
+      app.me.projects.get(e.target.value).destroy
+        error: ->
+          alert('There was an error destroying the task')
+        success: ->
+          console.log 'gone'
+      @forceUpdate()
+
 
   changeName: (e) ->
     newName = @refs.newName.getDOMNode().value
