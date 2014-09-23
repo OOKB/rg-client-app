@@ -3,6 +3,7 @@ React = require 'react'
 
 Colors = require './related'
 Rulers = require './ruler'
+Notes = require './notes'
 
 module.exports = React.createClass
   getInitialState: ->
@@ -62,6 +63,12 @@ module.exports = React.createClass
           onClick: @toggleColorBoxView
           className: colorButtonClass,
             'Colors'
+    # Notes button.
+    if item.itemComments
+      console.log 'hisdfnotes'
+      divs.push Notes
+        notes: item.itemComments
+        key: 'notes'
 
     if item.far
       divs.push div
