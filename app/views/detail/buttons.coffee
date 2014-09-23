@@ -51,7 +51,7 @@ module.exports = React.createClass
     color_toggle_class = 'toggle-colors hidden-xs hidden-sm'
     if item.far
       color_toggle_class += ' with-far'
-    if item.itemComments
+    if item.itemComments and item.summerSale
       color_toggle_class += ' with-notes'
 
     # Colors button.
@@ -66,7 +66,7 @@ module.exports = React.createClass
           className: colorButtonClass,
             'Colors'
     # Notes button.
-    if item.itemComments
+    if item.itemComments and item.summerSale
       divs.push Notes
         notes: item.itemComments
         key: 'notes'

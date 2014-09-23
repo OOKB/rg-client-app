@@ -58,6 +58,7 @@ module.exports = React.createClass
       tds.push td
         key: 'repeat'
         className: 'c-repeat'
+        rowSpan: @props.rowSpan
         dangerouslySetInnerHTML:
           __html: item.splitRepeat
       tds.push td

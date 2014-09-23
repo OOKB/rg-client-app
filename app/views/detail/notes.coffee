@@ -1,4 +1,5 @@
-React = require 'react'
+React = require 'react/addons'
+cx = React.addons.classSet
 {div, button, p, span} = require 'reactionary'
 
 CloseButton = require '../el/button_close'
@@ -20,10 +21,13 @@ module.exports = React.createClass
       notes = @notes()
     else
       notes = false
+    classes = cx
+      uppercase: true
+      active: @state.showNotes
     div
       className: "toggle-notes hidden-xs",
         button
-          onClick: => @setState showNotes: true
-          className: "uppercase",
+          onClick: => @setState showNotes: !@state.showNotes
+          className: classes,
             'Notes'
         notes
