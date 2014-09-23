@@ -191,43 +191,40 @@
 }
 
 /** this is replicated in collection.less — how to combine? **/
-.toggle-notes button:hover,
-.toggle-notes button.active,
-.toggle-colors button:hover,
-.toggle-colors button.active {
+.toggle-notes > button:hover,
+.toggle-notes > button.active,
+.toggle-colors > button:hover,
+.toggle-colors > button.active {
   background: @rg-gold;
   color: @rg-background;
 }
 
-.toggle-notes button:active,
-.toggle-colors button:active {
+.toggle-notes > button:active,
+.toggle-colors > button:active {
   background: @rg-dark-gold;
   color: @rg-background;
 }
 /** /end - this is replicated in collection.less — how to combine? **/
 
-#item-notes {
+#item-notes,
+#related-colors {
   position: fixed;
-  top: 132px;
   left: 50%;
+  .dropshadow;
+}
+
+#item-notes {
+  top: 132px;
   width: 444px;
   margin-left: -222px;
   padding: 30px;
-  box-sizing: border-box;
-  /**/
-  .dropshadow;
 }
 
 #related-colors {
   margin: 0;
   padding: 15px;
-  /**/
   height: 120px;
-  position: fixed;
   top: 132px;
-  left: 50%;
-  /**/
-  .dropshadow;
 }
 
 #related-colors ul.list-inline        { margin: 12px auto; }
