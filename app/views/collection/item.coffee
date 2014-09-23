@@ -39,6 +39,11 @@ module.exports = React.createClass
     else
       console.log 'next'
 
+  setItemState: (s) ->
+    if s.removedItem
+      @props.initState.removedItem
+    @setState s
+
   render: ->
     onClick = undefined
     preventDetail = false
@@ -65,7 +70,7 @@ module.exports = React.createClass
       relatedProps =
         model: item
         section: @props.initState.section
-        setItemState: (newSt) => @setState newSt
+        setItemState: @setItemState
         collection: new SubCollection app.items.collection,
           where:
             patternNumber: item.patternNumber
@@ -91,7 +96,7 @@ module.exports = React.createClass
     if @state.favBoxView == item.id
       favAlert = FavAlertBox
         itemState: @state
-        setItemState: (newSt) => @setState newSt
+        setItemState: @setItemState
         model: item
     else
       favAlert = false
@@ -101,7 +106,7 @@ module.exports = React.createClass
         # Item
         itemEl
         ItemButtons
-          setItemState: (newSt) => @setState newSt
+          setItemState: @setItemState
           itemState: @state
           buttonsFor: buttonsFor
           model: item

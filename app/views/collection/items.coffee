@@ -77,6 +77,12 @@ module.exports = React.createClass
       className: 'search no-results',
         p 'No ', txt1, txt2, txt3, ' at this time.'
 
+  setItemState: (s) ->
+    if s.removedItem
+      @props.setRouterState removedItem: s.removedItem
+    else
+      @setState s
+
   render: ->
     unless @props.collection.length
       return @noResultsEl()
@@ -108,7 +114,7 @@ module.exports = React.createClass
       if @state.favBoxView == item.id
         favAlert = FavAlertBox
           itemState: @state
-          setItemState: (newSt) => @setState newSt
+          setItemState: @setItemState
           model: item
       else
         favAlert = false
@@ -124,7 +130,7 @@ module.exports = React.createClass
             id: item.id
             initState: @props.initState
             patternNumber: item.patternNumber
-            setItemState: (newSt) => @setState newSt
+            setItemState: @setItemState
             collection: new SubCollection app.items.collection,
               where:
                 patternNumber: item.patternNumber
@@ -145,7 +151,7 @@ module.exports = React.createClass
           # Item
           ItemEl itemProps
           ItemButtons
-            setItemState: (newSt) => @setState newSt
+            setItemState: @setItemState
             itemState: @state
             buttonsFor: buttonsFor
             model: item

@@ -4,6 +4,7 @@ _ = require 'lodash'
 
 Button = require './button'
 FavButton = require './button_fav'
+ProjectButton = require './button_project'
 
 # Item action buttons.
 module.exports = React.createClass
@@ -61,14 +62,23 @@ module.exports = React.createClass
     unless buttonsFor == item.id
       return false
 
-    favThisButton = FavButton
-      key: 'fav'
-      model: item
-      setItemState: @props.setItemState
-      itemState: itemState
+    if app.me.loggedIn
+      favThisButton = ProjectButton
+        key: 'project'
+        model: item
+        setItemState: @props.setItemState
+        itemState: itemState
+        section: section
+        projectId: initState.projectId
+    else
+      favThisButton = FavButton
+        key: 'fav'
+        model: item
+        setItemState: @props.setItemState
+        itemState: itemState
 
     # Simply return the favs button.
-    if favsOnly or not extraButtons
+    if favsOnly or not extraButtons or section == 'projects'
       return @el favThisButton
 
     # Possible buttons to display.
