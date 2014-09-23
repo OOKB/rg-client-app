@@ -156,8 +156,7 @@
 
 
 /** styling for colors button and colors popup on detail **/
-.toggle-far,
-.toggle-colors {
+[class*="toggle-"] {
   position: fixed;
   top: 90px;
   left: 50%;
@@ -166,13 +165,16 @@
   .dropshadow;
 }
 
-.toggle-far {
+.toggle-far,
+/* .toggle-notes.with-colors { */
+.toggle-notes {
   left: 50%;
   width: 150px;
   margin-left: 7px;
 }
 
-.toggle-colors.with-far {
+.toggle-colors.with-far,
+.toggle-colors.with-notes {
   left: initial;
   right: 50%;
   margin-left: 0;
@@ -180,8 +182,7 @@
   width: 150px;
 }
 
-.toggle-far button,
-.toggle-colors button {
+[class*="toggle-"] button {
   width: 100%;
   color: @rg-gray;
   font-size: 12px;
@@ -190,17 +191,32 @@
 }
 
 /** this is replicated in collection.less — how to combine? **/
+.toggle-notes button:hover,
+.toggle-notes button.active,
 .toggle-colors button:hover,
 .toggle-colors button.active {
   background: @rg-gold;
   color: @rg-background;
 }
 
+.toggle-notes button:active,
 .toggle-colors button:active {
   background: @rg-dark-gold;
   color: @rg-background;
 }
 /** /end - this is replicated in collection.less — how to combine? **/
+
+#item-notes {
+  position: fixed;
+  top: 132px;
+  left: 50%;
+  width: 444px;
+  margin-left: -222px;
+  padding: 30px;
+  box-sizing: border-box;
+  /**/
+  .dropshadow;
+}
 
 #related-colors {
   margin: 0;
