@@ -63,6 +63,9 @@ module.exports = React.createClass
   # Dragging
 
   dragStart: (e) ->
+    unless e.target.localName == 'li'
+      e.preventDefault()
+      return
     @.dragged = e.currentTarget
     e.dataTransfer.effectAllowed = 'move'
     e.dataTransfer.setData('text/html', e.currentTarget)
@@ -134,10 +137,11 @@ module.exports = React.createClass
     else
       projectItems = false
 
+    isDraggable = !(@props.initState.projectId)
     li
       'data-id': i
       key: project.id
-      draggable: true
+      draggable: isDraggable
       onDragStart: @dragStart
       onDragEnd: @dragEnd
       className: 'project',
