@@ -9,6 +9,9 @@ module.exports = React.createClass
     fieldType: React.PropTypes.string.isRequired
     placeholder: React.PropTypes.string
 
+  handleChange: ->
+    @props.onChange @refs[@props.id].getDOMNode().value
+
   render: ->
     div
       className: 'form-group',
@@ -19,7 +22,8 @@ module.exports = React.createClass
         input
           className: 'form-control'
           id: @props.id
+          ref: @props.id
           value: @props.value
-          onChange: @props.onChange
+          onChange: @handleChange
           type: @props.fieldType
           placeholder: @props.placeholder

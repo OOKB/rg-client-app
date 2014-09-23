@@ -1,8 +1,8 @@
 React = require 'react'
 {div, p, button, a} = require 'reactionary'
-_ = require 'lodash'
 
 # Confirm item added to favorites
+CloseButton = require './button_close'
 
 module.exports = React.createClass
   close: ->
@@ -18,11 +18,8 @@ module.exports = React.createClass
       return false
     div
       className: 'alert-favorite',
-        button
-          type: 'button'
+        CloseButton
           onClick: @close
-          className: 'close small',
-            'x'
         div
           className: 'outer',
             div

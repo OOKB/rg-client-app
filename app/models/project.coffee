@@ -2,7 +2,7 @@ AmpersandModel = require("ampersand-model")
 Lists = require './lists'
 module.exports = AmpersandModel.extend
   props:
-    id: ['string', true]
+    id: ['string']
     name: ['string', true]
     uid:
       type: 'string'

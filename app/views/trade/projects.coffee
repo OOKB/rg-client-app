@@ -3,11 +3,13 @@ React = require 'react'
 _ = require 'lodash'
 
 Favs = require '../favs_content'
+NewProject = require '../el/project_new'
 
 module.exports = React.createClass
   getInitialState: ->
     editName: null
     projects: app.me.projects
+    addProject: false
 
   handleEdit: (e) ->
     if @state.editName == e.target.value
@@ -37,6 +39,11 @@ module.exports = React.createClass
     @setState editName: null
     # Save it to the db.
     project.save name: project.name
+
+  newProject: (name) ->
+    app.me.projects.create
+      name: name
+    @setState addProject: false
 
   nameTxt: (name, id) ->
     if id == @props.initState.projectId
@@ -89,13 +96,22 @@ module.exports = React.createClass
       projects = @state.projects.map @project
     else
       projects = 'No projects.'
+    if @state.addProject
+      newProj = NewProject
+        onClose: => @setState addProject: false
+        onSave: @newProject
+    else
+      newProj = false
+
     div
       className: 'trade-projects text-center',
         div
           className: 'row',
             button
+              onClick: => @setState addProject: true
               className: 'new-project',
                 'Add New Project'
+            newProj
         div
           className: 'existing-projects',
             ul projects
