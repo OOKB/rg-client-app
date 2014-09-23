@@ -11,6 +11,11 @@ module.exports = React.createClass
     projects: app.me.projects
     addProject: false
 
+  componentDidMount: ->
+    window.placeholder = document.createElement("li")
+    window.placeholder.className = "placeholder"
+  # EVENT HANDLERS
+
   handleEdit: (e) ->
     if @state.editName == e.target.value
       @setState editName: null
@@ -55,14 +60,61 @@ module.exports = React.createClass
       name: name
     @setState addProject: false
 
+  # Dragging
+
+  dragStart: (e) ->
+    @.dragged = e.currentTarget
+    e.dataTransfer.effectAllowed = 'move'
+    e.dataTransfer.setData('text/html', e.currentTarget)
+    return
+
+  dragOver: (e) ->
+    e.preventDefault()
+    @dragged.style.display = "none"
+    if e.target.className == "placeholder" then return
+    @over = e.target
+    relY = e.clientY - @over.offsetTop
+    height = @over.offsetHeight / 2
+    parent = e.target.parentNode
+
+    if relY > height
+      @nodePlacement = "after"
+      parent.insertBefore(window.placeholder, e.target.nextElementSibling)
+    else if relY < height
+      @nodePlacement = "before"
+      parent.insertBefore(window.placeholder, e.target)
+    return
+
+
+  dragEnd: (e) ->
+    @dragged.style.display = "block"
+    @dragged.parentNode.removeChild(window.placeholder)
+    data = @state.projects.pluck('id')
+    from = Number(this.dragged.dataset.id)
+    to = Number(this.over.dataset.id)
+    if from < to then to--
+    if this.nodePlacement == "after" then to++
+    data.splice(to, 0, data.splice(from, 1)[0])
+    data.forEach (id, i) ->
+      app.me.projects.get(id).order = i
+    app.me.projects.sort()
+    @setState projects: app.me.projects
+    #console.log @state.projects.pluck('id')#from, to
+    #@forceUpdate()
+    return
+
+  # HTML
+
   nameTxt: (name, id) ->
     if id == @props.initState.projectId
       link = '#trade/projects'
     else
       link = '#trade/projects/'+id
     span
+      draggable: false
       className: 'list-name',
         a
+          draggable: false
           href: link,
             name
 
@@ -73,7 +125,7 @@ module.exports = React.createClass
       ref: 'newName'
       onKeyDown: @keyDown
 
-  project: (project) ->
+  project: (project, i) ->
     if @state.editName == project.id
       name = @nameForm project.name
     else
@@ -85,7 +137,11 @@ module.exports = React.createClass
       projectItems = false
 
     li
+      'data-id': i
       key: project.id
+      draggable: true
+      onDragStart: @dragStart
+      onDragEnd: @dragEnd
       className: 'project',
         name
         span
@@ -125,4 +181,6 @@ module.exports = React.createClass
             newProj
         div
           className: 'existing-projects',
-            ul projects
+            ul
+              onDragOver: @dragOver,
+                projects

@@ -254,7 +254,7 @@ module.exports = Router.extend
       project = app.me.projects.get(s.projectId)
       if project and project.id
         newState.summerSale = null
-        newState.ids = _.pluck project.entities.models, 'id'
+        newState.ids = _.compact _.pluck(project.entities.models, 'id')
       else
         newState.projectId = null
 
