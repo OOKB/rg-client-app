@@ -21,6 +21,7 @@ module.exports = AmpersandModel.extend
     hasDetail: ['boolean', true, false]
     hasImage: ['boolean', true, false]
     id: ['string', true]
+    itemComments: 'string'
     label: 'string'
     name: 'string' # Pattern name.
     order: ['number', true, 99999]
@@ -39,6 +40,14 @@ module.exports = AmpersandModel.extend
     item.related = _.without related, item.color_id
     if item.category == 'passementerie'
       item.name = null
+    if item.itemComments
+      if item.itemComments[0] and not item.itemComments[1]
+        item.itemComments = item.itemComments[0]
+      else if item.itemComments[1] and not item.itemComments[0]
+        item.itemComments = item.itemComments[1]
+      else if item.itemComments[0] and item.itemComments[1]
+        item.itemComments = item.itemComments.join(', ')
+      #console.log item.itemComments
     if item._file
       item.hasImage = true
       if item.category != 'passementerie'

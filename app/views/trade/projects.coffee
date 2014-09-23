@@ -3,11 +3,13 @@ React = require 'react'
 _ = require 'lodash'
 
 Favs = require '../favs_content'
+NewProject = require '../el/project_new'
 
 module.exports = React.createClass
   getInitialState: ->
     editName: null
     projects: app.me.projects
+    addProject: false
 
   handleEdit: (e) ->
     if @state.editName == e.target.value
@@ -17,6 +19,14 @@ module.exports = React.createClass
       if @state.editName #switching should save.
         @_saveName()
       @setState editName: e.target.value
+
+  handleDelete: (e) ->
+    app.me.projects.get(e.target.value).destroy
+      error: ->
+        alert('There was an error destroying the task')
+      success: ->
+        console.log 'gone'
+    @forceUpdate()
 
   changeName: (e) ->
     newName = @refs.newName.getDOMNode().value
@@ -37,6 +47,11 @@ module.exports = React.createClass
     @setState editName: null
     # Save it to the db.
     project.save name: project.name
+
+  newProject: (name) ->
+    app.me.projects.create
+      name: name
+    @setState addProject: false
 
   nameTxt: (name, id) ->
     if id == @props.initState.projectId
@@ -80,6 +95,7 @@ module.exports = React.createClass
                 'edit'
             button
               className: 'delete',
+              onClick: @handleDelete
               value: project.id,
                 'delete'
         projectItems
@@ -89,13 +105,22 @@ module.exports = React.createClass
       projects = @state.projects.map @project
     else
       projects = 'No projects.'
+    if @state.addProject
+      newProj = NewProject
+        onClose: => @setState addProject: false
+        onSave: @newProject
+    else
+      newProj = false
+
     div
       className: 'trade-projects text-center',
         div
           className: 'row',
             button
+              onClick: => @setState addProject: true
               className: 'new-project',
                 'Add New Project'
+            newProj
         div
           className: 'existing-projects',
             ul projects

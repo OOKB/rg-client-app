@@ -19,11 +19,11 @@ module.exports = React.createClass
       @setState showFailed: false
     return
 
-  handleEmail: (e) ->
-    app.me.username = e.target.value
+  handleEmail: (val) ->
+    app.me.username = val
 
-  handlePassword: (e) ->
-    app.me.password = e.target.value
+  handlePassword: (val) ->
+    app.me.password = val
 
   showFailure: ->
     @setState showFailed: true
