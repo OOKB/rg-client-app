@@ -328,6 +328,8 @@ module.exports = Router.extend
   urlCreate: (s) ->
     if s.section == 'trade'
       return 'trade'
+    if s.section == 'detail'
+      return 'detail/'+s.patternNumber+'/'+s.color_id
     unless s.category
       if s.section == 'favs' and s.ids and s.ids.length
         return s.section+'/'+s.ids.join('/')

@@ -44,11 +44,7 @@ module.exports = React.createClass
     item = @props.collection.get id
     unless item
       console.log @props.collection.models
-    color_toggle_class = 'toggle-colors hidden-xs'
-    if item.far
-      color_toggle_class += ' with-far'
-    if item.itemComments
-      color_toggle_class += ' with-notes'
+
     props =
       model: item
       initState: @props.initState
