@@ -72,7 +72,12 @@ gulp.task "default", ['compile', 'styles', 'templates', 'browser-sync', 'copy', 
   gulp.watch 'images/**', ['copy']
   return
 
-gulp.task 'data', ->
+gulp.task 'dataContent', ->
+  r('http://r_g.cape.io/_view/md_pages/display')
+    .pipe source('content.json')
+    .pipe gulp.dest('./app/models/')
+
+gulp.task 'data', ['dataContent'], ->
   r('http://r_g.cape.io/_view/pricelist/data.json')
     .pipe source('data.json')
     .pipe gulp.dest('./app/models/')

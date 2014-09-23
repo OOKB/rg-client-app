@@ -86,7 +86,11 @@
     gulp.watch('images/**', ['copy']);
   });
 
-  gulp.task('data', function() {
+  gulp.task('dataContent', function() {
+    return r('http://r_g.cape.io/_view/md_pages/display').pipe(source('content.json')).pipe(gulp.dest('./app/models/'));
+  });
+
+  gulp.task('data', ['dataContent'], function() {
     r('http://r_g.cape.io/_view/pricelist/data.json').pipe(source('data.json')).pipe(gulp.dest('./app/models/'));
     return r('http://r_g.cape.io/_view/colors/data.json').pipe(source('pattern_colors.json')).pipe(gulp.dest('./app/models/'));
   });

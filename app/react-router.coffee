@@ -11,6 +11,7 @@ FilterableProductTable = require './views/pricelist/item_container'
 ItemDetail = require './views/detail/container'
 Collection = require './views/collection/container'
 Favs = require './views/favs'
+Trade = require './views/trade/index'
 Login = require './views/trade/login'
 Account = require './views/trade/account'
 Projects = require './views/trade/projects'
@@ -69,6 +70,7 @@ module.exports = React.createClass
         s = @router.prepNewState _.defaults(newState, @state)
       else
         s = newState
+      console.log s
       @setState s
 
   componentDidUpdate: (prevProps, prevState) ->
@@ -94,6 +96,7 @@ module.exports = React.createClass
       when 'detail' then ItemDetail(props)
       when 'favs' then Favs(props)
       when 'login' then Login(props)
+      when 'trade' then Trade(props)
       when 'account' then Account(props)
       when 'projects' then Projects(props)
       else p 'Hello there! Unfortunately our application is broken... ' + section

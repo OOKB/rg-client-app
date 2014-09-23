@@ -6,6 +6,7 @@ ItemsCollection = require './models/items'
 Router = require './react-router'
 
 ItemsData = require './models/data'
+Content = require './models/content'
 PatternColors = require './models/pattern_colors'
 Me = require './models/me'
 
@@ -18,6 +19,7 @@ module.exports =
     items = new ItemsCollection ItemsData, parse: true
     # Use the subcollection module.
     @items = new SubCollection items
+    @content = Content
     @me = new Me()
     # Init the React application router.
     el = document.getElementById('react')

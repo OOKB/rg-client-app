@@ -19,6 +19,7 @@ module.exports = Router.extend
     'pl': -> @redirectTo('trade/pricelist/'+defaultCategory+'/50/p1')
     'plp': -> @redirectTo('trade/pricelist/passementerie/50/p1')
     'pricelist': -> @redirectTo('trade/pricelist/'+defaultCategory+'/50/p1')
+    'trade': 'trade'
     'trade/pricelist': -> @redirectTo('trade/pricelist/'+defaultCategory+'/50/p1')
     'trade/pricelist/:category': 'pricelist'
     'trade/pricelist/:category/:pgSize': 'pricelist'
@@ -38,6 +39,15 @@ module.exports = Router.extend
     '*path': ->
       console.log 'redirect '+@history.fragment
       @redirectTo('cl')
+
+  trade: ->
+    content = _.find app.content, _id: 'content/trade/index.md'
+    #console.log content
+    @setReactState
+      trade: true
+      reqAuth: false
+      section: 'trade'
+      content: content.content
 
   summer: (category, pgSize, searchTxt, pageIndex) ->
     unless app.me.loggedIn
@@ -316,6 +326,8 @@ module.exports = Router.extend
       return ''
 
   urlCreate: (s) ->
+    if s.section == 'trade'
+      return 'trade'
     unless s.category
       if s.section == 'favs' and s.ids and s.ids.length
         return s.section+'/'+s.ids.join('/')
