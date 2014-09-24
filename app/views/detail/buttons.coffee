@@ -58,13 +58,17 @@ module.exports = React.createClass
     colorButtonClass = ''
     if @state.colorBoxView
       colorButtonClass += ' active'
-    divs.push div
-      key: 'color-button'
-      className: color_toggle_class,
-        button
-          onClick: @toggleColorBoxView
-          className: colorButtonClass,
-            'Colors'
+
+    # Only show color button if there are related items.
+    if @props.collection.length > 1
+      divs.push div
+        key: 'color-button'
+        className: color_toggle_class,
+          button
+            onClick: @toggleColorBoxView
+            className: colorButtonClass,
+              'Colors'
+
     # Notes button.
     if item.itemComments and item.summerSale
       divs.push Notes
@@ -92,6 +96,7 @@ module.exports = React.createClass
         setParentState: @handleUserInput
         patternNumber: @props.patternNumber
         activeId: @props.activeId
+
     # big-ol-image
     divs.push div
       key: 'main-image'
