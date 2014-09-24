@@ -119,10 +119,13 @@ module.exports = React.createClass
     else
       relatedColorsRow = relatedColorsList
 
-    if itemCount < 5
-      colorsClass = 'hidden-xs size-'+itemCount
-    else
-      colorsClass = 'hidden-xs size-5'
+    # We want to count the number of items inside the box.
+    colorsClass = 'hidden-xs size-'+pageItems
+
+    # if itemCount < 5
+    #   colorsClass = 'hidden-xs size-'+itemCount
+    # else
+    #   colorsClass = 'hidden-xs size-5'
     if pager
       colorsClass += ' pager'
     return div
