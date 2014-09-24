@@ -77,6 +77,7 @@ ul.collection-controls > li.collection-title button:hover {
 }
 
 .item-icons button.item-favorite,
+.item-icons button.add-item,
 .item-icons button.remove-item,
 .item-icons button.item-details {
   padding: 0;
@@ -85,7 +86,8 @@ ul.collection-controls > li.collection-title button:hover {
   .hide-text;
 }
 
-.item-icons button.item-favorite {
+.item-icons button.item-favorite,
+.item-icons button.add-item {
   background: @rg-background url(@add-fav-sm) -3px center no-repeat;
 }
 
@@ -98,8 +100,10 @@ ul.collection-controls > li.collection-title button:hover {
 }
 
 .item-icons button.item-favorite:hover,
+.item-icons button.add-item:hover,
 .item-icons button.remove-item:hover,
 .item-icons button.item-favorite:focus,
+.item-icons button.add-item:focus,
 .item-icons button.remove-item:focus,
 .item-icons button.item-favorite:active,
 .item-icons button.remove-item:active,
@@ -112,6 +116,7 @@ ul.collection-controls > li.collection-title button:hover {
 }
 
 .item-icons button.item-favorite:active,
+.item-icons button.add-item:active,
 .item-icons button.remove-item:active,
 .item-icons button.item-details:active {
   background-color: @rg-dark-gold;

@@ -31,15 +31,17 @@ module.exports = React.createClass
       className: "alert-favorite alert alert-dismissable",
         CloseButton
           onClick: @close
-        label
-          htmlFor: "project-trade-list",
-            'Add to'
-        select
-          value: @state.selected
-          onChange: (e) =>
-            @setState selected: e.target.value
-          id: "project-trade-list",
-            options
+        div
+          className: "select-group",
+            label
+              htmlFor: "project-trade-list",
+                'Add to'
+            select
+              value: @state.selected
+              onChange: (e) =>
+                @setState selected: e.target.value
+              id: "project-trade-list",
+                options
         button
           type: 'submit'
           onClick: @addItem

@@ -46,6 +46,7 @@
 }
 
 .trade-projects button.new-project,
+#project-list-select button.btn-default,
 .new-project button.btn-default,
 .trade-login form button.btn-default {
   display: inline-block;
@@ -55,15 +56,19 @@
   white-space: nowrap;
   padding: 8px 12px 6px;
   border-radius: 0;
+  color: @rg-gray;
   .uppercase;
 }
 
 .trade-projects button.new-project:hover,
+#project-list-select button.btn-default:hover,
 .new-project button.btn-default:hover,
 .trade-login form button.btn-default:hover {
   border-color: @rg-black;
 }
 
+#project-trade-list:active,
+#project-trade-list:focus,
 .trade-projects .new-project input:active,
 .trade-projects .new-project input:focus,
 .trade-projects .project input:active,
@@ -242,3 +247,37 @@
   max-width: 600px;
   font-size: 16px;
 }
+
+/**** project list related ****/
+
+#project-list-select {
+  width: 350px;
+  margin-left: -175px;
+  padding-top: 40px;
+}
+
+#project-list-select select {
+  display: inline-block;
+  vertical-align: middle;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: @rg-gray;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid @rg-gray;
+  border-radius: 0;
+  margin-left: 7px;
+}
+
+#project-list-select .select-group {
+  float: left;
+}
+
+#project-list-select button {
+  height: 34px;
+  float: right;
+  margin-top: 0 !important;
+}
+
