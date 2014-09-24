@@ -60,10 +60,13 @@ module.exports = React.createClass
 
   count: ->
     props = @props
-    li
-      key: 'pagecount'
-      className: 'pagecount',
-        props.pageIndex + ' / ' + props.totalPages
+    if props.totalPages
+      li
+        key: 'pagecount'
+        className: 'pagecount',
+          props.pageIndex + ' / ' + props.totalPages
+    else
+      false
 
   sizes: ->
     props = @props
