@@ -8,7 +8,7 @@ filterCatProp =
 
 setFilterFields = (items, filterOps, filterFields) ->
   filterOps.forEach (cat) ->
-    if f = filterCatProp[cat]
+    if filterFields and f = filterCatProp[cat]
       filterFields[cat] = _.compact(_.uniq(_.flatten(items.pluck(f)))).sort()
   return
 
