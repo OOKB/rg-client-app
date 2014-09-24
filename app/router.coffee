@@ -63,6 +63,7 @@ module.exports = Router.extend
       pgSize: pgSize
       searchTxt: searchTxt
       pageIndex: pageIndex
+      summerSale: true
     #console.log S
     S = @prepNewState S
 
@@ -79,6 +80,7 @@ module.exports = Router.extend
       pgSize: pgSize
       searchTxt: searchTxt
       pageIndex: pageIndex
+      summerSale: false
     #console.log S
     S = @prepNewState S
 
@@ -98,6 +100,7 @@ module.exports = Router.extend
       pgSize: pgSize
       searchTxt: searchTxt
       pageIndex: pageIndex
+      summerSale: false
     @setReactState S
 
   detail: (patternNumber, color_id) ->
