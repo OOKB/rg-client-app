@@ -62,14 +62,14 @@ module.exports = AmpersandModel.extend
       deps: ['token']
       cache: false
       fn: ->
-        if @token == null
-          Cookies.expire('token')
-        else
+        if @token
           Cookies.set('token', @token, expires: 4000)
           @fetch
             success: (model, response, options) ->
               # Fetch the project lists too.
               model.projects.fetch()
+        else
+          Cookies.expire('token')
         return if @token then true else false
 
   login: (password) ->

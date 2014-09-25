@@ -70,7 +70,7 @@ module.exports = React.createClass
         s = @router.prepNewState _.defaults(newState, @state)
       else
         s = newState
-      console.log s
+      #console.log s
       @setState s
 
   componentDidUpdate: (prevProps, prevState) ->

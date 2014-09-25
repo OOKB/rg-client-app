@@ -6,6 +6,20 @@ Items = require './collection/items'
 FavContent = require './favs_content'
 
 module.exports = React.createClass
+  getInitialState: ->
+    favUrl: app.me.favUrl
+
+  componentWillMount: ->
+    app.bitly.getOrFetch app.me.favUrl, (err, model) =>
+      if model and model.customUrl
+        @setState favUrl: model.customUrl
+        @selectFavUrl()
+
+  componentDidMount: ->
+    @selectFavUrl()
+
+  selectFavUrl: ->
+    @refs.favUrl.getDOMNode().select()
 
   render: ->
 
@@ -20,8 +34,11 @@ module.exports = React.createClass
             input
               id: 'share-field'
               type: 'text'
-              value: 'http://fav.rogersandgoffigon.com/'
+              ref: 'favUrl'
+              size: '200'
+              value: @state.favUrl
               readOnly: true
+              onMouseOver: @selectFavUrl
         li
           h3
             className: 'uppercase',

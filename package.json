@@ -32,13 +32,13 @@
     "reactionary": "^0.9.0",
     "lodash": "^2.4.1",
     "ampersand-collection": "^1.3.10",
-    "ampersand-model": "^3.0.4",
+    "ampersand-model": "4.x",
     "ampersand-subcollection": "https://github.com/webmasterkai/ampersand-subcollection/archive/fix-sorting.tar.gz",
     "query-param-getter": "0.0.1",
     "ampersand-router": "^1.0.2",
     "qs": "^1.2.2",
     "superagent": "^0.18.2",
     "cookies-js": "^0.4.0",
-    "ampersand-rest-collection": "^2.0.3"
+    "ampersand-rest-collection": "2.x"
   }
 }
