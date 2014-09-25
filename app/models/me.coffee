@@ -53,6 +53,11 @@ module.exports = AmpersandModel.extend
           window.localStorage['faves'] = favStr
         return favStr
 
+    favUrl:
+      deps: ['favStr']
+      fn: ->
+        'http://staging.rogersandgoffigon.com/app.html#favs/'+@favStr
+
     loggedIn:
       deps: ['token']
       cache: false

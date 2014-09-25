@@ -9,6 +9,7 @@ ItemsData = require './models/data'
 Content = require './models/content'
 PatternColors = require './models/pattern_colors'
 Me = require './models/me'
+Bitly = require './models/bitly_collection'
 
 module.exports =
   blastoff: ->
@@ -21,6 +22,7 @@ module.exports =
     @items = new SubCollection items
     @content = Content
     @me = new Me()
+    @bitly = new Bitly()
     # Init the React application router.
     el = document.getElementById('react')
     routerComponent = Router {}
