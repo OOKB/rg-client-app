@@ -17,7 +17,7 @@ module.exports = React.createClass
     unless @props.itemState.favBoxView
       return false
     div
-      className: 'alert-favorite',
+      className: 'favorite popup',
         CloseButton
           onClick: @close
         div

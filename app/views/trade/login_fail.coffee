@@ -9,7 +9,7 @@ module.exports = React.createClass
 
   render: ->
     div
-      className: "login-failed alert alert-dismissable",
+      className: "login-failed popup",
         Close
           onClick: @props.onClick
         p 'Login failed'
