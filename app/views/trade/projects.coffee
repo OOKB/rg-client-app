@@ -178,7 +178,7 @@ module.exports = React.createClass
           className: 'row',
             button
               onClick: => @setState addProject: true
-              className: 'new-project',
+              className: 'new-project btn-outline',
                 'Add New Project'
             newProj
         div
