@@ -93,7 +93,7 @@ module.exports = React.createClass
           h3 'Price'
           p price
 
-    fieldsClass = 'item-information popup'
+    fieldsClass = 'item-information'
     fieldsClass += ' f-qty-'+fieldCount
     fieldsClass += ' char-qty-'+@round(charCount, 25)
     ul
