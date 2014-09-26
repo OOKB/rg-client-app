@@ -26,13 +26,13 @@ module.exports = React.createClass
     switch buttonType
       when 'add'
         key: 'addItem'
-        name: 'add-item'
+        name: 'add-item btn-large'
         value: 'id'
         onClick: @addItem
         label: '+'
       when 'rm'
         key: 'rmItem'
-        name: 'remove-item'
+        name: 'remove-item btn-large'
         value: 'id'
         onClick: @rmItem
         label: '-'

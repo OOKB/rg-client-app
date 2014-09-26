@@ -27,13 +27,13 @@ module.exports = React.createClass
     switch buttonType
       when 'addFav'
         key: 'favs'
-        name: 'item-favorite'
+        name: 'item-favorite btn-large'
         value: 'id'
         onClick: @addToFavs
         label: '+'
       when 'rmFav'
         key: 'remove'
-        name: 'remove-item'
+        name: 'remove-item btn-large'
         value: 'id'
         onClick: @rmFav
         label: '-'

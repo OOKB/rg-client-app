@@ -76,49 +76,40 @@ ul.collection-controls > li.collection-title button:hover {
 
 }
 
-.item-icons button.item-favorite,
-.item-icons button.add-item,
-.item-icons button.remove-item,
-.item-icons button.item-details {
+.item-icons button.btn-large {
+  background-position: -3px center;
+  background-repeat: no-repeat;
   padding: 0;
-  height: 23px;
-  width: 23px;
   .hide-text;
 }
 
 .item-icons button.item-favorite,
 .item-icons button.add-item {
-  background: @rg-background url(@add-fav-sm) -3px center no-repeat;
+  background-image: url(@add-fav-sm);
 }
 
 .item-icons button.remove-item {
-  background: @rg-background url(@remove-fav-sm) -3px center no-repeat;
+  background-image: url(@remove-fav-sm);
 }
 
 .item-icons button.item-details {
-  background: @rg-background url(@item-info) -3px center no-repeat;
+  background-image: url(@item-info);
 }
 
-.item-icons button.item-favorite:hover,
-.item-icons button.add-item:hover,
-.item-icons button.remove-item:hover,
-.item-icons button.item-favorite:focus,
-.item-icons button.add-item:focus,
-.item-icons button.remove-item:focus,
-.item-icons button.item-favorite:active,
-.item-icons button.remove-item:active,
-.item-icons button.item-details:hover,
-.item-icons button.item-details:active,
-.item-icons button.item-details:focus,
-.item-icons button.item-details.active {
+.item-icons button.btn-large:hover,
+.item-icons button.btn-large:active,
+.item-icons button.btn-large:focus,
+.item-icons button.btn-large.active {
+  background-position: -32px center;
+}
+
+.item-icons button.btn-large:hover,
+.item-icons button.btn-large:focus,
+.item-icons button.btn-large.active {
   background-color: @rg-gold;
-  background-position-x: -32px;
 }
 
-.item-icons button.item-favorite:active,
-.item-icons button.add-item:active,
-.item-icons button.remove-item:active,
-.item-icons button.item-details:active {
+.item-icons button.btn-large:active {
   background-color: @rg-dark-gold;
 }
 

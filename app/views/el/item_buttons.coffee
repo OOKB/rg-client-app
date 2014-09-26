@@ -41,7 +41,7 @@ module.exports = React.createClass
         label: 'Colors'
       when 'info'
         key: 'item-info'
-        name: 'item-details'
+        name: 'item-details btn-large'
         onClick: @infoClick
         label: '='
 
