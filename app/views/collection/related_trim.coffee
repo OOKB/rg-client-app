@@ -65,4 +65,5 @@ module.exports = React.createClass
         Button
           buttonInfo:
             onClick: @closeColors
+            className: 'btn-text'
             label: 'Close Colors'

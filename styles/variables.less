@@ -188,6 +188,13 @@
 
 .btn-small.close {
   background: transparent url(@close-btn-sm) center center no-repeat;
+  .hide-text;
+  opacity: .75;
+
+  &:hover, &:focus, &.active, &:active {
+    opacity: 1;
+  }
+
 }
 
 /* = Vertical Centering trick */

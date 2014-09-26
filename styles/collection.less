@@ -64,7 +64,7 @@ ul.collection-controls > li.collection-title button:hover {
   font-weight: bold;
   .dropshadow;
 
-  &:hover, &.active {
+  &:hover, &:focus, &.active {
     background-color: @rg-gold;
     color: @rg-background;
   }
@@ -101,16 +101,6 @@ ul.collection-controls > li.collection-title button:hover {
 .item-icons button.btn-large:focus,
 .item-icons button.btn-large.active {
   background-position: -32px center;
-}
-
-.item-icons button.btn-large:hover,
-.item-icons button.btn-large:focus,
-.item-icons button.btn-large.active {
-  background-color: @rg-gold;
-}
-
-.item-icons button.btn-large:active {
-  background-color: @rg-dark-gold;
 }
 
 .collection #related-colors {
@@ -304,10 +294,6 @@ ul.list li, ul.list li * {
 #collection-passementerie .item-icons {
   height: 23px;
   top:20px;
-/*
-  top:50%;
-  margin-top: -11.5px;
-*/
   font-weight: bold;
   z-index: 99;
 }
@@ -336,28 +322,20 @@ ul.list li, ul.list li * {
   padding-bottom: 11px;
 }
 
-#collection-passementerie #related-colors > button.close {
+#collection-passementerie #related-colors > button {
   position: static;
   padding: 0;
-  margin-top: 25px;
-  margin-bottom: 10px;
-  margin-right: 10px;
+  margin: 25px 10px 10px 0;
   display: inline-block;
   vertical-align: middle
 }
 
-#collection-passementerie #related-colors > button.btn {
-  position: static;
+#collection-passementerie #related-colors > button.btn-text {
   line-height: 11px;
   font-size: 12px;
-  padding: 0;
-  margin-top: 25px;
-  margin-bottom: 10px;
   border-bottom: 1px solid @rg-light-gray;
-  display: inline-block;
-  vertical-align: middle
+  margin-right: 0;
 }
-
 
 #collection-passementerie #related-colors > ul.list {
   margin: 0;
@@ -744,8 +722,8 @@ ul.collection-controls li.collection-title button {
 #collection-row-passementerie ul.item-information {
   width: 300px;
   margin-left: -150px;
-  height: 60px;
-  margin-top: -30px;
+  height: 68px;
+  margin-top: -34px;
 }
 
 #collection-passementerie ul.item-information.f-qty-1,
@@ -802,7 +780,7 @@ ul.collection-controls li.collection-title button {
 }
 
 #container-collection ul.item-information > li {
-  padding: 5px 0;
+  padding: 0;
 }
 
 ul.item-information h3,
