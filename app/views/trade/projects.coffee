@@ -4,6 +4,7 @@ _ = require 'lodash'
 
 Favs = require '../favs_content'
 NewProject = require '../el/project_new'
+Share = require '../share'
 
 module.exports = React.createClass
   getInitialState: ->
@@ -134,8 +135,11 @@ module.exports = React.createClass
 
     if project.id == @props.initState.projectId
       projectItems = Favs @props
+      share = Share
+        shareUrl: 'http://fav.rogersandgoffigon.com/'+project.id
     else
       projectItems = false
+      share = false
 
     isDraggable = !(@props.initState.projectId)
     li
@@ -145,6 +149,7 @@ module.exports = React.createClass
       onDragStart: @dragStart
       onDragEnd: @dragEnd
       className: 'project',
+        share
         name
         span
           className: 'list-edit',
