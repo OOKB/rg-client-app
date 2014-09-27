@@ -72,7 +72,7 @@ module.exports = React.createClass
               ref: 'password'
             button
               onClick: @submitLogin
-              className: 'btn btn-default'
+              className: 'btn-outline'
               type: 'submit',
                 'Log In'
         failure

@@ -13,7 +13,7 @@ module.exports = React.createClass
     Button
       model: {}
       buttonInfo:
-        className: 'close small'
+        className: 'close btn-small'
         onClick: @props.onClick
         label: 'X'
       active: false

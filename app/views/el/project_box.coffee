@@ -28,7 +28,7 @@ module.exports = React.createClass
             project.name
     div
       id: "project-list-select"
-      className: "alert-favorite alert alert-dismissable",
+      className: "favorite popup",
         CloseButton
           onClick: @close
         div
@@ -45,5 +45,5 @@ module.exports = React.createClass
         button
           type: 'submit'
           onClick: @addItem
-          className: "btn btn-default uppercase",
+          className: "btn-outline",
             'Add'

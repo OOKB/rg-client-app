@@ -35,13 +35,13 @@ module.exports = React.createClass
     switch buttonType
       when 'color'
         key: 'colors'
-        name: 'item-colors'
+        name: 'item-colors btn-text'
         value: 'patternNumber'
         onClick: @colorsClick
         label: 'Colors'
       when 'info'
         key: 'item-info'
-        name: 'item-details'
+        name: 'item-details btn-large'
         onClick: @infoClick
         label: '='
 

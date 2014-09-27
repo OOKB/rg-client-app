@@ -16,7 +16,7 @@ module.exports = React.createClass
 
   render: () ->
     div
-      className: "new-project alert alert-dismissable",
+      className: "new-project popup",
         CloseButton
           onClick: @props.onClose
         TxtField
@@ -29,5 +29,5 @@ module.exports = React.createClass
         button
           onClick: @handleSubmit
           type: 'submit'
-          className: 'btn btn-default',
+          className: 'btn-outline',
             'Create'

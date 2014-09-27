@@ -43,9 +43,11 @@ ul.collection-controls > li.collection-title button:hover {
 }
 
 .collection .pg-size-3 > ul.list > li,
-.collection .pg-vert > ul.list > li {
+.collection .pg-vert > ul.list > li,
+#collection-row-passementerie .pg-vert .open #related-colors > ul.list > li {
   background: @rg-background url(@loading) center center no-repeat;
   background-size: 50px 50px;
+  min-height: 50px;
 }
 
 .item-icons {
@@ -76,50 +78,30 @@ ul.collection-controls > li.collection-title button:hover {
 
 }
 
-.item-icons button.item-favorite,
-.item-icons button.add-item,
-.item-icons button.remove-item,
-.item-icons button.item-details {
+.item-icons button.btn-large {
+  background-position: -3px center;
+  background-repeat: no-repeat;
   padding: 0;
-  height: 23px;
-  width: 23px;
   .hide-text;
 }
 
 .item-icons button.item-favorite,
 .item-icons button.add-item {
-  background: @rg-background url(@add-fav-sm) -3px center no-repeat;
+  background-image: url(@add-fav-sm);
 }
 
 .item-icons button.remove-item {
-  background: @rg-background url(@remove-fav-sm) -3px center no-repeat;
+  background-image: url(@remove-fav-sm);
 }
 
 .item-icons button.item-details {
-  background: @rg-background url(@item-info) -3px center no-repeat;
+  background-image: url(@item-info);
 }
 
-.item-icons button.item-favorite:hover,
-.item-icons button.add-item:hover,
-.item-icons button.remove-item:hover,
-.item-icons button.item-favorite:focus,
-.item-icons button.add-item:focus,
-.item-icons button.remove-item:focus,
-.item-icons button.item-favorite:active,
-.item-icons button.remove-item:active,
-.item-icons button.item-details:hover,
-.item-icons button.item-details:active,
-.item-icons button.item-details:focus,
-.item-icons button.item-details.active {
-  background-color: @rg-gold;
-  background-position-x: -32px;
-}
-
-.item-icons button.item-favorite:active,
-.item-icons button.add-item:active,
-.item-icons button.remove-item:active,
-.item-icons button.item-details:active {
-  background-color: @rg-dark-gold;
+.item-icons button.btn-large:hover,
+.item-icons button.btn-large:active,
+.item-icons button.btn-large.active {
+  background-position: -32px center;
 }
 
 .collection #related-colors {
@@ -313,10 +295,6 @@ ul.list li, ul.list li * {
 #collection-passementerie .item-icons {
   height: 23px;
   top:20px;
-/*
-  top:50%;
-  margin-top: -11.5px;
-*/
   font-weight: bold;
   z-index: 99;
 }
@@ -345,28 +323,20 @@ ul.list li, ul.list li * {
   padding-bottom: 11px;
 }
 
-#collection-passementerie #related-colors > button.close {
+#collection-passementerie #related-colors > button {
   position: static;
   padding: 0;
-  margin-top: 25px;
-  margin-bottom: 10px;
-  margin-right: 10px;
+  margin: 25px 10px 10px 0;
   display: inline-block;
   vertical-align: middle
 }
 
-#collection-passementerie #related-colors > button.btn {
-  position: static;
+#collection-passementerie #related-colors > button.btn-text {
   line-height: 11px;
   font-size: 12px;
-  padding: 0;
-  margin-top: 25px;
-  margin-bottom: 10px;
   border-bottom: 1px solid @rg-light-gray;
-  display: inline-block;
-  vertical-align: middle
+  margin-right: 0;
 }
-
 
 #collection-passementerie #related-colors > ul.list {
   margin: 0;
@@ -685,13 +655,9 @@ ul.collection-controls li.collection-title button {
 /*******************************/
 #collection-passementerie ul.item-information,
 #container-collection ul.item-information {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  .popup;
   margin: 0;
   padding: 15px;
-  z-index: 99;
-  .dropshadow;
 }
 
 #collection-row-textile ul.item-information,
@@ -753,8 +719,8 @@ ul.collection-controls li.collection-title button {
 #collection-row-passementerie ul.item-information {
   width: 300px;
   margin-left: -150px;
-  height: 60px;
-  margin-top: -30px;
+  height: 68px;
+  margin-top: -34px;
 }
 
 #collection-passementerie ul.item-information.f-qty-1,
@@ -812,6 +778,10 @@ ul.collection-controls li.collection-title button {
 
 #container-collection ul.item-information > li {
   padding: 5px 0;
+}
+
+#collection-row-passementerie ul.item-information > li {
+  padding: 0;
 }
 
 ul.item-information h3,

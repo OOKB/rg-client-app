@@ -45,10 +45,7 @@
   border-radius: 0;
 }
 
-.trade-projects button.new-project,
-#project-list-select button.btn-default,
-.new-project button.btn-default,
-.trade-login form button.btn-default {
+button.btn-outline {
   display: inline-block;
   margin-top: 20px;
   margin-bottom: 0;
@@ -60,10 +57,7 @@
   .uppercase;
 }
 
-.trade-projects button.new-project:hover,
-#project-list-select button.btn-default:hover,
-.new-project button.btn-default:hover,
-.trade-login form button.btn-default:hover {
+button.btn-outline:hover {
   border-color: @rg-black;
 }
 
@@ -106,7 +100,7 @@
 }
 
 .login-failed,
-.new-project.alert {
+.new-project.popup {
   .dropshadow;
   .uppercase;
   /**/
@@ -122,7 +116,7 @@
   z-index: 99;
 }
 
-.new-project.alert {
+.new-project.popup {
   width: 420px;
   margin-left: -210px;
   height: 100px;
@@ -131,17 +125,17 @@
   padding-right: 30px;
 }
 
-.new-project.alert .form-group {
+.new-project.popup .form-group {
   width: 70%;
   display: inline-block;
   text-align: left;
 }
 
-.new-project.alert .form-group input {
+.new-project.popup .form-group input {
   width: 96%;
 }
 
-.new-project.alert button.btn-default {
+.new-project.popup button.btn-default {
   width: 30%;
   display: inline-block;
   margin-top: 15px;
@@ -153,14 +147,7 @@
   letter-spacing: 2px;
 }
 
-.new-project.alert .close,
-.login-failed .close {
-  position: absolute;
-  top:10px;
-  right: 10px;
-}
-
-.new-project.alert label { display: none; }
+.new-project.popup label { display: none; }
 
 /******* = Projects Page Styles *******/
 
@@ -207,7 +194,6 @@
   right: 5px;
 }
 
-.login-failed .close,
 .trade-projects .project .list-edit button {
   background-size: 11px 11px;
   height: 11px;
@@ -219,7 +205,6 @@
   margin-left: 16.5px;
 }
 
-.login-failed .close,
 .trade-projects .project .list-edit button.delete {
   background: transparent url(@close-btn-sm) center center no-repeat;
 }
