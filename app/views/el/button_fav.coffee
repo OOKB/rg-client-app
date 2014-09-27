@@ -16,7 +16,10 @@ module.exports = React.createClass
     id = e.target.value
     #console.log 'addFav '+e.target.value
     app.me.addFav id
-    @props.setItemState favBoxView: id
+    @props.setItemState
+      infoBoxView: false
+      colorBoxView: false
+      favBoxView: id
 
   rmFav: (e) ->
     id = e.target.value

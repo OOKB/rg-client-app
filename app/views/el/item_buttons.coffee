@@ -21,11 +21,15 @@ module.exports = React.createClass
     s =
       colorBoxView: !@props.itemState.colorBoxView
       infoBoxView: false
+      projectBoxView: false
     @props.setItemState s
 
   infoClick: ->
     s =
       infoBoxView: !@props.itemState.infoBoxView
+      favBoxView: false
+      colorBoxView: false
+      projectBoxView: false
     unless @props.model.category == 'passementerie'
       s.colorBoxView = false
     @props.setItemState s

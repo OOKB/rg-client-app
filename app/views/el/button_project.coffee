@@ -14,7 +14,11 @@ module.exports = React.createClass
 
   addItem: (e) ->
     id = e.target.value
-    @props.setItemState projectBoxView: id
+    @props.setItemState
+      projectBoxView: id
+      favBoxView: false
+      infoBoxView: false
+      colorBoxView: false
 
   rmItem: (e) ->
     entityId = e.target.value
