@@ -120,7 +120,7 @@ module.exports = React.createClass
       relatedColorsRow = relatedColorsList
 
     # We want to count the number of items inside the box.
-    colorsClass = 'hidden-xs size-'+pageItems
+    colorsClass = 'hidden-xs size-'+pageItems.length
 
     # if itemCount < 5
     #   colorsClass = 'hidden-xs size-'+itemCount
