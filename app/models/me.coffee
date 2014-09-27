@@ -34,6 +34,7 @@ module.exports = AmpersandModel.extend
       type: 'string'
       default: -> Cookies.get('token')
     failedLogins: ['number', true, 0]
+    fetchedProjectes: ['bool', true, false]
     showroom: 'object'
 
   children:
@@ -64,10 +65,13 @@ module.exports = AmpersandModel.extend
       fn: ->
         if @token
           Cookies.set('token', @token, expires: 4000)
-          @fetch
-            success: (model, response, options) ->
-              # Fetch the project lists too.
-              model.projects.fetch()
+          unless @customerNumber
+            @fetch
+              success: (model, response, options) =>
+                unless @fetchedProjectes
+                  # Fetch the project lists too.
+                  model.projects.fetch()
+                  @fetchedProjectes = true
         else
           Cookies.expire('token')
         return if @token then true else false
