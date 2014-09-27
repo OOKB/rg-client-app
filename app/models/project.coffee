@@ -8,6 +8,8 @@ module.exports = AmpersandModel.extend
     id: ['string']
     name: ['string', true]
     order: 'number'
+    shortUrl: 'string'
+    redirectUrl: 'string'
     uid:
       type: 'string'
       required: true
@@ -21,8 +23,18 @@ module.exports = AmpersandModel.extend
     entities: Lists
 
   parse: (pj, i) ->
+    console.log 'parse a project '+pj.id
     if _.isUndefined pj.order
       pj.order = _.random(0, 50)
+    if pj.id
+      # Set redirect link
+      pj.redirectUrl = 'http://r_g.cape.io/_list/'+pj.id
+      pj.shortUrl = pj.redirectUrl
+      # Process the bitly
+      app.bitly.getOrFetch pj.redirectUrl, (err, model) ->
+        if model and model.customUrl
+          console.log pj.id, model.customUrl
+          app.me.projects.get(pj.id).shortUrl = model.customUrl
     pj
 
   addEntity: (entityId) ->
