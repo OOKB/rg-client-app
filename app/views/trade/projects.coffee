@@ -27,7 +27,7 @@ module.exports = React.createClass
       @setState editName: e.target.value
 
   handleDelete: (e) ->
-    if confirm 'Are you sure you want to destroy this project?'
+    if confirm 'Are you sure you want to delete this project? This cannot be undone.'
       app.me.projects.get(e.target.value).destroy
         error: ->
           alert('There was an error destroying the task')
@@ -89,7 +89,6 @@ module.exports = React.createClass
       parent.insertBefore(window.placeholder, e.target)
     return
 
-
   dragEnd: (e) ->
     @dragged.style.display = "block"
     @dragged.parentNode.removeChild(window.placeholder)
@@ -148,7 +147,7 @@ module.exports = React.createClass
       draggable: isDraggable
       onDragStart: @dragStart
       onDragEnd: @dragEnd
-      className: 'project',
+      className: 'project ' +isDraggable,
         share
         name
         span
@@ -178,7 +177,7 @@ module.exports = React.createClass
       newProj = false
 
     div
-      className: 'trade-projects text-center',
+      className: 'trade-projects',
         div
           className: 'row',
             button
