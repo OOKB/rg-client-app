@@ -44,9 +44,8 @@ gulp.task 'copy', ->
     .pipe gulp.dest('./public/images/')
 
 gulp.task 'static', ->
-  return
-  # gulp.src('./static/**')
-  #   .pipe gulp.dest('./public/')
+  gulp.src('./static/**')
+    .pipe gulp.dest('./public/')
 
 gulp.task 'styles', ->
   gulp.src(["styles/app.less", 'styles/print.less', 'styles/iefix.less'])
@@ -66,7 +65,7 @@ gulp.task 'compile', ->
   bundle()
   return
 
-gulp.task "default", ['compile', 'styles', 'templates', 'browser-sync', 'copy', 'static'], ->
+gulp.task "default", ['compile', 'styles', 'templates', 'browser-sync', 'copy'], ->
   gulp.watch "templates/*.jade", ["templates"]
   gulp.watch "styles/*.less", ["styles"]
   gulp.watch 'images/**', ['copy']
