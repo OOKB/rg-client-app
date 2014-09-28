@@ -14,7 +14,7 @@ module.exports = Router.extend
     'cl': -> @redirectTo('collection')
     'collection': 'collection'
     'collection/:category': 'collection'
-    'collection/:category/:pgSize': 'collection'
+    'collection/:category/:pgSize(/:query)': 'collection'
     'collection/:category/:pgSize(/:query)/p:page': 'collection'
     'pl': -> @redirectTo('trade/pricelist/'+defaultCategory+'/50/p1')
     'plp': -> @redirectTo('trade/pricelist/passementerie/50/p1')
