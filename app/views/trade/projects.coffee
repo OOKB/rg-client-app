@@ -136,7 +136,7 @@ module.exports = React.createClass
     if project.id == @props.initState.projectId
       projectItems = Favs @props
       share = Share
-        shareUrl: 'http://fav.rogersandgoffigon.com/'+project.id
+        shareUrl: project.shortUrl
     else
       projectItems = false
       share = false
