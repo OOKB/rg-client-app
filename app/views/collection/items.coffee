@@ -137,16 +137,18 @@ module.exports = React.createClass
 
       if @props.threeUp or isOnTrim
         if buttonsFor == item.id and @state.colorBoxView
+          relatedCollection = new SubCollection app.items.collection,
+            where:
+              patternNumber: item.patternNumber
+              hasImage: item.hasImage
+            filter: (model) -> model.id != item.id
           relatedProps =
             id: item.id
             initState: @props.initState
             patternNumber: item.patternNumber
             setItemState: @setItemState
-            collection: new SubCollection app.items.collection,
-              where:
-                patternNumber: item.patternNumber
-                hasImage: item.hasImage
-              filter: (model) -> model.id != item.id
+            collection: relatedCollection
+            items: relatedCollection.models
             setParentState: (newSt) =>
               @setState newSt
             setContainerState: () -> return

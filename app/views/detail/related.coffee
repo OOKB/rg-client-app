@@ -1,5 +1,6 @@
 React = require 'react'
 {div, button, ul, li, a, img, i} = require 'reactionary'
+_ = require 'lodash'
 
 CloseButton = require '../el/button_close'
 ItemEl = require '../collection/item_el'
@@ -11,9 +12,11 @@ module.exports = React.createClass
     pgSize: 5
     prevActive: false
     nextActive: true
+    pages: Math.ceil(@props.items.length / 5)
 
   propTypes:
     collection: React.PropTypes.object.isRequired
+    items: React.PropTypes.array.isRequired
     setParentState: React.PropTypes.func.isRequired
     setContainerState: React.PropTypes.func.isRequired
     patternNumber: React.PropTypes.string.isRequired
@@ -68,9 +71,9 @@ module.exports = React.createClass
       showRuler: true
 
   render: ->
-    items = _.reject @props.collection.models, color_id: @props.color_id
+    items = @props.items
     itemCount = items.length
-    pages = Math.ceil(items.length / @state.pgSize)
+    pages = @state.pages
     if pages > 1
       pager = true
       pager_txt = (@state.pg+1) + ' / ' + pages
