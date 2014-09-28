@@ -96,6 +96,7 @@ module.exports = React.createClass
         setParentState: @handleUserInput
         patternNumber: @props.patternNumber
         activeId: @props.activeId
+        color_id: item.color_id
 
     # big-ol-image
     divs.push div

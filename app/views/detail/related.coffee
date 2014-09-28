@@ -9,7 +9,6 @@ module.exports = React.createClass
   getInitialState: ->
     pg: 0
     pgSize: 5
-    pages: Math.ceil(@props.collection.length / 5)
     prevActive: false
     nextActive: true
 
@@ -69,8 +68,9 @@ module.exports = React.createClass
       showRuler: true
 
   render: ->
-    itemCount = @props.collection.length
-    pages = @state.pages
+    items = _.reject @props.collection.models, color_id: @props.color_id
+    itemCount = items.length
+    pages = Math.ceil(items.length / @state.pgSize)
     if pages > 1
       pager = true
       pager_txt = (@state.pg+1) + ' / ' + pages
@@ -85,7 +85,8 @@ module.exports = React.createClass
           onClick: @handleXclick
     offset = @state.pg * @state.pgSize
     limit = (@state.pg + 1) * @state.pgSize
-    pageItems = @props.collection.models.slice(offset, limit)
+
+    pageItems = items.slice(offset, limit)
 
     # Color icons.
     relatedColorItems = []
