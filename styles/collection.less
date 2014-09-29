@@ -32,7 +32,8 @@ ul.collection-controls > li.collection-title button:hover {
 }
 
 .collection ul.list {
-  margin: 10px 0;
+/*   margin: 10px 0; */
+  margin: 0 0 12px 0; //issue from switching to typekit served type - need a couple tweaked styles
 }
 
 .collection ul.list > li {
@@ -435,6 +436,10 @@ ul.collection-controls li.collection-title button {
   ul.collection-controls li.pagecount {
     left: 40px;
     top: 5px;
+  }
+
+  .collection-pager-bottom ul.collection-controls li.pagecount {
+    top: 9px;
   }
 
   ul.collection-controls li.filter {
