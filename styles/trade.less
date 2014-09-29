@@ -33,7 +33,7 @@
   float: left;
 }
 
-.trade-projects .new-project input,
+.new-project.popup input,
 .trade-login form div.form-group input {
   width: 100%;
   padding: .4em;
@@ -63,8 +63,8 @@ button.btn-outline:hover {
 
 #project-trade-list:active,
 #project-trade-list:focus,
-.trade-projects .new-project input:active,
-.trade-projects .new-project input:focus,
+.new-project.popup input:active,
+.new-project.popup input:focus,
 .trade-projects .project input:active,
 .trade-projects .project input:focus,
 .trade-login form input:active,
@@ -135,7 +135,7 @@ button.btn-outline:hover {
   width: 96%;
 }
 
-.new-project.popup button.btn-default {
+.new-project.popup button.btn-outline {
   width: 30%;
   display: inline-block;
   margin-top: 15px;
@@ -247,7 +247,9 @@ button.btn-outline:hover {
 #project-list-select {
   width: 350px;
   margin-left: -175px;
-  padding-top: 40px;
+  padding-top: 35px;
+  height: 120px;
+  margin-top: -60px;
 }
 
 #project-list-select select {
@@ -276,12 +278,35 @@ button.btn-outline:hover {
   margin-top: 0 !important;
 }
 
+#project-list-select .new-project.row {
+  margin-top: 48px;
+}
+
+#project-list-select .new-project.row > button {
+  color: @rg-gray;
+}
+
 #project-list-select .new-project.popup {
   position: absolute;
   width: 100%;
   margin: 0;
   top: 0;
   left: 0;
-  height: 110px;
+  height: 120px;
+  padding-top: 40px;
 }
+
+#project-list-select .new-project.popup .form-group {
+  width: 70%;
+}
+
+#project-list-select .new-project.popup .form-group input {
+  margin: 0;
+}
+
+#project-list-select .new-project.popup .btn-outline {
+  height: auto;
+  padding: 11px 0 5px;
+}
+
 
