@@ -356,9 +356,15 @@ footer span {
 
 /** pricelist drag and drop stuff **/
 
-li.placeholder { background: #d8d0c4; }
+li.placeholder { background: @rg-light-gold; }
 li.placeholder:before {
   content: "Drop here";
   color: @rg-gray;
 }
 
+/** cool custom selection **/
+::selection {
+background: @rg-light-gold;
+color: @rg-medium-gray;
+text-shadow: none;
+}
