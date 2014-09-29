@@ -4,11 +4,13 @@ React = require 'react'
 HeaderBar = require './header'
 Switcher = require './buttons'
 FavAlert = require '../el/fav_alert'
+ProjectBox = require '../el/project_box'
 
 module.exports = React.createClass
   getInitialState: ->
     isRelated: false
     favBoxView: false
+    projectBoxView: false
     windowWidth: window.innerWidth
 
   handleResize: (e) ->
@@ -56,12 +58,23 @@ module.exports = React.createClass
       windowWidth: @state.windowWidth
       itemState: @state
       activeId: id
+
+    if @state.projectBoxView == item.id
+      favAlert = ProjectBox
+        itemState: @state
+        setItemState: (st) => @setState st
+        model: item
+    else if @state.favBoxView == item.id
+      favAlert = FavAlertBox
+        itemState: @state
+        model: item
+        setItemState: (st) => @setState st
+    else
+      favAlert = false
+
     div
       id: 'container-detail'
       className: 'item-detail '+item.category,
         HeaderBar props
-        FavAlert
-          itemState: @state
-          model: item
-          setItemState: (st) => @setState st
+        favAlert
         Switcher props
