@@ -10,9 +10,11 @@ module.exports = React.createClass
     selected: app.me.projects.at(0).id
     addProject: false
 
+  selectNew: (model) ->
+    @setState selected: model.id
+
   newProject: (name) ->
-    app.me.projects.create
-      name: name
+    app.me.projects.create {name: name}, {success: @selectNew, wait: true}
     @setState addProject: false
 
   close: ->
