@@ -74,7 +74,7 @@ module.exports = React.createClass
       else
         txt2 = ' on sale '
     else
-      txt2 = ' on sale '
+      txt2 = ' items match your search for '
     div
       className: 'search no-results',
         p 'No ', txt1, txt2, txt3, ' at this time.'
