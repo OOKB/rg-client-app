@@ -9,7 +9,8 @@
 #container-collection > .standard > .row,
 #container-collection > .search > .row {
   border-top: 1px solid @rg-black;
-  padding: 10px 0;
+/*   padding: 10px 0; */
+  padding: 12px 0 6px; //fix related to typekit Caslon having a weird baseline
 }
 
 ul.collection-controls > li.pagecount,
@@ -58,8 +59,9 @@ ul.collection-controls > li.collection-title button:hover {
 
 .item-icons button {
   display: inline-block;
+  vertical-align: bottom;
   background: @rg-background;
-  padding: 0 8px;
+  padding: 3px 8px 0;
   margin: 0 2.5px;
   height: 23px;
   line-height: 23px;
