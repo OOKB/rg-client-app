@@ -3,7 +3,9 @@ React = require 'react'
 
 Info = require '../el/info'
 FavButton = require '../el/button_fav'
+ProjectButton = require '../el/button_project'
 CloseButton = require '../el/button_close'
+
 module.exports = React.createClass
   getInitialState: ->
     forceInfo: false
@@ -21,14 +23,27 @@ module.exports = React.createClass
           Info @props
     else
       itemInfo = false
+
+    if app.me.loggedIn
+      favThisButton = ProjectButton
+        key: 'project'
+        model: @props.model
+        setItemState: @props.onUserInput
+        itemState: @props.itemState
+        section: 'detail'
+        projectId: null
+    else
+      favThisButton = FavButton
+        key: 'fav'
+        model: @props.model
+        setItemState: @props.onUserInput
+        itemState: @props.itemState
+
     nav className: 'item-detail-header',
       div className: 'controls',
         ul {},
           li className: 'fav',
-            FavButton
-              model: @props.model
-              itemState: @props.itemState
-              setItemState: @props.onUserInput
+            favThisButton
           li className: 'close',
             CloseButton
               onClick: @handleXclick
