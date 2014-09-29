@@ -81,6 +81,7 @@
 /**********************************************************/
 
 * {
+  font-family: cambria, 'times new roman', times, georgia, serif;
   font-family: 'adobe caslon', adobe-caslon-pro, cambria, 'times new roman', times, georgia, serif;
   box-sizing: border-box;
 }
@@ -131,13 +132,13 @@ button {
 
 .active button,
 button.active {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .collection-menu button.active,
 button.active {
   color: @rg-gold;
-  font-weight: bold
+  font-weight: 700
 }
 
 /* = Main React Wrapper */
@@ -169,8 +170,8 @@ button.active {
 
 /* = header related stuff */
 header {
-  background: #fcfbf8;
-  padding: 14px 0;
+  background: @rg-background;
+  padding: 20px 0;
   position: absolute;
   top: 0;
   left: 0;
@@ -241,9 +242,9 @@ header nav > ul > li {
 header nav > ul > li > a {
   color: @rg-black;
   display: block;
-  padding: 7px 0;
+  padding: 8px 0 4px;
   font-size: .875em;
-  font-weight: bold;
+  font-weight: 700;
   text-decoration: none;
   .uppercase;
 
@@ -282,7 +283,7 @@ li.trade > ul.sub-menu > li > a {
 
 li.trade > ul.sub-menu > li.active > a {
   color: @rg-dark-gold;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 @media (min-width: @screen-sm-min) {
