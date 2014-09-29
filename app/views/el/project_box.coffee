@@ -3,10 +3,17 @@ React = require 'react'
 
 # Confirm item added to favorites
 CloseButton = require './button_close'
+NewProject = require '../el/project_new'
 
 module.exports = React.createClass
   getInitialState: ->
     selected: app.me.projects.at(0).id
+    addProject: false
+
+  newProject: (name) ->
+    app.me.projects.create
+      name: name
+    @setState addProject: false
 
   close: ->
     @props.setItemState projectBoxView: false
@@ -26,6 +33,17 @@ module.exports = React.createClass
           key: project.id
           value: project.id,
             project.name
+
+    if @state.addProject
+      createNewProject = NewProject
+        onClose: => @setState addProject: false
+        onSave: @newProject
+    else
+      createNewProject =
+        button
+          type: 'button'
+          onClick: => @setState addProject: true,
+          'Create new list'
     div
       id: "project-list-select"
       className: "favorite popup",
@@ -47,3 +65,6 @@ module.exports = React.createClass
           onClick: @addItem
           className: "btn-outline",
             'Add'
+        div
+          className: 'new-project row',
+            createNewProject
