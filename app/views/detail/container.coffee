@@ -3,7 +3,7 @@ React = require 'react'
 
 HeaderBar = require './header'
 Switcher = require './buttons'
-FavAlert = require '../el/fav_alert'
+FavAlertBox = require '../el/fav_alert'
 ProjectBox = require '../el/project_box'
 
 module.exports = React.createClass
