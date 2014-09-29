@@ -2,6 +2,8 @@ html
   head
     title Rogers & Goffigon
     meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+    meta(http-equiv="X-UA-Compatible", content="IE=Edge")
     link(rel='icon', sizes='16x16', href='images/favicon.ico')
     link(rel='stylesheet', href='/#{sha}.css')
     link(rel='stylesheet', type='text/css', media='print', href='/print.css')
@@ -19,15 +21,15 @@ html
         nav
           ul
             li
-              a About Us
+              a(href='/about/') About Us
             li
-              a(href='#collection') The Collection
+              a(href='/app.html#collection') The Collection
             li
-              a Contact Us
+              a(href='/contact/') Contact Us
             li
-              a Trade Login
+              a(href='/app.html#trade') Trade Login
             li.searchload
-              a Search
+              a(href='/app.html#collection') Search
       div#content
         img(src='images/loading.gif', class='loading')
       footer
