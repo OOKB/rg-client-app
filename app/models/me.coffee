@@ -36,6 +36,9 @@ module.exports = AmpersandModel.extend
     failedLogins: ['number', true, 0]
     fetchedProjectes: ['bool', true, false]
     showroom: 'object'
+    textileSize: 3
+    trimSize: 12
+    leatherSize: 3
 
   children:
     projects: Projects

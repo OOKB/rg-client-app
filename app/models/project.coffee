@@ -23,7 +23,7 @@ module.exports = AmpersandModel.extend
     entities: Lists
 
   parse: (pj, i) ->
-    console.log 'parse a project '+pj.id
+    #console.log 'parse a project '+pj.id
     if _.isUndefined pj.order
       pj.order = _.random(0, 50)
     if pj.id
@@ -33,7 +33,7 @@ module.exports = AmpersandModel.extend
       # Process the bitly
       app.bitly.getOrFetch pj.redirectUrl, (err, model) ->
         if model and model.customUrl
-          console.log pj.id, model.customUrl
+          #console.log pj.id, model.customUrl
           app.me.projects.get(pj.id).shortUrl = model.customUrl
     pj
 
