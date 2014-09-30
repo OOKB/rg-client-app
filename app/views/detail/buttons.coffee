@@ -13,9 +13,12 @@ module.exports = React.createClass
     isRelated: false
     loadedLarge: false
     loadedXlarge: false
+    showNotes: false
 
   toggleColorBoxView: ->
-    @setState colorBoxView: !@state.colorBoxView
+    @setState
+      colorBoxView: !@state.colorBoxView
+      showNotes: false
 
   handleUserInput: (newSt) ->
     @setState newSt
@@ -73,7 +76,9 @@ module.exports = React.createClass
     if item.itemComments and item.summerSale
       divs.push Notes
         notes: item.itemComments
+        setParentState: @handleUserInput
         key: 'notes'
+        showNotes: @state.showNotes
 
     if item.far
       divs.push div

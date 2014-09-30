@@ -5,29 +5,29 @@ cx = React.addons.classSet
 CloseButton = require '../el/button_close'
 
 module.exports = React.createClass
-  getInitialState: ->
-    showNotes: false
 
   notes: ->
     div
       id:"item-notes",
         CloseButton
-          onClick: => @setState showNotes: false
+          onClick: => @props.setParentState showNotes: false
         p
           @props.notes
 
   render: ->
-    if @state.showNotes
+    if @props.showNotes
       notes = @notes()
     else
       notes = false
     classes = cx
       uppercase: true
-      active: @state.showNotes
+      active: @props.showNotes
     div
       className: "toggle-notes hidden-xs",
         button
-          onClick: => @setState showNotes: !@state.showNotes
+          onClick: => @props.setParentState
+            showNotes: !@props.showNotes
+            colorBoxView: false
           className: classes,
             'Notes'
         notes
