@@ -37,7 +37,7 @@ module.exports =
     type: 'name'
 
   setCategoryFilterOps: ->
-    console.log 'calculate available collection item filters'
+    #console.log 'calculate available collection item filters'
     filterOps =
       'textile': ['content', 'color', 'description']
       'passementerie': ['color', 'description']

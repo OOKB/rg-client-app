@@ -387,6 +387,8 @@ module.exports = Router.extend
       searchTxt = s.searchTxt + '/'
     else
       searchTxt = ''
+    unless s.category
+      return s.section
     # Assume it has a category and pgSize.
     urlTxt = s.section+'/'+s.category+'/'+s.pgSize+'/'+searchTxt
     return urlTxt + 'p' + s.pageIndex + @setQuery(s)

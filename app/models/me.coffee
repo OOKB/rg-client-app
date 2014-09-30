@@ -34,7 +34,7 @@ module.exports = AmpersandModel.extend
       type: 'string'
       default: -> Cookies.get('token')
     failedLogins: ['number', true, 0]
-    fetchedProjectes: ['bool', true, false]
+    fetchedProjects: ['bool', true, false]
     showroom: 'object'
     textileSize: ['number', true, 3]
     passementerieSize: ['number', true, 12]
@@ -72,10 +72,10 @@ module.exports = AmpersandModel.extend
           unless @customerNumber
             @fetch
               success: (model, response, options) =>
-                unless @fetchedProjectes
+                unless @fetchedProjects
                   # Fetch the project lists too.
                   model.projects.fetch()
-                  @fetchedProjectes = true
+                  @fetchedProjects = true
         else
           Cookies.expire('token')
         return if @token then true else false
