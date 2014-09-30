@@ -77,6 +77,7 @@ module.exports = Router.extend
         args.pgSize = parseInt pgSize
       args.searchTxt = searchTxt
       args.pageIndex = parseInt pageIndex
+      args.patternNumber = null
     else
       args.category = null
     @collection args
