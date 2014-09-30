@@ -12,9 +12,9 @@ module.exports = Router.extend
   routes:
     '': -> @redirectTo('cl')
     'cl': -> @redirectTo('collection')
-    'collection': 'collection'
-    'collection/:category': 'collection'
-    'collection/:category/:pgSize(/:query)/p:page': 'collection'
+    'collection': '_collection'
+    'collection/:category': '_collection'
+    'collection/:category/:pgSize(/:query)/p:page': '_collection'
     'pl': -> @redirectTo('trade/pricelist/'+defaultCategory+'/50/p1')
     'plp': -> @redirectTo('trade/pricelist/passementerie/50/p1')
     'pricelist': -> @redirectTo('trade/pricelist/'+defaultCategory+'/50/p1')
@@ -68,20 +68,39 @@ module.exports = Router.extend
 
     @setReactState S
 
-  collection: (category, pgSize, searchTxt, pageIndex) ->
+  # Process raw user input.
+  _collection: (category, pgSize, searchTxt, pageIndex) ->
+    args = @getQuery()
+    if category # Expand shortcut strings to standard machine cat name.
+      args.category = @getCategory category
+      if pgSize # Comes in as a string.
+        args.pgSize = parseInt pgSize
+      args.searchTxt = searchTxt
+      args.pageIndex = parseInt pageIndex
+    else
+      args.category = null
+    @collection args
+
+  collection: (args) ->
     document.title = pageTitle + ' - Collections'
-    #console.log 'collection'
-    S = _.extend @getQuery(),
-      section: 'collection'
-      trade: false
-      reqAuth: false
-      category: category
-      pgSize: pgSize
-      searchTxt: searchTxt
-      pageIndex: pageIndex
-      summerSale: false
+    # Move to filter function
+    args.summerSale = false
+    if args.category
+      if args.pgSize
+        app.me[args.category+'Size'] = args.pgSize
+      else
+        args.pgSize = app.me[args.category+'Size']
+    args.section = 'collection'
+    args.trade = false
+    args.reqAuth = false
+    if args.searchTxt # from menu search field or url.
+      # Remove stuff we don't want.
+      args.searchTxt = @searchTxtParse args.searchTxt
+    unless args.pageIndex > 0
+      args.pageIndex = 1
+
     #console.log S
-    S = @prepNewState S
+    S = @prepNewState args
 
     @setReactState S
 
@@ -177,6 +196,29 @@ module.exports = Router.extend
     newSt.trade = true
     @setReactState newSt
 
+  # HELER FUNCTIONS
+
+  pgSizes: (section, hide3up) ->
+    switch section
+      when 'pricelist'
+        [50, 100, 10000]
+      when 'favs', 'projects' then 1000
+      when 'collection', 'summer'
+        pgSizes = [3, 12, 24, 48, 96]
+        if hide3up
+          pgSizes.shift()
+        pgSizes
+      else [1]
+
+  getCategory: (category) ->
+    unless category
+      return category
+    switch category
+      when 't', 'textile' then 'textile'
+      when 'p', 'trim', 'passementerie' then 'passementerie'
+      when 'l', 'skin', 'hide', 'leather' then 'leather'
+      else null
+
   isItemNumber: (possibleId) ->
     /^(P-|L-)?[0-9]{4,7}-[0-9]{2}[LD]?$/.test(possibleId)
 
@@ -193,7 +235,7 @@ module.exports = Router.extend
     else if get.pattern
       if @isPatternNumber(patternNumber = get.pattern.toUpperCase())
         q.patternNumber = patternNumber
-    if get.color or get.description or get.content or get.type
+    if get.color or get.description or get.content or get.type or get.use
       q.selectedFilters =
         color: get.color
         content: get.content

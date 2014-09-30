@@ -19,9 +19,20 @@ module.exports = React.createClass
       @props.setRouterState pageIndex: @props.pageIndex+1
 
   setPgSize: ->
-    @props.setRouterState
-      pgSize: parseInt(@refs.setPgSize.getDOMNode().value)
-      pageIndex: 1
+    pgSize = parseInt(@refs.setPgSize.getDOMNode().value)
+    if @props.section == 'collection'
+      args =
+        category: @props.category
+        searchTxt: @props.searchTxt
+        selectedFilters: @props.selectedFilters
+        pgSize: pgSize
+        pageIndex: 1
+      # Call the route function.
+      app.container.router.collection args
+    else
+      @props.setRouterState
+        pgSize: pgSize
+        pageIndex: 1
 
   # Previous element.
   pre: ->

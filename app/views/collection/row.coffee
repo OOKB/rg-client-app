@@ -12,18 +12,12 @@ module.exports = React.createClass
 
   categoryClick: (e) ->
     newCategory = e.target.value
+    # Close the category.
     if newCategory == @props.initState.category
-      if @state.showFilters == true
-        @setState
-          showFilters: false
-        return
-      newCategory = null
-
-    @props.setRouterState
-      patternNumber: false
-      id: false
-      category: newCategory
-      selectedFilters: {}
+      app.container.router.navigate 'collection', trigger: true
+    # Naviaget to a new collection.
+    else
+      app.container.router.navigate 'collection/'+newCategory, trigger: true
 
   toggleFilter: ->
     if @state.showFilters == false
@@ -59,11 +53,20 @@ module.exports = React.createClass
     @props.setRouterState
       selectedFilters: {}
 
+  # Toggle horizontal/virtical view.
   setPgSize: ->
     if @props.initState.pgSize > 3
-      @props.setRouterState pgSize: @props.initState.pgSizes[0]
+      pgSize = @props.initState.pgSizes[0]
     else
-      @props.setRouterState pgSize: @props.initState.pgSizes[1]
+      pgSize = @props.initState.pgSizes[1]
+    args =
+      category: @props.initState.category
+      searchTxt: @props.initState.searchTxt
+      selectedFilters: @props.initState.selectedFilters
+      pgSize: pgSize
+      pageIndex: 1
+    # Call the route function.
+    app.container.router.collection args
 
   filterCategories: (activeTab) ->
     ops = []
