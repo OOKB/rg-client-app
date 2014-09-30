@@ -6,6 +6,8 @@ ItemEl = require './item_el'
 ItemButtons = require '../el/item_buttons'
 Info = require '../el/info'
 FavAlertBox = require '../el/fav_alert'
+ProjectBox = require '../el/project_box'
+
 Button = require '../el/button'
 module.exports = React.createClass
   closeColors: ->
@@ -16,6 +18,7 @@ module.exports = React.createClass
     buttonsFor: ''
     infoBoxView: false
     favBoxView: false
+    projectBoxView: false
 
   render: ->
     itemCount = @props.collection.length
@@ -27,6 +30,7 @@ module.exports = React.createClass
         infoBox = Info model: item
       else
         infoBox = false
+      # Favs
       if @state.favBoxView == item.id
         favAlert = FavAlertBox
           itemState: @state
@@ -34,6 +38,16 @@ module.exports = React.createClass
           model: item
       else
         favAlert = false
+
+      # Add to projects
+      if @state.projectBoxView == item.id
+        projectBox = ProjectBox
+          itemState: @state
+          setItemState: (newSt) => @setState newSt
+          model: item
+      else
+        projectBox = false
+
       relatedColorItems.push li
         key: item.id
         className: 'related-item',
@@ -51,6 +65,7 @@ module.exports = React.createClass
             buttonTypes: ['fav', 'info']
           infoBox
           favAlert
+          projectBox
 
     relatedColorsList = ul
       className: 'list',
