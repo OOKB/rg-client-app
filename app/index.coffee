@@ -20,6 +20,8 @@ module.exports =
     items = new ItemsCollection ItemsData, parse: true
     # Use the subcollection module.
     @items = new SubCollection items
+    @itemFilters = {}
+    @setCategoryFilterOps()
     @content = Content
     @me = new Me()
     @bitly = new Bitly()
@@ -27,6 +29,39 @@ module.exports =
     el = document.getElementById('react')
     routerComponent = Router {}
     @container = React.renderComponent routerComponent, el
+
+  filterCatProp:
+    color: 'colors'
+    content: 'content'
+    description: 'design_descriptions'
+    type: 'name'
+
+  setCategoryFilterOps: ->
+    console.log 'calculate available collection item filters'
+    filterOps =
+      'textile': ['content', 'color', 'description']
+      'passementerie': ['color', 'description']
+      'leather': ['type', 'color']
+    # Build the search query for the standard collection views.
+    config =
+      where:
+        hasImage: true # Only items with images.
+        summerSale: false # No summer sale items.
+      filters: []
+    config.filters.push (model) -> # Nothing with 00 in color_id
+      model.color_id.substring(0, 2) != '00'
+
+    _.forEach filterOps, (ops, cat) =>
+      config.where.category = cat
+      app.items.configure config, true
+      app.itemFilters[cat] = @getFilterFields app.items, ops, cat
+
+  getFilterFields: (items, filterOps) ->
+    options = {}
+    filterOps.forEach (opt) =>
+      f = @filterCatProp[opt]
+      options[opt] = _.compact(_.uniq(_.flatten(items.pluck(f)))).sort()
+    return options
 
 # run it
 module.exports.blastoff()

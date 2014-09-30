@@ -86,6 +86,7 @@ module.exports = Router.extend
     # Move to filter function
     args.summerSale = false
     if args.category
+      args.filterOptions = app.itemFilters[args.category]
       if args.pgSize
         app.me[args.category+'Size'] = args.pgSize
       else
@@ -99,7 +100,7 @@ module.exports = Router.extend
     unless args.pageIndex > 0
       args.pageIndex = 1
 
-    #console.log S
+    #console.log args
     S = @prepNewState args
 
     @setReactState S

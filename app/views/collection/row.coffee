@@ -7,8 +7,8 @@ Pager = require '../el/pager'
 
 module.exports = React.createClass
   getInitialState: ->
-    showFilters: app.me.filtersOpen
-    filterTab: null
+    showFilters: (app.me.filterTab)
+    filterTab: app.me.filterTab
 
   categoryClick: (e) ->
     newCategory = e.target.value
@@ -20,18 +20,20 @@ module.exports = React.createClass
       app.container.router.navigate 'collection/'+newCategory, trigger: true
 
   toggleFilter: ->
-    if @state.showFilters == false
-      app.me.filtersOpen = true
-      @setState
-        filterTab: @props.initState.filterOptions[0]
-        showFilters: true
-    else
-      app.me.filtersOpen = false
+    initTab = @props.initState.filterOptions[0]
+    if @state.showFilters
+      app.me.filterTab = null
       @setState
         filterTab: null
         showFilters: !@state.showFilters
+    else
+      app.me.filterTab = initTab
+      @setState
+        filterTab: initTab
+        showFilters: true
 
   setFilterTab: (e) ->
+    app.me.filterTab = e.target.value
     @setState
       filterTab: e.target.value
 

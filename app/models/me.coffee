@@ -39,7 +39,7 @@ module.exports = AmpersandModel.extend
     textileSize: ['number', true, 3]
     passementerieSize: ['number', true, 12]
     leatherSize: ['number', true, 3]
-    filtersOpen: ['bool', true, false]
+    filtersTab: 'string'
 
   children:
     projects: Projects
