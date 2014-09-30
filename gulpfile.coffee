@@ -48,7 +48,7 @@ gulp.task 'static', ->
     .pipe gulp.dest('./public/')
 
 gulp.task 'styles', ->
-  gulp.src(["styles/app.less", 'styles/print.less', 'styles/iefix.less'])
+  gulp.src(["styles/app.less", 'styles/print.less', 'styles/iefix.less', 'styles/static.less'])
     .pipe less(paths: [path.join(__dirname, "less", "includes")])
     .pipe gulp.dest("./public")
 
