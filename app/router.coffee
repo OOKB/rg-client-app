@@ -245,20 +245,17 @@ module.exports = Router.extend
     q
 
   setQuery: (s) ->
-    if s.id or s.patternNumber
-      q = id: s.id
+    q = {}
+    if s.id
+      q.id = s.id
     if s.patternNumber
-      unless q then q = {}
-      q = pattern: s.patternNumber
-
+      q.pattern = s.patternNumber
     if _.size s.selectedFilters
-      q = if q then _.merge q, s.selectedFilters else s.selectedFilters
-
-    if q and qString = Qs.stringify(q)
-      #console.log q
-      return '?' + qString
-    else
+      q = _.merge q, s.selectedFilters
+    if _.isEmpty q
       return ''
+    else
+      return '?'+Qs.stringify(q)
 
   # Prep state object for collection and pricelist section views.
   prepNewState: (s) ->
@@ -370,30 +367,27 @@ module.exports = Router.extend
       return ''
 
   urlCreate: (s) ->
-    if s.section == 'trade'
-      return 'trade'
-    if s.section == 'detail'
-      return 'detail/'+s.patternNumber+'/'+s.color_id
-    unless s.category
-      if s.section == 'favs' and s.ids and s.ids.length
-        return s.section+'/'+s.ids.join('/')
-      else if s.trade
-        url = 'trade/'+s.section
-        if s.projectId and 'projects' == s.section
-          url += '/'+s.projectId
-        return url
-      else
-        return s.section
-    if s.trade
-      section = 'trade/'+s.section
-    else
-      section = s.section
-    urlTxt = section+'/'+s.category+'/'+s.pgSize
-    if s.searchTxt
-      urlTxt += '/' + s.searchTxt
-    urlTxt += '/p' + s.pageIndex + @setQuery(s)
+    # Take care of easy sections first.
+    switch s.section
+      when 'trade'
+        return 'trade'
+      when 'detail'
+        return 'detail/'+s.patternNumber+'/'+s.color_id
+      when 'favs'
+        return 'favs/'+s.ids.join('/')
+      when 'projects'
+        return 'trade/projects/'+s.projectId
 
-    return urlTxt
+    if s.trade
+      return 'trade/'+s.section
+
+    if s.searchTxt
+      searchTxt = s.searchTxt + '/'
+    else
+      searchTxt = ''
+    # Assume it has a category and pgSize.
+    urlTxt = s.section+'/'+s.category+'/'+s.pgSize+'/'+searchTxt
+    return urlTxt + 'p' + s.pageIndex + @setQuery(s)
 
   updateURL: (oldSt, newSt) ->
     newStateURL = @urlCreate newSt
