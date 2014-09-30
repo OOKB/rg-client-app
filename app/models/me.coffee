@@ -70,11 +70,15 @@ module.exports = AmpersandModel.extend
         if @token
           Cookies.set('token', @token, expires: 4000)
           unless @customerNumber
+            console.log 'Requesting user data from server.'
             @fetch
               success: (model, response, options) =>
                 unless @fetchedProjects
+                  console.log 'Requesting user projects from server.'
                   # Fetch the project lists too.
-                  model.projects.fetch()
+                  model.projects.fetch
+                    success: (collection, response, options) ->
+                      console.log 'Projects have been added to user obj.'
                   @fetchedProjects = true
         else
           Cookies.expire('token')

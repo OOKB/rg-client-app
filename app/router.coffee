@@ -368,6 +368,10 @@ module.exports = Router.extend
     else
       return ''
 
+  go: (s) ->
+    newUrl = @urlCreate s
+    @navigate newUrl, trigger: true
+
   urlCreate: (s) ->
     # Take care of easy sections first.
     switch s.section
@@ -380,17 +384,21 @@ module.exports = Router.extend
       when 'projects'
         return 'trade/projects/'+s.projectId
 
-    if s.trade
-      return 'trade/'+s.section
-
     if s.searchTxt
       searchTxt = s.searchTxt + '/'
     else
       searchTxt = ''
     unless s.category
-      return s.section
+      if s.trade
+        return 'trade/'+s.section
+      else
+        return s.section
+    if s.trade
+      urlTxt = 'trade/'+s.section
+    else
+      urlTxt = s.section
     # Assume it has a category and pgSize.
-    urlTxt = s.section+'/'+s.category+'/'+s.pgSize+'/'+searchTxt
+    urlTxt += '/'+s.category+'/'+s.pgSize+'/'+searchTxt
     return urlTxt + 'p' + s.pageIndex + @setQuery(s)
 
   updateURL: (oldSt, newSt) ->

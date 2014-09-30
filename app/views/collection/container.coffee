@@ -26,7 +26,7 @@ module.exports = React.createClass
     category = @props.initState.category
     isOnTrim = 'passementerie' == category
     props = _.extend @props,
-      threeUp: 3 == @props.initState.pgSize and @props.collection.models[1].id
+      threeUp: 3 == @props.initState.pgSize and @props.collection.models[1] and @props.collection.models[1].id
       isOnTrim: isOnTrim
       extraButtons: isOnTrim or 3 == @props.initState.pgSize
 
