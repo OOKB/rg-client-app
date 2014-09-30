@@ -7,7 +7,7 @@ Pager = require '../el/pager'
 
 module.exports = React.createClass
   getInitialState: ->
-    showFilters: false
+    showFilters: app.me.filtersOpen
     filterTab: null
 
   categoryClick: (e) ->
@@ -21,10 +21,12 @@ module.exports = React.createClass
 
   toggleFilter: ->
     if @state.showFilters == false
+      app.me.filtersOpen = true
       @setState
         filterTab: @props.initState.filterOptions[0]
         showFilters: true
     else
+      app.me.filtersOpen = false
       @setState
         filterTab: null
         showFilters: !@state.showFilters
