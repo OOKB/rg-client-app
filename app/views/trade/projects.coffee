@@ -11,11 +11,21 @@ module.exports = React.createClass
     editName: null
     projects: app.me.projects
     addProject: false
+    projectLength: 0
 
   componentDidMount: ->
     window.placeholder = document.createElement("li")
     window.placeholder.className = "placeholder"
+    # Listen for project changes.
+    app.me.projects.on 'change', @handleLoaded
+
+  componentWillUnmount: ->
+    app.me.projects.off 'change', @handleLoaded
+
   # EVENT HANDLERS
+  handleLoaded: (project) ->
+    #console.log 'load project '+project.id
+    @setState projectsLength: @state.projectsLength+1
 
   handleEdit: (e) ->
     if @state.editName == e.target.value
@@ -34,7 +44,6 @@ module.exports = React.createClass
         success: ->
           console.log 'gone'
       @forceUpdate()
-
 
   changeName: (e) ->
     newName = @refs.newName.getDOMNode().value
