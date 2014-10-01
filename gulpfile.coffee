@@ -47,6 +47,13 @@ gulp.task 'static', ->
   gulp.src('./static/**')
     .pipe gulp.dest('./public/')
 
+gulp.task 'static-js', ->
+  gulp.src('./static/scripts/*.js')
+    .pipe gulp.dest('./public/scripts/')
+gulp.task 'static-template', ->
+  gulp.src('./static/templates/**')
+    .pipe gulp.dest('./public/templates/')
+
 gulp.task 'styles', ->
   gulp.src(["styles/app.less", 'styles/print.less', 'styles/iefix.less', 'styles/static.less'])
     .pipe less(paths: [path.join(__dirname, "less", "includes")])
@@ -69,6 +76,8 @@ gulp.task "default", ['compile', 'styles', 'templates', 'browser-sync', 'copy'],
   gulp.watch "templates/*.jade", ["templates"]
   gulp.watch "styles/*.less", ["styles"]
   gulp.watch 'images/**', ['copy']
+  gulp.watch 'static/scripts/*.js', ['static-js']
+  gulp.watch 'static/templates/**', ['static-template']
   return
 
 gulp.task 'dataContent', ->
