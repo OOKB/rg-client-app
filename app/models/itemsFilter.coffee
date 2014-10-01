@@ -12,8 +12,9 @@ setFilterFields = (items, filterOps, filterFields) ->
       filterFields[cat] = _.compact(_.uniq(_.flatten(items.pluck(f)))).sort()
   return
 
+# Intelligently filter items based on state.
+
 module.exports = (items, filters) ->
-  resetCollection = true
   setRemainingFilters = false
 
   config =
@@ -26,6 +27,11 @@ module.exports = (items, filters) ->
   if filters.hasDetail
     config.where.hasDetail = true
 
+  # When viewing items in collection or summer requires img and color sort.
+  if 'collection' == filters.section or 'summer' == filters.section
+    filters.hasImage = true
+    filters.colorSorted = true
+
   # Require that item has an image.
   if filters.hasImage
     config.where.hasImage = true
@@ -33,37 +39,43 @@ module.exports = (items, filters) ->
   if filters.colorSorted
     config.comparator = 'order'
 
-  if filters.filterOptions
-    items.configure config, true
-    setFilterFields items, filters.filterOptions, filters.filterFields
+  config.filters = []
+  config.filters.push (model) ->
+    model.color_id.substring(0, 2) != '00'
+
+  # Summer sale items.
+  if filters.section == 'summer'
+    # When the section is summer only show summer items.
+    config.where.summerSale = true
+    # Show remaining active filters since summer sale is a subset of items.
+    setRemainingFilters = true
+    # Limit available filters.
+    if filters.filterOptions
+      items.configure config, true
+      setFilterFields items, filters.filterOptions, filters.filterFields
+  # All sections besides 'detail' should filter out summer items.
+  else if filters.section != 'detail'
+    config.where.summerSale = false
 
   # Only show items belonging to a specific pattern.
+  # This functionality is only used on the detail page.
   if filters.patternNumber
     config.where.patternNumber = filters.patternNumber
     setRemainingFilters = true
 
-  unless filters.summerSale == null
-    if filters.summerSale
-      config.where.summerSale = true
-      setRemainingFilters = true
-    else
-      config.where.summerSale = false
-
-  config.filters = []
+  # Collection / Summer / Pricelist
   if filters.searchTxt
     setRemainingFilters = true
     config.filters = filters.searchTxt.split(' ').map (searchTxt) ->
       (model) ->
         model.searchStr.indexOf(searchTxt) > -1
 
-  if filters.omit00
-    config.filters.push (model) ->
-      model.color_id.substring(0, 2) != '00'
-
+  # Favs
   if filters.ids and filters.ids.length
     config.filters.push (model) ->
       _.contains filters.ids, model.id
 
+  # Filter boxes
   if filters.selectedFilters
     _.forEach filters.selectedFilters, (selectedFilters, filterCat) ->
       if selectedFilters and _.isArray(selectedFilters) and selectedFilters.length
@@ -75,28 +87,38 @@ module.exports = (items, filters) ->
             fid = filterCatProp[filterCat]
             _.difference(selectedFilters, model[fid]).length == 0
 
-  if filters.pgSize and filters.pageIndex
-    pgSize = filters.pgSize
-    pageIndex = filters.pageIndex - 1
-    config.limit = pgSize
-    if pgSize == 3
-      config.offset = pageIndex - 1
-      config.loop = true
-    else
-      config.offset = pageIndex * pgSize
-
+  # When is this used?
   if filters.id and not filters.patternNumber
     config =
       where:
         id: filters.id
 
-  #console.log config
+  # FILTER THE ITEMS
+  items.configure config, true
 
-  items.configure config, resetCollection
-
+  # Set remaining available filters that will return results.
   if setRemainingFilters and filters.filterOptions
+    unless filters.possibleFilters
+      filters.possibleFilters = {}
     setFilterFields items, filters.filterOptions, filters.possibleFilters
   else
     filters.possibleFilters = filters.filterFields
     filters.selectedFilters = {}
+
+  # NOW CUT TO SIZE
+
+  if filters.pgSize and filters.pageIndex
+    sizeConfig = {}
+    pgSize = filters.pgSize
+    pageIndex = filters.pageIndex - 1
+    sizeConfig.limit = pgSize
+    if pgSize == 3
+      sizeConfig.offset = pageIndex - 1
+      sizeConfig.loop = true
+    else
+      sizeConfig.offset = pageIndex * pgSize
+    items.configure sizeConfig, false
+
+  #console.log config
+
   return
