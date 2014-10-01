@@ -63,6 +63,7 @@ module.exports = Router.extend
       searchTxt: searchTxt
       pageIndex: pageIndex
       summerSale: true
+      patternNumber: null
     #console.log S
     S = @prepNewState S
 
@@ -382,8 +383,10 @@ module.exports = Router.extend
       when 'favs'
         return 'favs/'+s.ids.join('/')
       when 'projects'
-        return 'trade/projects/'+s.projectId
-
+        if s.projectId
+          return 'trade/projects/'+s.projectId
+        else
+          return 'trade/projects'
     if s.searchTxt
       searchTxt = s.searchTxt + '/'
     else
