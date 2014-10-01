@@ -15,11 +15,11 @@ module.exports = Router.extend
     'collection': '_collection'
     'collection/:category': '_collection'
     'collection/:category/:pgSize(/:query)/p:page': '_collection'
-    'pl': -> @redirectTo('trade/pricelist/'+defaultCategory+'/50/p1')
-    'plp': -> @redirectTo('trade/pricelist/passementerie/50/p1')
-    'pricelist': -> @redirectTo('trade/pricelist/'+defaultCategory+'/50/p1')
+    'pl': -> @redirectTo('trade/pricelist/'+defaultCategory+'/48/p1')
+    'plp': -> @redirectTo('trade/pricelist/passementerie/48/p1')
+    'pricelist': -> @redirectTo('trade/pricelist/'+defaultCategory+'/48/p1')
     'trade': 'trade'
-    'trade/pricelist': -> @redirectTo('trade/pricelist/'+defaultCategory+'/50/p1')
+    'trade/pricelist': -> @redirectTo('trade/pricelist/'+defaultCategory+'/48/p1')
     'trade/pricelist/:category': 'pricelist'
     'trade/pricelist/:category/:pgSize': 'pricelist'
     'trade/pricelist/:category/:pgSize(/:query)/p:page': 'pricelist'
@@ -205,7 +205,7 @@ module.exports = Router.extend
   pgSizes: (section, hide3up) ->
     switch section
       when 'pricelist'
-        [50, 100, 10000]
+        [48, 96, 192, 10000]
       when 'favs', 'projects' then 1000
       when 'collection', 'summer'
         pgSizes = [3, 12, 24, 48, 96]
@@ -329,7 +329,7 @@ module.exports = Router.extend
       if 'passementerie' == newState.category or newState.searchTxt
         pgSizes.shift()
     else if 'pricelist' == s.section
-      pgSizes = [50, 100, 10000]
+      pgSizes = [48, 96, 192, 10000]
     else if 'favs' == s.section or 'projects' == s.section
       pgSizes = [500]
     else
