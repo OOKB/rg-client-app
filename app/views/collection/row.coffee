@@ -89,7 +89,7 @@ module.exports = React.createClass
 
   filterFields: (activeTab) ->
     fields = []
-    fieldOps = @props.initState.filterFields[activeTab] or ['alpaca']
+    fieldOps = @props.initState.filterFields[activeTab]
     activeFields = @props.initState.selectedFilters[activeTab]
     possibleFilters = @props.initState.possibleFilters[activeTab]
     #console.log activeFields
