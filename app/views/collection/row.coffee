@@ -11,21 +11,23 @@ module.exports = React.createClass
     filterTab: app.me.filterTab
 
   categoryClick: (e) ->
-    # Probably trying to hide the filters.
-    if @state.showFilters
-      @setState showFilters: false
-      app.me.filterTab = null
-      return
     # Standard hide or show.
     s = @props.initState
     if e.target.value == s.category
-      s.category = null
+      # Probably trying to hide the filters.
+      if @state.showFilters
+        @setState showFilters: false
+        app.me.filterTab = null
+        return
+      else
+        s.category = null
     else
       s.category = e.target.value
       # Go to the page size the user wants.
       s.pgSize = app.me[e.target.value+'Size']
       # Unset filters when switching categories.
       s.selectedFilters = null
+      app.me.filterTab = null
     app.container.router.go s
 
   toggleFilter: ->

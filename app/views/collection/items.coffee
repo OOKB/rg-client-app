@@ -179,9 +179,13 @@ module.exports = React.createClass
     collectionClassName = 'pg-size-' + @props.initState.pgSize
     unless @props.threeUp
       collectionClassName += ' pg-vert'
+    if itemsArray.length == 1
+      className = 'list single-item'
+    else
+      className = 'list size-'+itemsArray.length
     return div
       className: collectionClassName
       id: 'collection-' + cat,
         ul
-          className: 'list',
+          className: className,
             list

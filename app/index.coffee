@@ -55,6 +55,7 @@ module.exports =
       config.where.category = cat
       app.items.configure config, true
       app.itemFilters[cat] = @getFilterFields app.items, ops, cat
+    app.items.clearFilters()
 
   getFilterFields: (items, filterOps) ->
     options = {}

@@ -94,8 +94,9 @@ module.exports = (items, filters) ->
         id: filters.id
 
   # FILTER THE ITEMS
+  console.log config
   items.configure config, true
-
+  console.log items.length
   # Set remaining available filters that will return results.
   if setRemainingFilters and filters.filterOptions
     unless filters.possibleFilters
@@ -107,7 +108,7 @@ module.exports = (items, filters) ->
 
   # NOW CUT TO SIZE
 
-  if filters.pgSize and filters.pageIndex
+  if items.length > 1 and filters.pgSize and filters.pageIndex
     sizeConfig = {}
     pgSize = filters.pgSize
     pageIndex = filters.pageIndex - 1

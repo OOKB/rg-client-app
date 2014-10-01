@@ -339,7 +339,8 @@ module.exports = Router.extend
     redirected = @updateURL s, newState
 
     # filter the items
-    itemsFilter app.items, newState
+    if newState.ids or newState.patternNumber or newState.category
+      itemsFilter app.items, newState
 
     if 3 == newState.pgSize
       newState.totalPages = app.items.filtered_length
