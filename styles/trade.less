@@ -178,9 +178,20 @@ button.btn-outline:hover {
   font-weight: normal;
 }
 
-.trade-projects .project input {
+.trade-projects .project > input {
   min-width: 200px;
   text-align: center;
+  height: 30px;
+  margin-top: -7px;
+  font-size: 16px;
+  padding-top: 7px;
+}
+
+li.project div.share {
+  position: absolute;
+  left: 11px;
+  top: 10px;
+  font-size: 12px;
 }
 
 .trade-projects .project input:active,
@@ -191,9 +202,14 @@ button.btn-outline:hover {
 }
 
 .trade-projects .project .list-edit {
+  display: none;
   position: absolute;
-  top: 16px;
+  top: 18px;
   right: 5px;
+}
+
+.trade-projects .project:hover .list-edit {
+  display: block;
 }
 
 .trade-projects .project .list-edit button {
