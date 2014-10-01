@@ -158,10 +158,13 @@ module.exports = React.createClass
             itemClassName += ' open'
           else
             relatedColors = Related relatedProps
-
+      if itemsArray.length == 3
+        keyId = item.id+index
+      else
+        keyId = item.id
       list.push li
         className: itemClassName
-        key: item.id+index,
+        key: keyId,
           # Item
           ItemEl itemProps
           ItemButtons

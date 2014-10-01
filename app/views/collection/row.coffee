@@ -50,6 +50,8 @@ module.exports = React.createClass
 
   setFilters: (e) ->
     s = @props.initState
+    unless s.selectedFilters
+      s.selectedFilters = {}
     filterFieldId = e.target.value
     isSelected = @refs[filterFieldId].getDOMNode().checked
     filters = s.selectedFilters[@state.filterTab] or []
@@ -101,7 +103,10 @@ module.exports = React.createClass
   filterFields: (activeTab) ->
     fields = []
     fieldOps = @props.initState.filterFields[activeTab]
-    activeFields = @props.initState.selectedFilters[activeTab]
+    if @props.initState.selectedFilters and @props.initState.selectedFilters[activeTab]
+      activeFields = @props.initState.selectedFilters[activeTab]
+    else
+      activeFields = []
     possibleFilters = @props.initState.possibleFilters[activeTab]
     #console.log activeFields
     fieldOps.forEach (filterOp) =>

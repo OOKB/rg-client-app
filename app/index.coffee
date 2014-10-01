@@ -35,11 +35,12 @@ module.exports =
     content: 'content'
     description: 'design_descriptions'
     type: 'name'
+    use: 'use'
 
   setCategoryFilterOps: ->
     #console.log 'calculate available collection item filters'
     filterOps =
-      'textile': ['content', 'color', 'description']
+      'textile': ['content', 'color', 'description', 'use']
       'passementerie': ['color', 'description']
       'leather': ['type', 'color']
     # Build the search query for the standard collection views.

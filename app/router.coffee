@@ -305,7 +305,7 @@ module.exports = Router.extend
 
     # Collection filters.
     newState.filterOptions = switch newState.category
-      when 'textile' then ['content', 'color', 'description']
+      when 'textile' then ['content', 'color', 'description', 'use']
       when 'passementerie' then ['color', 'description']
       when 'leather' then ['type', 'color']
 

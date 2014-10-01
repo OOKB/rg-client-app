@@ -5,6 +5,7 @@ filterCatProp =
   content: 'content'
   description: 'design_descriptions'
   type: 'name'
+  use: 'use'
 
 setFilterFields = (items, filterOps, filterFields) ->
   filterOps.forEach (cat) ->
