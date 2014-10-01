@@ -94,9 +94,9 @@ module.exports = (items, filters) ->
         id: filters.id
 
   # FILTER THE ITEMS
-  console.log config
+  #console.log config
   items.configure config, true
-  console.log items.length
+  #console.log items.length
   # Set remaining available filters that will return results.
   if setRemainingFilters and filters.filterOptions
     unless filters.possibleFilters

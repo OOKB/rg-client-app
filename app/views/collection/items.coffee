@@ -161,7 +161,7 @@ module.exports = React.createClass
 
       list.push li
         className: itemClassName
-        key: item.id,
+        key: item.id+index,
           # Item
           ItemEl itemProps
           ItemButtons
