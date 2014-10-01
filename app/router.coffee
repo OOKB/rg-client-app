@@ -53,7 +53,7 @@ module.exports = Router.extend
       @redirectTo 'trade/login'
       return
     document.title = pageTitle + ' - Summer Sale'
-    #console.log 'collection'
+    #console.log 'summer'
     S = _.extend @getQuery(),
       section: 'summer'
       trade: true
@@ -64,6 +64,7 @@ module.exports = Router.extend
       pageIndex: pageIndex
       summerSale: true
       patternNumber: null
+      color_id: null
     #console.log S
     S = @prepNewState S
 
