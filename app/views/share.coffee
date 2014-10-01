@@ -4,8 +4,8 @@ React = require 'react'
 FavContent = require './favs_content'
 
 module.exports = React.createClass
-  componentDidMount: ->
-    @selectFavUrl()
+  #componentDidMount: ->
+    #@selectFavUrl()
 
   selectFavUrl: ->
     @refs.favUrl.getDOMNode().select()
