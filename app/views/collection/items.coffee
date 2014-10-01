@@ -98,7 +98,8 @@ module.exports = React.createClass
       buttonsFor = @state.buttonsFor
 
     # List
-    @props.collection.forEach (item, index) =>
+    itemsArray = @props.collection
+    itemsArray.forEach (item, index) =>
       itemProps =
         key: item.id
         model: item

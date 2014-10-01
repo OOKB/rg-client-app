@@ -89,7 +89,7 @@ module.exports = Router.extend
     # Move to filter function
     args.summerSale = false
     if args.category
-      args.filterOptions = app.itemFilters[args.category]
+      args.filterFields = app.itemFilters[args.category]
       if args.pgSize
         app.me[args.category+'Size'] = args.pgSize
       else
@@ -105,7 +105,7 @@ module.exports = Router.extend
 
     #console.log args
     S = @prepNewState args
-
+    #console.log S
     @setReactState S
 
   pricelist: (category, pgSize, searchTxt, pageIndex) ->
@@ -308,7 +308,9 @@ module.exports = Router.extend
       when 'textile' then ['content', 'color', 'description']
       when 'passementerie' then ['color', 'description']
       when 'leather' then ['type', 'color']
-    newState.filterFields = {}
+
+    unless newState.filterFields
+      newState.filterFields = {}
 
     if s.pageIndex
       newState.pageIndex = parseInt s.pageIndex
@@ -316,9 +318,6 @@ module.exports = Router.extend
         newState.pageIndex = 1
     else
       newState.pageIndex = 1
-
-    # Default to HIDE color_id 00.
-    newState.omit00 = true
 
     if 'collection' == s.section or 'summer' == s.section
       newState.hasImage = true
