@@ -89,7 +89,7 @@ module.exports = Router.extend
     # Move to filter function
     args.summerSale = false
     if args.category
-      args.filterOptions = app.itemFilters[args.category]
+      args.filterFields = app.itemFilters[args.category]
       if args.pgSize
         app.me[args.category+'Size'] = args.pgSize
       else
