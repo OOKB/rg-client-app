@@ -39,20 +39,20 @@ module.exports = React.createClass
     switch buttonType
       when 'color'
         key: 'colors'
-        name: 'item-colors btn-text'
+        name: 'item-colors btn-text hidden-xs'
         value: 'patternNumber'
         onClick: @colorsClick
         label: 'Colors'
       when 'info'
         key: 'item-info'
-        name: 'item-details btn-large'
+        name: 'item-details btn-large hidden-xs'
         onClick: @infoClick
         label: '='
 
   # Template for the buttons container.
   el: (child) ->
     div
-      className: 'item-icons hidden-xs',
+      className: 'item-icons',
         child
 
   render: ->
