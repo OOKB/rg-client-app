@@ -83,10 +83,7 @@ module.exports = React.createClass
     if app.me.loggedIn and item.price
       fieldCount++
       charCount += 3
-      if item.summerSale
-        price = strong item.priceDisplay
-      else
-        price = item.priceDisplay
+      price = item.priceDisplay
       h_lis.push li
         key: 'price'
         className: 'price',
