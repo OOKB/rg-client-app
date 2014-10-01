@@ -105,7 +105,7 @@ module.exports = React.createClass
         onMouseOver: @setButtonsFor
         imgSize: imgSize
       if @props.threeUp
-        if index == 0
+        if index == 0 and @props.collection.length == 3
           itemProps.onClick = @setPgPre
         else if index == 2
           itemProps.onClick = @setPgNext
