@@ -11,11 +11,21 @@ module.exports = React.createClass
     filterTab: app.me.filterTab
 
   categoryClick: (e) ->
+    # Probably trying to hide the filters.
+    if @state.showFilters
+      @setState showFilters: false
+      app.me.filterTab = null
+      return
+    # Standard hide or show.
     s = @props.initState
     if e.target.value == s.category
       s.category = null
     else
       s.category = e.target.value
+      # Go to the page size the user wants.
+      s.pgSize = app.me[e.target.value+'Size']
+      # Unset filters when switching categories.
+      s.selectedFilters = null
     app.container.router.go s
 
   toggleFilter: ->
@@ -37,20 +47,19 @@ module.exports = React.createClass
       filterTab: e.target.value
 
   setFilters: (e) ->
+    s = @props.initState
     filterFieldId = e.target.value
     isSelected = @refs[filterFieldId].getDOMNode().checked
-    selected = _.cloneDeep @props.initState.selectedFilters
+    filters = s.selectedFilters[@state.filterTab] or []
+
     if isSelected
-      unless selected[@state.filterTab]
-        selected[@state.filterTab] = []
-      selected[@state.filterTab].push filterFieldId
-
+      filters.push filterFieldId
     else
-      selected[@state.filterTab] = _.without selected[@state.filterTab], filterFieldId
-
-    @props.setRouterState
-      selectedFilters: selected
-    #console.log @state.filterTab + ': ' + filterFieldId + ' is ' + isSelected
+      filters = _.without filters, filterFieldId
+    s.selectedFilters[@state.filterTab] = filters
+    # Reset the page index to the beginning.
+    s.pageIndex = 1
+    app.container.router.go s
 
   clearFilters: ->
     @props.setRouterState
