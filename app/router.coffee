@@ -200,13 +200,14 @@ module.exports = Router.extend
     newSt.trade = true
     @setReactState newSt
 
-  # HELER FUNCTIONS
+  # HELPER FUNCTIONS
 
   pgSizes: (section, hide3up) ->
     switch section
       when 'pricelist'
         [48, 96, 192, 10000]
-      when 'favs', 'projects' then 1000
+      when 'favs', 'projects'
+        [1000]
       when 'collection', 'summer'
         pgSizes = [3, 12, 24, 48, 96]
         if hide3up
@@ -319,20 +320,11 @@ module.exports = Router.extend
     else
       newState.pageIndex = 1
 
-    if 'collection' == s.section or 'summer' == s.section
-      newState.hasImage = true
-      newState.colorSorted = true
-      pgSizes = [3, 12, 24, 48, 96]
-      if 'summer' == s.section
-        newState.summerSale = true
-      if 'passementerie' == newState.category or newState.searchTxt
-        pgSizes.shift()
-    else if 'pricelist' == s.section
-      pgSizes = [48, 96, 192, 10000]
-    else if 'favs' == s.section or 'projects' == s.section
-      pgSizes = [500]
-    else
-      pgSizes = [1]
+    ww = newState.windowWidth = window.innerWidth
+    isOnTrim = 'passementerie' == newState.category
+    newState.isMobile = ww < 768
+    hide3up = isOnTrim or newState.searchTxt or newState.isMobile
+    pgSizes = @pgSizes s.section, hide3up
 
     newState.pgSize = @closest s.pgSize, pgSizes
     newState.pgSizes = pgSizes
