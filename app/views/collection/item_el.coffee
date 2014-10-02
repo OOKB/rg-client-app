@@ -30,16 +30,23 @@ module.exports = React.createClass
       # Has a detail page so link it.
       href = item.detail
 
+    if item._file and not item._file[imgSize] and item._file.small
+      imgSize = 'small'
+    if item._file and item._file[imgSize]
+      itemImg = img
+        id: item.id
+        alt: item.color
+        width: item._file[imgSize].width
+        height: item._file[imgSize].height
+        src: item._file[imgSize].path,
+        onMouseOver: @setButtonsFor
+    else
+      console.log item._file
+      itemImg = 'No image available for the size '+imgSize
     a # Using an a tag because of all the possible mouse events.
       role: 'button' # Button because of events.
       onClick: onClick
       onMouseDown: onMouseDown
       onMouseOver: onMouseOver
       href: href,
-        img
-          id: item.id
-          alt: item.color
-          width: item._file[imgSize].width
-          height: item._file[imgSize].height
-          src: item._file[imgSize].path,
-          onMouseOver: @setButtonsFor
+        itemImg

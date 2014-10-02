@@ -19,7 +19,7 @@ module.exports = React.createClass
         value
 
   salesRep: (sr) ->
-    console.log sr
+    #console.log sr
     if sr
       p sr.name, ' - ', sr.phoneNumber
     else

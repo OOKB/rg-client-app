@@ -34,6 +34,7 @@ module.exports = AmpersandModel.extend
       type: 'string'
       default: -> Cookies.get('token')
     failedLogins: ['number', true, 0]
+    fetchingMe: ['bool', true, false]
     fetchedProjects: ['bool', true, false]
     showroom: 'object'
     textileSize: ['number', true, 3]
@@ -64,42 +65,70 @@ module.exports = AmpersandModel.extend
         'http://staging.rogersandgoffigon.com/app.html#favs/'+@favStr
 
     loggedIn:
-      deps: ['token']
+      deps: ['token', 'customerNumber']
       cache: false
       fn: ->
         if @token
+          # Set or extend token.
           Cookies.set('token', @token, expires: 4000)
-          unless @customerNumber
-            console.log 'Requesting user data from server.'
+          if @customerNumber
+            console.log 'We already have customerNumber. Yes, logged in.'
+            return true # Yes, logged in.
+          else if not app.me.fetchingMe
+            app.me.fetchingMe = true
+            console.log 'Need customerNumber. Requesting user data from server.'
             @fetch
               success: (model, response, options) =>
+                app.me.fetchingMe = false
                 unless @fetchedProjects
                   console.log 'Requesting user projects from server.'
                   # Fetch the project lists too.
                   model.projects.fetch
                     success: (collection, response, options) ->
                       console.log 'Projects have been added to user obj.'
-                  @fetchedProjects = true
+                      @fetchedProjects = true
+            return false # No, just initiated login.
+          else
+            console.log 'Fetching customerNumber already. Waiting for that to return.'
+            return false # No, waiting...
+          return true
+
+          if @customerNumber and @fetchedProjects
+            console.log ''
+          else
+            console.log 'No customerNumber so we will ask the server for it.'
+            @fetch
+
+            return false
         else
           Cookies.expire('token')
-        return if @token then true else false
+          return false
 
   login: (password) ->
     data =
       username: @username
       password: password
     r.post 'https://r_g.cape.io/_login', data, (err, res) =>
-      if res.status == 200 and res.body.user
+      if res.status == 200 and res.body.user and res.body.user.customerNumber
         resp = res.body.user
         resp.token = res.body.token
         console.log resp
-        @set(resp)
+        # Set the customerNumber first.
+        @set 'customerNumber', resp.customerNumber
+        @set(resp) # Set the rest of the goods.
         @trigger 'sync', @, resp
+        #console.log @loggedIn
       else
         failed = @failedLogins+1
         @set 'failedLogins', failed
         @trigger 'change:failedLogins', @, failed
         console.log 'Failed login number '+failed
+
+  fetchProjects: ->
+    @projects.fetch
+      success: (collection, response, options) =>
+        console.log 'Projects have been added to user obj.'
+        @fetchedProjects = true
 
   addFav: (id) ->
     favs = @get('favs')
