@@ -72,20 +72,20 @@ module.exports = AmpersandModel.extend
           # Set or extend token.
           Cookies.set('token', @token, expires: 4000)
           if @customerNumber
-            console.log 'We already have customerNumber. Yes, logged in.'
+            #console.log 'We already have customerNumber. Yes, logged in.'
             return true # Yes, logged in.
           else if not app.me.fetchingMe
             app.me.fetchingMe = true
-            console.log 'Need customerNumber. Requesting user data from server.'
+            #console.log 'Need customerNumber. Requesting user data from server.'
             @fetch
               success: (model, response, options) =>
                 app.me.fetchingMe = false
                 unless @fetchedProjects
-                  console.log 'Requesting user projects from server.'
+                  #console.log 'Requesting user projects from server.'
                   # Fetch the project lists too.
                   model.projects.fetch
                     success: (collection, response, options) ->
-                      console.log 'Projects have been added to user obj.'
+                      #console.log 'Projects have been added to user obj.'
                       @fetchedProjects = true
             return false # No, just initiated login.
           else
