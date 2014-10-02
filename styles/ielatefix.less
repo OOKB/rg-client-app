@@ -1,0 +1,48 @@
+@import url(variables.less);
+
+/** custom filter menu crap for IE10 and 11 **/
+.filter-list fieldset label {
+  margin: 0;
+  padding: 5px;
+  text-align: left;
+  text-transform: uppercase;
+  display: list-item;
+  -webkit-column-break-inside:avoid;
+  -moz-column-break-inside:avoid;
+  -o-column-break-inside:avoid;
+  -ms-column-break-inside:avoid;
+  column-break-inside:avoid;
+  /**/
+  cursor: pointer;
+  background-image: url(@checkbox2);
+  background-repeat: no-repeat;
+  background-position: left 0;
+}
+
+.filter-list fieldset label.disabled {
+  color: #ccc;
+/*   cursor: not-allowed; */
+}
+
+.filter-list fieldset label.disabled input {
+  visibility: hidden;
+}
+
+/* Change from unchecked to checked graphic */
+.filter-list fieldset label.checked {
+  background-position: left -23px;
+}
+
+.filter-list fieldset label.disabled {
+  background-position: left -46px;
+}
+
+/* Hide the original radios and checkboxes [https://www.pivotaltracker.com/story/show/73771096] */
+.filter-list fieldset label > input[type='checkbox'] {
+  opacity: 0;
+  float: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
