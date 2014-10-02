@@ -178,9 +178,8 @@ li.related-item {
 
 @media (max-width: @screen-xs-max) {
   /** TEMPORARY MOBILE FIX... **/
-  .pg-size-3 > ul.list > li:nth-child(1),
-  .pg-size-3 > ul.list > li:nth-child(3) {
-    display:none;
+  .pg-size-3 > ul.list > li {
+    margin: 0 0 10px 0;
   }
 }
 
@@ -337,12 +336,8 @@ ul.list li, ul.list li * {
   margin: 0;
   overflow: visible;
   position: relative;
-}
-
-@media (max-width: @screen-xs-max) {
-  #collection-passementerie ul.list > li { padding: 0; }
-  #collection-passementerie ul.list > li:first-child { padding-top:10px; }
-  #collection-passementerie ul.list > li:last-child { padding-bottom:10px; }
+  /**/
+  overflow: hidden;
 }
 
 #collection-passementerie .item-icons {
@@ -350,6 +345,40 @@ ul.list li, ul.list li * {
   top:20px;
   font-weight: 700;
   z-index: 99;
+}
+
+@media (max-width: @screen-sm-max) {
+  #collection-row-passementerie .pg-vert .open #related-colors > ul.list > li,
+  #collection-passementerie ul.list > li {
+    background: white;
+    min-height: 40px;
+  }
+  #collection-passementerie ul.list > li img {
+    background: white url(@loading) center center no-repeat;
+    background-size: 40px 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+@media (max-width: @screen-xs-max) {
+  #collection-passementerie ul.list > li { padding: 0; }
+  #collection-passementerie ul.list > li:first-child { padding-top:5px; }
+  #collection-passementerie ul.list > li:last-child { padding-bottom:5px; }
+  #collection-passementerie .item-icons {
+    top: 0;
+  }
+  #collection-row-passementerie .pg-vert .open #related-colors > ul.list > li,
+  #collection-passementerie ul.list > li {
+    background: white;
+    min-height: 20px;
+  }
+  #collection-passementerie ul.list > li img {
+    background: white url(@loading) center center no-repeat;
+    background-size: 20px 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
 }
 
 #collection-passementerie ul.list li.list-item.open {
@@ -466,10 +495,14 @@ ul.collection-controls li.collection-title button {
 }
 
 @media (max-width: @screen-xs-max) {
-  ul.collection-controls li.arrange,
   ul.collection-controls li.pageselect {
+    position: absolute;
+    right: 40px;
+    top:2px;
+  }
+  ul.collection-controls li.pageselect span.uppercase,
+  ul.collection-controls li.arrange {
     display: none;
-    visibility: hidden;
   }
   ul.collection-controls li.pagecount {
     position: absolute;
@@ -545,20 +578,21 @@ ul.collection-controls li.collection-title button {
 /*actual ul that holds everything */
 .filter-list {
   position: absolute;
-  left: -90px;
-  top:-10px;
+  left: -95px;
+  top: -8px;
   margin: 0;
   padding: 45px 0 0 0;
-  width: 280px;
+  width: 290px;
   z-index: 20;
   text-align: left;
   .dropshadow;
   background-color: white;
 }
 
-.filter-list li {
+.filter-list li.tab {
   width: 50%;
   display: inline-block;
+
 }
 
 .filter-list li button {
@@ -590,15 +624,16 @@ ul.collection-controls li.collection-title button {
   -ms-column-count:2; -ms-column-gap:10px; -ms-column-width: auto;
   -o-column-count:2; -o-column-gap:10px; -o-column-width: auto;
   column-count:2; column-gap:10px; column-width: auto;
-  margin: 0 14px;
+  margin: 0 10px;
 }
 
 .filter-list fieldset label {
   margin: 0;
-  padding: 5px;
+  padding: 5px 0 5px 5px;
   text-align: left;
   text-transform: uppercase;
   display: list-item;
+  white-space: nowrap;
   -webkit-column-break-inside:avoid;
   -moz-column-break-inside:avoid;
   -o-column-break-inside:avoid;
@@ -609,6 +644,7 @@ ul.collection-controls li.collection-title button {
   background-image: url(@checkbox2);
   background-repeat: no-repeat;
   background-position: left 0;
+  /**/
 }
 
 .filter-list fieldset label.disabled {
@@ -629,7 +665,7 @@ ul.collection-controls li.collection-title button {
   background-position: left -46px;
 }
 
-/* Hide the original radios and checkboxes [https://www.pivotaltracker.com/story/show/73771096] */
+.filter-list fieldset label input,
 .filter-list fieldset label > input[type='checkbox'] {
   opacity: 0;
   float: none;
@@ -645,11 +681,11 @@ ul.collection-controls li.collection-title button {
     text-align: center;
   }
 
-  .filter-list li {
+  .filter-list li.tab {
     width: 33%;
   }
 
-  .filter-list li button {
+  .filter-list li.tab button {
     color: @rg-gray;
     padding: 5px 10px;
   }
@@ -668,14 +704,10 @@ ul.collection-controls li.collection-title button {
   }
 
   .filter-list fieldset label {
-    /** trying something **/
+    margin: 0;
+    padding: 5px;
   }
 
-  .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"],
-  .filter-list fieldset label input {
-    float: none;
-    margin: 0;
-  }
 }
 
 @media (min-width: @screen-md-min) {
@@ -684,11 +716,11 @@ ul.collection-controls li.collection-title button {
     left: -120px;
   }
 
-  .filter-list li {
+  .filter-list li.tab {
     width: auto;
   }
 
-  .filter-list li button {
+  .filter-list li.tab button {
     color: @rg-gray;
     padding: 5px 20px;
   }
