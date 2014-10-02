@@ -169,6 +169,7 @@ module.exports = Router.extend
       section: 'projects'
       category: null
       projectId: projectId
+      pageIndex: null
 
     @setReactState newSt
 
@@ -325,6 +326,8 @@ module.exports = Router.extend
     newState.isMobile = ww < 768
     hide3up = isOnTrim or newState.searchTxt or newState.isMobile
     pgSizes = @pgSizes s.section, hide3up
+    if s.section == 'projects'
+      newState.pageIndex = null
 
     newState.pgSize = @closest s.pgSize, pgSizes
     newState.pgSizes = pgSizes
