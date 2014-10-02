@@ -82,12 +82,12 @@ module.exports = React.createClass
         itemState: itemState
 
     # Simply return the favs button.
-    if favsOnly or not extraButtons or section == 'projects'
+    if favsOnly or not extraButtons
       return @el favThisButton
 
     # Possible buttons to display.
     buttonTypes = @props.buttonTypes or ['color', 'fav', 'info']
-    unless item.hasRelated
+    if section == 'projects' or not item.hasRelated
       buttonTypes = _.without buttonTypes, 'color'
 
     # Array to pass to @el()
