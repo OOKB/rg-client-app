@@ -183,7 +183,8 @@ module.exports = React.createClass
     unless @props.threeUp
       collectionClassName += ' pg-vert'
     if itemsArray.length == 1
-      className = 'list single-item'
+      collectionClassName += ' single-item'
+      className = 'list'
     else
       className = 'list size-'+itemsArray.length
     return div

@@ -153,6 +153,18 @@ li.related-item {
   width: auto;
 }
 
+/** SINGLE ITEM! **/
+.collection .pg-size-3.single-item {
+  width: 100%;
+  position: static;
+  margin-left: 0;
+}
+
+.collection .pg-size-3.single-item li {
+  width: 100% !important;
+  overflow: hidden;
+}
+
 @media (max-width: @screen-xs-max) {
   .pg-size-3 > ul.list > li img {
     min-width: 100%;
@@ -181,11 +193,16 @@ li.related-item {
   .pg-size-3 > ul.list > li:nth-child(2) {
     width: 64%;
   }
-  .pg-size-3 > ul.list > li {
+  .pg-size-3 > ul.list > li,
+  .pg-size-3.single-item > ul.list > li {
     height: 275px;
   }
   .pg-size-3 > ul.list > li:nth-child(2) > a {
     margin: 0 5px;
+  }
+  .single-item > ul.list > li {
+    width: 100% !important;
+    margin: 0;
   }
 }
 
@@ -196,6 +213,10 @@ li.related-item {
   }
   .pg-size-3 > ul.list > li:nth-child(2) {
     width: 80%;
+  }
+  .single-item > ul.list > li {
+    width: 100% !important;
+    margin: 0;
   }
 }
 
@@ -211,8 +232,13 @@ li.related-item {
   .pg-size-3 > ul.list > li:nth-child(2) {
     width: 50%;
   }
-  .pg-size-3 > ul.list > li {
+  .pg-size-3 > ul.list > li,
+  .pg-size-3.single-item > ul.list > li {
     height: 350px;
+  }
+  .single-item > ul.list > li {
+    width: 100% !important;
+    margin: 0;
   }
 }
 
@@ -225,8 +251,11 @@ li.related-item {
   .pg-size-3 > ul.list > li:nth-child(2) {
     width: 60%;
   }
+  .single-item > ul.list > li {
+    width: 100% !important;
+    margin: 0;
+  }
 }
-
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: @screen-lg-min) {
@@ -237,15 +266,20 @@ li.related-item {
   .pg-size-3 > ul.list > li:nth-child(2) {
     width: 50%;
   }
-  .pg-size-3 > ul.list > li {
+  .pg-size-3 > ul.list > li,
+  .pg-size-3.single-item > ul.list > li {
     height: 400px;
+  }
+  .single-item > ul.list > li {
+    width: 100% !important;
+    margin: 0;
   }
 }
 
-
 /* Large devices (large desktops, 1200px and up) */
 @media (min-height: 1000px) {
-  .pg-size-3 > ul.list > li {
+  .pg-size-3 > ul.list > li,
+  .pg-size-3.single-item > ul.list > li {
     height: 450px;
   }
 }
@@ -260,7 +294,7 @@ ul.list li, ul.list li * {
   text-align: left;
 }
 
-.pg-vert> ul.list > li {
+.pg-vert > ul.list > li {
   width: 50%;
   margin-bottom: 10px;
   padding: 0 5px;
