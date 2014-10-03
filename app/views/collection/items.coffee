@@ -106,6 +106,7 @@ module.exports = React.createClass
         onMouseOver: @setButtonsFor
         imgSize: imgSize
         windowWidth: @state.windowWidth
+        preventDetail: (@state.windowWidth > 768 and 'passementerie' == item.category)
 
       if @props.threeUp
         if index == 0 and @props.collection.length == 3
