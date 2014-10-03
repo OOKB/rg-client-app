@@ -31,14 +31,11 @@ module.exports = (items, filters) ->
   # When viewing items in collection or summer requires img and color sort.
   if 'collection' == filters.section or 'summer' == filters.section
     filters.hasImage = true
-    filters.colorSorted = true
+    config.comparator = 'order'
 
   # Require that item has an image.
   if filters.hasImage
     config.where.hasImage = true
-
-  if filters.colorSorted
-    config.comparator = 'order'
 
   config.filters = []
   config.filters.push (model) ->

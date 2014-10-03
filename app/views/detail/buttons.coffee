@@ -34,6 +34,9 @@ module.exports = React.createClass
     else
       imgSize = 'xlarge'
 
+    unless item._file[imgSize]
+      imgSize = 'xlarge'
+
     if @state.farView
       imgPath = item._file[imgSize].path_far
       imgClass = 'img-container pattern'
@@ -44,6 +47,8 @@ module.exports = React.createClass
         mainImgSize = imgSize
       imgPath = item._file[mainImgSize].path
       imgClass = 'img-container large'
+    if item.category == 'passementerie'
+      imgClass += ' rotate-trim'
     imgDiv = img
       className: imgClass
       alt: item.name
@@ -63,7 +68,7 @@ module.exports = React.createClass
       colorButtonClass += ' active'
 
     # Only show color button if there are related items.
-    if @props.collection.length > 1
+    if @props.collection.length > 1 and not item.category == 'passementerie'
       divs.push div
         key: 'color-button'
         className: color_toggle_class,
@@ -109,11 +114,12 @@ module.exports = React.createClass
         imgDiv
 
     # Ruler
-    if @state.showRuler and not @state.farView
+    if @state.showRuler and not @state.farView and not item.category == 'passementerie'
       divs.push Rulers
         key: 'rulers'
         model: item
         imgSize: imgSize
 
-    div className: 'switcher',
+    className = 'switcher'
+    div className: className,
       divs

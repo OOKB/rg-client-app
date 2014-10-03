@@ -132,7 +132,7 @@ module.exports = Router.extend
       reqAuth: false
       section: 'detail'
       patternNumber: patternNumber
-      hasDetail: true
+      hasImage: true
       color_id: color_id
       summerSale: null
     itemsFilter app.items, newSt

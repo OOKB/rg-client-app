@@ -95,10 +95,15 @@ module.exports = AmpersandModel.extend
       deps: ['patternNumber', 'color_id', 'id']
       fn: ->
         if @hasImage
-          if 'passementerie' == @category
-            return '#collection/passementerie/21/p0?id='+@id
-          else
-            return '#detail/'+@patternNumber+'/'+@color_id
+          return '#detail/'+@patternNumber+'/'+@color_id
+        else
+          return null
+
+    collectionLink:
+      deps: ['id', 'category']
+      fn: ->
+        if @hasImage
+          return '#collection/'+@category+'/12/p0?id='+@id
         else
           return null
 
