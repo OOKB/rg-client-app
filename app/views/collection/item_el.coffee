@@ -26,7 +26,7 @@ module.exports = React.createClass
 
     href = undefined
 
-    if item.hasDetail and not @props.preventDetail
+    unless @props.preventDetail
       # Has a detail page so link it.
       href = item.detail
 
