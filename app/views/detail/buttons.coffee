@@ -119,7 +119,7 @@ module.exports = React.createClass
         imgDiv
 
     # Ruler
-    if @state.showRuler and not @state.farView and not item.category == 'passementerie'
+    if @state.showRuler and not @state.farView and item.category != 'passementerie'
       divs.push Rulers
         key: 'rulers'
         model: item
