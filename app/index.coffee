@@ -24,6 +24,8 @@ module.exports =
     @setCategoryFilterOps()
     @content = Content
     @me = new Me()
+    @logout = ->
+      self.me = new Me()
     @bitly = new Bitly()
     # Init the React application router.
     el = document.getElementById('react')

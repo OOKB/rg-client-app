@@ -98,6 +98,7 @@ module.exports = React.createClass
 
     # List
     itemsArray = @props.collection
+    if itemsArray.length > 300 then imgSize = 'thumb'
     itemsArray.forEach (item, index) =>
       itemProps =
         key: item.id

@@ -53,6 +53,10 @@ module.exports = AmpersandModel.extend
       if item.category != 'passementerie'
         item.hasDetail = true
       prefix = cdn + 'items/'+item.id
+      item._file.thumb =
+        width: 100
+        height: 100
+        path: prefix + '/100.jpg'
       if item._file.small
         item._file.small.path = prefix + '/640.jpg'
         item._file.small.width = 640
@@ -72,6 +76,7 @@ module.exports = AmpersandModel.extend
 
       if item._file.xlarge
         item._file.xlarge.path = prefix + '/2560.jpg'
+        item._file.xlarge.width = 2560
         if item.far
           item._file.xlarge.path_far = prefix + '/far/2560.jpg'
     return item
