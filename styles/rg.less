@@ -94,9 +94,15 @@ body {
   font-size: 1em;
   margin: 0;
   padding: 0;
-  padding-top: 300px;
+  padding-top: 0;
   padding-bottom: 60px;
   text-align: center;
+}
+
+@media (min-width: @screen-sm-min) {
+  body {
+    padding-top: 300px;
+  }
 }
 
 html, body { height: 100%; width: 100%; }
@@ -171,7 +177,7 @@ button.active {
 /* = header related stuff */
 header {
   background: @rg-background;
-  padding: 20px 0 7px;
+  padding: 6px 0 12px;
   position: absolute;
   top: 0;
   left: 0;
@@ -199,6 +205,7 @@ header h1 a {
 
 @media (max-width: @screen-xs-max) {
   header {
+    position: static;
     .dropshadow;
   }
 }
@@ -223,6 +230,7 @@ header button.toggle {
   display: block;
   width: 100%;
   height: 25px;
+  margin-top: -10px;
   border: 1px solid transparent;
   border-radius: 0;
   text-align: center;
@@ -240,7 +248,7 @@ header button.toggle.active {
 
 header nav {
   width: 160px;
-  margin: 5px auto 14px;
+  margin: 5px auto;
   padding-top: 0;
   min-height: 0%;
 }
