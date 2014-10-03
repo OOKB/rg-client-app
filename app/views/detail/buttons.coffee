@@ -49,10 +49,13 @@ module.exports = React.createClass
       imgClass = 'img-container large'
     if item.category == 'passementerie'
       imgClass += ' rotate-trim'
+      imgStyle =
+        'margin-top': '-'+item._file[imgSize].height/2+'px'
     imgDiv = img
       className: imgClass
       alt: item.name
       src: imgPath
+      style: imgStyle
 
     divs = []
 
