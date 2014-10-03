@@ -3,7 +3,6 @@ React = require 'react'
 _ = require 'lodash'
 SubCollection = require 'ampersand-subcollection'
 
-Pager = require '../el/pager'
 Info = require '../el/info'
 ItemEl = require './item_el'
 ItemButtons = require '../el/item_buttons'

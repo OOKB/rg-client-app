@@ -13,10 +13,16 @@ module.exports = React.createClass
   setPgIndex: (e) ->
     if e.preventDefault
       e.preventDefault()
-    if e.target.value == 'pre' and @props.pageIndex != 1
-      @props.setRouterState pageIndex: @props.pageIndex-1
-    else if e.target.value == 'next' and @props.pageIndex != @props.totalPages
-      @props.setRouterState pageIndex: @props.pageIndex+1
+    if e.target.value == 'pre'
+      if @props.pageIndex != 1
+        @props.setRouterState pageIndex: @props.pageIndex-1
+      else if @props.pgSize == 3
+        @props.setRouterState pageIndex: @props.totalPages
+    else if e.target.value == 'next'
+      if @props.pageIndex != @props.totalPages
+        @props.setRouterState pageIndex: @props.pageIndex+1
+      else if @props.pgSize == 3
+        @props.setRouterState pageIndex: 1
 
   setPgSize: ->
     s = @props
@@ -29,7 +35,7 @@ module.exports = React.createClass
     props = @props
     if props.totalPages > 1
       liClass = 'previous'
-      if props.pageIndex == 1
+      if props.pageIndex == 1 and props.pgSize != 3
         liClass += ' disabled'
       return li
         key: 'previous'
@@ -46,7 +52,7 @@ module.exports = React.createClass
     props = @props
     if props.totalPages > 1
       liClass = 'next'
-      if props.pageIndex == props.totalPages
+      if props.pageIndex == props.totalPages and props.pgSize != 3
         liClass += ' disabled'
       return li
         key: 'next'
