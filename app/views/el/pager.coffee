@@ -27,7 +27,7 @@ module.exports = React.createClass
   setPgSize: ->
     s = @props
     s.pgSize = parseInt(@refs.setPgSize.getDOMNode().value)
-    s.pgIndex = 1
+    s.pageIndex = 1
     app.container.router.go s
 
   # Previous element.
