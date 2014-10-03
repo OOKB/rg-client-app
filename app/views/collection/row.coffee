@@ -76,6 +76,7 @@ module.exports = React.createClass
       s.pgSize = @props.initState.pgSizes[0]
     else
       s.pgSize = @props.initState.pgSizes[1]
+    s.pageIndex = 1
     app.container.router.go s
 
   filterCategories: (activeTab) ->
