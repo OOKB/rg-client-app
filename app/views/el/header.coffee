@@ -17,7 +17,7 @@ module.exports = React.createClass
         a
           href: '/',
             'Rogers & Goffigon'
-    className = 'toggle hidden-md hidden-lg'
+    className = 'toggle hidden-sm hidden-md hidden-lg'
     if @state.forceInfo then className += ' active'
 
     mobileHideShow =
