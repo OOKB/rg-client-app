@@ -57,6 +57,7 @@ module.exports = React.createClass
   handleChange: (event) ->
     @props.setRouterState
       searchTxt: @refs.searchTxt.getDOMNode().value
+      selectedFilters: {}
 
   # Menu ul wrapper element.
   createNavEl: (children, name, onOut) ->
