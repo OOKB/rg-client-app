@@ -26,7 +26,7 @@ module.exports = React.createClass
         className: className
         type: 'button',
           'Reveal Menu'
-    if window.innerWidth > 991 or @state.forceInfo
+    if window.innerWidth > 767 or @state.forceInfo
       navigation = Menu @props
     else
       navigation = false
