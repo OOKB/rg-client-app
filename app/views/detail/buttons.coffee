@@ -71,7 +71,7 @@ module.exports = React.createClass
       colorButtonClass += ' active'
 
     # Only show color button if there are related items.
-    if @props.collection.length > 1 and not item.category == 'passementerie'
+    if @props.collection.length > 1 and item.category != 'passementerie'
       divs.push div
         key: 'color-button'
         className: color_toggle_class,
