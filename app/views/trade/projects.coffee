@@ -174,8 +174,9 @@ module.exports = React.createClass
         projectItems
 
   render: ->
-    if @state.projects
-      projects = @state.projects.map @project
+    if @state.projects and @state.projects.length and @state.projects.models[0].name
+      projects = _.filter @state.projects.models, (model) -> model.name
+      projects = projects.map @project
     else
       projects = 'No projects.'
     if @state.addProject
