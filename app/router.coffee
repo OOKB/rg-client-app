@@ -123,6 +123,7 @@ module.exports = Router.extend
       searchTxt: searchTxt
       pageIndex: pageIndex
       summerSale: false
+      patternNumber: null
     @setReactState S
 
   detail: (patternNumber, color_id) ->
