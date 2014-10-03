@@ -59,7 +59,7 @@ module.exports = React.createClass
 
     divs = []
 
-    color_toggle_class = 'toggle-colors hidden-xs hidden-sm'
+    color_toggle_class = 'toggle-colors hidden-xs'
     if item.far
       color_toggle_class += ' with-far'
     if item.itemComments and item.summerSale
