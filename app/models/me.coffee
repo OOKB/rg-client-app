@@ -81,12 +81,7 @@ module.exports = AmpersandModel.extend
               success: (model, response, options) =>
                 app.me.fetchingMe = false
                 unless @fetchedProjects
-                  #console.log 'Requesting user projects from server.'
-                  # Fetch the project lists too.
-                  model.projects.fetch
-                    success: (collection, response, options) ->
-                      #console.log 'Projects have been added to user obj.'
-                      @fetchedProjects = true
+                  @fetchProjects()
             return false # No, just initiated login.
           else
             console.log 'Fetching customerNumber already. Waiting for that to return.'
@@ -118,13 +113,16 @@ module.exports = AmpersandModel.extend
         @set(resp) # Set the rest of the goods.
         @trigger 'sync', @, resp
         #console.log @loggedIn
+        @fetchProjects()
       else
         failed = @failedLogins+1
         @set 'failedLogins', failed
         @trigger 'change:failedLogins', @, failed
         console.log 'Failed login number '+failed
 
+  # Fetch the project lists too.
   fetchProjects: ->
+    console.log 'Requesting user projects from server.'
     @projects.fetch
       success: (collection, response, options) =>
         console.log 'Projects have been added to user obj.'
