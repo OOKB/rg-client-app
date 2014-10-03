@@ -22,8 +22,11 @@ module.exports = React.createClass
     classes = cx
       uppercase: true
       active: @props.showNotes
+
+    notesClassName = "toggle-notes hidden-xs"
+    if @props.hasColorButton then notesClassName += ' with-color'
     div
-      className: "toggle-notes hidden-xs",
+      className: notesClassName,
         button
           onClick: => @props.setParentState
             showNotes: !@props.showNotes

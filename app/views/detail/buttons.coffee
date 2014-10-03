@@ -72,6 +72,7 @@ module.exports = React.createClass
 
     # Only show color button if there are related items.
     if @props.collection.length > 1 and item.category != 'passementerie'
+      hasColorButton = true
       divs.push div
         key: 'color-button'
         className: color_toggle_class,
@@ -87,6 +88,7 @@ module.exports = React.createClass
         setParentState: @handleUserInput
         key: 'notes'
         showNotes: @state.showNotes
+        hasColorButton: hasColorButton
 
     if item.far
       divs.push div
