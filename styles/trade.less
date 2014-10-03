@@ -183,13 +183,6 @@ button.btn-outline:hover {
   padding-top: 7px;
 }
 
-li.project div.share {
-  position: absolute;
-  left: 11px;
-  top: 10px;
-  font-size: 12px;
-}
-
 .trade-projects .project .list-edit {
   display: none;
   position: absolute;
@@ -237,8 +230,29 @@ li.project div.share {
   background: transparent url(@sort) left center no-repeat;
 }
 
+li.project div.share {
+  position: absolute;
+  left: 50%;
+  margin-left: -139px;
+  width: 278px;
+  top: 40px;
+  font-size: 12px;
+}
+
 .project .pg-vert {
-  margin-top: 10px;
+  margin-top: 40px;
+}
+
+@media (min-width: @screen-md-min) {
+  li.project div.share {
+    left: 11px;
+    top: 10px;
+    margin: 0;
+    width: auto;
+  }
+  .project .pg-vert {
+    margin-top: 10px;
+  }
 }
 
 /** more info page **/
