@@ -17,10 +17,13 @@ module.exports = React.createClass
         a
           href: '/',
             'Rogers & Goffigon'
+    className = 'toggle hidden-md hidden-lg'
+    if @state.forceInfo then className += ' active'
+
     mobileHideShow =
       button
         onClick: @toggleInfo
-        className: 'toggle hidden-md hidden-lg'
+        className: className
         type: 'button',
           'Reveal Menu'
     if window.innerWidth > 991 or @state.forceInfo

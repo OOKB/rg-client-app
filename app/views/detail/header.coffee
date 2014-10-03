@@ -39,6 +39,9 @@ module.exports = React.createClass
         setItemState: @props.onUserInput
         itemState: @props.itemState
 
+    mobileClassName = 'toggle hidden-md hidden-lg'
+    if @state.forceInfo then mobileClassName += ' active'
+
     nav className: 'item-detail-header',
       div className: 'controls',
         ul {},
@@ -50,7 +53,7 @@ module.exports = React.createClass
         h3 className: 'hidden-md hidden-lg', 'Details'
         button
           onClick: @toggleInfo
-          className: 'toggle hidden-md hidden-lg'
+          className: mobileClassName
           type: 'button',
             'Reveal Menu'
       itemInfo
