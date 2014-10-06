@@ -25,8 +25,25 @@ header .active button.navbar-toggle {
 }
 
 @media (max-width: @screen-xs-max) {
+  header {position: relative; z-index: 2;}
   .navwrap {
     height: 0;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 400ms ease;
+  }
+
+  .navwrap.in {
+    max-height: 160px
+  }
+
+  header        {
+    max-height: 100px;
+    transition: max-height 400ms ease;
+    }
+  header.active {
+    height: auto;
+    max-height: 400px;
     overflow: hidden;
   }
 }
@@ -61,6 +78,9 @@ header nav ul.top-menu > li.navbar-footer {
 /* about.css */
 
 /* new film roll improvements */
+#film_roll {
+  position: relative;
+}
 #film_roll, #film_roll * {
   height: 200px;
 }

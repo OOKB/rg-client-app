@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="/media/favicon.ico" />
 
 <!--     <link href="http://theme.rg.cape.io/29ac376c3dca79124004f5f9fdda7caecb435d4e/default.css" rel="stylesheet"> -->
-<!--     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet"> -->
+
     <link href="/static.css" rel="stylesheet">
 
     <script type="text/javascript" src="//use.typekit.net/jjm0waz.js"></script>
@@ -23,9 +23,8 @@
       <h1><a href="/">ROGERS &amp; GOFFIGON LTD</a></h1>
       <nav class="menu">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle mobile-open visible-xs" data-toggle="collapse" data-target="nav .navwrap">
+          <button type="button" class="navbar-toggle visible-xs" data-toggle="collapse" data-target="nav .navwrap">
             <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
           </button>
         </div>
         <div class="navwrap collapse navbar-collapse">
@@ -467,12 +466,16 @@
 
           if (ncollapse === true) {
             $('.navbar-header').addClass('active');
+            $('header').addClass('active');
           } else if (ncollapsing === true) {
             $('.navbar-header').addClass('active');
+            $('header').addClass('active');
           } else if (nin === true) {
             $('.navbar-header').removeClass('active');
+            $('header').removeClass('active');
           } else {
             $('.navbar-header').removeClass('active');
+            $('header').removeClass('active');
           }
 
         });
