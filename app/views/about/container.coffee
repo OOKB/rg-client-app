@@ -14,7 +14,7 @@ module.exports = React.createClass
         div
           className: 'film_roll',
             'slideshow-y thing has to go here'
-        # this text area
+        # this text area would be editable by them optimally — should it draw in from somewhere else?
         div
           className: 'text-area',
             p 'Rogers & Goffigon is one of the most respected designers and producers of impeccable high-quality home furnishing textiles in the world. Many of their fabrics are manufactured at family-owned European mills in existence for generations, where skilled craftspeople with an Old World attention to detail employ traditional, centuries-old techniques to create superb woven goods and trimmings.'

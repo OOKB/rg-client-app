@@ -8,49 +8,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <link rel="shortcut icon" href="/media/favicon.ico" />
 
-    <link href="http://theme.rg.cape.io/18556ca4371d8baae1b5a92db9b5ec32b2d98675/default.css" rel="stylesheet">
+<!--     <link href="http://theme.rg.cape.io/18556ca4371d8baae1b5a92db9b5ec32b2d98675/default.css" rel="stylesheet"> -->
     <link href="http://theme.rg.cape.io/18556ca4371d8baae1b5a92db9b5ec32b2d98675/about.css" rel="stylesheet">
-
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 10]>
-      <style>
-        div#downloadify,
-        button.download-pdf-flash {
-          display: inline-block;
-        }
-        button.download-pdf {
-          display: none;
-        }
-      </style>
-
-    <![endif]-->
-    <!-- this is for styles on filter menus... alphabetical by row since columns isn't supported -->
-    <!--[if lt IE 10]>
-      <link href="../theme/iefix.css" rel="stylesheet">
-    <![endif]-->
+    <link href="/static.css" rel="stylesheet">
     <script type="text/javascript" src="//use.typekit.net/jjm0waz.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <script src="http://fb.me/react-0.11.2.min.js"></script>
-    <style>
-      header i.fa-search { font-size: 11.3px; }
-    </style>
   </head>
   <body class="about">
 
     <!-- HEADER AND NAV -->
-    <header class="masthead">
-      <h1 class="sitename"><a href="/">ROGERS &amp; GOFFIGON LTD</a></h1>
-      <nav>
+    <header>
+      <h1><a href="/">ROGERS &amp; GOFFIGON LTD</a></h1>
+      <nav class="menu">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle mobile-open" data-toggle="collapse" data-target="nav .navwrap">
+          <button type="button" class="navbar-toggle mobile-open visible-xs" data-toggle="collapse" data-target="nav .navwrap">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
           </button>
         </div>
         <div class="navwrap collapse navbar-collapse">
-          <ul class="">
-            <li><a href="/about/">About Us</a></li>
+          <ul class="top-menu">
+            <li class="active"><a href="/about/">About Us</a></li>
             <li><a href="/app.html#collection">The Collection</a></li>
             <li><a href="/contact/">Contact Us</a></li>
             <li><a href="/app.html#trade/login">Trade Login</a></li>
@@ -62,7 +41,7 @@
               </form>
               <i class="fa fa-search"></i>
             </li>
-            <li class="navbar-footer">
+            <li class="navbar-footer visible-xs">
               <button type="button" class="navbar-toggle mobile-open" data-toggle="collapse" data-target="nav .navwrap">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>

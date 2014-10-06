@@ -244,7 +244,7 @@ header button.toggle {
   border-radius: 0;
   text-align: center;
   .hide-text;
-/*   transition: transform 500ms ease; */
+  transition: transform 300ms ease;
 }
 
 header button.toggle.active {
@@ -255,6 +255,18 @@ header button.toggle.active {
   transform: rotate(180deg);
 }
 
+/*
+@media (max-width: @screen-xs-max) {
+  header {
+    max-height: 100px;
+    transition: max-height 300ms ease;
+  }
+  header.expanded {
+    max-height: 450px;
+  }
+}
+*/
+
 header nav {
   width: 160px;
   margin: 5px auto;
@@ -262,21 +274,21 @@ header nav {
   min-height: 0%;
 }
 
-header nav > ul {
+header nav ul.top-menu {
   list-style: none;
   margin: 0;
   padding: 0;
   .text-center;
 }
 
-header nav > ul > li {
+header nav ul.top-menu > li {
   border-top: solid 1px #262019;
   display: list-item;
   list-style: none;
   padding: 0;
 }
 
-header nav > ul > li > a {
+header nav ul.top-menu > li > a {
   color: @rg-black;
   display: block;
   padding: 8px 0 4px;
@@ -290,8 +302,8 @@ header nav > ul > li > a {
   }
 }
 
-header nav > ul > li.active > a,
-header nav > ul > li > a.active {
+header nav ul.top-menu > li.active > a,
+header nav ul.top-menu > li > a.active {
   color: @rg-gold;
 }
 
