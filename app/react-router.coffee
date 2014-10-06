@@ -15,6 +15,8 @@ Trade = require './views/trade/index'
 Login = require './views/trade/login'
 Account = require './views/trade/account'
 Projects = require './views/trade/projects'
+About = require './views/about/container'
+Contact = require './views/contact/container'
 
 module.exports = React.createClass
   getInitialState: ->
