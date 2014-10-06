@@ -2,15 +2,47 @@
 @import url(rg.less);
 @import url(search.less);
 
+/* = navigation related stuff */
+header button.navbar-toggle {
+  background: url(@reveal-menu) center center no-repeat;
+  display: block;
+  width: 100%;
+  height: 25px;
+  margin-top: 0;
+  border: 1px solid transparent;
+  border-radius: 0;
+  text-align: center;
+  .hide-text;
+  transition: transform 300ms ease;
+}
+
+header .navbar-footer button.navbar-toggle {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
 /*** some styles for the static pages ***/
 /*** index.html, about.html, contact.html ***/
 
 /** about page **/
 /** add the about.css from the old rg.theme here... **/
+.about .text-area p {
+  font-size: 16px;
+  margin-bottom: 16px;
+  line-height: 24px;
+}
+
+@media (max-width: 630px) {
+  .about .text-area p {
+    padding: 0 20px;
+  }
+}
+
 
 /** Contact Page **/
-
-/* = Main React Wrapper */
 main.contact {
   width: auto;
   margin: 50px auto 0;
@@ -146,3 +178,6 @@ li.showroom span.smallcaps {
   border-top: 1px solid #EEE;
   padding-top: 18px;
 }
+
+footer p.no-bottom { margin-bottom: 0; }
+footer p.facebook  { margin-top: 0; }
