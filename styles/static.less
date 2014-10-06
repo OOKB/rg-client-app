@@ -13,7 +13,7 @@ header button.navbar-toggle {
   border-radius: 0;
   text-align: center;
   .hide-text;
-/*   transition: transform 300ms ease; */
+  transition: transform 300ms ease;
 }
 
 header .active button.navbar-toggle {
@@ -24,32 +24,16 @@ header .active button.navbar-toggle {
   transform: rotate(180deg);
 }
 
-/*
 @media (max-width: @screen-xs-max) {
-  header {position: relative; z-index: 2;}
   .navwrap {
     height: 0;
     overflow: hidden;
-    max-height: 0;
-    transition: max-height 400ms ease;
-  }
-
-  .navwrap.in {
-    max-height: 160px
-  }
-
-  header        {
-    max-height: 100px;
-    transition: max-height 400ms ease;
-    }
-  header.active {
-    height: auto;
-    max-height: 400px;
-    overflow: hidden;
   }
 }
-*/
 
+header nav ul.top-menu > li.navbar-footer {
+  border: none;
+}
 /*** some styles for the static pages ***/
 /*** index.html, about.html, contact.html ***/
 
