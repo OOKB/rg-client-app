@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>General Inquiries</title>
+    <title>Contact Rogers &amp; Goffigon</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <link rel="shortcut icon" href="/media/favicon.ico" />
@@ -42,12 +42,14 @@
               </form>
               <i class="fa fa-search"></i>
             </li>
+<!--
             <li class="navbar-footer visible-xs">
               <button type="button" class="navbar-toggle mobile-open" data-toggle="collapse" data-target="nav .navwrap">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
               </button>
             </li>
+-->
           </ul>
         </div>
       </nav><!-- /.navbar -->
@@ -454,9 +456,44 @@
     </footer>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <script src="http://theme.rg.cape.io/09e2631988517c7a6c4aa6e5b5fe2d7e8c598ab9/default.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        $('.navbar-toggle').on('click touch', function() {
+
+          var ncollapse = $('.navwrap').hasClass('collapse');
+          var ncollapsing = $('.navwrap').hasClass('collapsing');
+          var nin = $('.navwrap').hasClass('in');
+
+          if (ncollapse === true) {
+            $('.navbar-header').addClass('active');
+          } else if (ncollapsing === true) {
+            $('.navbar-header').addClass('active');
+          } else if (nin === true) {
+            $('.navbar-header').removeClass('active');
+          } else {
+            $('.navbar-header').removeClass('active');
+          }
+
+        });
+
+        // Contact page basics
+        $("section.toggle .slider").hide();
+
+        $("section.general-inquiries h2").click(function () {
+          $(this).parent().children(".slider").slideToggle();
+          $('section.showrooms').children(".slider").slideUp();
+        });
+
+        $('section.showrooms h2').click(function () {
+          $(this).parent().children('.slider').slideToggle();
+          $('section.general-inquiries').children('.slider').slideUp();
+        });
+      });
+    </script>
 
     <!-- google analytics -->
+<!--
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -464,7 +501,8 @@
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-51752120-1', 'rogersandgoffigon.com');
       ga('send', 'pageview');
-    </script><!-- end GA -->
+    </script>
+--><!-- end GA -->
 
   <script type="text/javascript">
 /* <![CDATA[ */
