@@ -52,11 +52,27 @@ li.next {
 
 ul.collection-controls > li.previous,
 ul.collection-controls > li.next {
-  top:5px;
+  top: 32px;
 }
+.collection-pager-bottom ul.collection-controls.pager > li.previous,
+.collection-pager-bottom ul.collection-controls.pager > li.next {
+  top: 11px;
+}
+
 ul.pager > li.previous,
 ul.pager > li.next {
   top:11px;
+}
+
+@media (min-width: @screen-sm-min) {
+  ul.collection-controls > li.previous,
+  ul.collection-controls > li.next {
+    top:5px;
+  }
+  .collection-pager-bottom ul.collection-controls > li.previous,
+  .collection-pager-bottom ul.collection-controls > li.next {
+    top: 11px;
+  }
 }
 
 /* previous/left arrow */
