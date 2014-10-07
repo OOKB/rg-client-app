@@ -1,0 +1,142 @@
+@import url(variables.less);
+
+.dropshadow {
+  background: @rg-background;
+  -webkit-box-shadow: @rg-shadow;
+  -moz-box-shadow: @rg-shadow;
+  -ms-box-shadow: @rg-shadow;
+  -o-box-shadow: @rg-shadow;
+  box-shadow: @rg-shadow;
+}
+
+.dropshadow-light {
+  -webkit-box-shadow: @rg-shadow-light;
+  -moz-box-shadow: @rg-shadow-light;
+  -ms-box-shadow: @rg-shadow-light;
+  -o-box-shadow: @rg-shadow-light;
+  box-shadow: @rg-shadow-light;
+}
+
+.hide-text {
+  text-indent: 200%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+/* = header related stuff */
+header {
+  background: @rg-background;
+  padding: 6px 0 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.landing header {
+  .dropshadow;
+}
+
+header h1 {
+  margin: 0 auto;
+}
+
+header h1 a {
+  display: block;
+  background: url('images/rglogo.png') center center no-repeat;
+  background-size: contain;
+  height: 60px;
+  margin: 0;
+  padding: 0;
+  .hide-text;
+}
+
+@media (max-width: @screen-xs-max) {
+  header {
+    position: static;
+    .dropshadow;
+  }
+}
+
+@media (min-width: @screen-sm-min) {
+  header h1 {
+    width: 350px;
+    height: 60px;
+    margin: 34px auto 30px;
+    .dropshadow-light;
+    transition: all 300ms ease;
+
+    &:hover {
+      .dropshadow;
+    }
+  }
+}
+
+/* = navigation related stuff */
+
+header nav {
+  width: 160px;
+  margin: 5px auto;
+  padding-top: 0;
+  min-height: 0%;
+}
+
+header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  .text-center;
+}
+
+header nav ul li {
+  border-top: solid 1px @rg-black;
+  display: list-item;
+  list-style: none;
+  padding: 0;
+}
+
+header nav ul li a {
+  color: @rg-black;
+  display: block;
+  padding: 8px 0 4px;
+  font-size: .875em;
+  font-weight: 700;
+  text-decoration: none;
+  .uppercase;
+
+  &:hover {
+    color: @rg-gray;
+  }
+}
+
+@media (min-width: @screen-sm-min) {
+  header nav {
+    margin: 0 auto;
+  }
+
+}
+/* = #content */
+body { padding: 0; }
+#content {
+  margin: 50px auto;
+}
+/* = footer styles */
+footer {
+  margin-top: 100px;
+  margin-bottom: 60px;
+  font-size: .9em;
+  letter-spacing: 2px;
+  line-height: 1.33;
+}
+
+footer p {
+  margin: 1.33em 0;
+}
+
+footer span {
+  color: @rg-gray;
+  letter-spacing: 1px;
+}
+

@@ -13,6 +13,10 @@ header button.navbar-toggle {
   border-radius: 0;
   text-align: center;
   .hide-text;
+  -webkit-transition: transform 300ms ease;
+  -moz-transition: transform 300ms ease;
+  -ms-transition: transform 300ms ease;
+  -o-transition: transform 300ms ease;
   transition: transform 300ms ease;
 }
 
@@ -25,6 +29,10 @@ header.active button.navbar-toggle {
 }
 
 header .navwrap {
+  -webkit-transition: height 400ms ease;
+  -moz-transition: height 400ms ease;
+  -ms-transition: height 400ms ease;
+  -o-transition: height 400ms ease;
   transition: height 400ms ease;
 }
 
@@ -71,8 +79,12 @@ html,body.landing {
 @media (min-width: @screen-sm-min) {
   .landing header {
     height: 145px;
-    transition: height 400ms ease;
     overflow: hidden;
+    -webkit-transition: height 400ms ease;
+    -moz-transition: height 400ms ease;
+    -ms-transition: height 400ms ease;
+    -o-transition: height 400ms ease;
+    transition: height 400ms ease;
   }
 
   .landing header .navwrap {
@@ -80,7 +92,7 @@ html,body.landing {
   }
 
   .landing header:hover {
-    height: 320px;
+    height: 300px;
   }
 
   .landing header:hover .navwrap {
@@ -88,7 +100,12 @@ html,body.landing {
   }
 
   .landing header:hover .navbar-toggle {
-    visibility: hidden;
+    display: none;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
   }
 
 }
