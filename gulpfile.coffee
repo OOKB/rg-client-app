@@ -72,10 +72,25 @@ gulp.task 'compile', ->
   bundle()
   return
 
-gulp.task "default", ['compile', 'styles', 'templates', 'browser-sync', 'copy'], ->
+gulp.task 'compileMenu', ->
+  opts = watchify.args
+  opts.extensions = ['.coffee', '.json']
+  w = watchify(browserify('./app/indexMenu.coffee', opts))
+  w.transform [coffeeify]
+  bundle = () ->
+    w.bundle()
+      .pipe(source('appMenu.js'))
+      .pipe(gulp.dest('./public/'))
+  w.on('update', bundle)
+  bundle()
+  return
+
+gulp.task "default", ['compile', 'compileMenu', 'styles', 'templates', 'browser-sync', 'copy'], ->
   gulp.watch "templates/*.jade", ["templates"]
   gulp.watch "styles/*.less", ["styles"]
   gulp.watch 'images/**', ['copy']
+  gulp.watch 'static/about/*.html', ['static']
+  gulp.watch 'static/contact/*.html', ['static']
   gulp.watch 'static/scripts/*.js', ['static-js']
   gulp.watch 'static/templates/**', ['static-template']
   return

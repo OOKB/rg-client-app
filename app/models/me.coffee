@@ -35,6 +35,7 @@ module.exports = AmpersandModel.extend
       default: -> Cookies.get('token')
     failedLogins: ['number', true, 0]
     fetchingMe: ['bool', true, false]
+    getProjectsOnLogin: ['bool', true, true]
     fetchedProjects: ['bool', true, false]
     showroom: 'object'
     textileSize: ['number', true, 3]
@@ -80,7 +81,7 @@ module.exports = AmpersandModel.extend
             @fetch
               success: (model, response, options) =>
                 app.me.fetchingMe = false
-                unless @fetchedProjects
+                if @getProjectsOnLogin and not @fetchedProjects
                   @fetchProjects()
             return false # No, just initiated login.
           else
