@@ -6,6 +6,12 @@ module.exports = React.createClass
   getInitialState: ->
     tradeIsActive: false
 
+  componentDidMount: ->
+    app.me.on 'change:customerNumber', => @forceUpdate()
+
+  componentWillUnmount: ->
+    app.me.off 'change:customerNumber', => @forceUpdate()
+
   tradeData: ->
     if @props.initState.loggedIn
       id: 'trade'
