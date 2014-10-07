@@ -147,6 +147,23 @@ gulp.task 'prod_compile', (cb) ->
     .on('end', cb)
   return
 
+gulp.task 'prod_menu_compile', (cb) ->
+  # Javascript bundle
+  opts =
+    debug: true
+    extensions: ['.coffee', '.json']
+  bundler = browserify opts
+  bundler.transform coffeeify
+  bundler.add('./app/indexMenu.coffee')
+  bundler.plugin 'minifyify',
+    map: 'script.map.json'
+    output: './prod/script.map.json'
+  bundler.bundle debug: true
+    .pipe(source('appMenu.js'))
+    .pipe(gulp.dest('./prod/'))
+    .on('end', cb)
+  return
+
 gulp.task 'prod_template', ->
   # Templates
   data =
@@ -160,7 +177,7 @@ gulp.task 'copy_css', ['styles'], ->
   gulp.src('./public/app.css')
     .pipe(rename(global.sha+'.css'))
     .pipe(gulp.dest('./prod'))
-  gulp.src('./public/print.css', './public/iefix.css', './public/static.css', './public/whenloading.css')
+  gulp.src(['./public/print.css', './public/iefix.css', './public/static.css', './public/whenloading.css'])
     .pipe(gulp.dest('./prod'))
   gulp.src('./images/**')
     .pipe gulp.dest('./prod/images/')
@@ -174,7 +191,7 @@ gulp.task 'compress', ->
 
 gulp.task 'prod', (cb) ->
   runSequence ['prod_clean', 'set_sha'],
-    ['prod_template', 'copy_css', 'prod_compile'],
+    ['prod_template', 'copy_css', 'prod_compile', 'prod_menu_compile'],
     'compress',
     cb
   return
