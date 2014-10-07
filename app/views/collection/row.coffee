@@ -25,6 +25,7 @@ module.exports = React.createClass
       s.category = e.target.value
       # Go to the page size the user wants.
       s.pgSize = app.me[e.target.value+'Size']
+      s.pageIndex = 1
       # Unset filters when switching categories.
       s.selectedFilters = null
       app.me.filterTab = null
