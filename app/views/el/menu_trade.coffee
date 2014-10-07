@@ -36,6 +36,11 @@ module.exports = React.createClass
       href: '#trade/login'
 
   render: () ->
-    a
-      href: 'app.html#trade/login',
-        'Trade Login'
+    if app.me.loggedIn
+      a
+        href: 'app.html#trade/account',
+          'Trade Account'
+    else
+      a
+        href: 'app.html#trade/login',
+          'Trade Login'
