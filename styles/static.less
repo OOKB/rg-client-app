@@ -46,6 +46,74 @@ header .navwrap {
 header nav ul.top-menu > li.navbar-footer {
   border: none;
 }
+
+ul.top-menu > li#trade-menu > span a {
+  color: @rg-black;
+  display: block;
+  padding: 8px 0 4px;
+  font-size: .875em;
+  font-weight: 700;
+  text-decoration: none;
+  .uppercase;
+
+  &:hover {
+    color: @rg-gray;
+  }
+}
+
+li#trade-menu ul.sub-menu {
+  margin: 0 0 10px;
+  padding: 0;
+  width: 100%;
+}
+
+li#trade-menu ul.sub-menu li {
+  display: list-item;
+  height: auto;
+  margin: 0;
+}
+
+li#trade-menu ul.sub-menu li a {
+  color: @rg-gold;
+  font-size: .875em;
+  text-decoration: none;
+  font-weight: 400;
+  padding: 0;
+  .uppercase;
+
+  &:hover {
+    color: @rg-dark-gold;
+  }
+}
+
+li#trade-menu ul.sub-menu li.active a {
+  color: @rg-dark-gold;
+  font-weight: 700;
+}
+
+@media (min-width: @screen-sm-min) {
+  li#trade-menu ul.sub-menu {
+    margin: 0 0 0 -260px;
+    padding: 0;
+    width: 520px;
+    position: relative;
+    left: 50%;
+    text-align: center;
+  }
+
+  li#trade-menu ul.sub-menu li {
+    display: inline-block;
+    height: 20px;
+    margin: 0;
+    width: 100px;
+    text-align: center;
+  }
+
+  li#trade-menu ul.sub-menu li.summer {
+    width: 120px;
+  }
+}
+
 /*** some styles for the static pages ***/
 /*** index.html, about.html, contact.html ***/
 
