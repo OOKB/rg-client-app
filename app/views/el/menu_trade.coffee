@@ -78,7 +78,7 @@ module.exports = React.createClass
         child
 
   render: () ->
-    if @state.tradeIsActive
+    if true
       children = @createNavEl(@tradeData, 'sub-menu', nav.childrenOut)
     else
       children = false
