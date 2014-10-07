@@ -29,6 +29,7 @@
           <li><a href="/contact/">Contact Us</a></li>
           <li class="trade" id="trade-menu"><a href="/app.html#trade/login">Trade Login</a></li>
           <li class="search-holder">
+<!--             <i class="search-icon">Search</i> -->
             <form class="form-inline" role="form" id="search-items">
               <div class="form-group">
                 <input name="item-search" class="form-control" placeholder="Enter search text">
@@ -95,10 +96,21 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="http://theme.rg.cape.io/faf96cacd01499fe539f41bb344b397b933e5a21/default.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js"></script>
 
     <script>
       $(document).ready(function() {
+
+        //connect search bar to react collection search...
+        $('#search-items').off('submit').on('submit', function(e) {
+          e.preventDefault();
+          var collection = hash.get('collection');
+          if (_.isUndefined(collection)) collection = 'textile';
+          window.location = '/app.html#collection/textile/12/' + encodeURIComponent($('#search-items').find('input').val())+'/p1';
+          // #collection/textile/12/sam/p1
+        });
+
         $('.navbar-toggle').on('click touch', function() {
 
           var ncollapse = $('.navwrap').hasClass('collapse');
