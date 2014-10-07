@@ -84,7 +84,8 @@ module.exports = React.createClass
       children = false
     if app.me.loggedIn
       span
-        className: 'sorry',
+        onMouseOut: => @setState tradeIsActive: false
+        className: 'active',
           a
             onMouseOver: => @setState tradeIsActive: true
             href: '/app.html#trade/account',
