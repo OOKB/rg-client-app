@@ -195,7 +195,7 @@
 
   gulp.task('copy_css', ['styles'], function() {
     gulp.src('./public/app.css').pipe(rename(global.sha + '.css')).pipe(gulp.dest('./prod'));
-    gulp.src('./public/print.css', './public/iefix.css', './public/static.css', './public/whenloading.css').pipe(gulp.dest('./prod'));
+    gulp.src(['./public/print.css', './public/iefix.css', './public/static.css', './public/whenloading.css']).pipe(gulp.dest('./prod'));
     gulp.src('./images/**').pipe(gulp.dest('./prod/images/'));
     return gulp.src('./static/**').pipe(gulp.dest('./prod/'));
   });
