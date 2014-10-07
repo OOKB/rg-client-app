@@ -84,7 +84,7 @@ module.exports = React.createClass
       children = false
     if app.me.loggedIn
       span
-        onMouseOut: => @setState tradeIsActive: false
+        #onMouseOut: => @setState tradeIsActive: false
         className: 'active',
           a
             onMouseOver: => @setState tradeIsActive: true
