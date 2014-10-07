@@ -36,25 +36,6 @@
   .dropshadow;
 }
 
-.item-detail-header button.toggle {
-  background: url(@reveal-menu) center center no-repeat;
-  display: block;
-  width: 100%;
-  height: 25px;
-  border: 1px solid transparent;
-  border-radius: 0;
-  text-align: center;
-  .hide-text;
-}
-
-.item-detail-header button.toggle.active {
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-
 .item-detail-header li.fav,
 .item-detail-header li.close {
   padding: 2px 0 6px 0;
@@ -111,19 +92,28 @@
   .item-detail-header .controls { height: 0; }
   .item-detail-content > ul {
     width: auto;
-    margin: 0 20px;
-  }
-  .item-detail-content > ul.f-qty-4 {
     margin: 0 50px;
   }
   .item-detail-content > ul > li {
     display: inline-block;
     margin: 0;
-    min-width: calc(100% / 6);
-    max-width: 25%;
     vertical-align: middle;
   }
-
+  .item-detail-content > ul > li {
+    width: 50%;
+  }
+  .item-detail-content > ul.f-qty-1 > li {
+    width: 33%;
+  }
+  .item-detail-content > ul.f-qty-2 > li {
+    width: 25%;
+  }
+  .item-detail-content > ul.f-qty-3 > li {
+    width: 20%;
+  }
+  .item-detail-content > ul.f-qty-4 > li {
+    width: 16.67%;
+  }
   /** some special leather stuff **/
   .item-detail.leather .item-detail-content > ul.f-qty-4 {
     width: auto;
@@ -144,6 +134,34 @@
     vertical-align: middle;
   }
 }
+
+@media (min-width: @screen-lg-min) {
+  .item-detail-content > ul {
+    width: auto;
+    margin: 0 50px;
+  }
+  .item-detail-content > ul > li {
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+  }
+  .item-detail-content > ul > li {
+    width: 33%;
+  }
+  .item-detail-content > ul.f-qty-1 > li {
+    width: 25%;
+  }
+  .item-detail-content > ul.f-qty-2 > li {
+    width: 20%;
+  }
+  .item-detail-content > ul.f-qty-3 > li {
+    width: 16.67%;
+  }
+  .item-detail-content > ul.f-qty-4 > li {
+    width: 16.67%;
+  }
+}
+
 
 .item-detail .small img {
   min-height: 100%;
