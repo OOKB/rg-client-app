@@ -39,6 +39,7 @@
     "qs": "^1.2.2",
     "superagent": "^0.18.2",
     "cookies-js": "^0.4.0",
-    "ampersand-rest-collection": "2.x"
+    "ampersand-rest-collection": "2.x",
+    "literalify": "^0.3.0"
   }
 }

@@ -8,6 +8,7 @@ browserSync = require 'browser-sync'
 browserify = require 'browserify'
 watchify = require 'watchify'
 coffeeify = require 'coffeeify'
+literalify = require 'literalify'
 
 source = require('vinyl-source-stream')
 
@@ -72,7 +73,20 @@ gulp.task 'compile', ->
   bundle()
   return
 
-gulp.task "default", ['compile', 'styles', 'templates', 'browser-sync', 'copy'], ->
+gulp.task 'compileMenu', ->
+  opts = watchify.args
+  opts.extensions = ['.coffee', '.json']
+  w = watchify(browserify('./app/indexMenu.coffee', opts))
+  w.transform [coffeeify, literalify.configure({react: 'window.React'})]
+  bundle = () ->
+    w.bundle()
+      .pipe(source('appMenu.js'))
+      .pipe(gulp.dest('./public/'))
+  w.on('update', bundle)
+  bundle()
+  return
+
+gulp.task "default", ['compile', 'compileMenu', 'styles', 'templates', 'browser-sync', 'copy'], ->
   gulp.watch "templates/*.jade", ["templates"]
   gulp.watch "styles/*.less", ["styles"]
   gulp.watch 'images/**', ['copy']
