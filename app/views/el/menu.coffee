@@ -55,9 +55,13 @@ module.exports = React.createClass
       href: '#trade/login'
 
   handleChange: (event) ->
-    @props.setRouterState
+    newState =
       searchTxt: @refs.searchTxt.getDOMNode().value
       selectedFilters: {}
+    unless @props.initState.category
+      newState.category = 'textile'
+    @props.setRouterState newState
+
 
   # Menu ul wrapper element.
   createNavEl: (children, name, onOut) ->
