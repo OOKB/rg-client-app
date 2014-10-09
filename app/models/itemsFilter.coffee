@@ -32,6 +32,12 @@ module.exports = (items, filters) ->
   if 'collection' == filters.section or 'summer' == filters.section
     filters.hasImage = true
     config.comparator = 'order'
+  # Always sort trim on pricelist by the itemNumber.
+  else if 'pricelist' == filters.section and 'passementerie' == filters.category
+    config.comparator = 'id'
+  # Otherwise leave the sort as the default whatever thing.
+  else
+    config.comparator = undefined
 
   # Require that item has an image.
   if filters.hasImage
