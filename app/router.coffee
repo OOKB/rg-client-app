@@ -330,6 +330,8 @@ module.exports = Router.extend
     ww = newState.windowWidth = window.innerWidth
     isOnTrim = 'passementerie' == newState.category
     newState.isMobile = ww < 768
+    if newState.searchTxt
+      newState.searchTxt = @searchTxtParse newState.searchTxt
     hide3up = isOnTrim or newState.searchTxt or newState.isMobile
     pgSizes = @pgSizes s.section, hide3up
     if s.section == 'projects'
