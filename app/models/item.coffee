@@ -117,7 +117,10 @@ module.exports = AmpersandModel.extend
       cache: false
       fn: ->
         if app.me.loggedIn
-          '$'+@price
+          price = '$'+@price
+          if @category == 'leather'
+            price += ' sq ft'
+          price
         else
           'n/a'
 
