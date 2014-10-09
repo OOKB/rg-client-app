@@ -138,8 +138,13 @@ module.exports = Router.extend
       summerSale: null
     itemsFilter app.items, newSt
     item = app.items.get(newSt.patternNumber+'-'+newSt.color_id)
-    document.title = pageTitle + ' - ' + item.name + ' in ' + item.color
-    @setReactState newSt
+    if item
+      document.title = pageTitle + ' - ' + item.name + ' in ' + item.color
+      @setReactState newSt
+    else
+      #newSt = section: 'item-not-found'
+      @redirectTo 'collection/textile/12/'+patternNumber+'/p1'
+    return
 
   favs: (favStr) ->
     unless favStr
