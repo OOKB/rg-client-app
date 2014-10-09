@@ -13,7 +13,9 @@ module.exports = React.createClass
       return disclaimerEl = p {},
           span 'Images shown may vary to actual.'
           br {}
-          span 'Please contact the showroom for a sample.'
+          span 'Please contact your local showroom or representative.'
+          br {}
+          span 'For inquiries outside represented areas contact us at: 203-532-8068'
     else
       return false
 
