@@ -77,11 +77,12 @@ module.exports = Router.extend
       args.category = @getCategory category
       if pgSize # Comes in as a string.
         args.pgSize = parseInt pgSize
-      args.searchTxt = searchTxt
+      args.searchTxt = searchTxt or null
       args.pageIndex = parseInt pageIndex
       args.patternNumber = null
     else
       args.category = null
+      args.searchTxt = null # searchTxt requries a category.
     @collection args
 
   collection: (args) ->
