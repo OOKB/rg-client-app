@@ -154,3 +154,10 @@ module.exports = AmpersandModel.extend
       return true
     else
       return false
+
+  updateItemOrder: (id, order) ->
+    data =
+      id: id
+      order: order
+    r.put 'https://r_g.cape.io/_api/itemOrder/'+id+'?access_token='+@token, data, (err, res) ->
+      console.log res.body

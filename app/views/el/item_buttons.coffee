@@ -5,6 +5,7 @@ _ = require 'lodash'
 Button = require './button'
 FavButton = require './button_fav'
 ProjectButton = require './button_project'
+OrderField = require './order'
 
 # Item action buttons.
 module.exports = React.createClass
@@ -50,10 +51,10 @@ module.exports = React.createClass
         label: '='
 
   # Template for the buttons container.
-  el: (child) ->
+  el: (child, child2) ->
     div
       className: 'item-icons',
-        child
+        child, child2
 
   render: ->
     buttonsFor = @props.buttonsFor
@@ -66,6 +67,7 @@ module.exports = React.createClass
     unless buttonsFor == item.id
       return false
 
+    adminOrder = false
     if app.me.loggedIn
       favThisButton = ProjectButton
         key: 'project'
@@ -74,6 +76,11 @@ module.exports = React.createClass
         itemState: itemState
         section: section
         projectId: initState.projectId
+      if app.me.customerNumber == 'rogersandgoffigon'
+        adminOrder = OrderField
+          key: 'order'
+          model: item
+          initState: initState
     else
       favThisButton = FavButton
         key: 'fav'
@@ -83,7 +90,7 @@ module.exports = React.createClass
 
     # Simply return the favs button.
     if favsOnly or not extraButtons
-      return @el favThisButton
+      return @el favThisButton, adminOrder
 
     # Possible buttons to display.
     buttonTypes = @props.buttonTypes or ['color', 'fav', 'info']
@@ -94,7 +101,9 @@ module.exports = React.createClass
     buttons = []
     buttonTypes.forEach (buttonType) =>
       if 'fav' == buttonType
+        console.log 'print fav buttons'
         buttons.push favThisButton
+        #buttons.push adminOrder
       else
         btn = @data(buttonType)
         # Set if active be added to the className.

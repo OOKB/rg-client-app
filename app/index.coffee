@@ -1,6 +1,7 @@
 React = require 'react'
 SubCollection = require 'ampersand-subcollection'
 _ = require 'lodash'
+r = require 'superagent'
 
 ItemsCollection = require './models/items'
 Router = require './react-router'
@@ -16,21 +17,27 @@ module.exports =
     window._ = _
     self = window.app = @
     @patternColors = PatternColors
-    # Create our items model collection.
-    items = new ItemsCollection ItemsData, parse: true
-    # Use the subcollection module.
-    @items = new SubCollection items
-    @itemFilters = {}
-    @setCategoryFilterOps()
-    @content = Content
+
     @me = new Me()
     @logout = ->
       self.me = new Me()
     @bitly = new Bitly()
-    # Init the React application router.
+
     el = document.getElementById('react')
-    routerComponent = Router {}
-    @container = React.renderComponent routerComponent, el
+
+    r.get 'http://r_g.cape.io/_view/item_order/data.json', (err, res) =>
+      self.itemOrder = res.body
+      # Create our items model collection.
+      items = new ItemsCollection ItemsData, parse: true
+      # Use the subcollection module.
+      @items = new SubCollection items
+      @itemFilters = {}
+      @setCategoryFilterOps()
+      @content = Content
+
+      # Init the React application router.
+      routerComponent = Router {}
+      @container = React.renderComponent routerComponent, el
 
   filterCatProp:
     color: 'colors'

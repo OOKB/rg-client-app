@@ -36,6 +36,8 @@ module.exports = AmpersandModel.extend
   parse: (item) ->
     # Set ID.
     item.id = item.patternNumber+'-'+item.color_id
+    if itemOrder = app.itemOrder[item.id]
+      item.order = itemOrder
     related = app.patternColors[item.patternNumber]
     item.related = _.without related, item.color_id
     if item.category == 'passementerie'
