@@ -1,6 +1,8 @@
 React = require 'react'
 {h3, p, span, ul, li, strong} = require 'reactionary'
 
+CloseButton = require '../el/button_close'
+
 module.exports = React.createClass
 
   round: (x, to) ->
@@ -10,6 +12,12 @@ module.exports = React.createClass
     item = @props.model
 
     h_lis = []
+    if @props.section == 'collection'
+      h_lis.push li
+        key: 'close'
+        className: 'close',
+          CloseButton
+            onClick: => @props.setItemState(infoBoxView: false)
     fieldCount = 0
     charCount = 0
     # Name and number.
