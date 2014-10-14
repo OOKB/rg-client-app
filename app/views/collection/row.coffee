@@ -4,6 +4,7 @@ React = require 'react'
 
 Items = require './items'
 Pager = require '../el/pager'
+CloseButton = require '../el/button_close'
 
 module.exports = React.createClass
   getInitialState: ->
@@ -143,6 +144,7 @@ module.exports = React.createClass
     containerClass = 'btn-group'
     activeTab = @state.filterTab
     if @state.showFilters
+      closeFilters = CloseButton onClick: @toggleFilter
       filterList = ul
         className: 'filter-list'
         id: 'filter-list-'+@props.initState.category
@@ -152,10 +154,12 @@ module.exports = React.createClass
 
       containerClass += ' open'
     else
-      filterList = ''
+      closeFilters = false
+      filterList = false
     li
       key: 'filter'
       className: 'filter',
+        closeFilters
         div
           className: containerClass,
             button
