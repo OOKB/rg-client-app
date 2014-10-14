@@ -126,7 +126,10 @@ module.exports = React.createClass
         favAlert = false
 
       if @state.infoBoxView and buttonsFor == item.id
-        infoBox = Info model: item
+        infoBox = Info
+          model: item
+          setItemState: @setItemState
+          section: @props.initState.section
       else
         infoBox = false
 
