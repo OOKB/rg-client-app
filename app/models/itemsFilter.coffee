@@ -70,9 +70,12 @@ module.exports = (items, filters) ->
   # Collection / Summer / Pricelist
   if filters.searchTxt
     setRemainingFilters = true
-    config.filters = filters.searchTxt.split(' ').map (searchTxt) ->
-      (model) ->
-        model.searchStr.indexOf(searchTxt) > -1
+    if 'x-no-img' == filters.searchTxt
+      config.where.hasImage = false
+    else
+      config.filters = filters.searchTxt.split(' ').map (searchTxt) ->
+        (model) ->
+          model.searchStr.indexOf(searchTxt) > -1
 
   # Favs
   if filters.ids and filters.ids.length
