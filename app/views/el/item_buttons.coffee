@@ -101,7 +101,6 @@ module.exports = React.createClass
     buttons = []
     buttonTypes.forEach (buttonType) =>
       if 'fav' == buttonType
-        console.log 'print fav buttons'
         buttons.push favThisButton
         #buttons.push adminOrder
       else
