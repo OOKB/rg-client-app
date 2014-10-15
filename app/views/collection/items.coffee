@@ -22,7 +22,11 @@ module.exports = React.createClass
 
   setButtonsFor: (e) ->
     unless @props.threeUp or @state.colorBoxView
-      @setState buttonsFor: e.target.id
+      unless e.target.id == @state.buttonsFor
+        @setState
+          buttonsFor: e.target.id
+          infoBoxView: false
+          colorBoxView: false
 
   setPgPre: (e) ->
     if e.preventDefault

@@ -54,7 +54,11 @@ module.exports = React.createClass
           ItemEl
             imgSize: 'small'
             model: item
-            onMouseOver: (e) => @setState buttonsFor: e.target.id
+            onMouseOver: (e) =>
+              unless e.target.id == @state.buttonsFor
+                @setState
+                  buttonsFor: e.target.id
+                  infoBoxView: false
           ItemButtons
             setItemState: (newSt) => @setState newSt
             itemState: @state
