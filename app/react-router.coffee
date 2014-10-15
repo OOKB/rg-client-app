@@ -1,7 +1,7 @@
 React = require 'react'
 {div, p} = require 'reactionary'
 _ = require 'lodash'
-
+key = require 'keymaster'
 Router = require './router'
 
 Header = require './views/el/header'
@@ -29,6 +29,13 @@ module.exports = React.createClass
       if newState
         @setState (newState)
     @router.history.start()
+    key 'esc', =>
+      if @state.searchTxt
+        s = @state
+        s.searchTxt = ''
+        console.log s
+        @router.go s
+
     app.me.on 'change:favs', (model, ids, change) =>
       if change and change.op == 'remove' and change.id and 'favs' == @state.section
         console.log 'Removing '+change.id

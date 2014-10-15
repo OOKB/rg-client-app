@@ -134,6 +134,13 @@ module.exports = React.createClass
       className: 'search-holder',
         search
 
+  keyDown: (e) ->
+    if e.key and e.key == 'Escape'
+      s = @props.initState
+      s.searchTxt = ''
+      app.container.router.go s
+    return
+
   # When active search text
   searchElActive: ->
     div
@@ -148,6 +155,7 @@ module.exports = React.createClass
               ref: 'searchTxt'
               value: @props.initState.searchTxt
               onChange: @handleChange
+              onKeyDown: @keyDown
               className: 'form-control'
               name: 'item-search'
               placeholder: 'Enter search text'#'Search...'
