@@ -21,6 +21,8 @@ module.exports = React.createClass
     else if e.target.value == 'next'
       if @props.pageIndex != @props.totalPages
         @props.setRouterState pageIndex: @props.pageIndex+1
+        unless @props.pgSize == 3
+          document.querySelector('#collection-row-textile').scrollIntoView(true)
       else if @props.pgSize == 3
         @props.setRouterState pageIndex: 1
 
