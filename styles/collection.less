@@ -482,6 +482,12 @@ ul.collection-controls li.filter {
   z-index: 5;
 }
 
+ul.collection-controls li.filter .close.btn-small {
+  position: absolute;
+  right: -88px;
+  z-index: 99999;
+}
+
 ul.collection-controls li.pagecount {
   left: 40px;
   top: 5px;
@@ -548,6 +554,10 @@ ul.collection-controls li.collection-title button {
     top: 4px;
   }
 
+  ul.collection-controls li.filter .close.btn-small {
+    right: -393px;
+  }
+
   ul.collection-controls li.arrange {
     right: 45px;
     top: 4px;
@@ -573,6 +583,10 @@ ul.collection-controls li.collection-title button {
     top: 3px;
   }
 
+  ul.collection-controls li.filter .close.btn-small {
+    right: -472px;
+  }
+
   ul.collection-controls li.arrange {
     right: 155px;
     top: 3px;
@@ -583,6 +597,11 @@ ul.collection-controls li.collection-title button {
   ul.collection-controls li.filter {
     left: 340px;
   }
+
+  ul.collection-controls li.filter .close.btn-small {
+    right: -538px;
+  }
+
 }
 
 /** # Filter dropdown menus **/
@@ -820,28 +839,30 @@ ul.collection-controls li.collection-title button {
 
 #collection-passementerie ul.item-information,
 #collection-row-passementerie ul.item-information {
-  width: 300px;
-  margin-left: -150px;
+  width: 320px;
+  margin-left: -160px;
   height: 68px;
   margin-top: -34px;
+  padding-left: 30px;
+  padding-right:30px;
 }
 
 #collection-passementerie ul.item-information.f-qty-1,
 #collection-row-passementerie ul.item-information.f-qty-1 {
-  width: 400px;
-  margin-left: -200px;
+  width: 420px;
+  margin-left: -210px;
 }
 
 #collection-passementerie ul.item-information.f-qty-2,
 #collection-row-passementerie ul.item-information.f-qty-2 {
-  width: 500px;
-  margin-left: -250px;
+  width: 520px;
+  margin-left: -260px;
 }
 
 #collection-passementerie ul.item-information.f-qty-3,
 #collection-row-passementerie ul.item-information.f-qty-3 {
-  width: 600px;
-  margin-left: -300px;
+  width: 620px;
+  margin-left: -310px;
 }
 
 #collection-passementerie ul.item-information.f-qty-4,
@@ -885,6 +906,19 @@ ul.collection-controls li.collection-title button {
 
 #collection-row-passementerie ul.item-information > li {
   padding: 0;
+}
+
+.item-information li.close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  width: 10px !important;
+  height: 10px !important;
+}
+
+#collection-passementerie .item-information li.close,
+#collection-row-passementerie .item-information li.close {
+  top: 10px;
 }
 
 ul.item-information h3,
