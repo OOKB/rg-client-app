@@ -72,6 +72,9 @@ module.exports = (items, filters) ->
     setRemainingFilters = true
     if 'x-no-img' == filters.searchTxt
       config.where.hasImage = false
+    if 'x-letter-ids'
+      config.filters.push (model) ->
+        !/^(P-|L-)?[0-9]{4,7}-[0-9]{2}$/.test(model.id)
     else
       config.filters = filters.searchTxt.split(' ').map (searchTxt) ->
         (model) ->
