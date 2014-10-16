@@ -41,6 +41,7 @@
     "cookies-js": "^0.4.0",
     "ampersand-rest-collection": "2.x",
     "literalify": "^0.3.0",
-    "keymaster": "^1.6.2"
+    "keymaster": "^1.6.2",
+    "hammerjs": "^2.0.4"
   }
 }
