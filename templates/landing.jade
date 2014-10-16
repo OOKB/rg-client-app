@@ -1,0 +1,77 @@
+html
+  head
+    title Rogers & Goffigon
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+    meta(http-equiv="X-UA-Compatible", content="IE=Edge")
+    link(rel='icon', sizes='16x16', href='images/favicon.ico')
+    link(rel='stylesheet', href='/whenloading.css')
+    link(rel='stylesheet', href='/#{sha}.css')
+    link(rel='stylesheet', type='text/css', media='print', href='/print.css')
+    //if lte IE 9
+      link(rel='stylesheet', type='text/css', src="/iefix.css")
+    script(type='text/javascript', src='//use.typekit.net/jjm0waz.js')
+    script(type='text/javascript').
+      try{Typekit.load();}catch(e){}
+
+  body
+    div#react
+      header
+        h1
+          a(href='/') Rogers & Goffigon
+        nav
+          ul
+            li
+              a(href='/about/') About Us
+            li
+              a(href='/app.html#collection') The Collection
+            li
+              a(href='/contact/') Contact Us
+            li
+              a(href='/app.html#trade') Trade Login
+            li.searchload
+              a(href='/app.html#collection') Search
+      div#landing
+        div.carousel
+          div.item
+            img(src="http://r_g.cape.io/beautyshots/6_1500.jpg")
+            ul
+              li.item1
+                a(href="link-to-item1")
+                div.popover
+                  strong.name Teddy
+                  br
+                  span.color Truffle
+              li.item2
+                a(href="link-to-item2")
+                div.popover
+                  strong.name Townsend II
+                  br
+                  span.color Carbon
+              li.item3
+                a(href="link-to-item3")
+                div.popover
+                  strong.name Tisket
+                  br
+                  span.color Charcoal
+              li.item4
+                a(href="link-to-item4")
+                div.popover
+                  strong.name Posh
+                  br
+                  span.color Chrome
+              li.item5
+                a(href="link-to-item5")
+                div.popover
+                  strong.name Samarkand
+                  br
+                  span.color Lazuli
+      footer
+        p
+          span Images shown may vary to actual.
+          br
+          span Please contact the showroom for a sample.
+        p.uppercase Rogers & Goffigon LTD &copy; 2014
+        p
+          span Site by Pentagram
+    script(src='/#{sha}.js')
