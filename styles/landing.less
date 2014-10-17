@@ -211,7 +211,7 @@
 
 @media (max-width: 840px) and (min-height: 840px),
        (orientation: portrait) {
-  #landing > .slide > img {
+  #landing > .slide span img {
     height: 100%;
     max-height: 100%;
     width: auto;
@@ -237,7 +237,7 @@
     overflow: hidden;
     text-align: center;
   }
-  #landing > .slide > img {
+  #landing > .slide span img {
     height: 100%;
     max-height: 100%;
     width: auto;
@@ -266,17 +266,12 @@
 #landing .slide {
   position: relative;
   width: 100%;
-}
-
-#landing .slide span img {
-  position: absolute;
-  left:0;
-  right:0;
-  top:0;
-  bottom:0;
+  height: 100%;
 }
 
 .carousel-enter {
+  position: absolute;
+  left:0;
   margin-left:100%;
   -webkit-transition: margin-left 400ms ease-in;
   -moz-transition: margin-left 400ms ease-in;
@@ -289,6 +284,8 @@
 }
 
 .carousel-leave {
+  position: absolute;
+  left:0;
   margin-left:0;
   -webkit-transition: margin-left 400ms ease-in;
   -moz-transition: margin-left 400ms ease-in;
@@ -300,4 +297,33 @@
   margin-left: -100%;
 }
 
+@media (min-width: @screen-md-min) {
+  .carousel-enter {
+    position: absolute;
+    left:0;
+    margin-left:100%;
+    -webkit-transition: margin-left 600ms ease-in;
+    -moz-transition: margin-left 600ms ease-in;
+    -ms-transition: margin-left 600ms ease-in;
+    -o-transition: margin-left 600ms ease-in;
+    transition: margin-left 600ms ease-in;
+  }
+  .carousel-enter.carousel-enter-active {
+    margin-left:0;
+  }
 
+  .carousel-leave {
+    position: absolute;
+    left:0;
+    margin-left:0;
+    -webkit-transition: margin-left 600ms ease-in;
+    -moz-transition: margin-left 600ms ease-in;
+    -ms-transition: margin-left 600ms ease-in;
+    -o-transition: margin-left 600ms ease-in;
+    transition: margin-left 600ms ease-in;
+  }
+  .carousel-leave.carousel-leave-active {
+    margin-left: -100%;
+  }
+
+}
