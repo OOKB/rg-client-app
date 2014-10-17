@@ -3,9 +3,17 @@ React = require 'react'
 
 module.exports = React.createClass
   render: ->
-    link = @props.model.detail or '#collection'
+    indexClass = 'item'+(@props.i+1)
+    if @props.model
+      model = @props.model
+    else # MISSING ITEM!
+      return li className: indexClass
+    if model.hasDetail
+      link = model.detail
+    else
+      link = '#collection'
     li
-      className: 'item'+(@props.i+1)
+      className: indexClass
       a # Hidden with CSS.
         href: link,
           @props.model.name
