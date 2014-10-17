@@ -9,7 +9,9 @@ Indicators = require './indicators'
 
 module.exports = React.createClass
   getInitialState: ->
-    activeSlide: _.random 0, @data.length-1
+    startingSlide = _.random 0, @data.length-1
+    activeSlide: startingSlide
+    prevSlide: 0
 
   componentWillMount: ->
     app.items.clearFilters()
@@ -32,15 +34,23 @@ module.exports = React.createClass
 
   prev: ->
     if @state.activeSlide == 0
-      @setState activeSlide: @data.length-1
+      @setState
+        activeSlide: @data.length-1
+        prevSlide: @data.length
     else
-      @setState activeSlide: @state.activeSlide-1
+      @setState
+        activeSlide: @state.activeSlide-1
+        prevSlide: @state.activeSlide
 
   next: ->
     if @state.activeSlide == @data.length-1
-      @setState activeSlide: 0
+      @setState
+        activeSlide: 0
+        prevSlide: 0
     else
-      @setState activeSlide: @state.activeSlide+1
+      @setState
+        activeSlide: @state.activeSlide+1
+        prevSlide: @state.activeSlide
 
   data: [
     ['910079-02', '92208-03', '92210-02', '93701-05', '806017-01']
@@ -62,11 +72,16 @@ module.exports = React.createClass
       model: app.items.get(id)
       i: i
     slideImg = "http://r_g.cape.io/beautyshots/"+(activeSlide+1)+"_1500.jpg"
+    if @state.activeSlide < @state.prevSlide
+      transitionClass = 'carousel-right'
+    else
+      transitionClass = 'carousel-left'
+
     div
       id: 'landing',
         div className: 'slide',
           ReactCSSTransitionGroup
-            transitionName: 'carousel',
+            transitionName: transitionClass,
               img
                 src: slideImg
                 key: slideImg
