@@ -115,4 +115,6 @@ module.exports = React.createClass
       else p 'Hello there! Unfortunately our application is broken... ' + section
     footer = Footer props
     if section == 'landing' then footer = false
-    return div headerEl, component, footer
+    return div
+      className: section,
+        headerEl, component, footer
