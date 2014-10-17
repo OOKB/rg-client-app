@@ -10,7 +10,8 @@ module.exports = Router.extend
   pop: 'ka'
   itemsFilter: itemsFilter
   routes:
-    '': -> @redirectTo('cl')
+    '': 'landing'
+    'landing': 'landing'
     'cl': -> @redirectTo('collection')
     'collection': '_collection'
     'collection/:category': '_collection'
@@ -38,6 +39,12 @@ module.exports = Router.extend
     '*path': ->
       console.log 'redirect '+@history.fragment
       @redirectTo('cl')
+
+  landing: ->
+    @setReactState
+      trade: false
+      reqAuth: false
+      section: 'landing'
 
   trade: ->
     content = _.find app.content, _id: 'content/trade/index.md'

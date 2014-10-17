@@ -15,6 +15,8 @@ Trade = require './views/trade/index'
 Login = require './views/trade/login'
 Account = require './views/trade/account'
 Projects = require './views/trade/projects'
+Landing = require './views/landing/landing'
+
 # About = require './views/about/container'
 # Contact = require './views/contact/container'
 
@@ -100,6 +102,7 @@ module.exports = React.createClass
 
     headerEl = Header props
     component = switch section
+      when 'landing' then Landing(props)
       when 'pricelist' then FilterableProductTable(props)
       when 'collection', 'summer' then Collection(props)
       when 'detail' then ItemDetail(props)

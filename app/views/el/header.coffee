@@ -15,7 +15,7 @@ module.exports = React.createClass
     title =
       h1 {},
         a
-          href: '/',
+          href: '/#',
             'Rogers & Goffigon'
     className = 'toggle hidden-sm hidden-md hidden-lg'
     if @state.forceInfo then className += ' active'
