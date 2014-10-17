@@ -2,8 +2,6 @@ React = require 'react'
 {ol, li, button} = require 'reactionary'
 
 module.exports = React.createClass
-  changeActiveSlide: (e) ->
-    @props.setLanderState activeSlide: e.target.value
 
   render: ->
     indicators = @props.slides.map (slide, i) =>
@@ -16,7 +14,9 @@ module.exports = React.createClass
         key: 'indicator'+i
         className: className,
           button
-            onClick: => @props.setLanderState(activeSlide: i)
+            onClick: => @props.setLanderState
+              activeSlide: i
+              prevSlide: @props.activeSlide
             value: i,
               i
     ol
