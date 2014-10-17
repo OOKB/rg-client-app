@@ -11,6 +11,14 @@ module.exports = React.createClass
   toggleInfo: ->
     @setState forceInfo: !@state.forceInfo
 
+  handleMouseOver: ->
+    if @props.initState.section == 'landing' and not @state.forceInfo
+      @setState forceInfo: true
+
+  handleMouseOut: ->
+    if @props.initState.section == 'landing' and @state.forceInfo
+      @setState forceInfo: false
+
   render: () ->
     isLanding = @props.initState.section == 'landing'
     showMenu = window.innerWidth > 767 and not isLanding
@@ -33,8 +41,12 @@ module.exports = React.createClass
         className: className
         type: 'button',
           'Reveal Menu'
-    if showMenu or @state.forceInfo
-      navigation = Menu @props
-    else
-      navigation = false
-    header className: headerClass, title, mobileHideShow, navigation
+
+    # Always show the menu.
+    navigation = Menu @props
+
+    header
+      onMouseOver: @handleMouseOver
+      onMouseOut: @handleMouseOut
+      className: headerClass,
+        title, mobileHideShow, navigation
