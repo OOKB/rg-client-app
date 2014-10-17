@@ -1,4 +1,5 @@
-React = require 'react'
+React = require 'react/addons'
+tg = React.addons.TransitionGroup
 {div, img, ul, ol, li, a} = require 'reactionary'
 _ = require 'lodash'
 Hammer = require 'hammerjs'
@@ -15,7 +16,7 @@ module.exports = React.createClass
 
   componentDidUpdate: ->
     clearInterval @interval
-    @interval = setInterval @next, 7000
+    @interval = setInterval @next, 10000
 
   componentDidMount: ->
     reactElement = document.getElementById('react')
@@ -64,8 +65,10 @@ module.exports = React.createClass
     div
       id: 'landing',
         div className: 'slide',
-          img
-            src: slideImg
+          tg
+            transitionName: 'carousel',
+              img
+                src: slideImg
           ul
             className: 'image-map',
               slideItems
