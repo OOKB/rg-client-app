@@ -1,6 +1,35 @@
+/****************************************************/
+/****************************************************/
+/****************************************************/
+/****************************************************/
+/****************************************************/
+
+.landing > header {
+  background: @rg-background;
+  .dropshadow;
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  z-index: 9999999;
+  overflow: auto;
+  min-height: 0%;
+  padding-bottom: 0;
+}
+
+.landing > header ul {
+  padding-bottom: 12px;
+}
+
+/****************************************************/
+/****************************************************/
+/****************************************************/
+/****************************************************/
+/****************************************************/
+
 #landing {
   position: fixed;
-  top: 125px;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
@@ -12,6 +41,7 @@
   text-align: center;
   width:100%;
   z-index: 1;
+  text-align: center;
 }
 
 #landing img {
@@ -21,11 +51,12 @@
   max-height: none;
   width: 100%;
   max-width: 100%;
+  text-align: center;
 }
 
 #landing ul.image-map {
   position: fixed;
-  top: 125px;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
@@ -48,7 +79,7 @@
 #landing ul.image-map li .popover {
   display: none;
   position: absolute;
-  top: 60vh;
+  top: 70vh;
   left:50%;
   .dropshadow;
   padding: 10px 10px 6px;
@@ -66,29 +97,6 @@
 
 .popover p {
   color: @rg-gray;
-}
-
-/****************************************************/
-/****************************************************/
-/****************************************************/
-/****************************************************/
-/****************************************************/
-
-.landing > header {
-  background: @rg-background;
-  .dropshadow;
-  position: absolute;
-  top:0;
-  left:0;
-  right:0;
-  z-index: 9999999;
-  overflow: auto;
-  min-height: 0%;
-  padding-bottom: 0;
-}
-
-.landing > header ul {
-  padding-bottom: 12px;
 }
 
 #landing ul.image-map li .popover,
@@ -149,6 +157,7 @@
   height:40px;
   position: fixed;
   bottom: 0;
+  cursor: pointer;
   .hide-text;
 }
 
@@ -198,26 +207,16 @@
   .landing > header .toggle {
     cursor: default;
   }
-/*
-  .landing > header.open .toggle {
-    visibility: hidden;
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-
-*/
 }
 
 @media (max-width: 840px) and (min-height: 840px),
-       handheld and (orientation: portrait) {
+       (orientation: portrait) {
   #landing > .slide > img {
     height: 100%;
     max-height: 100%;
     width: auto;
     max-width: none;
+    text-align: center;
   }
 
   #landing,
@@ -232,9 +231,73 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
+  #landing > .slide {
+    width:100%;
+    overflow: hidden;
+    text-align: center;
+  }
+  #landing > .slide > img {
+    height: 100%;
+    max-height: 100%;
+    width: auto;
+    max-width: none;
+    text-align: center;
+  }
   #landing ol.slide-indicators,
   #landing .control {
     display: none;
   }
 }
+
+@media (orientation: portrait) and (min-width: @screen-sm-min) {
+  #landing .control {
+    width: 40px;
+    height:60px;
+  }
+}
+
+/****************************************************/
+/****************************************************/
+/****************************************************/
+/****************************************************/
+/****************************************************/
+
+#landing .slide {
+  position: relative;
+  width: 100%;
+}
+
+#landing .slide span img {
+  position: absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+}
+
+.carousel-enter {
+  margin-left:100%;
+  -webkit-transition: margin-left 400ms ease-in;
+  -moz-transition: margin-left 400ms ease-in;
+  -ms-transition: margin-left 400ms ease-in;
+  -o-transition: margin-left 400ms ease-in;
+  transition: margin-left 400ms ease-in;
+}
+.carousel-enter.carousel-enter-active {
+  margin-left:0;
+}
+
+.carousel-leave {
+  margin-left:0;
+  -webkit-transition: margin-left 400ms ease-in;
+  -moz-transition: margin-left 400ms ease-in;
+  -ms-transition: margin-left 400ms ease-in;
+  -o-transition: margin-left 400ms ease-in;
+  transition: margin-left 400ms ease-in;
+}
+.carousel-leave.carousel-leave-active {
+  margin-left: -100%;
+}
+
+
