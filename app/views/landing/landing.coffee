@@ -1,5 +1,5 @@
 React = require 'react/addons'
-tg = React.addons.TransitionGroup
+ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
 {div, img, ul, ol, li, a} = require 'reactionary'
 _ = require 'lodash'
 Hammer = require 'hammerjs'
@@ -65,10 +65,11 @@ module.exports = React.createClass
     div
       id: 'landing',
         div className: 'slide',
-          tg
+          ReactCSSTransitionGroup
             transitionName: 'carousel',
               img
                 src: slideImg
+                key: slideImg
           ul
             className: 'image-map',
               slideItems
