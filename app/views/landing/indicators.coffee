@@ -16,7 +16,7 @@ module.exports = React.createClass
         key: 'indicator'+i
         className: className,
           button
-            onClick: @changeActiveSlide
+            onClick: => @props.setLanderState(activeSlide: i)
             value: i,
               i
     ol

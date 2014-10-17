@@ -62,7 +62,7 @@ module.exports = React.createClass
         Indicators
           slides: @data
           activeSlide: activeSlide
-          setLanderState: @setState
+          setLanderState: (newSt) => @setState newSt
 
         a
           role: 'button'
