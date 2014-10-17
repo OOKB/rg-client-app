@@ -5,6 +5,9 @@ SlideItem = require './slide_item'
 
 module.exports = React.createClass
 
+  componentWillMount: ->
+    app.items.clearFilters()
+
   render: ->
     slideIds = ['910079-02', '92208-03', '92210-02', '93701-05', '806017-01']
     slideItems = slideIds.map (id, i) -> SlideItem

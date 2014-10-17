@@ -12,12 +12,16 @@ module.exports = React.createClass
     @setState forceInfo: !@state.forceInfo
 
   render: () ->
+    isLanding = @props.initState.section == 'landing'
+    showMenu = window.innerWidth > 767 and not isLanding
     title =
       h1 {},
         a
           href: '/#',
             'Rogers & Goffigon'
-    className = 'toggle hidden-sm hidden-md hidden-lg'
+    className = 'toggle'
+    if showMenu
+      className += ' hidden-sm hidden-md hidden-lg'
     if @state.forceInfo then className += ' active'
 
     mobileHideShow =
@@ -26,7 +30,7 @@ module.exports = React.createClass
         className: className
         type: 'button',
           'Reveal Menu'
-    if window.innerWidth > 767 or @state.forceInfo
+    if showMenu or @state.forceInfo
       navigation = Menu @props
     else
       navigation = false

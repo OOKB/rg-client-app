@@ -3,16 +3,17 @@ React = require 'react'
 
 module.exports = React.createClass
   render: ->
+    link = @props.model.detail or '#collection'
     li
       className: 'item'+(@props.i+1)
       a # Hidden with CSS.
-        href: "link-to-item1",
+        href: link,
           @props.model.name
       div
-        classzName: 'popover',
+        className: 'popover',
           h3
             className: 'name',
               @props.model.name
-        p
-          className: 'color',
-            @props.model.color
+          p
+            className: 'color',
+              @props.model.color
