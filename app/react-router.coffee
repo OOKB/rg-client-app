@@ -114,5 +114,5 @@ module.exports = React.createClass
       #when 'item-not-found' then p 'Unfortunately we could not find that item.'
       else p 'Hello there! Unfortunately our application is broken... ' + section
     footer = Footer props
-
+    if section == 'landing' then footer = false
     return div headerEl, component, footer
