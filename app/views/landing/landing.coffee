@@ -1,7 +1,7 @@
 React = require 'react'
 {div, img, ul, ol, li, a} = require 'reactionary'
-
 _ = require 'lodash'
+Hammer = require 'hammerjs'
 
 SlideItem = require './slide_item'
 Indicators = require './indicators'
@@ -18,10 +18,16 @@ module.exports = React.createClass
     @interval = setInterval @next, 7000
 
   componentDidMount: ->
+    reactElement = document.getElementById('react')
+    @mc = new Hammer(reactElement)
+    @mc.on 'swipeleft', @next
+    @mc.on 'swiperight', @prev
     @interval = setInterval @next, 7000
 
   componentWillUnmount: ->
     clearInterval @interval
+    @mc.off 'swipeleft', @next
+    @mc.off 'swiperight', @prev
 
   prev: ->
     if @state.activeSlide == 0
