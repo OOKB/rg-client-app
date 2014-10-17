@@ -80,11 +80,13 @@ module.exports = React.createClass
     div
       id: 'landing',
         div className: 'slide',
-          ReactCSSTransitionGroup
-            transitionName: transitionClass,
-              img
-                src: slideImg
-                key: slideImg
+          a
+            href: '#collection',
+              ReactCSSTransitionGroup
+                transitionName: transitionClass,
+                  img
+                    src: slideImg
+                    key: slideImg
           ul
             className: 'image-map',
               slideItems
