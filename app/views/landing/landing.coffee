@@ -38,13 +38,13 @@ module.exports = React.createClass
   ]
 
   render: ->
-    slideIndex = @state.activeSlide
-    slideIds = @data[slideIndex]
+    activeSlide = @state.activeSlide
+    slideIds = @data[activeSlide]
     slideItems = slideIds.map (id, i) -> SlideItem
       key: id
       model: app.items.get(id)
       i: i
-    slideImg = "http://r_g.cape.io/beautyshots/"+(slideIndex+1)+"_1500.jpg"
+    slideImg = "http://r_g.cape.io/beautyshots/"+(activeSlide+1)+"_1500.jpg"
     div
       id: 'landing',
         div className: 'slide',
@@ -53,14 +53,11 @@ module.exports = React.createClass
           ul
             className: 'image-map',
               slideItems
-        ol
-          className: 'slide-indicators',
-            li 'Need to auto output these'
-            li 'Need to auto output these'
-            li 'Need to auto output these'
-            li
-              className: 'active',
-              'Need to auto output these'
+        Indicators
+          slides: @data
+          activeSlide: activeSlide
+          setLanderState: @setState
+
         a
           role: 'button'
           onClick: @prev
