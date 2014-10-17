@@ -19,10 +19,13 @@ module.exports = React.createClass
         a
           href: '/#',
             'Rogers & Goffigon'
+    headerClass = 'closed'
     className = 'toggle'
     if showMenu
       className += ' hidden-sm hidden-md hidden-lg'
+      headerClass = ' open'
     if @state.forceInfo then className += ' active'
+    if @state.forceInfo then headerClass = 'open'
 
     mobileHideShow =
       button
@@ -34,4 +37,4 @@ module.exports = React.createClass
       navigation = Menu @props
     else
       navigation = false
-    header {}, title, mobileHideShow, navigation
+    header className: headerClass, title, mobileHideShow, navigation

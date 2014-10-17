@@ -4,7 +4,6 @@
   right: 0;
   bottom: 0;
   left: 0;
-  /**/
   height: 100%;
   min-height: 0%;
   margin: 0;
@@ -18,7 +17,6 @@
 #landing img {
   display: inline-block;
   vertical-align: middle;
-  /**/
   height: auto;
   max-height: none;
   width: 100%;
@@ -31,7 +29,6 @@
   right: 0;
   bottom: 0;
   left: 0;
-  /**/
   list-style: none;
   margin: 0;
   padding: 0;
@@ -43,7 +40,6 @@
   width: 20vw;
   float: left;
   height: 100vw;
-  /**/
   list-style: none;
   margin: 0;
   padding: 0;
@@ -51,7 +47,6 @@
 
 #landing ul.image-map li .popover {
   display: none;
-  /**/
   position: absolute;
   top: 60vh;
   left:50%;
@@ -60,13 +55,6 @@
   text-align: center;
   width:150px;
   margin-left: -75px;
-}
-
-#landing ul.image-map li a {
-  display: block;
-  height: 100vh;
-  width: 100%;
-  .hide-text;
 }
 
 .popover h3 {
@@ -99,39 +87,51 @@
   padding-bottom: 0;
 }
 
-.landing > header .navwrap > ul {
+.landing > header ul {
   padding-bottom: 12px;
 }
 
+#landing ul.image-map li .popover,
+#landing ul.image-map li:hover .popover,
+#landing ul.image-map li a {
+  display: none;
+}
+
 @media (min-width: @screen-sm-min) {
-  .landing > header{
-/*     height: 145px; */
+  .landing > header {
+    height: 145px;
     overflow: hidden;
-    -webkit-transition: height 400ms ease;
-    -moz-transition: height 400ms ease;
-    -ms-transition: height 400ms ease;
-    -o-transition: height 400ms ease;
-    transition: height 400ms ease;
+    -webkit-transition: all 400ms ease;
+    -moz-transition: all 400ms ease;
+    -ms-transition: all 400ms ease;
+    -o-transition: all 400ms ease;
+    transition: all 400ms ease;
     z-index: 9999999;
     padding-bottom: 7px;
   }
 
-  .landing > header .navwrap {
-    display: none;
-  }
-
-/*
-  .landing > header:hover {
+  .landing > header.open {
     height: 300px;
   }
 
-*/
-/*
-  .landing > header:hover .navwrap {
+  #landing ul.image-map li:hover .popover {
     display: block;
   }
 
-  .landing > header:hover .toggle {
+  #landing ul.image-map li a {
+    display: block;
+    height: 100vh;
+    width: 100%;
+    .hide-text;
+  }
+
+}
+
+@media (min-width: 800px) {
+  .landing > header .toggle {
+    cursor: default;
+  }
+  .landing > header.open .toggle {
     visibility: hidden;
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
@@ -139,16 +139,12 @@
     -o-transform: rotate(180deg);
     transform: rotate(180deg);
   }
-*/
-
-  #landing ul.image-map li:hover .popover {
-    display: block;
-  }
 
 }
 
-@media (orientation: portrait) {
-  #landing > img {
+@media (max-width: 840px) and (min-height: 840px),
+       handheld and (orientation: portrait) {
+  #landing > .slide > img {
     height: 100%;
     max-height: 100%;
     width: auto;
@@ -160,4 +156,9 @@
     top: 0;
   }
 
+  #landing ul.image-map li .popover,
+  #landing ul.image-map li:hover .popover,
+  #landing ul.image-map li a {
+    display: none;
+  }
 }

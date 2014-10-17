@@ -16,8 +16,9 @@ module.exports = React.createClass
       i: i
     div
       id: 'landing',
-        img
-          src: "http://r_g.cape.io/beautyshots/1_1500.jpg"
-        ul
-          className: 'image-map',
-            slideItems
+        div className: 'slide',
+          img
+            src: "http://r_g.cape.io/beautyshots/1_1500.jpg"
+          ul
+            className: 'image-map',
+              slideItems
