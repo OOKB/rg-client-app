@@ -13,11 +13,15 @@ module.exports = React.createClass
   componentWillMount: ->
     app.items.clearFilters()
 
+  componentDidUpdate: ->
+    clearInterval @interval
+    @interval = setInterval @next, 7000
+
   componentDidMount: ->
     @interval = setInterval @next, 7000
 
   componentWillUnmount: ->
-    clearInterval this.interval
+    clearInterval @interval
 
   prev: ->
     if @state.activeSlide == 0
