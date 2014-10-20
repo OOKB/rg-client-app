@@ -1,7 +1,7 @@
 React = require 'react/addons'
 cx = React.addons.classSet
 {p, div, ul, li, button} = require 'reactionary'
-_ = require 'underscore'
+_ = require 'lodash'
 
 Standard = require './standard'
 Search = require './search'
