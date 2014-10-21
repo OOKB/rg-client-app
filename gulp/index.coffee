@@ -106,7 +106,7 @@ gulp.task 'dataItems', ['dataContent'], ->
     .pipe source('data.json')
     .pipe gulp.dest('./app/models/')
 
-gulp.task 'data', ->#['dataItems'], ->
+gulp.task 'data', ['dataItems'], ->
   items = fs.readJsonSync './app/models/data.json'
   items = _.groupBy items, 'patternNumber'
   items = _.mapValues items, (itemList) ->
