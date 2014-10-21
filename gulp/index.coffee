@@ -1,7 +1,8 @@
 path = require 'path'
-
+fs = require 'fs-extra'
 gulp = require 'gulp'
 r = require 'request'
+_ = require 'lodash'
 
 browserSync = require 'browser-sync'
 
@@ -100,14 +101,17 @@ gulp.task 'dataContent', ->
     .pipe source('content.json')
     .pipe gulp.dest('./app/models/')
 
-gulp.task 'data', ['dataContent'], ->
-  r('http://r_g.cape.io/_view/pricelist/data.json')
+gulp.task 'dataItems', ['dataContent'], ->
+  r('https://rg3.cape.io/items.json')
     .pipe source('data.json')
     .pipe gulp.dest('./app/models/')
-  r('http://r_g.cape.io/_view/colors/data.json')
-    .pipe source('pattern_colors.json')
-    .pipe gulp.dest('./app/models/')
 
+gulp.task 'data', ->#['dataItems'], ->
+  items = fs.readJsonSync './app/models/data.json'
+  items = _.groupBy items, 'patternNumber'
+  items = _.mapValues items, (itemList) ->
+    _.pluck itemList, 'color_id'
+  fs.outputJson './app/models/pattern_colors.json', items
 # gulp.task 'static_dl', ->
 #   r('')
 
