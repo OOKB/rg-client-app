@@ -29,7 +29,10 @@ module.exports = React.createClass
         id: 'trade'
         title: 'Trade Account'
         onMouseOver: => @setState tradeIsActive: true
-        onClick: => @setState tradeIsActive: !@state.tradeIsActive
+        onClick: (e) =>
+          e.preventDefault()
+          @setState tradeIsActive: !@state.tradeIsActive
+        href: '#trade/account'
         #onMouseOut:
         #childrenOut: =>
         children: [
