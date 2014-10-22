@@ -60,7 +60,7 @@ module.exports = AmpersandModel.extend
         width: 100
         height: 100
         path: prefix + '?w=100&h=100&fit=crop'
-      if item.category != 'passementerie'
+      if item.category == 'passementerie'
         item._file.small =
           path: prefix + '?w=1170'
           width: 1170

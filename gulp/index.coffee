@@ -189,7 +189,7 @@ gulp.task 'copy_css', ['styles'], ->
     .pipe gulp.dest('./prod/')
 
 gulp.task 'compress', ->
-  gulp.src("./prod/**")
+  gulp.src("./prod/*.{js,css,html,json}")
     .pipe(zopfli())
     .pipe(gulp.dest("./prod"))
 
