@@ -63,7 +63,7 @@ module.exports = AmpersandModel.extend
     favUrl:
       deps: ['favStr']
       fn: ->
-        'http://staging.rogersandgoffigon.com/app.html#favs/'+@favStr
+        'http://www.rogersandgoffigon.com/#favs/'+@favStr
 
     loggedIn:
       deps: ['token', 'customerNumber']

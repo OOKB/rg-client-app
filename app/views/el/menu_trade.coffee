@@ -16,19 +16,19 @@ module.exports = React.createClass
     [
       id: 'projects'
       title: 'Projects'
-      href: '/app.html#trade/projects',
+      href: '/#trade/projects',
         id: 'pricelist'
         title: 'Pricelist'
-        href: '/app.html#trade/pricelist/textile/50/p1',
+        href: '/#trade/pricelist/textile/50/p1',
           id: 'summer'
           title: 'Summer Sale'
-          href: '/app.html#trade/summer',
+          href: '/#trade/summer',
             id: 'account'
             title: 'Account'
-            href: '/app.html#trade/account',
+            href: '/#trade/account',
               id: 'logout'
               title: 'Logout'
-              href: '/app.html#trade/logout'
+              href: '/#trade/logout'
               onClick: -> app.me.set customerNumber: null, token: null
     ]
 
@@ -88,10 +88,10 @@ module.exports = React.createClass
         className: 'active',
           a
             onMouseOver: => @setState tradeIsActive: true
-            href: '/app.html#trade/account',
+            href: '/#trade/account',
               'Trade Account'
           children
     else
       a
-        href: '/app.html#trade/login',
+        href: '/#trade/login',
           'Trade Login'
