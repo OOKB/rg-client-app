@@ -1,7 +1,7 @@
 AmpersandModel = require("ampersand-model")
 _ = require 'lodash'
 
-cdn = '//img.rg.cape.io/'
+cdn = '//rogersandgoffigon.imgix.net/'
 
 module.exports = AmpersandModel.extend
   props:
@@ -39,6 +39,7 @@ module.exports = AmpersandModel.extend
     if itemOrder = app.itemOrder[item.id]
       item.order = itemOrder
     related = app.patternColors[item.patternNumber]
+    # Remove self from related.
     item.related = _.without related, item.color_id
     if item.category == 'passementerie'
       item.name = null
@@ -49,38 +50,36 @@ module.exports = AmpersandModel.extend
         item.itemComments = item.itemComments[1]
       else if item.itemComments[0] and item.itemComments[1]
         item.itemComments = item.itemComments.join(', ')
-      #console.log item.itemComments
-    if item._file
+    #console.log item.itemComments
+    if item.imgPath
+      item._file = {}
       item.hasImage = true
-      if item.category != 'passementerie'
-        item.hasDetail = true
-      prefix = cdn + 'items/'+item.id
+      item.hasDetail = true
+      prefix = cdn + item.imgPath
       item._file.thumb =
         width: 100
         height: 100
-        path: prefix + '/100.jpg'
-      if item._file.small
-        item._file.small.path = prefix + '/640.jpg'
-        item._file.small.width = 640
-        if item.far
-          item._file.small.path_far = prefix + '/far/640.jpg'
-      else if item._file.wide
+        path: prefix + '?w=100&h=100&fit=crop'
+      if item.category != 'passementerie'
         item._file.small =
-          path: prefix + '/1170.jpg'
+          path: prefix + '?w=1170'
           width: 1170
-          height: item._file.wide.height
-        delete item._file.wide
-      if item._file.large
-        item._file.large.path = prefix + '/1536.jpg'
-        item._file.large.width = 1536
-        if item.far
-          item._file.large.path_far = prefix + '/far/1536.jpg'
+      else
+        item._file.small =
+          path: prefix + '?w=640'
+          width: 640
+      item._file.large =
+        path: prefix + '?w=1536'
+        width: 1536
+      item._file.xlarge =
+        path: prefix + '?w=2560'
+        width: 2560
 
-      if item._file.xlarge
-        item._file.xlarge.path = prefix + '/2560.jpg'
-        item._file.xlarge.width = 2560
-        if item.far
-          item._file.xlarge.path_far = prefix + '/far/2560.jpg'
+      if item.far
+        item._file.small.path_far = prefix + '/far/'+item.id+'.jpg?w=640'
+        item._file.large.path_far = prefix + '/far/'+item.id+'.jpg?w=1536'
+        item._file.large.path_far = prefix + '/far/'+item.id+'.jpg?w=2560'
+
     return item
 
   derived:
@@ -129,12 +128,13 @@ module.exports = AmpersandModel.extend
     rulerPath:
       deps: ['ruler']
       fn: ->
+        rulerCdn = '//img.rg.cape.io/'
         inch:
-          large: cdn+'media/ruler/inch/'+@ruler+'-1536.png'
-          xlarge: cdn+'media/ruler/inch/'+@ruler+'-2560.png'
+          large: rulerCdn+'media/ruler/inch/'+@ruler+'-1536.png'
+          xlarge: rulerCdn+'media/ruler/inch/'+@ruler+'-2560.png'
         cm:
-          large: cdn+'media/ruler/cm/'+@ruler+'-1536.png'
-          xlarge: cdn+'media/ruler/cm/'+@ruler+'-2560.png'
+          large: rulerCdn+'media/ruler/cm/'+@ruler+'-1536.png'
+          xlarge: rulerCdn+'media/ruler/cm/'+@ruler+'-2560.png'
 
     # Decide if it has related colors.
     hasRelated:
