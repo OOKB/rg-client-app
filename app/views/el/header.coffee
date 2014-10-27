@@ -34,7 +34,7 @@ module.exports = React.createClass
       headerClass = ' open'
     if @state.forceInfo then className += ' active'
     if @state.forceInfo then headerClass = 'open'
-
+    if app.me.loggedIn then headerClass += ' authenticated'
     mobileHideShow =
       button
         onClick: @toggleInfo
