@@ -6,7 +6,7 @@ _ = require 'lodash'
 module.exports = React.createClass
   getInitialState: ->
     searchIsActive: false
-    tradeIsActive: false
+    tradeIsActive: app.me.loggedIn
 
   data: [
     id: 'about'
@@ -22,6 +22,15 @@ module.exports = React.createClass
             id: 'search'
             title: 'Search'
   ]
+
+  handleLogin: ->
+    @setState tradeIsActive: true
+
+  componentDidMount: ->
+    app.me.on 'change:loggedIn', @handleLogin
+
+  componentWillUnmount: ->
+    app.me.off 'change:loggedIn', @handleLogin
 
   tradeData: ->
     if @props.initState.loggedIn
@@ -90,7 +99,7 @@ module.exports = React.createClass
     unless nav.onClick
       nav.onClick = =>
         @setState
-          tradeIsActive: false
+          tradeIsActive: app.me.loggedIn
           searchIsActive: false
     section = @props.initState and @props.initState.section
     if nav.id == 'trade' then nav = @tradeData()
