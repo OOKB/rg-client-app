@@ -18,7 +18,7 @@ module.exports = AmpersandModel.extend
     customUrl:
       deps: ['globalHash']
       fn: ->
-        'http://fav.rogersandgoffigon.com/'+@globalHash
+        'http://fav.rogersandgoffigon.com/'+@hash
 
   parse: (item) ->
     if item.data
