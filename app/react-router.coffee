@@ -29,7 +29,7 @@ module.exports = React.createClass
   componentDidMount: ->
     @router.setReactState = (newState) =>
       if newState
-        @setState (newState)
+        @replaceState (newState)
     @router.history.start()
     key 'esc', =>
       if @state.searchTxt
