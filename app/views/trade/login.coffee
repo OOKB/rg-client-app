@@ -21,9 +21,11 @@ module.exports = React.createClass
 
   handleEmail: (val) ->
     app.me.username = val
+    @setState username: val
 
   handlePassword: (val) ->
     app.me.password = val
+    @setState username: val
 
   showFailure: ->
     @setState showFailed: true
