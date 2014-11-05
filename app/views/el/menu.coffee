@@ -33,7 +33,7 @@ module.exports = React.createClass
     app.me.off 'change:loggedIn', @handleLogin
 
   tradeData: ->
-    if @props.initState.loggedIn
+    if @props.initState.loggedIn or app.me.loggedIn
       data =
         id: 'trade'
         title: 'Trade Account'
@@ -114,7 +114,7 @@ module.exports = React.createClass
       return @searchEl(nav)
     # Item has sub-items.
     if nav.children and (@state[nav.id+'IsActive'] or itemIsActive)
-      itemIsActive = true
+      #itemIsActive = true
       child = @createNavEl(nav.children, 'sub-menu', nav.childrenOut)
     else
       child = false
