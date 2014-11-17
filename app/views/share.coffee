@@ -24,4 +24,4 @@ module.exports = React.createClass
           size: '200'
           value: @props.shareUrl
           readOnly: true
-          onMouseOver: @selectFavUrl
+          onClick: @selectFavUrl
