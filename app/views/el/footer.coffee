@@ -10,12 +10,16 @@ module.exports = React.createClass
     section = @props.initState.section
     disclaimerSections = ['favs', 'collection', 'summer', 'projects']
     if _.contains disclaimerSections, section
+      if section == 'summer'
+        lastLine = 'Please contact Customer Service in Connecticut for more information. '
+      else
+        lastLine = 'For inquiries outside represented areas contact us at: 203-532-8068'
       return disclaimerEl = p {},
           span 'Images shown may vary to actual.'
           br {}
           span 'Please contact your local showroom or representative.'
           br {}
-          span 'For inquiries outside represented areas contact us at: 203-532-8068'
+          span lastLine
     else
       return false
 
