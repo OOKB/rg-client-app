@@ -13,7 +13,7 @@ module.exports = React.createClass
       return ul
         className: 'summer-txt',
           li 'Browse Summer Sale items from the collections below.'
-          li 'Limited stock, 10 yard minimum required. Fabric is sold as is. No returns or samples. Your CFA will serve as your sample for all Summer Sale items. Please contact your Sales Representative for more information.'
+          li 'Limited stock, 10 yard minimum required. Fabric is sold as is. No returns or samples. Your CFA will serve as your sample for all Summer Sale items. Please contact Customer Service in Connecticut at 203-532-8068, for more information.'
     else if @props.initState.searchTxt
       return false
     else
