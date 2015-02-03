@@ -32,6 +32,15 @@ module.exports = React.createClass
       app.me.filterTab = null
     app.container.router.go s
 
+  handleToggleSort: ->
+    s = @props.initState
+    if s.order
+      s.order = undefined
+    else
+      s.order = 'default'
+    app.container.router.go s
+    return
+
   toggleFilter: ->
     initTab = @props.initState.filterOptions[0]
     if @state.showFilters
@@ -190,7 +199,8 @@ module.exports = React.createClass
 
   render: ->
     headerList = []
-    if @props.initState.searchTxt
+    {order, searchTxt} = @props.initState
+    if searchTxt
       titleEl = li
         className: 'search-title'
         key: 'title',
@@ -207,6 +217,18 @@ module.exports = React.createClass
     bottomPager = false
     activePager = @props.initState.totalPages > 1
     noItems = @props.collection.length == 0
+
+    # New feature to toggle the type of sort for collection items.
+    if order == 'default'
+      sortTxt = 'SrtColr'
+    else
+      sortTxt = 'SrtName'
+    toggleSort = li
+      className: 'toggle-sort',
+        button
+          onClick: @handleToggleSort,
+            sortTxt
+
     # Issue #132. Don't show filter header items.
     if @props.active and @props.initState.section == 'summer' and noItems
       headerList.push titleEl
@@ -218,8 +240,13 @@ module.exports = React.createClass
       headerList.push Pager _.merge(@props.initState, {el: 'count', key: 'count'})
       unless @props.threeUp
         headerList.push Pager _.merge(@props.initState, {el: 'sizes', key: 'sizes'})
+      # Filters
       headerList.push @filters()
       headerList.push titleEl
+
+      # Toggle Sort button.
+      headerList.push toggleSort
+
       if @props.initState.pgSizes[0] == 3
         headerList.push @arrangeToggle()
       if activePager
