@@ -255,6 +255,8 @@ module.exports = Router.extend
     else if get.pattern
       if @isPatternNumber(patternNumber = get.pattern.toUpperCase())
         q.patternNumber = patternNumber
+    if get.order
+      q.order = get.order
     if get.color or get.description or get.content or get.type or get.use
       q.selectedFilters =
         color: get.color
@@ -272,6 +274,8 @@ module.exports = Router.extend
       q.pattern = s.patternNumber
     if _.size s.selectedFilters
       q = _.merge q, s.selectedFilters
+    if s.order and s.order == 'default'
+      q.order = s.order
     if _.isEmpty q
       return ''
     else
@@ -414,7 +418,9 @@ module.exports = Router.extend
       urlTxt = s.section
     # Assume it has a category and pgSize.
     urlTxt += '/'+s.category+'/'+s.pgSize+'/'+searchTxt
-    return urlTxt + 'p' + s.pageIndex + @setQuery(s)
+    urlTxt += 'p' + s.pageIndex + @setQuery(s)
+    #console.log urlTxt
+    return urlTxt
 
   updateURL: (oldSt, newSt) ->
     newStateURL = @urlCreate newSt
