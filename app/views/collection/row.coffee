@@ -220,11 +220,11 @@ module.exports = React.createClass
 
     # New feature to toggle the type of sort for collection items.
     if order == 'default'
-      sortTxt = 'SrtColr'
+      sortTxt = 'Color Order'
     else
-      sortTxt = 'SrtName'
+      sortTxt = 'Sort A-Z'
     toggleSort = li
-      className: 'toggle-sort',
+      className: 'toggle-sort graphic-btn alpha',
         button
           onClick: @handleToggleSort,
             sortTxt
