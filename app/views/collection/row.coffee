@@ -226,7 +226,7 @@ module.exports = React.createClass
       sortTxt = 'Sort A-Z'
       className = 'sorted-color'
     toggleSort = li
-      className: 'toggle-sort graphic-btn alpha '+className,
+      className: 'toggle-sort graphic-btn '+className,
         button
           onClick: @handleToggleSort,
             sortTxt
