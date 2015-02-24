@@ -54,6 +54,15 @@ ul.collection-controls > li.toggle-sort.graphic-btn > button {
   vertical-align: initial;
 }
 
+ul.collection-controls > li.toggle-sort.graphic-btn > button:active,
+ul.collection-controls > li.toggle-sort.graphic-btn > button:focus {
+  outline: 1px solid @rg-light-gold;
+}
+
+#collection-row-leather ul.collection-controls > li.toggle-sort.graphic-btn {
+  display: none;
+}
+
 ul.collection-controls > li.toggle-sort.graphic-btn.sorted-color > button {
   width: 27px;
   height: 27px;
@@ -551,7 +560,7 @@ ul.collection-controls li.collection-title button {
 @media (max-width: @screen-xs-max) {
   ul.collection-controls li.pageselect {
     position: absolute;
-    right: 40px;
+    right: 65px;
     top: 28px;
   }
   ul.collection-controls li.pageselect span.uppercase,
@@ -565,6 +574,12 @@ ul.collection-controls li.collection-title button {
   }
   .collection-pager-bottom ul.collection-controls li.pagecount {
     top:9px;
+  }
+  /* alpha/color order smaller screen placement */
+  ul.collection-controls li.toggle-sort.graphic-btn {
+    position: absolute;
+    right: 25px;
+    top: 24px;
   }
 }
 
@@ -989,3 +1004,4 @@ ul.item-information h3 {
   margin-top: 50px;
   list-style: none;
 }
+
