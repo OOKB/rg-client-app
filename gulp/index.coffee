@@ -193,7 +193,7 @@ gulp.task 'compress', ->
     .pipe(zopfli())
     .pipe(gulp.dest("./prod"))
 
-gulp.task 'prod', (cb) ->
+gulp.task 'deploy', (cb) ->
   runSequence ['prod_clean', 'set_sha', 'data'],
     ['prod_template', 'copy_css', 'prod_compile', 'prod_menu_compile'],
     'compress',
