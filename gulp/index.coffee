@@ -194,7 +194,7 @@ gulp.task 'compress', ->
     .pipe(gulp.dest("./prod"))
 
 gulp.task 'prod', (cb) ->
-  runSequence ['prod_clean', 'set_sha'],
+  runSequence ['prod_clean', 'set_sha', 'data'],
     ['prod_template', 'copy_css', 'prod_compile', 'prod_menu_compile'],
     'compress',
     cb
