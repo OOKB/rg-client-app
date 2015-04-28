@@ -1,6 +1,6 @@
 React = require 'react/addons'
 ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
-{div, img, ul, ol, li, a} = require 'reactionary'
+{div, img, ul, ol, li, a, button} = require 'reactionary'
 _ = require 'lodash'
 Hammer = require 'hammerjs'
 
@@ -12,6 +12,7 @@ module.exports = React.createClass
     startingSlide = _.random 0, @data.length-1
     activeSlide: startingSlide
     prevSlide: 0
+    showNotice: true
 
   componentWillMount: ->
     app.items.clearFilters()
@@ -63,6 +64,8 @@ module.exports = React.createClass
     ['750002-15', '750004-07', '92535-05', '92702-15', '92209-07']
     ['750005-19', '750002-09', '910065-03', '890018-07', '938006-02']
   ]
+  handleNoticeClose: ->
+    @setState showNotice: false
 
   render: ->
     activeSlide = @state.activeSlide
@@ -76,7 +79,7 @@ module.exports = React.createClass
       transitionClass = 'carousel-right'
     else
       transitionClass = 'carousel-left'
-
+    noticeBoxClassName = if @state.showNotice then 'sorry-world' else 'hidden'
     div
       id: 'landing',
         div className: 'slide',
@@ -105,3 +108,11 @@ module.exports = React.createClass
           onClick: @next
           className: 'right control',
             'Next'
+        div {id: 'notice-box', className: noticeBoxClassName},
+          img
+            src: '/media/sale-notice.png'
+            alt: 'Summer Fabric Sale'
+          button
+            className: 'close'
+            onClick: @handleNoticeClose,
+              'Close'
