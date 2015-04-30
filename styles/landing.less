@@ -360,3 +360,29 @@
   left:  0;
   z-index: 99999999;
 }
+
+#notice-box.sorry-world::before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; /* Adjusts for spacing */
+}
+
+#notice-box.sorry-world img {
+  .dropshadow;
+  width: auto;
+  height: 90%;
+}
+
+#notice-box.sorry-world .close {
+  background: transparent url(@close-btn-lg) center center no-repeat;
+  border: none;
+  display: block;
+  height: 29px;
+  width: 29px;
+  position: absolute;
+  top:29px;
+  right: 29px;
+  .hide-text;
+}

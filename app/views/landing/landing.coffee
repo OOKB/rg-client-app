@@ -110,7 +110,7 @@ module.exports = React.createClass
             'Next'
         div {id: 'notice-box', className: noticeBoxClassName},
           img
-            src: '/media/sale-notice.png'
+            src: '/media/summer-fabric-sale.png'
             alt: 'Summer Fabric Sale'
           button
             className: 'close'
