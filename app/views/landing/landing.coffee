@@ -12,7 +12,7 @@ module.exports = React.createClass
     startingSlide = _.random 0, @data.length-1
     activeSlide: startingSlide
     prevSlide: 0
-    showNotice: true
+    showNotice: app.me.showNotice
 
   componentWillMount: ->
     app.items.clearFilters()
@@ -66,6 +66,7 @@ module.exports = React.createClass
   ]
   handleNoticeClose: ->
     @setState showNotice: false
+    app.me.showNotice = false
 
   render: ->
     activeSlide = @state.activeSlide
