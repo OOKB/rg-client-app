@@ -14,7 +14,8 @@ getLocalFavs = ->
     return []
 
 module.exports = AmpersandModel.extend
-
+  session:
+    showNotice: ['bool', true, true]
   props:
     favs:
       type: 'array'
