@@ -144,6 +144,7 @@ module.exports = React.createClass
           nav.title
     li
       key: nav.id
+      onTouchStart: => @setState searchIsActive: true
       className: 'search-holder',
         search
 
