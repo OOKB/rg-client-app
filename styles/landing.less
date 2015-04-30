@@ -10,7 +10,6 @@
   top:0;
   left:0;
   right:0;
-  z-index: 9999999;
   overflow: auto;
   min-height: 0%;
   padding-bottom: 0;
@@ -39,7 +38,6 @@
   padding: 0;
   text-align: center;
   width:100%;
-  z-index: 1;
   text-align: center;
 }
 
@@ -111,7 +109,7 @@
   position: fixed;
   bottom: 20px;
   left: 50%;
-  z-index: 15;
+  z-index: 9;
   width: 60%;
   margin-left: -30%;
   padding-left: 0;
@@ -194,7 +192,6 @@
     -ms-transition: all 500ms ease;
     -o-transition: all 500ms ease;
     transition: all 500ms ease;
-    z-index: 9999999;
     padding-bottom: 7px;
   }
 
@@ -348,3 +345,18 @@
   margin-right: -100%;
 }
 
+/* special landing page popup anouncement */
+#notice-box.sorry-world {
+  background: @rg-background;
+  background: rgba(252,251,248,.9);
+  color: @rg-black;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  position: fixed;
+  top:   0;
+  right: 0;
+  bottom:0;
+  left:  0;
+  z-index: 99999999;
+}
