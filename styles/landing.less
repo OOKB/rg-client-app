@@ -25,7 +25,7 @@
 /****************************************************/
 /****************************************************/
 
-#landing {
+#landing #fixit-wrap {
   position: fixed;
   top: 0;
   right: 0;
@@ -224,7 +224,7 @@
 
 @media (max-width: 840px) and (min-height: 840px),
        (orientation: portrait) {
-  #landing > .slide span img {
+  #landing #fixit-wrap > .slide span img {
     height: 100%;
     max-height: 100%;
     width: auto;
@@ -232,7 +232,7 @@
     text-align: center;
   }
 
-  #landing,
+  #landing #fixit-wrap,
   #landing ul.image-map {
     top: 0;
   }
@@ -245,12 +245,12 @@
 }
 
 @media (max-width: 767px) and (orientation: portrait) {
-  #landing > .slide {
+  #landing #fixit-wrap > .slide {
     width:100%;
     overflow: hidden;
     text-align: center;
   }
-  #landing > .slide span img {
+  #landing #fixit-wrap > .slide span img {
     height: 100%;
     max-height: 100%;
     width: auto;
@@ -361,18 +361,12 @@
   z-index: 99999999;
 }
 
-#notice-box.sorry-world::before {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-  margin-right: -0.25em; /* Adjusts for spacing */
-}
-
 #notice-box.sorry-world img {
+  margin-top: 30px;
   .dropshadow;
   width: auto;
-  height: 90%;
+  height: 85%;
+  max-height: 1000px;
 }
 
 #notice-box.sorry-world .close {
