@@ -359,14 +359,7 @@
   bottom:0;
   left:  0;
   z-index: 99999999;
-}
-
-#notice-box.sorry-world img {
-  margin-top: 30px;
-  .dropshadow;
-  width: auto;
-  height: 85%;
-  max-height: 1000px;
+  overflow: auto;
 }
 
 #notice-box.sorry-world .close {
@@ -379,4 +372,23 @@
   top:29px;
   right: 29px;
   .hide-text;
+}
+
+#notice-box.sorry-world img {
+  .dropshadow;
+  margin-top: 20px;
+  width: 80%;
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+@media (min-width: @screen-sm-min) {
+  #notice-box.sorry-world img {
+    margin-top: 30px;
+    width: auto;
+    height: 85%;
+    max-height: 1000px;
+    max-width: none;
+  }
 }
