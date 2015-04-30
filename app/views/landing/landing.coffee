@@ -80,37 +80,40 @@ module.exports = React.createClass
     else
       transitionClass = 'carousel-left'
     noticeBoxClassName = if @state.showNotice then 'sorry-world' else 'hidden'
+
     div
       id: 'landing',
-        div className: 'slide',
-          a
-            href: '#collection',
-              ReactCSSTransitionGroup
-                transitionName: transitionClass,
-                  img
-                    src: slideImg
-                    key: slideImg
-          ul
-            className: 'image-map',
-              slideItems
-        Indicators
-          slides: @data
-          activeSlide: activeSlide
-          setLanderState: (newSt) => @setState newSt
+        div id: 'fixit-wrap',
+          div className: 'slide',
+            a
+              href: '#collection',
+                ReactCSSTransitionGroup
+                  transitionName: transitionClass,
+                    img
+                      src: slideImg
+                      key: slideImg
+            ul
+              className: 'image-map',
+                slideItems
+          Indicators
+            slides: @data
+            activeSlide: activeSlide
+            setLanderState: (newSt) => @setState newSt
 
-        a
-          role: 'button'
-          onClick: @prev
-          className: 'left control',
-            'Previous'
-        a
-          role: 'button'
-          onClick: @next
-          className: 'right control',
-            'Next'
+          a
+            role: 'button'
+            onClick: @prev
+            className: 'left control',
+              'Previous'
+          a
+            role: 'button'
+            onClick: @next
+            className: 'right control',
+              'Next'
+
         div {id: 'notice-box', className: noticeBoxClassName},
           img
-            src: '/media/sale-notice.png'
+            src: '/media/summer-fabric-sale.png'
             alt: 'Summer Fabric Sale'
           button
             className: 'close'

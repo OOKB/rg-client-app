@@ -10,7 +10,6 @@
   top:0;
   left:0;
   right:0;
-  z-index: 9999999;
   overflow: auto;
   min-height: 0%;
   padding-bottom: 0;
@@ -26,7 +25,7 @@
 /****************************************************/
 /****************************************************/
 
-#landing {
+#landing #fixit-wrap {
   position: fixed;
   top: 0;
   right: 0;
@@ -39,7 +38,6 @@
   padding: 0;
   text-align: center;
   width:100%;
-  z-index: 1;
   text-align: center;
 }
 
@@ -111,7 +109,7 @@
   position: fixed;
   bottom: 20px;
   left: 50%;
-  z-index: 15;
+  z-index: 9;
   width: 60%;
   margin-left: -30%;
   padding-left: 0;
@@ -194,7 +192,6 @@
     -ms-transition: all 500ms ease;
     -o-transition: all 500ms ease;
     transition: all 500ms ease;
-    z-index: 9999999;
     padding-bottom: 7px;
   }
 
@@ -227,7 +224,7 @@
 
 @media (max-width: 840px) and (min-height: 840px),
        (orientation: portrait) {
-  #landing > .slide span img {
+  #landing #fixit-wrap > .slide span img {
     height: 100%;
     max-height: 100%;
     width: auto;
@@ -235,7 +232,7 @@
     text-align: center;
   }
 
-  #landing,
+  #landing #fixit-wrap,
   #landing ul.image-map {
     top: 0;
   }
@@ -248,12 +245,12 @@
 }
 
 @media (max-width: 767px) and (orientation: portrait) {
-  #landing > .slide {
+  #landing #fixit-wrap > .slide {
     width:100%;
     overflow: hidden;
     text-align: center;
   }
-  #landing > .slide span img {
+  #landing #fixit-wrap > .slide span img {
     height: 100%;
     max-height: 100%;
     width: auto;
@@ -348,3 +345,50 @@
   margin-right: -100%;
 }
 
+/* special landing page popup anouncement */
+#notice-box.sorry-world {
+  background: @rg-background;
+  background: rgba(252,251,248,.9);
+  color: @rg-black;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  position: fixed;
+  top:   0;
+  right: 0;
+  bottom:0;
+  left:  0;
+  z-index: 99999999;
+  overflow: auto;
+}
+
+#notice-box.sorry-world .close {
+  background: transparent url(@close-btn-lg) center center no-repeat;
+  border: none;
+  display: block;
+  height: 29px;
+  width: 29px;
+  position: absolute;
+  top:29px;
+  right: 29px;
+  .hide-text;
+}
+
+#notice-box.sorry-world img {
+  .dropshadow;
+  margin-top: 20px;
+  width: 80%;
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+@media (min-width: @screen-sm-min) {
+  #notice-box.sorry-world img {
+    margin-top: 30px;
+    width: auto;
+    height: 85%;
+    max-height: 1000px;
+    max-width: none;
+  }
+}
