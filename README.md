@@ -9,7 +9,6 @@ This is showing off a few things.
 
 * Gulp
 * Browser Sync
-* Jade
 * Less
 
 ## Installing the first time.
@@ -31,3 +30,4 @@ If you haven't already, install gulp globally `npm i gulp -g`. When installing g
 
     git pull
     gulp prod
+
