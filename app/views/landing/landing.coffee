@@ -65,8 +65,8 @@ module.exports = React.createClass
     ['750005-19', '750002-09', '910065-03', '890018-07', '938006-02']
   ]
   handleNoticeClose: ->
-    @setState showNotice: true
-    app.me.showNotice = true
+    @setState showNotice: false
+    app.me.showNotice = false
 
   render: ->
     activeSlide = @state.activeSlide
