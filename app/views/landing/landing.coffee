@@ -65,8 +65,8 @@ module.exports = React.createClass
     ['750005-19', '750002-09', '910065-03', '890018-07', '938006-02']
   ]
   handleNoticeClose: ->
-    @setState showNotice: false
-    app.me.showNotice = false
+    @setState showNotice: true
+    app.me.showNotice = true
 
   render: ->
     activeSlide = @state.activeSlide
@@ -113,9 +113,11 @@ module.exports = React.createClass
               'Next'
 
         div {id: 'notice-box', className: noticeBoxClassName},
-          img
-            src: '/media/summer-fabric-sale.png'
-            alt: 'Summer Fabric Sale'
+          a
+            href: "#trade/login",
+              img
+                src: '/media/summer-sale-fabrics-banner-fall2015.jpg'
+                alt: 'Summer Fabric Sale'
           button
             className: 'close'
             onClick: @handleNoticeClose,
