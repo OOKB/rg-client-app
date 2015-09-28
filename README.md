@@ -1,6 +1,8 @@
 rg-client-app
 ===============
 
+[![Join the chat at https://gitter.im/OOKB/rg-client-app](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/OOKB/rg-client-app?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 pricelist, summer sale, collection completion and a few other new features for rogersandgoffigon.com.
 
 +++++++++++++++
