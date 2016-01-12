@@ -79,6 +79,8 @@ module.exports = AmpersandModel.extend
         item._file.small.path_far = cdn + 'far/'+item.id+'.jpg?w=640'
         item._file.large.path_far = cdn + 'far/'+item.id+'.jpg?w=1536'
         item._file.large.path_far = cdn + 'far/'+item.id+'.jpg?w=2560'
+      unless item.contents
+        item.contents = ''
 
     return item
 
