@@ -113,11 +113,9 @@ module.exports = React.createClass
               'Next'
 
         div {id: 'notice-box', className: noticeBoxClassName},
-          a
-            href: "#trade/login",
-              img
-                src: '/media/summer-sale-fabrics-banner-fall2015.jpg'
-                alt: 'Summer Fabric Sale'
+          img
+            src: '/media/stratus-intro-2016-05-09.png'
+            alt: 'Stratus is Rogers and Goffigon’s latest fabric introduction'
           button
             className: 'close'
             onClick: @handleNoticeClose,
