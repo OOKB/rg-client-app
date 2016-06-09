@@ -114,7 +114,7 @@ module.exports = React.createClass
 
         div {id: 'notice-box', className: noticeBoxClassName},
           img
-            src: '/media/stratus-intro-2016-05-09.png'
+            src: '/media/2016-06-09-versailles.jpg'
             alt: 'Stratus is Rogers and Goffigon’s latest fabric introduction'
           button
             className: 'close'
