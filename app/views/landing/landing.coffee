@@ -113,9 +113,9 @@ module.exports = React.createClass
               'Next'
 
         div {id: 'notice-box', className: noticeBoxClassName},
-          a {href: '/#collection/textile/12/versailles/p1'},
+          a {href: '/#trade/summer'},
             img
-              src: '/media/2016-06-09-versailles.jpg'
+              src: '/media/2016-06-17-summerSale.jpg'
               alt: 'Versailles is our latest fabric introduction'
           button
             className: 'close'
