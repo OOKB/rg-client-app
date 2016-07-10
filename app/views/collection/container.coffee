@@ -12,8 +12,17 @@ module.exports = React.createClass
     if @props.initState.section == 'summer'
       return ul
         className: 'summer-txt',
-          li 'Browse Summer Sale items from the collections below.'
-          li 'Limited stock, 5 yard minimum required. Fabric is sold as is. No returns or samples. Your CFA will serve as your sample for all Summer Sale items. Please contact Customer Service in Connecticut at 203-532-8068, for more information.'
+          li 'Contact Customer Service for Inventory - 203-532-8068'
+          li '5 Yard Minimum'
+          li 'Limited Quantities'
+          li 'Your CFA is Your Sample'
+          li 'Reserves are for 10 Days Only'
+          li 'Shipping Charges Apply'
+          li '•'
+          li 'NO RETURNS'
+          li 'ALL FABRIC SOLD AS IS'
+          li 'ALL SALES FINAL'
+          li 'PAYMENT BY CHECK OR CREDIT CARD'
     else if @props.initState.searchTxt
       return false
     else
