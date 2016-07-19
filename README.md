@@ -33,3 +33,13 @@ If you haven't already, install gulp globally `npm i gulp -g`. When installing g
     git pull
     gulp prod
 
+## Data
+Used for reference. The future.
+* http://v6.rogersandgoffigon.com/_order-track/items/rg?disc=true
+* http://v6.rogersandgoffigon.com/_order-track/items/rg (dong)
+
+Used for current RG data.
+
+1. https://rg3.cape.io/items.json (aling)
+1. http://v5.rogersandgoffigon.com/index.json (45.33.30.19 cape5) Used for images.
+1. http://social.cape.io/order-track/kb/summer (dong) Used to proxy order-track
