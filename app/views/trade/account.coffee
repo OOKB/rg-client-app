@@ -18,12 +18,12 @@ module.exports = React.createClass
       role: 'button',
         value
 
-  salesRep: (sr) ->
+  #salesRep: (sr) ->
     #console.log sr
-    if sr
-      p sr.name, ' - ', sr.phoneNumber
-    else
-      false
+    #if sr
+      #p sr.name, ' - ', sr.phoneNumber
+    #else
+      #false
 
   address: (act) ->
     [act.address, act.address2, act.city, act.state, act.zip].join(' ')
@@ -40,4 +40,4 @@ module.exports = React.createClass
             @acctWrap 'Email', app.me.email#@editable(app.me.email, 'email')
             @acctWrap 'Phone', app.me.phoneNumber#@editable(app.me.phoneNumber, 'phone')
             @acctWrap 'Address', @address app.me
-            @acctWrap 'Sales Representative', @salesRep(app.me.showroom)
+            #@acctWrap 'Sales Representative', @salesRep(app.me.showroom)
