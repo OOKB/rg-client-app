@@ -113,10 +113,9 @@ module.exports = React.createClass
               'Next'
 
         div {id: 'notice-box', className: noticeBoxClassName},
-          a {href: '/#collection/textile/12/arabesque/p1'},
-            img
-              src: '/media/2016-07-20-Arabesque.jpg'
-              alt: 'Arabesque is our latest fabric introduction'
+          img
+            src: '/media/2016-09-27-FallSale.jpg'
+            alt: 'Annual Rogers & Goffigon and Delany & Long Fabric Sale'
           button
             className: 'close'
             onClick: @handleNoticeClose,
