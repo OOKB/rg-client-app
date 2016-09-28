@@ -18,12 +18,12 @@ module.exports = React.createClass
       role: 'button',
         value
 
-  #salesRep: (sr) ->
+  salesRep: (sr) ->
     #console.log sr
-    #if sr
-      #p sr.name, ' - ', sr.phoneNumber
-    #else
-      #false
+    if sr
+      p sr.name, ' - ', sr.phoneNumber
+    else
+      false
 
   address: (act) ->
     [act.address, act.address2, act.city, act.state, act.zip].join(' ')
