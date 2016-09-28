@@ -52,9 +52,9 @@ module.exports = React.createClass
             id: 'pricelist'
             title: 'Pricelist'
             href: '#trade/pricelist/textile/50/p1',
-              # id: 'summer'
-              # title: 'Summer Sale'
-              # href: '#trade/summer',
+              id: 'summer'
+              title: 'Summer Sale'
+              href: '#trade/summer',
               id: 'account'
               title: 'Account'
               href: '#trade/account',
