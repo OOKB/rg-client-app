@@ -40,4 +40,4 @@ module.exports = React.createClass
             @acctWrap 'Email', app.me.email#@editable(app.me.email, 'email')
             @acctWrap 'Phone', app.me.phoneNumber#@editable(app.me.phoneNumber, 'phone')
             @acctWrap 'Address', @address app.me
-            @acctWrap 'Sales Representative', @salesRep(app.me.showroom)
+            #@acctWrap 'Sales Representative', @salesRep(app.me.showroom)
