@@ -30,6 +30,8 @@ If you haven't already, install gulp globally `npm i gulp -g`. When installing g
 
 ## Update the prod site
 
+Files end up in /srv/www/sites/www.rogersandgoffigon.com/prod
+
     git pull
     gulp prod
 
@@ -40,6 +42,7 @@ Used for reference. The future.
 
 Used for current RG data.
 
+1. http://www.rogersandgoffigon.com/data.json what was used during compile.
 1. https://rg3.cape.io/items.json (aling) `env NODE_ENV=production forever start /usr/local/node/cape3`
 1. http://v5.rogersandgoffigon.com/index.json (45.33.30.19 cape5) Used for images.
 1. http://social.cape.io/order-track/kb/summer (dong) Used to proxy order-track
