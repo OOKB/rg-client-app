@@ -1,5 +1,5 @@
 React = require 'react'
-{footer, p, span, br} = require 'reactionary'
+{footer, p, span, br, a} = require 'reactionary'
 _ = require 'lodash'
 # Footer div
 module.exports = React.createClass
@@ -28,6 +28,11 @@ module.exports = React.createClass
       @disclaimerEl()
       p
         className: 'uppercase',
-          'Rogers & Goffigon LTD © 2014'
+          'Rogers & Goffigon LTD © 2017'
+      p {},
+        a
+          className: 'link3',
+          href: 'http://www.delanyandlong.com/',
+            'Looking for the DeLany & Long indoor/outdoor collection? click here.'
       p
         span 'Site by Pentagram'
