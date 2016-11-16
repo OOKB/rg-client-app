@@ -29,10 +29,10 @@ module.exports = React.createClass
       p
         className: 'uppercase',
           'Rogers & Goffigon LTD © 2017'
-      p {},
-        a
-          className: 'link3',
-          href: 'http://www.delanyandlong.com/',
-            'Looking for the DeLany & Long indoor/outdoor collection? click here.'
+      # p {},
+      #   a
+      #     className: 'link3',
+      #     href: 'http://www.delanyandlong.com/',
+      #       'Looking for the DeLany & Long indoor/outdoor collection? click here.'
       p
         span 'Site by Pentagram'
