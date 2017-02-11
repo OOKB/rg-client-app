@@ -6,6 +6,11 @@
   background-color: @rg-background;
 }
 
+.mb0p5 { margin-bottom: .5rem; }
+.p1 { padding: 1rem; }
+
+.clear { clear: both; }
+
 #notice-box {
   .blanket {
     display: block;
@@ -31,8 +36,11 @@
         display: none;
         position: absolute;
         padding: .5em;
-        bottom: 0;
-        width: 100%;
+        left: .6rem;
+        right: .6rem;
+        bottom: .6rem;
+        box-shadow: 0 0 1rem 0 rgba(0,0,0,.44);
+        background-color: @rg-background;
       }
       &:hover {
         .caption {
@@ -61,6 +69,7 @@
   box-shadow: none;
   width: 100%;
   height: auto;
+  margin: 0;
   max-height: none;
   max-width: none;
   display: block;

@@ -1,6 +1,6 @@
 React = require 'react/addons'
 ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
-{div, img, ul, ol, li, a, button, p, h1} = require 'reactionary'
+{div, img, ul, ol, li, a, button, p, h1, h2, strong, span} = require 'reactionary'
 _ = require 'lodash'
 Hammer = require 'hammerjs'
 
@@ -190,6 +190,125 @@ module.exports = React.createClass
                         p
                           className: 'id m0 fs1',
                             '750006-06'
+                div
+                  className: 'block summerSale',
+                    img
+                      src: 'http://rogersandgoffigon.imgix.net/normal/92927-04.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                    div
+                      className: 'caption',
+                        p
+                          className: 'name m0 fs1',
+                            'Seed Pearl: Moonlight'
+                        p
+                          className: 'id m0 fs1',
+                            '92927-04'
+                div
+                  className: 'block summerSale',
+                    img
+                      src: 'http://rogersandgoffigon.imgix.net/normal/880005-01.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                    div
+                      className: 'caption',
+                        p
+                          className: 'name m0 fs1',
+                            'Mezzo: Rene'
+                        p
+                          className: 'id m0 fs1',
+                            '880005-01'
+                div
+                  className: 'block summerSale',
+                    img
+                      src: 'http://rogersandgoffigon.imgix.net/normal/740013-03.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                    div
+                      className: 'caption',
+                        p
+                          className: 'name m0 fs1',
+                            'Glen: Mammoth'
+                        p
+                          className: 'id m0 fs1',
+                            '740013-03'
+                div
+                  className: 'block summerSale',
+                    img
+                      src: 'http://rogersandgoffigon.imgix.net/normal/92929-01.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                    div
+                      className: 'caption',
+                        p
+                          className: 'name m0 fs1',
+                            'Pongee: Champagne'
+                        p
+                          className: 'id m0 fs1',
+                            '92929-01'
+                div
+                  className: 'block summerSale',
+                    img
+                      src: 'http://rogersandgoffigon.imgix.net/normal/750005-05.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                    div
+                      className: 'caption',
+                        p
+                          className: 'name m0 fs1',
+                            'Merlin: Minnow'
+                        p
+                          className: 'id m0 fs1',
+                            '750005-05'
+                div
+                  className: 'block summerSale',
+                    img
+                      src: 'http://rogersandgoffigon.imgix.net/normal/870004-14.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                    div
+                      className: 'caption',
+                        p
+                          className: 'name m0 fs1',
+                            'Serge de Nimes: Ocelot'
+                        p
+                          className: 'id m0 fs1',
+                            '870004-14'
+                div
+                  className: 'block summerSale',
+                    img
+                      src: 'http://rogersandgoffigon.imgix.net/normal/92530-05.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                    div
+                      className: 'caption',
+                        p
+                          className: 'name m0 fs1',
+                            'Scarp: Aquifer'
+                        p
+                          className: 'id m0 fs1',
+                            '92530-05'
+                div
+                  className: 'block summerSale',
+                    img
+                      src: 'http://rogersandgoffigon.imgix.net/normal/910099-01.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                    div
+                      className: 'caption',
+                        p
+                          className: 'name m0 fs1',
+                            'Cross Hatch: Hopsack'
+                        p
+                          className: 'id m0 fs1',
+                            '910099-01'
+                div
+                  className: 'block summerSale',
+                    img
+                      src: 'http://rogersandgoffigon.imgix.net/normal/910094-08.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                    div
+                      className: 'caption',
+                        p
+                          className: 'name m0 fs1',
+                            'Stromboli: Paglia'
+                        p
+                          className: 'id m0 fs1',
+                            '910094-08'
+                div
+                  className: 'clear p1',
+                    h2 'New Additions to the Summer Sale Section of our Website!'
+                    p
+                      className: 'mb0p5',
+                        'If you are a To The Trade client you can shop the Summer Sale
+section of the Rogers & Goffigon website.'
+                    p 'Have an existing account with us but don’t know your login information?'
+                    p 'Use your full account number as your user name and ZIP code as your password.'
+                    p 'International accounts: use your country name as your password.'
+                    p 'Accounts are available to the trade only.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
