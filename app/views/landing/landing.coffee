@@ -1,6 +1,6 @@
 React = require 'react/addons'
 ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
-{div, img, ul, ol, li, a, button} = require 'reactionary'
+{div, img, ul, ol, li, a, button, p, h2} = require 'reactionary'
 _ = require 'lodash'
 Hammer = require 'hammerjs'
 
@@ -112,11 +112,162 @@ module.exports = React.createClass
             className: 'right control',
               'Next'
 
-        div {id: 'notice-box', className: noticeBoxClassName},
-          a {href: '#collection/textile/96/806027/p1'},
-            img
-              src: '/media/2017-01-27-blizzard.jpg'
-              alt: 'Rogers & Goffigon is excited to introduce a new fabric: Blizzard!'
+        div
+          id: 'notice-box'
+          className: noticeBoxClassName,
+            div
+              className: 'blanket',
+                div
+                  className: 'block summerSale',
+                    div
+                      className: 'caption',
+                        p
+                          className: 'id m0 fs1',
+                            'trying to make something work'
+                        h2
+                          className: 'id m0 fs1',
+                            'A headline to match'
+                div
+                  className: 'block summerSale',
+                    div
+                      className: 'caption',
+                        p
+                          className: 'id m0 fs1',
+                            'trying to make something work'
+                        h2
+                          className: 'id m0 fs1',
+                            'A headline to match'
+                div
+                  className: 'block summerSale',
+                    div
+                      className: 'caption',
+                        p
+                          className: 'id m0 fs1',
+                            'trying to make something work'
+                        h2
+                          className: 'id m0 fs1',
+                            'A headline to match'
+                div
+                  className: 'block summerSale',
+                    div
+                      className: 'caption',
+                        p
+                          className: 'id m0 fs1',
+                            'trying to make something work'
+                        h2
+                          className: 'id m0 fs1',
+                            'A headline to match'
+                div
+                  className: 'block summerSale',
+                    div
+                      className: 'caption',
+                        p
+                          className: 'id m0 fs1',
+                            'trying to make something work'
+                        h2
+                          className: 'id m0 fs1',
+                            'A headline to match'
+                div
+                  className: 'block summerSale',
+                    div
+                      className: 'caption',
+                        p
+                          className: 'id m0 fs1',
+                            'trying to make something work'
+                        h2
+                          className: 'id m0 fs1',
+                            'A headline to match'
+                div
+                  className: 'block summerSale',
+                    div
+                      className: 'caption',
+                        p
+                          className: 'id m0 fs1',
+                            'trying to make something work'
+                        h2
+                          className: 'id m0 fs1',
+                            'A headline to match'
+                div
+                  className: 'block summerSale',
+                    div
+                      className: 'caption',
+                        p
+                          className: 'id m0 fs1',
+                            'trying to make something work'
+                        h2
+                          className: 'id m0 fs1',
+                            'A headline to match'
+                div
+                  className: 'block summerSale',
+                    div
+                      className: 'caption',
+                        p
+                          className: 'id m0 fs1',
+                            'trying to make something work'
+                        h2
+                          className: 'id m0 fs1',
+                            'A headline to match'
+                div
+                  className: 'block summerSale',
+                    div
+                      className: 'caption',
+                        p
+                          className: 'id m0 fs1',
+                            'trying to make something work'
+                        h2
+                          className: 'id m0 fs1',
+                            'A headline to match'
+                div
+                  className: 'block summerSale',
+                    div
+                      className: 'caption',
+                        p
+                          className: 'id m0 fs1',
+                            'trying to make something work'
+                        h2
+                          className: 'id m0 fs1',
+                            'A headline to match'
+                div
+                  className: 'block summerSale',
+                    div
+                      className: 'caption',
+                        p
+                          className: 'id m0 fs1',
+                            'trying to make something work'
+                        h2
+                          className: 'id m0 fs1',
+                            'A headline to match'
+                div
+                  className: 'block summerSale',
+                    div
+                      className: 'caption',
+                        p
+                          className: 'id m0 fs1',
+                            'trying to make something work'
+                        h2
+                          className: 'id m0 fs1',
+                            'A headline to match'
+                div
+                  className: 'block summerSale',
+                    div
+                      className: 'caption',
+                        p
+                          className: 'id m0 fs1',
+                            'trying to make something work'
+                        h2
+                          className: 'id m0 fs1',
+                            'A headline to match'
+                div
+                  className: 'block summerSale',
+                    div
+                      className: 'caption',
+                        p
+                          className: 'id m0 fs1',
+                            'trying to make something work'
+                        h2
+                          className: 'id m0 fs1',
+                            'A headline to match'
+
           button
             className: 'close'
             onClick: @handleNoticeClose,
