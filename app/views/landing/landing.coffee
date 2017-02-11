@@ -116,7 +116,7 @@ module.exports = React.createClass
           id: 'notice-box'
           className: noticeBoxClassName,
             div
-              className: 'blanket',
+              className: 'blanket bg-cream clearfix',
                 div
                   className: 'block summerSale',
                     div
