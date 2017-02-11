@@ -7,7 +7,21 @@
 }
 
 .mb0p5 { margin-bottom: .5rem; }
-.p1 { padding: 1rem; }
+.mb1   { margin-bottom: 1rem; }
+.p1    { padding: 1rem; }
+.p1p5  { padding: 1.5rem; }
+
+.mw300 { max-width: 300px; }
+.mw400 { max-width: 400px; }
+.mw500 { max-width: 500px; }
+.mw600 { max-width: 600px; }
+
+.mw30em { max-width: 30rem; }
+
+.mlrauto {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .clear { clear: both; }
 
@@ -15,13 +29,18 @@
   .blanket {
     display: block;
     width: 75%;
-    max-width: 500px;
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2em;
     margin-bottom: 10%;
     box-shadow: 0 0 1rem 0 rgba(0,0,0,.44);
     border: 2px solid black;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
     .block {
       float: left;
@@ -74,4 +93,16 @@
   max-width: none;
   display: block;
   position: absolute;
+}
+
+.blanket h1 {
+  display: block;
+  background: url(images/rglogo.png) center center no-repeat;
+  background-size: contain;
+  height: 60px;
+  margin: 0;
+  padding: 0;
+  text-indent: 200%;
+  white-space: nowrap;
+  overflow: hidden;
 }

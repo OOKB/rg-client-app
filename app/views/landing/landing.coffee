@@ -117,198 +117,202 @@ module.exports = React.createClass
           className: noticeBoxClassName,
             div
               className: 'blanket bg-cream clearfix',
-                h1 'Rogers & Goffigon'
-                div
-                  className: 'block summerSale',
-                    img
-                      src: 'http://rogersandgoffigon.imgix.net/normal/860003-02.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                a
+                  href: '#trade/login',
+                    h1 'Rogers & Goffigon'
                     div
-                      className: 'caption',
-                        p
-                          className: 'name m0 fs1',
-                            'Montacute: Venusta'
-                        p
-                          className: 'id m0 fs1',
-                            '860003-02'
-                div
-                  className: 'block summerSale',
-                    img
-                      src: 'http://rogersandgoffigon.imgix.net/normal/700001-03.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                      className: 'block summerSale',
+                        img
+                          src: 'http://rogersandgoffigon.imgix.net/normal/860003-02.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                        div
+                          className: 'caption',
+                            p
+                              className: 'name m0 fs1',
+                                'Montacute: Venusta'
+                            p
+                              className: 'id m0 fs1',
+                                '860003-02'
                     div
-                      className: 'caption',
-                        p
-                          className: 'name m0 fs1',
-                            'Thumbelina: Constable'
-                        p
-                          className: 'id m0 fs1',
-                            '700001-03'
-                div
-                  className: 'block summerSale',
-                    img
-                      src: 'http://rogersandgoffigon.imgix.net/normal/92702-01.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                      className: 'block summerSale',
+                        img
+                          src: 'http://rogersandgoffigon.imgix.net/normal/700001-03.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                        div
+                          className: 'caption',
+                            p
+                              className: 'name m0 fs1',
+                                'Thumbelina: Constable'
+                            p
+                              className: 'id m0 fs1',
+                                '700001-03'
                     div
-                      className: 'caption',
-                        p
-                          className: 'name m0 fs1',
-                            'Cervo: Tusk'
-                        p
-                          className: 'id m0 fs1',
-                            '92702-01'
-                div
-                  className: 'block summerSale',
-                    img
-                      src: 'http://rogersandgoffigon.imgix.net/normal/92508-04.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                      className: 'block summerSale',
+                        img
+                          src: 'http://rogersandgoffigon.imgix.net/normal/92702-01.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                        div
+                          className: 'caption',
+                            p
+                              className: 'name m0 fs1',
+                                'Cervo: Tusk'
+                            p
+                              className: 'id m0 fs1',
+                                '92702-01'
                     div
-                      className: 'caption',
-                        p
-                          className: 'name m0 fs1',
-                            'Mission Cloth: Nest'
-                        p
-                          className: 'id m0 fs1',
-                            '92508-04'
-                div
-                  className: 'block summerSale',
-                    img
-                      src: 'http://rogersandgoffigon.imgix.net/normal/740016-01.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                      className: 'block summerSale',
+                        img
+                          src: 'http://rogersandgoffigon.imgix.net/normal/92508-04.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                        div
+                          className: 'caption',
+                            p
+                              className: 'name m0 fs1',
+                                'Mission Cloth: Nest'
+                            p
+                              className: 'id m0 fs1',
+                                '92508-04'
                     div
-                      className: 'caption',
-                        p
-                          className: 'name m0 fs1',
-                            'Apex: Alp'
-                        p
-                          className: 'id m0 fs1',
-                            '740016-01'
-                div
-                  className: 'block summerSale',
-                    img
-                      src: 'http://rogersandgoffigon.imgix.net/normal/750006-06.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                      className: 'block summerSale',
+                        img
+                          src: 'http://rogersandgoffigon.imgix.net/normal/740016-01.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                        div
+                          className: 'caption',
+                            p
+                              className: 'name m0 fs1',
+                                'Apex: Alp'
+                            p
+                              className: 'id m0 fs1',
+                                '740016-01'
                     div
-                      className: 'caption',
-                        p
-                          className: 'name m0 fs1',
-                            'Coda: Salvia'
-                        p
-                          className: 'id m0 fs1',
-                            '750006-06'
-                div
-                  className: 'block summerSale',
-                    img
-                      src: 'http://rogersandgoffigon.imgix.net/normal/92927-04.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                      className: 'block summerSale',
+                        img
+                          src: 'http://rogersandgoffigon.imgix.net/normal/750006-06.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                        div
+                          className: 'caption',
+                            p
+                              className: 'name m0 fs1',
+                                'Coda: Salvia'
+                            p
+                              className: 'id m0 fs1',
+                                '750006-06'
                     div
-                      className: 'caption',
-                        p
-                          className: 'name m0 fs1',
-                            'Seed Pearl: Moonlight'
-                        p
-                          className: 'id m0 fs1',
-                            '92927-04'
-                div
-                  className: 'block summerSale',
-                    img
-                      src: 'http://rogersandgoffigon.imgix.net/normal/880005-01.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                      className: 'block summerSale',
+                        img
+                          src: 'http://rogersandgoffigon.imgix.net/normal/92927-04.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                        div
+                          className: 'caption',
+                            p
+                              className: 'name m0 fs1',
+                                'Seed Pearl: Moonlight'
+                            p
+                              className: 'id m0 fs1',
+                                '92927-04'
                     div
-                      className: 'caption',
-                        p
-                          className: 'name m0 fs1',
-                            'Mezzo: Rene'
-                        p
-                          className: 'id m0 fs1',
-                            '880005-01'
-                div
-                  className: 'block summerSale',
-                    img
-                      src: 'http://rogersandgoffigon.imgix.net/normal/740013-03.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                      className: 'block summerSale',
+                        img
+                          src: 'http://rogersandgoffigon.imgix.net/normal/880005-01.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                        div
+                          className: 'caption',
+                            p
+                              className: 'name m0 fs1',
+                                'Mezzo: Rene'
+                            p
+                              className: 'id m0 fs1',
+                                '880005-01'
                     div
-                      className: 'caption',
-                        p
-                          className: 'name m0 fs1',
-                            'Glen: Mammoth'
-                        p
-                          className: 'id m0 fs1',
-                            '740013-03'
-                div
-                  className: 'block summerSale',
-                    img
-                      src: 'http://rogersandgoffigon.imgix.net/normal/92929-01.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                      className: 'block summerSale',
+                        img
+                          src: 'http://rogersandgoffigon.imgix.net/normal/740013-03.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                        div
+                          className: 'caption',
+                            p
+                              className: 'name m0 fs1',
+                                'Glen: Mammoth'
+                            p
+                              className: 'id m0 fs1',
+                                '740013-03'
                     div
-                      className: 'caption',
-                        p
-                          className: 'name m0 fs1',
-                            'Pongee: Champagne'
-                        p
-                          className: 'id m0 fs1',
-                            '92929-01'
-                div
-                  className: 'block summerSale',
-                    img
-                      src: 'http://rogersandgoffigon.imgix.net/normal/750005-05.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                      className: 'block summerSale',
+                        img
+                          src: 'http://rogersandgoffigon.imgix.net/normal/92929-01.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                        div
+                          className: 'caption',
+                            p
+                              className: 'name m0 fs1',
+                                'Pongee: Champagne'
+                            p
+                              className: 'id m0 fs1',
+                                '92929-01'
                     div
-                      className: 'caption',
-                        p
-                          className: 'name m0 fs1',
-                            'Merlin: Minnow'
-                        p
-                          className: 'id m0 fs1',
-                            '750005-05'
-                div
-                  className: 'block summerSale',
-                    img
-                      src: 'http://rogersandgoffigon.imgix.net/normal/870004-14.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                      className: 'block summerSale',
+                        img
+                          src: 'http://rogersandgoffigon.imgix.net/normal/750005-05.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                        div
+                          className: 'caption',
+                            p
+                              className: 'name m0 fs1',
+                                'Merlin: Minnow'
+                            p
+                              className: 'id m0 fs1',
+                                '750005-05'
                     div
-                      className: 'caption',
-                        p
-                          className: 'name m0 fs1',
-                            'Serge de Nimes: Ocelot'
-                        p
-                          className: 'id m0 fs1',
-                            '870004-14'
-                div
-                  className: 'block summerSale',
-                    img
-                      src: 'http://rogersandgoffigon.imgix.net/normal/92530-05.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                      className: 'block summerSale',
+                        img
+                          src: 'http://rogersandgoffigon.imgix.net/normal/870004-14.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                        div
+                          className: 'caption',
+                            p
+                              className: 'name m0 fs1',
+                                'Serge de Nimes: Ocelot'
+                            p
+                              className: 'id m0 fs1',
+                                '870004-14'
                     div
-                      className: 'caption',
-                        p
-                          className: 'name m0 fs1',
-                            'Scarp: Aquifer'
-                        p
-                          className: 'id m0 fs1',
-                            '92530-05'
-                div
-                  className: 'block summerSale',
-                    img
-                      src: 'http://rogersandgoffigon.imgix.net/normal/910099-01.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                      className: 'block summerSale',
+                        img
+                          src: 'http://rogersandgoffigon.imgix.net/normal/92530-05.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                        div
+                          className: 'caption',
+                            p
+                              className: 'name m0 fs1',
+                                'Scarp: Aquifer'
+                            p
+                              className: 'id m0 fs1',
+                                '92530-05'
                     div
-                      className: 'caption',
-                        p
-                          className: 'name m0 fs1',
-                            'Cross Hatch: Hopsack'
-                        p
-                          className: 'id m0 fs1',
-                            '910099-01'
-                div
-                  className: 'block summerSale',
-                    img
-                      src: 'http://rogersandgoffigon.imgix.net/normal/910094-08.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                      className: 'block summerSale',
+                        img
+                          src: 'http://rogersandgoffigon.imgix.net/normal/910099-01.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                        div
+                          className: 'caption',
+                            p
+                              className: 'name m0 fs1',
+                                'Cross Hatch: Hopsack'
+                            p
+                              className: 'id m0 fs1',
+                                '910099-01'
                     div
-                      className: 'caption',
+                      className: 'block summerSale',
+                        img
+                          src: 'http://rogersandgoffigon.imgix.net/normal/910094-08.jpg?w=240&h=240&crop=focalpoint&fit=crop&fp-x=.5&fp-y=.5&fp-z=2'
+                        div
+                          className: 'caption',
+                            p
+                              className: 'name m0 fs1',
+                                'Stromboli: Paglia'
+                            p
+                              className: 'id m0 fs1',
+                                '910094-08'
+                    div
+                      className: 'clear p1p5',
+                        h2
+                          className: 'mb1',
+                            'New Additions to the Summer Sale Section of our Website!'
                         p
-                          className: 'name m0 fs1',
-                            'Stromboli: Paglia'
-                        p
-                          className: 'id m0 fs1',
-                            '910094-08'
-                div
-                  className: 'clear p1',
-                    h2 'New Additions to the Summer Sale Section of our Website!'
-                    p
-                      className: 'mb0p5',
-                        'If you are a To The Trade client you can shop the Summer Sale
-section of the Rogers & Goffigon website.'
-                    p 'Have an existing account with us but don’t know your login information?'
-                    p 'Use your full account number as your user name and ZIP code as your password.'
-                    p 'International accounts: use your country name as your password.'
-                    p 'Accounts are available to the trade only.'
+                          className: 'mb1 mw30em mlrauto',
+                            'If you are a To The Trade client you can shop the Summer Sale
+    section of the Rogers & Goffigon website.'
+                        p 'Have an existing account with us but don’t know your login information?'
+                        p 'Use your full account number as your user name and ZIP code as your password.'
+                        p 'International accounts: use your country name as your password.'
+                        p 'Accounts are available to the trade only.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
