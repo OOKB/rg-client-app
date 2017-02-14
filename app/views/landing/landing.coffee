@@ -128,10 +128,10 @@ module.exports = React.createClass
                           className: 'caption',
                             p
                               className: 'name m0 fs1',
-                                'Montacute: Venusta'
+                                'Montacute'
                             p
-                              className: 'id m0 fs1',
-                                '860003-02'
+                              className: 'color m0 fs1',
+                                'Venusta'
                     div
                       className: 'block summerSale',
                         img
@@ -140,10 +140,10 @@ module.exports = React.createClass
                           className: 'caption',
                             p
                               className: 'name m0 fs1',
-                                'Thumbelina: Constable'
+                                'Thumbelina'
                             p
-                              className: 'id m0 fs1',
-                                '700001-03'
+                              className: 'color m0 fs1',
+                                'Constable'
                     div
                       className: 'block summerSale',
                         img
@@ -152,10 +152,10 @@ module.exports = React.createClass
                           className: 'caption',
                             p
                               className: 'name m0 fs1',
-                                'Cervo: Tusk'
+                                'Cervo'
                             p
-                              className: 'id m0 fs1',
-                                '92702-01'
+                              className: 'color m0 fs1',
+                                'Tusk'
                     div
                       className: 'block summerSale',
                         img
@@ -164,10 +164,10 @@ module.exports = React.createClass
                           className: 'caption',
                             p
                               className: 'name m0 fs1',
-                                'Mission Cloth: Nest'
+                                'Mission Cloth'
                             p
-                              className: 'id m0 fs1',
-                                '92508-04'
+                              className: 'color m0 fs1',
+                                'Nest'
                     div
                       className: 'block summerSale',
                         img
@@ -176,10 +176,10 @@ module.exports = React.createClass
                           className: 'caption',
                             p
                               className: 'name m0 fs1',
-                                'Apex: Alp'
+                                'Apex'
                             p
-                              className: 'id m0 fs1',
-                                '740016-01'
+                              className: 'color m0 fs1',
+                                'Alp'
                     div
                       className: 'block summerSale',
                         img
@@ -188,10 +188,10 @@ module.exports = React.createClass
                           className: 'caption',
                             p
                               className: 'name m0 fs1',
-                                'Coda: Salvia'
+                                'Coda'
                             p
-                              className: 'id m0 fs1',
-                                '750006-06'
+                              className: 'color m0 fs1',
+                                'Salvia'
                     div
                       className: 'block summerSale',
                         img
@@ -200,10 +200,10 @@ module.exports = React.createClass
                           className: 'caption',
                             p
                               className: 'name m0 fs1',
-                                'Seed Pearl: Moonlight'
+                                'Seed Pearl'
                             p
-                              className: 'id m0 fs1',
-                                '92927-04'
+                              className: 'color m0 fs1',
+                                'Moonlight'
                     div
                       className: 'block summerSale',
                         img
@@ -212,10 +212,10 @@ module.exports = React.createClass
                           className: 'caption',
                             p
                               className: 'name m0 fs1',
-                                'Mezzo: Rene'
+                                'Mezzo'
                             p
-                              className: 'id m0 fs1',
-                                '880005-01'
+                              className: 'color m0 fs1',
+                                'Rene'
                     div
                       className: 'block summerSale',
                         img
@@ -224,10 +224,10 @@ module.exports = React.createClass
                           className: 'caption',
                             p
                               className: 'name m0 fs1',
-                                'Glen: Mammoth'
+                                'Glen'
                             p
-                              className: 'id m0 fs1',
-                                '740013-03'
+                              className: 'color m0 fs1',
+                                'Mammoth'
                     div
                       className: 'block summerSale',
                         img
@@ -236,10 +236,10 @@ module.exports = React.createClass
                           className: 'caption',
                             p
                               className: 'name m0 fs1',
-                                'Pongee: Champagne'
+                                'Pongee'
                             p
-                              className: 'id m0 fs1',
-                                '92929-01'
+                              className: 'color m0 fs1',
+                                'Champagne'
                     div
                       className: 'block summerSale',
                         img
@@ -248,10 +248,10 @@ module.exports = React.createClass
                           className: 'caption',
                             p
                               className: 'name m0 fs1',
-                                'Merlin: Minnow'
+                                'Merlin'
                             p
-                              className: 'id m0 fs1',
-                                '750005-05'
+                              className: 'color m0 fs1',
+                                'Minnow'
                     div
                       className: 'block summerSale',
                         img
@@ -260,10 +260,10 @@ module.exports = React.createClass
                           className: 'caption',
                             p
                               className: 'name m0 fs1',
-                                'Serge de Nimes: Ocelot'
+                                'Serge de Nimes'
                             p
-                              className: 'id m0 fs1',
-                                '870004-14'
+                              className: 'color m0 fs1',
+                                'Ocelot'
                     div
                       className: 'block summerSale',
                         img
@@ -272,10 +272,10 @@ module.exports = React.createClass
                           className: 'caption',
                             p
                               className: 'name m0 fs1',
-                                'Scarp: Aquifer'
+                                'Scarp'
                             p
-                              className: 'id m0 fs1',
-                                '92530-05'
+                              className: 'color m0 fs1',
+                                'Aquifer'
                     div
                       className: 'block summerSale',
                         img
@@ -284,10 +284,10 @@ module.exports = React.createClass
                           className: 'caption',
                             p
                               className: 'name m0 fs1',
-                                'Cross Hatch: Hopsack'
+                                'Cross Hatch'
                             p
-                              className: 'id m0 fs1',
-                                '910099-01'
+                              className: 'color m0 fs1',
+                                'Hopsack'
                     div
                       className: 'block summerSale',
                         img
@@ -296,12 +296,12 @@ module.exports = React.createClass
                           className: 'caption',
                             p
                               className: 'name m0 fs1',
-                                'Stromboli: Paglia'
+                                'Stromboli'
                             p
-                              className: 'id m0 fs1',
-                                '910094-08'
+                              className: 'color m0 fs1',
+                                'Paglia'
                     div
-                      className: 'clear p1p5',
+                      className: 'clear p1p5 customType textReplace',
                         h2
                           className: 'mb1',
                             'New Additions to the Summer Sale Section of our Website!'

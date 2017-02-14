@@ -29,13 +29,15 @@
   .blanket {
     display: block;
     width: 75%;
-    max-width: 600px;
+    max-width: 650px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2em;
     margin-bottom: 10%;
     box-shadow: 0 0 1rem 0 rgba(0,0,0,.44);
-    border: 2px solid black;
+    border: 1px solid black;
+    padding-left: 3em;
+    padding-right: 3em;
 
     a {
       text-decoration: none;
@@ -54,18 +56,46 @@
       .caption {
         display: none;
         position: absolute;
-        padding: .5em;
-        left: .6rem;
-        right: .6rem;
-        bottom: .6rem;
+        padding: .75em .5em .5em;
+        left: 1em;
+        right: 1em;
+        top:50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        transform: translateY(-50%);
         box-shadow: 0 0 1rem 0 rgba(0,0,0,.44);
         background-color: @rg-background;
+
+        .name {
+          text-transform: uppercase;
+          font-size: .85em;
+          letter-spacing: .1em;
+        }
+
+        .color {
+          color: @rg-gray;
+        }
+
       }
       &:hover {
         .caption {
           display: block;
         }
       }
+    }
+    .textReplace {
+      text-indent: 111%;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .customType {
+      background-image: url('media/2017-02-13-SummerSaleGrid.jpg');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin-left: -2em;
+      margin-right: -2em;
+      padding: 4em;
     }
   }
 }
@@ -96,13 +126,52 @@
 }
 
 .blanket h1 {
+  box-sizing: border-box;
   display: block;
   background: url(images/rglogo.png) center center no-repeat;
   background-size: contain;
-  height: 60px;
-  margin: 0;
-  padding: 0;
+  height: 45px;
+  margin: .5em auto;
+  padding: 3px;
+  max-width: 275px;
+  border: 1px solid black;
   text-indent: 200%;
   white-space: nowrap;
   overflow: hidden;
+}
+
+@media (max-width: @screen-sm-max) {
+  #notice-box {
+    .blanket {
+      .customType {
+        padding: 2em;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  #notice-box {
+    .blanket {
+      .customType {
+        padding: 1em;
+      }
+      h1 {
+        height: 40px
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  #notice-box {
+    .blanket {
+      .customType {
+        padding: 0;
+      }
+      h1 {
+        height: 35px
+      }
+    }
+  }
 }
