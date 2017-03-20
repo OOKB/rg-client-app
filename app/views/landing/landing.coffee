@@ -117,7 +117,7 @@ module.exports = React.createClass
           className: noticeBoxClassName,
             a {href: '#collection/textile/96/96006/p1'},
               img
-                src: '/media/2017-03-03-Herdwick.jpg'
+                src: '/media/2017-03-20-Herdwick.jpg'
                 alt: 'Rogers & Goffigon is excited to introduce a new fabric: Herdwick!'
           button
             className: 'close'
