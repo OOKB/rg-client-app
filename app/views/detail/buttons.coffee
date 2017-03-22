@@ -53,7 +53,6 @@ module.exports = React.createClass
       className: imgClass
       alt: item.name
       src: imgPath
-      style: imgStyle
 
     divs = []
 
