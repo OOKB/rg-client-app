@@ -174,8 +174,7 @@
   }
 }
 
-.item-detail.passementerie .small,
-.item-detail.passementerie .large {
+.item-detail.passementerie .switcher > div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -189,8 +188,10 @@
 }
 
 .item-detail.passementerie .small img.rotate-trim {
-  min-height: none;
-  min-width: none;
+  min-height: initial;
+  min-width: initial;
+  max-height: initial;
+  max-width: initial;
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -207,7 +208,10 @@
 
 .item-detail.passementerie .large img,
 .item-detail.passementerie .xlarge img {
-  min-width: none;
+  min-height: initial;
+  min-width: initial;
+  max-height: initial;
+  max-width: initial;
 }
 
 .item-detail .large img.pattern,
