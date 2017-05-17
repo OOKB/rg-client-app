@@ -117,7 +117,7 @@ module.exports = React.createClass
           className: noticeBoxClassName,
             a {href: '#collection/textile/96/910106/p1'},
               img
-                src: '/media/2017-05-05-Chimu.jpg'
+                src: '/media/2017-05-16-Skye.jpg'
                 alt: 'Rogers & Goffigon is excited to introduce Chimu ...'
           button
             className: 'close'
