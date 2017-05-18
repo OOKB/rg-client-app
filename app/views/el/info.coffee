@@ -38,7 +38,7 @@ module.exports = React.createClass
         p item.color
 
     # Content.
-    if item.content
+    if item.contents
       fieldCount++
       charCount += item.contents.length
       h_lis.push li
