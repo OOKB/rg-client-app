@@ -125,7 +125,7 @@ gulp.task 'set_sha', (cb) ->
       'user-agent': 'request.js'
   r r_ops, (err, response, body) ->
     if err then throw err
-    global.sha = body.commit.sha
+    global.sha = body.commit.sha+Math.floor(Date.now() / 1000)
     cb()
   return
 
@@ -187,15 +187,17 @@ gulp.task 'copy_css', ['styles'], ->
     .pipe gulp.dest('./prod/images/')
   gulp.src('./static/**')
     .pipe gulp.dest('./prod/')
-
+gulp.task 'copy_data', ->
+  gulp.src('./app/models/*.json')
+    .pipe(gulp.dest('./prod'))
 gulp.task 'compress', ->
   gulp.src("./prod/*.{js,css,html,json}")
     .pipe(zopfli())
     .pipe(gulp.dest("./prod"))
 
 gulp.task 'deploy', (cb) ->
-  runSequence ['prod_clean', 'set_sha', 'data'],
-    ['prod_template', 'copy_css', 'prod_compile', 'prod_menu_compile'],
+  runSequence ['set_sha', 'data'],
+    ['prod_template', 'copy_css', 'copy_data', 'prod_compile', 'prod_menu_compile'],
     'compress',
     cb
   return
