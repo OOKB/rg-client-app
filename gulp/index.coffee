@@ -102,7 +102,7 @@ gulp.task 'dataContent', ->
     .pipe gulp.dest('./app/models/')
 
 gulp.task 'dataItems', ['dataContent'], ->
-  r('https://rg3.cape.io/items.json')
+  r('https://peaceful-escarpment-74338.herokuapp.com/rg.json')
     .pipe source('data.json')
     .pipe gulp.dest('./app/models/')
 
