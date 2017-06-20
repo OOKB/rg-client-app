@@ -115,10 +115,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#favs/801001-02/801001-05/806017-12/91041-01'},
+            a {href: '#collection/textile/96/730014/p1'},
               img
-                src: '/media/2017-05-31-CambonScreenDoor.jpg'
-                alt: 'Rogers & Goffigon is excited to introduce Screen Door in Cotton and Cambon in Bunny ...'
+                src: '/media/2017-06-20-Snowfield.jpg'
+                alt: 'Rogers & Goffigon is excited to introduce Snowfield into their textile collection. It is available in seven colorways.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
