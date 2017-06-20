@@ -44,10 +44,19 @@ Used for current RG data.
 
 1. http://www.rogersandgoffigon.com/data.json what was used during compile.
 1. https://rg3.cape.io/items.json (aling) `env NODE_ENV=production forever start /usr/local/node/cape3`
-1. http://v5.rogersandgoffigon.com/index.json (45.33.30.19 cape5) Used for images.
+1. http://v5.rogersandgoffigon.com/index.json (45.33.30.19 cape5) Used for images. `cd /srv/node/proxy/source/ && pm2 startOrRestart ecosystem.json --env production && cd /srv/cape5/current && pm2 startOrRestart ecosystem.json --env production && su -` `./fw.sh && iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8088`
 1. http://social.cape.io/order-track/kb/summer (dong) Used to proxy order-track
 1. https://r_g.cape.io/_login (aling)
 1. http://v5.rogersandgoffigon.com/_routeCache.json?ids=1&rg=1
+
+Restart v5
+
+- ssh v5
+- cd /srv/node/proxy/source/
+- su -
+- ./fw.sh
+- iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8088
+
 ## Images
 
 http://v6.rogersandgoffigon.com/ (dong.cape.io)
