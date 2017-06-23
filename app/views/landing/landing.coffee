@@ -117,7 +117,7 @@ module.exports = React.createClass
           className: noticeBoxClassName,
             a {href: '#collection/textile/96/730014/p1'},
               img
-                src: '/media/2017-06-20-Snowfield.jpg'
+                src: '/media/2017-06-23-Snowfield.jpg'
                 alt: 'Rogers & Goffigon is excited to introduce Snowfield into their textile collection. It is available in seven colorways.'
           button
             className: 'close'
