@@ -6,7 +6,6 @@ r = require 'superagent'
 ItemsCollection = require './models/items'
 Router = require './react-router'
 
-ItemsData = require './models/data'
 Content = require './models/content'
 PatternColors = require './models/pattern_colors'
 Me = require './models/me'
@@ -24,20 +23,21 @@ module.exports =
     @bitly = new Bitly()
 
     el = document.getElementById('react')
+    r.get 'https://rogersandgoffigon-b0977.firebaseio.com/items.json', (err, res) =>
+      ItemsData = res.body
+      r.get 'http://r_g.cape.io/_view/item_order/data.json', (err, res) =>
+        self.itemOrder = res.body
+        # Create our items model collection.
+        items = new ItemsCollection ItemsData, parse: true
+        # Use the subcollection module.
+        @items = new SubCollection items
+        @itemFilters = {}
+        @setCategoryFilterOps()
+        @content = Content
 
-    r.get 'http://r_g.cape.io/_view/item_order/data.json', (err, res) =>
-      self.itemOrder = res.body
-      # Create our items model collection.
-      items = new ItemsCollection ItemsData, parse: true
-      # Use the subcollection module.
-      @items = new SubCollection items
-      @itemFilters = {}
-      @setCategoryFilterOps()
-      @content = Content
-
-      # Init the React application router.
-      routerComponent = Router {}
-      @container = React.renderComponent routerComponent, el
+        # Init the React application router.
+        routerComponent = Router {}
+        @container = React.renderComponent routerComponent, el
 
   filterCatProp:
     color: 'colors'
