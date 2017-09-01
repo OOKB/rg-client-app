@@ -117,8 +117,8 @@ module.exports = React.createClass
           className: noticeBoxClassName,
             a {href: '#trade/login'},
               img
-                src: 'http://rogersandgoffigon.imgix.net/banner/BrushedCottonLinenWebBanner.jpg?w=999'
-                alt: 'New fabrics added to the SUMMER SALE section of the website. Please login with your trade account to view.'
+                src: 'http://rogersandgoffigon.imgix.net/banner/2017-09-01-Sunblock-v0.jpg?w=999'
+                alt: 'Introducing Sunblock, another wide-weave fabric in four colorways.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
