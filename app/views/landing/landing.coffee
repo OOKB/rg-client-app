@@ -117,7 +117,7 @@ module.exports = React.createClass
           className: noticeBoxClassName,
             a {href: '#collection/textile/12/740044/p1'},
               img
-                src: 'http://rogersandgoffigon.imgix.net/banner/2017-09-01-Sunblock-v0.jpg?w=999'
+                src: 'http://rogersandgoffigon.imgix.net/banner/2017-09-05-Sunblock-v1.jpg?w=999'
                 alt: 'Introducing Sunblock, another wide-weave fabric in four colorways.'
           button
             className: 'close'
