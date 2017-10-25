@@ -115,10 +115,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/12/740045/p1'},
+            a {href: '#collection/textile/96/710009/p1'},
               img
-                src: 'http://rogersandgoffigon.imgix.net/banner/20170927-PJ.jpg?w=999'
-                alt: 'New fabrics! PJ — a wide-width (10 feet), linen stripe, available in four colorways.'
+                src: 'http://rogersandgoffigon.imgix.net/banner/20171025-Linne.jpg?w=999'
+                alt: 'New fabrics! Linné, a striped linen inspired by fabrics in one of the most authentically preserved Swedish estates from the 1700’s'
           button
             className: 'close'
             onClick: @handleNoticeClose,
