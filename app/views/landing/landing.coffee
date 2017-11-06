@@ -115,7 +115,7 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/710009/p1'},
+            a {href: '#collection/textile/96/pixel/p1'},
               img
                 src: 'http://rogersandgoffigon.imgix.net/banner/20171106-Pixel.jpg?w=999'
                 alt: 'Pixel now introduced.'
