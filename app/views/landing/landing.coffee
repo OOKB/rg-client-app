@@ -117,8 +117,8 @@ module.exports = React.createClass
           className: noticeBoxClassName,
             a {href: '#collection/textile/96/710009/p1'},
               img
-                src: 'http://rogersandgoffigon.imgix.net/banner/20171025-Linne.jpg?w=999'
-                alt: 'New fabrics! Linné, a striped linen inspired by fabrics in one of the most authentically preserved Swedish estates from the 1700’s'
+                src: 'http://rogersandgoffigon.imgix.net/banner/20171106-Pixel.jpg?w=999'
+                alt: 'Pixel now introduced.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
