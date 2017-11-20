@@ -115,9 +115,9 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/pixel/p1'},
+            a {href: '#collection/textile/96/collage/p1'},
               img
-                src: 'http://rogersandgoffigon.imgix.net/banner/20171106-Pixel.jpg?w=999'
+                src: 'http://rogersandgoffigon.imgix.net/banner/20171120-collage.jpg?w=999'
                 alt: 'Pixel now introduced.'
           button
             className: 'close'
