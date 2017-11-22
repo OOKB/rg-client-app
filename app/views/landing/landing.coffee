@@ -115,10 +115,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#trade/login'},
+            a {href: '#collection/textile/96/collage/p1'},
               img
-                src: 'http://rogersandgoffigon.imgix.net/banner/BrushedCottonLinenWebBanner.jpg?w=999'
-                alt: 'New fabrics added to the SUMMER SALE section of the website. Please login with your trade account to view.'
+                src: 'http://rogersandgoffigon.imgix.net/banner/20171120-v2-collage.jpg?w=999'
+                alt: 'Pixel now introduced.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
