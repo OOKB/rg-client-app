@@ -93,7 +93,7 @@ module.exports = React.createClass
       return @el favThisButton, adminOrder
 
     # Possible buttons to display.
-    buttonTypes = @props.buttonTypes or ['color', 'fav', 'info']
+    buttonTypes = @props.buttonTypes or ['color', 'fav', 'info', 'admin']
     if section == 'projects' or not item.hasRelated
       buttonTypes = _.without buttonTypes, 'color'
 
@@ -102,7 +102,8 @@ module.exports = React.createClass
     buttonTypes.forEach (buttonType) =>
       if 'fav' == buttonType
         buttons.push favThisButton
-        #buttons.push adminOrder
+      else if 'admin' == buttonType
+        buttons.push adminOrder
       else
         btn = @data(buttonType)
         # Set if active be added to the className.
