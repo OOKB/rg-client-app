@@ -380,7 +380,8 @@ module.exports = Router.extend
       # Make sure the user input search text is lowercase.
       searchTxt = searchTxt.toLowerCase()
       # Make sure the text string is valid... Regex check.
-      searchTxt = searchTxt.replace(/[^a-z0-9-\s]/, '')
+      # searchTxt = searchTxt.replace(/[^a-z0-9-\s]/, '')
+      searchTxt = searchTxt.replace(/[\!\^\$\.\|\?\*\+\(\)\{\}\[\]\\@#%^&]/g, '')
       return searchTxt
     else
       return ''
