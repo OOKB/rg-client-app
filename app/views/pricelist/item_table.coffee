@@ -117,6 +117,10 @@ module.exports = React.createClass
         key: 'thickness'
         className: 'c-thick',
           'Approx. Thickness'
+      ths.push th
+        key: 'specSheet'
+        className: 'spec-sheet',
+          'Spec Sheet'
     # Hide repeat for leather.
     else
       ths.push th
