@@ -118,7 +118,7 @@ module.exports = React.createClass
             a {href: '#collection/textile/96/collage/p1'},
               img
                 src: 'http://rogersandgoffigon.imgix.net/banner/20171120-v2-collage.jpg?w=999'
-                alt: 'Pixel now introduced.'
+                alt: 'Collage now introduced.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
