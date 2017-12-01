@@ -102,7 +102,7 @@ module.exports = AmpersandModel.extend
       deps: ['patternNumber']
       fn: ->
         if 'leather' == @category
-          return cdn + 'media/' + @patternNumber + '.pdf'
+          return cdn + 'media/' + @patternNumber.toLowerCase() + '.pdf'
         else
           return null
     detail:
