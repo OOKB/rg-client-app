@@ -115,10 +115,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/730015/p1'},
+            a {href: '#collection/textile/96/990002/p1'},
               img
-                src: 'http://rogersandgoffigon.imgix.net/banner/20171201-alpacaboucle.jpg?w=999'
-                alt: 'Rogers & Goffigon is excited to introduce Alpaca Bouclé, a deluxe upholstery fabric, into their textile collection, available in six earthy colorways. Alpaca Bouclé is one of the most luxurious fabrics in the collection.'
+                src: 'http://rogersandgoffigon.imgix.net/banner/20171201-arborio.jpg?w=999'
+                alt: 'Introducing Arborio, a wool bouclé upholstery fabric.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
