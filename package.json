@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "data": "gulp data",
+    "dev": "gulp default",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kai Curry <kai@cape.io> (http://www.cape.io/)",
