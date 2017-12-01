@@ -98,7 +98,13 @@ module.exports = AmpersandModel.extend
           color = ''
         str = color + ' ' + @id + ' ' + @name + ' ' + @color + ' ' + content
         str.toLowerCase()
-
+    specSheet:
+      deps: ['patternNumber']
+      fn: ->
+        if 'leather' == @category
+          return cdn + 'media/' + @patternNumber + '.pdf'
+        else
+          return null
     detail:
       deps: ['patternNumber', 'color_id', 'id']
       fn: ->
