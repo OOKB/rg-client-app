@@ -162,13 +162,28 @@ table tr td {
 .passementerie table .c-width   { width: 150px; }
 
 /* leather table column widths */
-.leather table .c-name    { width: 85px; padding-right: 0;}
-.leather table .c-number  { width: 110px; }
-.leather table .c-color   { width: 140px; }
-.leather table .c-price   { width: 100px; }
-.leather table .c-content { width: 230px; padding-left: 0; }
-.leather table .c-size    { width: 155px; }
-.leather table .c-thick   { width: 150px; text-transform: lowercase; }
+.leather table .c-name     { width: 85px; padding-right: 0;}
+.leather table .c-number   { width: 110px; }
+.leather table .c-color    { width: 140px; }
+.leather table .c-price    { width: 100px; }
+.leather table .c-content  { width: 230px; padding-left: 0; }
+.leather table .c-size     { width: 125px; }
+.leather table .c-thick    { width: 125px; text-transform: lowercase; }
+.leather table .spec-sheet { width: 50px; }
+
+.leather table .spec-sheet > a {
+  width: 24px;
+  height: 32px;
+  text-indent: 200%;
+  overflow: hidden;
+  text-decoration: none;
+  border-bottom: none;
+  background: transparent;
+  background-image: url("media/rgpdficon.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
 
 /** Some ipad/mobile styles for making pricelist viewing easier without removing columns/content **/
 /** It also provides a cool scrolling table feature **/
