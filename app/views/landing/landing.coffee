@@ -115,10 +115,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/990002/p1'},
+            a {href: '#collection/textile/96/740049/p1'},
               img
-                src: 'http://rogersandgoffigon.imgix.net/banner/20171201-arborio.jpg?w=999'
-                alt: 'Introducing Arborio, a wool bouclé upholstery fabric.'
+                src: 'http://rogersandgoffigon.imgix.net/banner/20171214-captiva.jpg?w=999'
+                alt: 'Captiva, a wide-width, wide-striped linen with a 13-inch repeat is the latest introduction into the Rogers & Goffigon textile collection. It’s available in five beach-inspired colorways.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
