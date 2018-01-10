@@ -115,10 +115,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/740049/p1'},
+            a {href: '#collection/textile/96/92536/p1'},
               img
-                src: 'http://rogersandgoffigon.imgix.net/banner/20171214-captiva.jpg?w=999'
-                alt: 'Captiva, a wide-width, wide-striped linen with a 13-inch repeat is the latest introduction into the Rogers & Goffigon textile collection. It’s available in five beach-inspired colorways.'
+                src: 'http://rogersandgoffigon.imgix.net/banner/201801101215-cubist.jpg?w=999'
+                alt: 'Instroducing Cubist'
           button
             className: 'close'
             onClick: @handleNoticeClose,
