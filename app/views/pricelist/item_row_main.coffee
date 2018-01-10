@@ -54,14 +54,14 @@ module.exports = React.createClass
         className: 'c-thick',
         rowSpan: @props.rowSpan,
           item.approx_thick
-      tds.push td
-        key: 'specSheet'
-        className: 'spec-sheet',
-        rowSpan: @props.rowSpan,
-          a
-            href: item.specSheet,
-            target: '_blank',
-              'PDF'
+      # tds.push td
+      #   key: 'specSheet'
+      #   className: 'spec-sheet',
+      #   rowSpan: @props.rowSpan,
+      #     a
+      #       href: item.specSheet,
+      #       target: '_blank',
+      #         'PDF'
     else
       tds.push td
         key: 'repeat'
