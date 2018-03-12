@@ -115,10 +115,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/91041/p1'},
+            a {href: '#collection/textile/96/850012/p1'},
               img
-                src: 'http://rogersandgoffigon.imgix.net/banner/20180228-screendoorv2.jpg?w=999'
-                alt: 'Introducing six new color ways of Screen Door.'
+                src: 'http://rogersandgoffigon.imgix.net/banner/20180312-mottle.jpg?w=999'
+                alt: 'Introducing Mottle.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
