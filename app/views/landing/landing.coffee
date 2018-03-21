@@ -115,10 +115,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/850012/p1'},
+            a {href: '#favs/920003-01/920003-02/920003-03/920005-01/920005-02/920005-03/920006-01/920006-02/920006-03'},
               img
-                src: 'http://rogersandgoffigon.imgix.net/banner/201803121026-mottle.jpg?w=999'
-                alt: 'Introducing Mottle, a heathered, plain weave linen and marled yarn fabric in 8 colorways.'
+                src: 'http://rogersandgoffigon.imgix.net/banner/201803241431-VirginWool.jpg?w=999'
+                alt: 'New! A Trio of deluxe wide-width Virgin Wool fabrics: Introducing Dobby, Crepe, & Downy.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
