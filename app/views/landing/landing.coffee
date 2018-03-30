@@ -115,10 +115,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#favs/920003-01/920003-02/920003-03/920005-01/920005-02/920005-03/920006-01/920006-02/920006-03'},
+            a {href: '#detail/730016/01'},
               img
-                src: 'http://rogersandgoffigon.imgix.net/banner/201803241431-VirginWool.jpg?w=999'
-                alt: 'New! A Trio of deluxe wide-width Virgin Wool fabrics: Introducing Dobby, Crepe, & Downy.'
+                src: 'http://rogersandgoffigon.imgix.net/banner/20180330-Rushwork.jpg?w=999'
+                alt: 'New! Rushwork: an earthy, organic linen.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
