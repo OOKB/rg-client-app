@@ -115,10 +115,11 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#detail/730016/01'},
+            a {href: '#collection/textile/96/750015/p1'},
               img
-                src: 'http://rogersandgoffigon.imgix.net/banner/20180330-Rushwork.jpg?w=999'
-                alt: 'New! Rushwork: an earthy, organic linen.'
+                src: 'http://rogersandgoffigon.imgix.net/banner/20180406-Tourmaline.jpg?w=999'
+                alt: 'Tourmaline, a spectacular, dazzling jewel of a chenille fabric,
+is new to the Rogers & Goffigon textile collection.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
