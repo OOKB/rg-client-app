@@ -4,5 +4,5 @@ React = require 'react'
 module.exports = React.createClass
   render: ->
     div
-      className: 'summer'
+      className: 'summer',
         p 'Under Construction - Coming Back Soon'
