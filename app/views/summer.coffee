@@ -1,8 +1,9 @@
 React = require 'react'
-{div, p} = require 'reactionary'
+{div, h2} = require 'reactionary'
 
 module.exports = React.createClass
   render: ->
     div
+      id: 'container-pricelist'
       className: 'summer',
-        p 'Under Construction - Coming Back Soon'
+        h2 'Under Construction - Coming Back Soon'
