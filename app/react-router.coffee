@@ -16,7 +16,7 @@ Login = require './views/trade/login'
 Account = require './views/trade/account'
 Projects = require './views/trade/projects'
 Landing = require './views/landing/landing'
-Summer = require './views/summer'
+# Summer = require './views/summer'
 # About = require './views/about/container'
 # Contact = require './views/contact/container'
 
@@ -104,9 +104,9 @@ module.exports = React.createClass
     component = switch section
       when 'landing' then Landing(props)
       when 'pricelist' then FilterableProductTable(props)
-      # when 'collection', 'summer' then Collection(props)
-      when 'collection' then Collection(props)
-      when 'summer' then Summer(props)
+      when 'collection', 'summer' then Collection(props)
+      # when 'collection' then Collection(props)
+      # when 'summer' then Summer(props)
       when 'detail' then ItemDetail(props)
       when 'favs' then Favs(props)
       when 'login' then Login(props)
