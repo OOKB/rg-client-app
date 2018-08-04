@@ -28,7 +28,7 @@ module.exports = AmpersandModel.extend
       pj.order = _.random(0, 50)
     if pj.id
       # Set redirect link
-      pj.redirectUrl = 'http://r_g.cape.io/_list/'+pj.id
+      pj.redirectUrl = 'https://r_g.cape.io/_list/'+pj.id
       pj.shortUrl = pj.redirectUrl
       # Process the bitly
       app.bitly.getOrFetch pj.redirectUrl, (err, model) ->
@@ -41,15 +41,15 @@ module.exports = AmpersandModel.extend
     @entities.add
       id: entityId
       order: 101
-    r.put 'http://r_g.cape.io/_index/list/' + @id + '/' + entityId+'?access_token='+app.me.token, order: 101
+    r.put 'https://r_g.cape.io/_index/list/' + @id + '/' + entityId+'?access_token='+app.me.token, order: 101
       .end (res) ->
         console.log res
 
   rmEntity: (entityId) ->
     @entities.remove entityId
-    r.del 'http://r_g.cape.io/_index/list/' + @id + '/' + entityId+'?access_token='+app.me.token
+    r.del 'https://r_g.cape.io/_index/list/' + @id + '/' + entityId+'?access_token='+app.me.token
       .end (res) ->
         console.log res
 
   url: ->
-    'http://r_g.cape.io/_api/list/' + @id + '?access_token='+app.me.token
+    'https://r_g.cape.io/_api/list/' + @id + '?access_token='+app.me.token

@@ -51,7 +51,7 @@ module.exports = AmpersandModel.extend
     projects: Projects
 
   url: ->
-    'http://r_g.cape.io/_restricted?access_token='+@token
+    'https://r_g.cape.io/_restricted?access_token='+@token
 
   derived:
     favStr:
@@ -67,7 +67,7 @@ module.exports = AmpersandModel.extend
     favUrl:
       deps: ['favStr']
       fn: ->
-        'http://www.rogersandgoffigon.com/#favs/'+@favStr
+        'https://www.rogersandgoffigon.com/#favs/'+@favStr
 
     loggedIn:
       deps: ['token', 'customerNumber']

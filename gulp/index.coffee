@@ -97,7 +97,7 @@ gulp.task "default", ['compile', 'compileMenu', 'styles', 'templates', 'browser-
   return
 
 gulp.task 'dataContent', ->
-  r('http://r_g.cape.io/_view/md_pages/display')
+  r('https://r_g.cape.io/_view/md_pages/display')
     .pipe source('content.json')
     .pipe gulp.dest('./app/models/')
 

@@ -8,7 +8,7 @@
     "dev": "gulp default",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Kai Curry <kai@cape.io> (http://www.cape.io/)",
+  "author": "Kai Curry <kai@cape.io> (https://www.cape.io/)",
   "license": "ISC",
   "devDependencies": {
     "gulp": "^3.8.6",

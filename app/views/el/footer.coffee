@@ -32,7 +32,7 @@ module.exports = React.createClass
       p {},
         a
           className: 'link3',
-          href: 'http://www.delanyandlong.com/',
+          href: 'https://www.delanyandlong.com/',
             'For the DeLany & Long collection click here.'
       p
         span 'Site by Pentagram'

@@ -75,7 +75,7 @@ module.exports = React.createClass
       key: id
       model: app.items.get(id)
       i: i
-    slideImg = "http://rogersandgoffigon.imgix.net/group/160516_rg_"+(activeSlide+1)+".jpg?w=1500"
+    slideImg = "https://rogersandgoffigon.imgix.net/group/160516_rg_"+(activeSlide+1)+".jpg?w=1500"
     if @state.activeSlide < @state.prevSlide
       transitionClass = 'carousel-right'
     else
@@ -117,8 +117,8 @@ module.exports = React.createClass
           className: noticeBoxClassName,
             a {href: '#collection/textile/96/850012/p1'},
               img
-                src: 'http://rogersandgoffigon.imgix.net/banner/20180803-mottle.jpg?w=999'
-                alt: 'Introducing new colorways for Mottle!'
+                src: 'https://rogersandgoffigon.imgix.net/banner/20180803-mottle.jpg?w=999'
+                alt: 'Introducing new colorways '
           button
             className: 'close'
             onClick: @handleNoticeClose,

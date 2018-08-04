@@ -1,7 +1,7 @@
 Collection = require('ampersand-rest-collection')
 Project = require('./project')
 
-baseUrl = 'http://r_g.cape.io/_api/'
+baseUrl = 'https://r_g.cape.io/_api/'
 
 module.exports = Collection.extend
   model: Project
