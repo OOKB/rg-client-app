@@ -136,13 +136,13 @@ module.exports = AmpersandModel.extend
     rulerPath:
       deps: ['ruler']
       fn: ->
-        rulerCdn = '//img.rg.cape.io/'
+        rulerCdn = '//rogersandgoffigon.imgix.net/ruler/'
         inch:
-          large: rulerCdn+'media/ruler/inch/'+@ruler+'-1536.png'
-          xlarge: rulerCdn+'media/ruler/inch/'+@ruler+'-2560.png'
+          large: rulerCdn+'inch/'+@ruler+'-1536.png'
+          xlarge: rulerCdn+'inch/'+@ruler+'-2560.png'
         cm:
-          large: rulerCdn+'media/ruler/cm/'+@ruler+'-1536.png'
-          xlarge: rulerCdn+'media/ruler/cm/'+@ruler+'-2560.png'
+          large: rulerCdn+'cm/'+@ruler+'-1536.png'
+          xlarge: rulerCdn+'cm/'+@ruler+'-2560.png'
 
     # Decide if it has related colors.
     hasRelated:
