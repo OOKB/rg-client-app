@@ -115,9 +115,9 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/96008/p1'},
+            a {href: '#favs/96007-01/96007-12/96007-13'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/20181024-Moonlight.jpg?w=1111'
+                src: 'https://rogersandgoffigon.imgix.net/banner/201811061255-MohairSateenNew3.jpg?w=1111'
                 alt: 'Introducing Moonlight'
           button
             className: 'close'
