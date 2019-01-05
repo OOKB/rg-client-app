@@ -66,7 +66,7 @@ module.exports = React.createClass
             model: item
             initState: @props.initState
             extraButtons: true
-            buttonTypes: ['fav', 'info']
+            buttonTypes: ['fav', 'info', 'admin']
           infoBox
           favAlert
           projectBox

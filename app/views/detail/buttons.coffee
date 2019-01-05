@@ -14,6 +14,7 @@ module.exports = React.createClass
     loadedLarge: false
     loadedXlarge: false
     showNotes: false
+    reverseView: false
 
   toggleColorBoxView: ->
     @setState
@@ -39,6 +40,9 @@ module.exports = React.createClass
 
     if @state.farView
       imgPath = item._file[imgSize].path_far
+      imgClass = 'img-container pattern'
+    else if @state.reverseView
+      imgPath = item._file[imgSize].path_reverse
       imgClass = 'img-container pattern'
     else
       if @state.isRelated and !@state.loadedLarge and !@state.loadedXlarge
@@ -87,6 +91,16 @@ module.exports = React.createClass
         showNotes: @state.showNotes
         hasColorButton: hasColorButton
 
+    if item.reverse
+      divs.push div
+        key: 'reverse-button'
+        className: 'toggle-reverse hidden-xs',
+          button
+            onClick: => @setState reverseView: !@state.reverseView
+            className: 'uppercase',
+              span
+                className: 'reverse',
+                  'View Reverse'
     if item.far
       divs.push div
         key: 'far-button'
@@ -116,7 +130,7 @@ module.exports = React.createClass
         imgDiv
 
     # Ruler
-    if @state.showRuler and not @state.farView and item.category != 'passementerie'
+    if @state.showRuler and not @state.farView and not @state.reverseView and item.category != 'passementerie'
       divs.push Rulers
         key: 'rulers'
         model: item

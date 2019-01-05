@@ -15,7 +15,6 @@ source = require('vinyl-source-stream')
 jade = require 'gulp-jade'
 less = require 'gulp-less'
 clean = require 'gulp-clean'
-zopfli = require 'gulp-zopfli'
 rename = require 'gulp-rename'
 runSequence = require 'run-sequence'
 
@@ -190,10 +189,10 @@ gulp.task 'copy_css', ['styles'], ->
 gulp.task 'copy_data', ->
   gulp.src('./app/models/*.json')
     .pipe(gulp.dest('./prod'))
-gulp.task 'compress', ->
-  gulp.src("./prod/*.{js,css,html,json}")
-    .pipe(zopfli())
-    .pipe(gulp.dest("./prod"))
+# gulp.task 'compress', ->
+#   gulp.src("./prod/*.{js,css,html,json}")
+#     .pipe(zopfli())
+#     .pipe(gulp.dest("./prod"))
 
 gulp.task 'deploy', (cb) ->
   runSequence ['set_sha', 'data'],

@@ -30,6 +30,7 @@ module.exports = AmpersandModel.extend
     price: 'number'
     repeat: 'string'
     related: 'array'
+    reverse: ['boolean', true, false]
     ruler: ['string', true]
     summerSale: ['boolean', true, false]
 
@@ -79,6 +80,10 @@ module.exports = AmpersandModel.extend
         item._file.small.path_far = cdn + 'far/'+item.id+'.jpg?w=640'
         item._file.large.path_far = cdn + 'far/'+item.id+'.jpg?w=1536'
         item._file.large.path_far = cdn + 'far/'+item.id+'.jpg?w=2560'
+      if item.reverse
+        item._file.small.path_reverse = cdn + 'reverse/'+item.id+'.jpg?w=640'
+        item._file.large.path_reverse = cdn + 'reverse/'+item.id+'.jpg?w=1536'
+        item._file.large.path_reverse = cdn + 'reverse/'+item.id+'.jpg?w=2560'
       unless item.contents
         item.contents = ''
 
