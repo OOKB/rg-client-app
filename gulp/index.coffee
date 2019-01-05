@@ -197,6 +197,5 @@ gulp.task 'copy_data', ->
 gulp.task 'deploy', (cb) ->
   runSequence ['set_sha', 'data'],
     ['prod_template', 'copy_css', 'copy_data', 'prod_compile', 'prod_menu_compile'],
-    'compress',
     cb
   return
