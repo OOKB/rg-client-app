@@ -59,4 +59,4 @@ Restart v5
 
 ## Images
 
-http://v6.rogersandgoffigon.com/ (dong.cape.io)
+Hosted on b2
