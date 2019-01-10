@@ -43,6 +43,7 @@ module.exports = React.createClass
       imgClass = 'img-container pattern'
     else if @state.reverseView
       imgPath = item._file[imgSize].path_reverse
+      imgClass = 'img-container'
     else
       if @state.isRelated and !@state.loadedLarge and !@state.loadedXlarge
         mainImgSize = 'small'
@@ -62,6 +63,8 @@ module.exports = React.createClass
     color_toggle_class = 'toggle-colors hidden-xs'
     if item.far
       color_toggle_class += ' with-far'
+    if item.reverse
+      color_toggle_class += ' with-reverse'
     if item.itemComments and item.summerSale
       color_toggle_class += ' with-notes'
 
