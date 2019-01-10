@@ -79,11 +79,11 @@ module.exports = AmpersandModel.extend
       if item.far
         item._file.small.path_far = cdn + 'far/'+item.id+'.jpg?w=640'
         item._file.large.path_far = cdn + 'far/'+item.id+'.jpg?w=1536'
-        item._file.large.path_far = cdn + 'far/'+item.id+'.jpg?w=2560'
+        item._file.xlarge.path_far = cdn + 'far/'+item.id+'.jpg?w=2560'
       if item.reverse
         item._file.small.path_reverse = cdn + 'reverse/'+item.id+'.jpg?w=640'
         item._file.large.path_reverse = cdn + 'reverse/'+item.id+'.jpg?w=1536'
-        item._file.large.path_reverse = cdn + 'reverse/'+item.id+'.jpg?w=2560'
+        item._file.xlarge.path_reverse = cdn + 'reverse/'+item.id+'.jpg?w=2560'
       unless item.contents
         item.contents = ''
 
