@@ -38,7 +38,7 @@ module.exports = AmpersandModel.extend
       type: 'string'
       default: -> Cookies.get('token')
     failedLogins: ['number', true, 0]
-    fetchingMe: ['boolean', true, false]
+    fetchingMe: ['bool', true, false]
     getProjectsOnLogin: ['bool', true, true]
     fetchedProjects: ['bool', true, false]
     showroom: 'object'
