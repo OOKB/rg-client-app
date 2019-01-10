@@ -43,7 +43,7 @@ module.exports = React.createClass
       imgClass = 'img-container pattern'
     else if @state.reverseView
       imgPath = item._file[imgSize].path_reverse
-      imgClass = 'img-container'
+      imgClass = 'img-container large'
     else
       if @state.isRelated and !@state.loadedLarge and !@state.loadedXlarge
         mainImgSize = 'small'
