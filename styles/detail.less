@@ -267,16 +267,13 @@
 }
 
 /** this is replicated in collection.less — how to combine? **/
-.toggle-notes > button:hover,
-.toggle-notes > button.active,
-.toggle-colors > button:hover,
-.toggle-colors > button.active {
+[class*="toggle-"] > button:hover,
+[class*="toggle-"] > button.active {
   background: @rg-gold;
   color: @rg-background;
 }
 
-.toggle-notes > button:active,
-.toggle-colors > button:active {
+[class*="toggle-"] > button:active {
   background: @rg-dark-gold;
   color: @rg-background;
 }
