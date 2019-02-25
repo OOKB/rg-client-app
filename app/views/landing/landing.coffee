@@ -130,10 +130,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/710011/p1'},
+            a {href: '#collection/textile/96/890036/p1'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/201902121706-ChintzedLinenCC.jpg?w=1111'
-                alt: 'Introducing Chintzed Linen, 100% Linen with a glazed finish available in 18 spring-evoking colors.'
+                src: 'https://rogersandgoffigon.imgix.net/banner/20190225-CheckerboardWebBanner.jpg?w=1111'
+                alt: 'Introducing Checkerboard! A nifty basketweave fabric.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
