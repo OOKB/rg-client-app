@@ -130,10 +130,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/890036/p1'},
+            a {href: '#collection/textile/96/edo/p1'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/20190225-CheckerboardWebBanner.jpg?w=1111'
-                alt: 'Introducing Checkerboard! A nifty basketweave fabric.'
+                src: 'https://rogersandgoffigon.imgix.net/banner/201903181028-Edo.jpg?w=1111'
+                alt: 'Rogers & Goffigon is excited to introduce two deluxe, woolen fabrics into its textile collection. Edo (shown) and Edo Plain (solid color version of Edo) are each available in the same 6 colorways'
           button
             className: 'close'
             onClick: @handleNoticeClose,
