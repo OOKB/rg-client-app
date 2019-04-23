@@ -130,10 +130,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/750012/p1'},
+            a {href: '#favs/740052-01/740052-03/740052-04/740052-05/740053-01/740053-03/740053-04/740053-05'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/20190412-Loopy.jpg?w=1111'
-                alt: 'Rogers & Goffigon is excited to introduce Loopy! A deluxe loopy wool blend.'
+                src: 'https://rogersandgoffigon.imgix.net/banner/20190423-GridlockZigZag?w=1111'
+                alt: 'Two unique and spectacular wide-width linen fabrics, Gridlock and Zig Zag, are the latest introductions into the Rogers & Goffigon textile collection. Each of these fabrics are available in four signature colorways: robin’s egg blue, white, grey and celadon.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
