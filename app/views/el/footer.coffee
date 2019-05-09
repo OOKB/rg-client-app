@@ -28,7 +28,7 @@ module.exports = React.createClass
       @disclaimerEl()
       p
         className: 'uppercase',
-          'Rogers & Goffigon LTD © 2017'
+          'Rogers & Goffigon LTD © 2019'
       p {},
         a
           className: 'link3',
