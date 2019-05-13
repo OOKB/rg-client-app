@@ -133,7 +133,7 @@ module.exports = React.createClass
             a {href: '#collection/textile/96/91047/p1'},
               img
                 src: 'https://rogersandgoffigon.imgix.net/banner/20190429Cumulus.jpg?w=1111'
-                alt: 'Rogers & Goffigon is excited to introduce Cumulus, a fabulously creative, small pattern, reversible jacquard, into its textile collection.'
+                alt: ' Rogers & Goffigon is excited to introduce Waistcoat, a deluxe silk chenille fabric, available in one lustrous colorway: Mother of Pearl.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
