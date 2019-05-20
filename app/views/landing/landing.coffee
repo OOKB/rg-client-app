@@ -130,10 +130,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/806031/p1'},
+            a {href: '#favs/890038-01/890038-02/890038-03/890039-01/890039-02/890039-03/890039-04'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/201905131336-Waistcoat.jpg?w=1000'
-                alt: ' Rogers & Goffigon is excited to introduce Waistcoat, a deluxe silk chenille fabric, available in one lustrous colorway: Mother of Pearl.'
+                src: 'https://rogersandgoffigon.imgix.net/banner/201905201100-OrkneyDemiPlaid.jpg?w=1000'
+                alt: 'Rogers & Goffigon is excited to announce the introduction of two superb wool fabrics, woven in Europe: Orkney and Demi-Plaid.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
