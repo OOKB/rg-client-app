@@ -130,10 +130,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#favs/890038-01/890038-02/890038-03/890039-01/890039-02/890039-03/890039-04'},
+            a {href: ''},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/201905201100-OrkneyDemiPlaid.jpg?w=1000'
-                alt: 'Rogers & Goffigon is excited to announce the introduction of two superb wool fabrics, woven in Europe: Orkney and Demi-Plaid.'
+                src: 'https://rogersandgoffigon.imgix.net/banner/201905281222-summersale.jpg?w=1000'
+                alt: 'Rogers & Goffigon and Delany & Long are having their annual Summer Sale'
           button
             className: 'close'
             onClick: @handleNoticeClose,
