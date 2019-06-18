@@ -104,7 +104,7 @@ module.exports = React.createClass
     component = switch section
       when 'landing' then Landing(props)
       when 'pricelist' then FilterableProductTable(props)
-      when 'collection', 'summer' then Collection(props)
+      # when 'collection', 'summer' then Collection(props)
       # when 'collection' then Collection(props)
       # when 'summer' then Summer(props)
       when 'detail' then ItemDetail(props)
