@@ -130,10 +130,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: ''},
+            a {href: '#collection/textile/96/92223/p1'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/201905281222-summersale.jpg?w=1000'
-                alt: 'Rogers & Goffigon and Delany & Long are having their annual Summer Sale'
+                src: 'https://rogersandgoffigon.imgix.net/banner/2201906241502-Roughspun.jpg?w=1000'
+                alt: 'Roughspun, a wonderfully supple all-purpose linen, is the latest introduction into the Rogers & Goffigon textile collection, available in two colorways. The creamy off-white is not shown.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
