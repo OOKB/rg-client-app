@@ -52,16 +52,16 @@ module.exports = React.createClass
             id: 'pricelist'
             title: 'Pricelist'
             href: '#trade/pricelist/textile/50/p1',
-              # id: 'summer'
-              # title: 'Summer Sale'
-              # href: '#trade/summer',
-              id: 'account'
-              title: 'Account'
-              href: '#trade/account',
-                id: 'logout'
-                title: 'Logout'
-                href: '#trade/logout'
-                onClick: -> app.me.set customerNumber: null, token: null
+              id: 'summer'
+              title: 'Summer Sale'
+              href: '#trade/summer',
+                id: 'account'
+                title: 'Account'
+                href: '#trade/account',
+                  id: 'logout'
+                  title: 'Logout'
+                  href: '#trade/logout'
+                  onClick: -> app.me.set customerNumber: null, token: null
         ]
       if app.me.customerNumber == 'rogersandgoffigon'
         data.children.push
