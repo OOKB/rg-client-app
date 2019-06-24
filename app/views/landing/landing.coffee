@@ -132,7 +132,7 @@ module.exports = React.createClass
           className: noticeBoxClassName,
             a {href: '#collection/textile/96/92223/p1'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/2201906241502-Roughspun.jpg?w=1111'
+                src: 'https://rogersandgoffigon.imgix.net/banner/201906241524-Roughspun.jpg?w=1111'
                 alt: 'Roughspun, a wonderfully supple all-purpose linen, is the latest introduction into the Rogers & Goffigon textile collection, available in two colorways. The creamy off-white is not shown.'
           button
             className: 'close'
