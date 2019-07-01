@@ -6,6 +6,13 @@
   border-bottom: 1px solid @rg-black;
 }
 
+@media (max-width: 767px) {
+  header.open + #container-collection {
+    margin-top: 275px;
+    transition: all 400ms ease;
+  }
+}
+
 #container-collection > .standard > .row,
 #container-collection > .search > .row {
   border-top: 1px solid @rg-black;
