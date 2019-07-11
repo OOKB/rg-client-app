@@ -130,10 +130,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/92223/p1'},
+            a {href: '#detail/945005/01'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/201906241524-Roughspun.jpg?w=1111'
-                alt: 'Roughspun, a wonderfully supple all-purpose linen, is the latest introduction into the Rogers & Goffigon textile collection, available in two colorways. The creamy off-white is not shown.'
+                src: 'https://rogersandgoffigon.imgix.net/banner/201907111431-Furrow.jpg?w=1111'
+                alt: 'Rogers & Goffigon is excited to introduce a unique, geometric patterned, upholstery fabric, Furrow, into their textile collection. It is available in one colorway, Fallow, in natural tones, on a natural grey linen ground.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
