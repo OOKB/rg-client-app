@@ -61,7 +61,7 @@ module.exports = React.createClass
   setRouterState: (newState) ->
     if newState
       section = newState.section or @state.section
-      searchableSection = _.contains ['pricelist', 'collection'], section
+      searchableSection = _.contains ['pricelist', 'collection', 'summer'], section
       if newState.searchTxt and not searchableSection
         searchableSection = true
         newState.section = 'collection'
@@ -114,7 +114,7 @@ module.exports = React.createClass
       when 'account' then Account(props)
       when 'projects' then Projects(props)
       #when 'item-not-found' then p 'Unfortunately we could not find that item.'
-      else p 'Hello there! Unfortunately our application is broken... ' + section
+      else p 'Hello there! Unfortunately our application is broken... we are working on the problem and things should be back up soon ' + section
 
     footer = false
     if section != 'landing' then footer = Footer props
