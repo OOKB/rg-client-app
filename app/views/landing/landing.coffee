@@ -132,7 +132,7 @@ module.exports = React.createClass
           className: noticeBoxClassName,
             a {href: '#favs/740056-01/740056-02/740056-03/740057-01/740057-02/740057-03/740058-01/740058-02/740058-03/890038-01/890038-02/890038-03/890039-01/890039-02/890039-03/890039-04'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/20191008-CrenelleChancayCross-Stitch.jpg.jpg?w=1111'
+                src: 'https://rogersandgoffigon.imgix.net/banner/20191008-CrenelleChancayCross-Stitch.jpg?w=1111'
                 alt: 'Rogers & Goffigon is excited to introduce three spectacular widewidth, complex dobby weave linen sheers. Each of the styles are available in three signature colorways: white; pale blue and pale grey, all on a white ground.'
           button
             className: 'close'
