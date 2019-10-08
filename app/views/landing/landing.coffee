@@ -132,8 +132,8 @@ module.exports = React.createClass
           className: noticeBoxClassName,
             a {href: '/#collection/textile/96/93301/p1'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/20190919-TarryNewColors.jpg?w=1111'
-                alt: 'Rogers & Goffigon is excited to introduce new colors of Tarry.'
+                src: 'https://rogersandgoffigon.imgix.net/banner/20191008-CrenelleChancayCross-Stitch.jpg.jpg?w=1111'
+                alt: 'Rogers & Goffigon is excited to introduce three spectacular widewidth, complex dobby weave linen sheers. Each of the styles are available in three signature colorways: white; pale blue and pale grey, all on a white ground.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
