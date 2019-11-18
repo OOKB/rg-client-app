@@ -130,10 +130,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/700003/p1'},
+            a {href: '#collection/textile/96/92224/p1'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/201910311343-Strata.jpg?w=1111'
-                alt: 'Rogers & Goffigon is excited to introduce a unique linen chenille fabric into their textile collection. Strata is available in five wonderful, stone-inspired colorways.'
+                src: 'https://rogersandgoffigon.imgix.net/banner/201911181626-Labyrinth.jpg?w=1111'
+                alt: 'Labyrinth, a linen fabric with a clever woven pattern, is the latest introduction into its Rogers and Goffigon textile collection.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
