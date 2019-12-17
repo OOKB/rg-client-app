@@ -130,10 +130,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/945004/p1'},
+            a {href: '#collection/textile/96/91048/p1'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/20191130-WebbingforBanner.jpg?w=1111'
-                alt: 'Webbing, a wonderful, all-purpose linen fabric with a very soft hand, is the latest introduction into the Rogers & Goffigon textile collection. It’s available in nine rich colorways.'
+                src: 'https://rogersandgoffigon.imgix.net/banner/201912170030-VersatileBanner.jpg?w=1111'
+                alt: 'Rogers & Goffigon is excited to introduce Versatile, a multi-purpose, wide-width linen fabric (nearly 10 feet wide), in nine earthy colorways.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
