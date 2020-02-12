@@ -130,10 +130,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#favs/945007-01/945007-02/945007-03/945007-04/945007-05/945008-01/945008-02/945008-03/945008-04/945008-05'},
+            a {href: '#collection/textile/96/710017/p1'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/202002051019-CrissCrossDice.jpg?w=1111'
-                alt: 'Criss-Cross and Dice, two gorgeous dobby weave fabrics that look like they’re handwoven, each available in 5 colorways, are the latest introductions into the Rogers & Goffigon textile collection.'
+                src: 'https://rogersandgoffigon.imgix.net/banner/20200212-Liguria.jpg?w=1111'
+                alt: 'Rogers and Goffigon is pleased to introduce Liguria, a lovely stripe in a stunning palette of signature colors.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
