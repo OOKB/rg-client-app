@@ -130,10 +130,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/710017/p1'},
+            a {href: '#collection/leather/96/suede/p1'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/20200212-Liguria.jpg?w=1111'
-                alt: 'Rogers and Goffigon is pleased to introduce Liguria, a lovely stripe in a stunning palette of signature colors.'
+                src: 'https://rogersandgoffigon.imgix.net/banner/202002131029-Suede.jpg?w=1111'
+                alt: 'Rogers and Goffigon is pleased to introduce a new leather: Suede! This beautiful silky suede is available in nine soft, muted colors that coordinate perfectly with the Rogers & Goffigon textile palette'
           button
             className: 'close'
             onClick: @handleNoticeClose,
