@@ -132,8 +132,8 @@ module.exports = React.createClass
           className: noticeBoxClassName,
             a {href: '#collection/textile/96/710017/p1'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/20200212-Liguria.jpg?w=1111'
-                alt: 'Rogers and Goffigon is pleased to introduce Liguria, a lovely stripe in a stunning palette of signature colors.'
+                src: 'https://rogersandgoffigon.imgix.net/banner/202005111615-CrumbleDriftsTrigonsBanner.jpg?w=1111'
+                alt: 'Rogers & Goffigon is excited to introduce three exceptional, textured, heavy upholstery fabrics, into their textile collection. From top to bottom: Drifts, Crumble, & Trigons.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
