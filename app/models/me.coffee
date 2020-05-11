@@ -18,7 +18,7 @@ module.exports = AmpersandModel.extend
     showNotice:
       type: 'bool'
       required: true
-      default: false
+      default: true
   props:
     favs:
       type: 'array'
