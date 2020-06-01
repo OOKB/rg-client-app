@@ -132,8 +132,8 @@ module.exports = React.createClass
           className: noticeBoxClassName,
             a {href: '#collection/textile/96/710017/p1'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/202005111615-CrumbleDriftsTrigonsBanner.jpg?w=1111'
-                alt: 'Rogers & Goffigon is excited to introduce three exceptional, textured, heavy upholstery fabrics, into their textile collection. From top to bottom: Drifts, Crumble, & Trigons.'
+                src: 'https://rogersandgoffigon.imgix.net/banner/202006011049-Champlain.jpg?w=1111'
+                alt: 'Rogers & Goffigon is pleased to introduce Champlain, a new version of their very popular hand screen printed fabrics that have been in the collection for many years. This fabric was inspired by an element in a map design drawn in 1604, by the French explorer and cartographer, Samuel de Champlain. It is hand-printed in England on a tightly woven, creamy, off-white, wet-spun, 100% linen ground fabric, woven exclusively for Rogers & Goffigon in Italy. Each tree motif is hand-drawn across the large repeat of this fabric. A very versatile fabric, Champlain is ideal for upholstery, slip covers, draperies, shades, wall coverings, and accessories.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
