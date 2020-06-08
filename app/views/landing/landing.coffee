@@ -130,10 +130,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/710017/p1'},
+            a {href: '#collection/textile/96/938034/p1'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/202006011049-Champlain.jpg?w=1111'
-                alt: 'Rogers & Goffigon is pleased to introduce Champlain, a new version of their very popular hand screen printed fabrics that have been in the collection for many years. This fabric was inspired by an element in a map design drawn in 1604, by the French explorer and cartographer, Samuel de Champlain. It is hand-printed in England on a tightly woven, creamy, off-white, wet-spun, 100% linen ground fabric, woven exclusively for Rogers & Goffigon in Italy. Each tree motif is hand-drawn across the large repeat of this fabric. A very versatile fabric, Champlain is ideal for upholstery, slip covers, draperies, shades, wall coverings, and accessories.'
+                src: 'https://rogersandgoffigon.imgix.net/banner/20200608-WoolBoucleV3.jpg?w=1111'
+                alt: 'Rogers & Goffigon is pleased to introduce Wool Bouclé, in a lively array of seventeen, wonderfully fresh colorways. Bouclé is created from combining thick and thin yarns at different tensions, this results in a nubby, looped and curled fabric that is quite thick, and makes it perfect for some sound absorption when upholstered on sofas or chairs'
           button
             className: 'close'
             onClick: @handleNoticeClose,
