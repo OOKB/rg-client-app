@@ -130,10 +130,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/938034/p1'},
+            a {href: '#favs/740062-01/740062-02/740063-01/740063-02/740064-01/740064-02/945007-01/945007-02/945007-03/945007-04/945007-05/945008-01/945008-02/945008-03/945008-04/945008-05'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/20200608-WoolBoucleV3.jpg?w=1111'
-                alt: 'Rogers & Goffigon is pleased to introduce Wool Bouclé, in a lively array of seventeen, wonderfully fresh colorways. Bouclé is created from combining thick and thin yarns at different tensions, this results in a nubby, looped and curled fabric that is quite thick, and makes it perfect for some sound absorption when upholstered on sofas or chairs'
+                src: 'https://rogersandgoffigon.imgix.net/banner/202007221048-AscendBobbinetHedge.jpg?w=1111'
+                alt: 'Rogers & Goffigon is excited to introduce three more spectacular, complex dobby weave linen fabrics into their textile collection. Each of these new patterns, Ascend-Descend, Bobbinet and Hedge Maze, are available in two colorways.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
