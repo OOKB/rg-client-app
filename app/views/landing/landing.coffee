@@ -130,10 +130,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#favs/740062-01/740062-02/740063-01/740063-02/740064-01/740064-02/945007-01/945007-02/945007-03/945007-04/945007-05/945008-01/945008-02/945008-03/945008-04/945008-05'},
+            a {href: '#collection/textile/12/92225/p1'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/202007221048-AscendBobbinetHedge.jpg?w=1111'
-                alt: 'Rogers & Goffigon is excited to introduce three more spectacular, complex dobby weave linen fabrics into their textile collection. Each of these new patterns, Ascend-Descend, Bobbinet and Hedge Maze, are available in two colorways.'
+                src: 'https://rogersandgoffigon.imgix.net/banner/20200817-Debitage.jpg?w=1111'
+                alt: 'Rogers & Goffigon is pleased to introduce an upholstery weight fabric, Debitage, in four colorways, into its textile collection.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
