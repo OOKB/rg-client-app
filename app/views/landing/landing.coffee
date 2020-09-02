@@ -130,10 +130,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/12/92225/p1'},
+            a {href: '#collection/textile/96/945009/p1'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/20200817-Debitage.jpg?w=1111'
-                alt: 'Rogers & Goffigon is pleased to introduce an upholstery weight fabric, Debitage, in four colorways, into its textile collection.'
+                src: 'https://rogersandgoffigon.imgix.net/banner/20200902-CubistPlain.jpg?w=1111'
+                  alt: 'Rogers & Goffigon is pleased to introduce Cubist Plain, a coordinating fabric for our fabric, Cubist, the latest introduction into the textile collection. Cubist Plain has an overall uniformly plain woven pattern'
           button
             className: 'close'
             onClick: @handleNoticeClose,
