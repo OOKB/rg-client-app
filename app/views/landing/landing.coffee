@@ -133,7 +133,7 @@ module.exports = React.createClass
             a {href: '#collection/textile/96/945009/p1'},
               img
                 src: 'https://rogersandgoffigon.imgix.net/banner/20200902-CubistPlain.jpg?w=1111'
-                  alt: 'Rogers & Goffigon is pleased to introduce Cubist Plain, a coordinating fabric for our fabric, Cubist, the latest introduction into the textile collection. Cubist Plain has an overall uniformly plain woven pattern'
+                alt: 'Rogers & Goffigon is pleased to introduce Cubist Plain, a coordinating fabric for Cubist, into the textile collection. Cubist Plain has an overall uniformly plain woven pattern'
           button
             className: 'close'
             onClick: @handleNoticeClose,
