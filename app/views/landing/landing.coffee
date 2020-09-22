@@ -130,10 +130,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/945009/p1'},
+            a {href: '#favs/930004-01/930005-01/930005-02'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/20200902-CubistPlain.jpg?w=1111'
-                alt: 'Rogers & Goffigon is pleased to introduce Cubist Plain, a coordinating fabric for Cubist, into the textile collection. Cubist Plain has an overall uniformly plain woven pattern'
+                src: 'https://rogersandgoffigon.imgix.net/banner/202009221223-AbacaChrysalisbanner.jpg?w=1111'
+                alt: 'Rogers & Goffigon is excited to introduce two semi-sheer, wide-width fabrics: Abaca, a crepe weave, and Chrysalis, a jacquard weave.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
