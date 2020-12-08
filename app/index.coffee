@@ -23,7 +23,7 @@ module.exports =
     @bitly = new Bitly()
 
     el = document.getElementById('react')
-    r.get 'https://rogersandgoffigon-b0977.firebaseio.com/items.json', (err, res) =>
+    r.get 'https://db.delanyandlong.com/rg/items.json', (err, res) =>
       ItemsData = res.body
       r.get 'https://r_g.cape.io/_view/item_order/data.json', (err, res) =>
         self.itemOrder = res.body
