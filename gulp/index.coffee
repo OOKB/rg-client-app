@@ -101,7 +101,7 @@ gulp.task 'dataContent', ->
     .pipe gulp.dest('./app/models/')
 
 gulp.task 'dataItems', ['dataContent'], ->
-  r('https://rogersandgoffigon-b0977.firebaseio.com/items.json')
+  r('https://db.delanyandlong.com/rg/items.json')
     .pipe source('data.json')
     .pipe gulp.dest('./app/models/')
 
