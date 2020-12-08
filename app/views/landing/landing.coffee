@@ -144,10 +144,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#favs/945011-01/945012-01/945013-01'},
+            a {href: '#favs/700005-01/700005-02/710019-01/710019-02'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/0202010081506-GlacierSabaWindowBanner.jpg?w=1111'
-                alt: 'Rogers & Goffigon is excited to introduce a spectacularly unique trio of gauzy, wide-width, sheer linen fabrics, into their textile collection. Glacier, Saba Lace and Windowpanes are creamy white, ingenious jacquard weave fabrics.'
+                src: 'https://rogersandgoffigon.imgix.net/banner/020201208-cirrusSteppingStones.jpg?w=1111'
+                alt: 'Two fabulously unique, textured upholstery-weight fabrics in two colors each, are new to the Rogers & Goffigon textile collection: Cirrus and Stepping Stones.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
