@@ -144,10 +144,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/945010/p1'},
+            a {href: '#collection/textile/96/710020/p1'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/20201223-Meander.jpg?w=1111'
-                alt: 'Meander, an upholstery weight linen and wool fabric, is new to the Rogers & Goffigon textile collection.'
+                src: 'https://rogersandgoffigon.imgix.net/banner/020210120-Granular.jpg?w=1111'
+                alt: 'The quintessential linen fabric, Granular, comes in two signature Rogers & Goffigon colorways, Confectioner’s is the perfect shade of off-white, and Seed is the ultimate natural grey linen color'
           button
             className: 'close'
             onClick: @handleNoticeClose,
