@@ -25,19 +25,19 @@ module.exports =
     el = document.getElementById('react')
     r.get 'https://db.delanyandlong.com/rg/items.json', (err, res) =>
       ItemsData = res.body
-      r.get 'https://r_g.cape.io/_view/item_order/data.json', (err, res) =>
-        self.itemOrder = res.body
-        # Create our items model collection.
-        items = new ItemsCollection ItemsData, parse: true
-        # Use the subcollection module.
-        @items = new SubCollection items
-        @itemFilters = {}
-        @setCategoryFilterOps()
-        @content = Content
+      # r.get 'https://r_g.cape.io/_view/item_order/data.json', (err, res) =>
+      #   self.itemOrder = res.body
+      # Create our items model collection.
+      items = new ItemsCollection ItemsData, parse: true
+      # Use the subcollection module.
+      @items = new SubCollection items
+      @itemFilters = {}
+      @setCategoryFilterOps()
+      @content = Content
 
-        # Init the React application router.
-        routerComponent = Router {}
-        @container = React.renderComponent routerComponent, el
+      # Init the React application router.
+      routerComponent = Router {}
+      @container = React.renderComponent routerComponent, el
 
   filterCatProp:
     color: 'colors'
