@@ -144,10 +144,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/710018/p1'},
+            a {href: '#collection/textile/96/945014/p1'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/020210210-MarledMaille.jpg?w=1111'
-                alt: 'Marled Maille is an open plain weave using a thicker wet-spun 100% linen yarn, giving the fabric the look of a screen. It has a light stiffness to it, which makes it ideal for shades or window treatments'
+                src: 'https://rogersandgoffigon.imgix.net/banner/0202105151539-Nubble.jpg.jpg?w=1111'
+                alt: 'Rogers & Goffigon is pleased to introduce Nubble into their textile collection. Nubble is available in six colorways inspired by nature.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
