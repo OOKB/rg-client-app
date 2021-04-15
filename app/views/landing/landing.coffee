@@ -146,7 +146,7 @@ module.exports = React.createClass
           className: noticeBoxClassName,
             a {href: '#collection/textile/96/945014/p1'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/0202105151539-Nubble.jpg.jpg?w=1111'
+                src: 'https://rogersandgoffigon.imgix.net/banner/0202105151539-Nubble.jpg?w=1111'
                 alt: 'Rogers & Goffigon is pleased to introduce Nubble into their textile collection. Nubble is available in six colorways inspired by nature.'
           button
             className: 'close'
