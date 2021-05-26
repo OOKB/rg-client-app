@@ -14,3 +14,17 @@
 @import url(trade.less);
 @import url(landing.less);
 // @import url(ssgrid.less);
+
+/* emergency fix by kb!? */
+/* 20210506 try to hid filters temporarily!? */
+
+.filter-list * {
+  display: none;
+}
+
+.filter-list::before {
+  display: block;
+  content: 'Filters are temporarily unavailable due to an inventory update.';
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
