@@ -144,10 +144,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/96010/p1'},
+            a {href: '#collection/textile/96/92538/p1'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/20210526-PaquchaBanner.jpg?w=1111'
-                alt: 'Introducing Paqucha, a deluxe combination of baby alpaca and wool upholstery-weight fabric.'
+                src: 'https://rogersandgoffigon.imgix.net/banner/020210601-Patchwork.jpg?w=1111'
+                alt: 'Introducing Patchwork, a spectacularly unique, gauzy, super wide-width, sheer fabric, into the Rogers and Goffigon textile collection.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
