@@ -144,10 +144,10 @@ module.exports = React.createClass
         div
           id: 'notice-box'
           className: noticeBoxClassName,
-            a {href: '#collection/textile/96/930006/p1'},
+            a {href: '#collection/textile/96/700004/p1'},
               img
-                src: 'https://rogersandgoffigon.imgix.net/banner/020210610-EggCups.jpg?w=1111'
-                alt: 'Introducing Egg Cups, a wide-width, sheer, with unique weave and texture, available in two colorways'
+                src: 'https://rogersandgoffigon.imgix.net/banner/020210628-Harlequin.jpg?w=1111'
+                alt: 'Harlequin, a lovely two-toned upholstery-weight linen fabric, is the latest addition to the Rogers & Goffigon textile collection.'
           button
             className: 'close'
             onClick: @handleNoticeClose,
